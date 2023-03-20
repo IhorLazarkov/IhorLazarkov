@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @IhorLazarkov
-- 👀 I’m interested in development fo software to test software
-- 🌱 I’m currently learning allot of things :)
-- 💞️ I’m looking to collaborate on project that needs developemnt in testing (create app, frameworks either for testing).
+- 👀 I’m interested in full stack Node JS development
+- 🌱 I’m currently continue learning Node JS, React JS
+- 💞️ I’m looking to collaborate on project that needs developemnt
 - 📫 How to reach me ilazarkov@gmail.com
 
 <!---
