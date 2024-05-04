@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+main {
+    background-color: #ffebcd;
+    width: 100%;
+    margin-top: 3em;
+    padding: 2em 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-weight: 500;
+}
+
+.description {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 400;
+    text-align: justify;
+}
+
+footer#contact-me-container {
+    color: #ffebcd;
+}
+
+ul#contact-me-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
