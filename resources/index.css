@@ -43,7 +43,9 @@ main {
 .tech-icon {
   width: 100px;
 }
-
+.icon-in-text{
+  text-decoration: none;
+}
 footer#contact-me-container {
   color: #ffebcd;
 }
