@@ -44,28 +44,6 @@ main {
   width: 100px;
 }
 
-#tech-stack-items{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.tech-icon{
-    width: 100px;
-}
-
-#tech-stack-items{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.tech-icon{
-    width: 100px;
-}
-
 footer#contact-me-container {
   color: #ffebcd;
 }
