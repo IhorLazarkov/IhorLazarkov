@@ -66,3 +66,22 @@ ul#contact-me-menu {
 .icon-contact-me {
   width: 30px;
 }
+
+#companies {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.company-icon {
+  width: 210px;
+  height: 90px;
+  border-radius: 10%;
+}
+
+.custom {
+  width: 150px;
+  height: 50px;
+}
