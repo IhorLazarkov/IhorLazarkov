@@ -3,7 +3,7 @@
 - 🌱 I’m currently continue to work as Software Engineer in Test (SET)
 - 🧑🏼‍💻 I'm a student in AppAcademy (certified post secondary academy) as Full-stack Developer
 - 💞️ I’m open for collaboration and constribution
-- 📫 How to reach me ilazarkov@gmail.com, linkedin.com/in/ihorlazarkov
+- 📫 How to reach me ilazarkov@gmail.com, https://www.linkedin.com/in/ihorlazarkov
 - 👻 Tech stack: JavaScript, TypeScript, NodeJS, HTML, CSS, React, JQuery, Java, SpringBoot, Python, Docker, Kuberneties
 - 🤖 Test Automation: Mocha, Chai, WebdriverIO, Cypress, Applitools, JUnit, Selenium
 - 🛢️ Data storage tech stack: SQL, Oracle, PostgreSQL
