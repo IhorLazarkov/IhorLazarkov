@@ -28,17 +28,7 @@ nav > ul {
   gap: 10px;
   margin-left: 30px;
 }
-.project-card {
-  max-width: 60vw;
-  padding: 10px;
-  margin: 10px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  border: 1px solid #ffebcd;
-  border-radius: 5px;
-  text-align: justify;
-}
+
 .photo-container {
   display: flex;
   flex: 1 0 auto;
@@ -68,13 +58,7 @@ nav > ul {
   margin: 0;
   padding: 0;
 }
-.section {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2em;
-}
+
 
 .title {
   font-weight: 500;
@@ -140,4 +124,45 @@ ul#contact-me-menu {
 .custom {
   width: 270px;
   height: 70px;
+}
+
+@media screen and (width > 1000px) {
+  .project-card {
+    max-width: 35vw;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ffebcd;
+    border-radius: 5px;
+    text-align: justify;
+  }
+  .section {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+  }
+}
+@media screen and (width <= 1000px) {
+  .project-card {
+    max-width: 90vw;
+    padding: 10px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #ffebcd;
+    border-radius: 5px;
+    text-align: justify;
+  }
+  .section {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+  }
 }
