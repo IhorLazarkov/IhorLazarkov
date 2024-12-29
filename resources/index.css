@@ -41,16 +41,21 @@ nav > ul {
 }
 .photo-container {
   display: flex;
+  flex: 1 0 auto;
   width: 100%;
   gap: 7px;
 }
 .project-card .preview {
-  width: 74%;
   border-radius: 5px;
+  width: 100%;
+  z-index: 1;
 }
 .project-card .preview-mobile {
   width: 25%;
   border-radius: 5px;
+  z-index: 2;
+  position: relative;
+  right: calc(25%);
 }
 .project-card a {
   color: inherit;
