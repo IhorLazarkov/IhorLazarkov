@@ -3,6 +3,10 @@ body {
   padding: 0;
   background-color: black;
 }
+ul, li{
+  margin: 0;
+  padding: 0;
+}
 main {
   background-color: #ffebcd;
   width: 100%;
@@ -11,6 +15,43 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+nav {
+  color: #ffebcd;
+}
+nav > ul {
+  list-style: none;
+}
+.projects-container {
+  display: flex;
+  gap: 10px;
+  margin-left: 30px;
+}
+.project-card {
+  max-width: 35vw;
+  padding: 10px;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #ffebcd;
+  border-radius: 5px;
+  text-align: justify;
+}
+.project-card .preview {
+  width: 100%;
+  border-radius: 5px;
+}
+.project-card a {
+  color: inherit;
+  text-decoration: none;
+}
+.project-card img {
+  width: 35px;
+}
+.project-card > p {
+  margin: 0;
+  padding: 0;
 }
 .section {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
