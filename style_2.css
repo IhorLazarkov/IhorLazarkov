@@ -48,7 +48,7 @@ header ul {
 }
 
 header li {
-  border-bottom: 1px solid red;
+  border-bottom: 1px solid var(--primary2);
   font-size: 25px;
   padding: 13px 20px;
 }
@@ -68,4 +68,34 @@ li.active {
   border-color: var(--primary2);
   background-color: var(--primary2);
   height: 100%;
+}
+
+@keyframes slider {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+.slider {
+  animation: slider 0.8s linear;
+}
+
+@keyframes slider-up {
+  from {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.slider-up {
+  animation: slider-up 0.8s linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
 }
