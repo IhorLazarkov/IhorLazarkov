@@ -19,16 +19,8 @@
     </header>
     <main>
       <section id="info">
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            width: 80%;
-            margin: 50px auto;
-            gap: 60px;
-          "
-        >
           <div class="container">
+            <div style="background-color: var(--sub-primary)"></div>
             <div class="profile-info-left">
               <img src="./resources/profile-pic.png" alt="profile picture" />
             </div>
@@ -38,22 +30,23 @@
               <h2>Full Stack Software Engineer | Test Automation Architect</h2>
               <div>
                 <a href="https://www.linkedin.com/in/ihorlazarkov"
-                  ><img src="./resources/icon-linkedin.svg" alt="" /></a>
+                  ><img src="./resources/icon-linkedin.svg" alt=""
+                /></a>
                 <a href="https://github.com/ihorlazarkov"
-                  ><img src="./resources/icon-github.svg" alt="" /></a>
+                  ><img src="./resources/icon-github.svg" alt=""
+                /></a>
               </div>
             </div>
-          </div>
-          <div class="summary slider">
-            <h2>Summary</h2>
-            <p>
+            <div style="background-color: var(--primary2)"></div>
+            <p class="summary">
               Versatile and results-driven Full Stack Software Developer with a
               robust foundation as a Senior Software Development Engineer in
               Test (SDET). Bringing over 8 years of hands-on experience in
               software development, automation frameworks, and deployment,
               coupled with 15 years of expertise in quality assurance.
             </p>
-          </div>
+
+          <div style="background-color: var(--sub-primary)"></div>
           <div class="summary-employment slider-up">
             <!-- <div class="quot">
               <span class="quot-message">
@@ -63,15 +56,19 @@
               <span class="quot-author">Bruce Halle</span>
             </div> -->
             <div class="summary-card">
-              <span class="title">Experiance yrs.</span>
+              <img
+                class="title"
+                src="./resources/icons8-experience.svg"
+                alt="experiance"
+              />
               <span class="value">15</span>
             </div>
             <div class="summary-card">
-              <span class="title">Projetcs</span>
+              <img class="title" src="./resources/icons8-projects.svg" />
               <span class="value">10+</span>
             </div>
-            <div class="summary-card">
-              <span class="title">Worked in</span>
+            <!-- <div class="summary-card">
+              <img class="title" src="./resources/icons8-work.svg">
               <span class="value-list">
                 <ul>
                   <li>Luxsoft (2007-2008)</li>
@@ -80,7 +77,7 @@
                   <li>Accenture (2024-present)</li>
                 </ul>
               </span>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>

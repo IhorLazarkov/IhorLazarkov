@@ -1,0 +1,56 @@
+@import "./desktop_3.css";
+
+body {
+  --debug: 0px;
+  --background-primary2: #e0c1b3;
+  --primary1: #aeb4a9;
+  background-color: var(--background-primary2);
+
+  /* heading fonts */
+  --headers-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --text-font: Georgia, "Times New Roman", Times, serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --background-primary1: #424242;
+    --background-primary2: #212121;
+    --primary1: #378dfe;
+    --primary2: #ab68ff;
+    --border-color: #e3e3e3;
+    --text-color: var(--border-color);
+    background-color: var(--background-primary2);
+    color: var(--text-color);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  0% {
+    opacity: 1;
+    /* transform: translateX(0px); */
+  }
+  100% {
+    opacity: 0;
+    /* transform: translateX(1000px); */
+  }
+}
+.appear {
+  /* transform: translateX(0px); */
+  animation: appear 1s linear;
+}
+.hidden {
+    opacity: 0;
+  /* transform: translateX(-1000px); */
+}
+.hide {
+  animation: hide 0.5s ease;
+}

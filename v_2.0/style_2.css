@@ -25,8 +25,9 @@ p {
 @media (prefers-color-scheme: dark) {
   body {
     --background: #424242;
+    --sub-primary: #ab68ff;
     --primary1: #212121;
-    --primary2: #ab68ff;
+    --primary2: #378dfe;
     --border-color: rgb(227, 227, 227);
     --text-color: var(--border-color);
     background-color: var(--background);

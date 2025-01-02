@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ihor Lazarkov - Profile</title>
+    <link rel="stylesheet" href="style_3.css" />
+    <script defer src="./app_3.js"></script>
+  </head>
+  <body>
+    <!-- <header>Ihor Lazarkov</header> -->
+    <main>
+      <section id="left_panenl">
+        <div id="left_info_container">
+          <div id="photo_container">
+            <img src="../resources/profile-pic.png" alt="" />
+          </div>
+          <div id="contact_me_container">
+            <div style="font-size: 2em">Ihor Lazarkov</div>
+            <div style="font-size: 1.3em">Fullstack Developer</div>
+            <div style="font-size: 1em">Automation Test Architect</div>
+            <div class="media">
+              <a href="">
+                <img src="../resources/icon-github.svg" alt="github" />
+              </a>
+              <a href="">
+                <img src="../resources/icon-linkedin.svg" alt="linked in" />
+              </a>
+              <a href="">
+                <img src="./resources/facebook.svg" alt="facebook" />
+              </a>
+            </div>
+            <div class="contact_me_info">
+              <div class="contact_me_tile">
+                <div class="icon">
+                  <img src="./resources/phone.svg" alt="" />
+                </div>
+                <div class="value">
+                  <div style="font-size: small">phone</div>
+                  <div>+1 (615) 506 - 9411</div>
+                </div>
+              </div>
+              <div class="contact_me_tile">
+                <div class="icon">
+                  <img src="./resources/mail.svg" alt="email" />
+                </div>
+                <div class="value">
+                  <div style="font-size: small">email</div>
+                  <div>ilazarkov@gmail.com</div>
+                </div>
+              </div>
+            </div>
+            <a
+              href="./resources/Lazarkov_Ihor_Resume_4.1.docx"
+              alt="download resume"
+              >download resume</a
+            >
+          </div>
+        </div>
+      </section>
+      <section id="right_panel">
+        <div id="rigth_actions_container">
+          <nav id="actions">
+            <button to="home" class="active">
+              <img src="./resources/home.svg" alt="home" />
+              <span style="display: block">home</span>
+            </button>
+            <button to="work" class="">
+              <img src="./resources/work.svg" alt="work" />
+              <span style="display: block">work</span>
+            </button>
+            <button to="projects" class="">
+              <img src="./resources/projects.svg" alt="projects" />
+              <span style="display: block">projs</span>
+            </button>
+            <button to="education" class="">
+              <img src="./resources/education.svg" alt="education" />
+              <span style="display: block">educ.</span>
+            </button>
+          </nav>
+        </div>
+        <div id="rigth_info_container" style="position: relative">
+          <!-- HOME -->
+          <section id="home" class="appear" style="position: absolute">
+            <div style="display: flex; align-items: center">
+              <h3 style="font-size: 1.2em">ABOUT ME</h3>
+              <hr
+                style="
+                  margin-bottom: 0;
+                  margin-top: 0;
+                  width: 40%;
+                  color: var(--primary2);
+                "
+              />
+            </div>
+            <p style="font-size: 1.2em">
+              Versatile and results-driven Full Stack Software Developer with a
+              robust foundation as a Senior Software Development Engineer in
+              Test (SDET). Bringing over 8 years of hands-on experience in
+              software development, automation frameworks, and deployment,
+              coupled with 15 years of expertise in quality assurance.
+            </p>
+            <h3 style="font-size: 1.2em">WHAT I DO!</h3>
+            <div class="do-tile-container">
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/web-page.svg" alt="" />
+                  <span>Web Development</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  As a client centric Full Stack Developer I pation about design
+                  and implement programmatic solutions across tech stack. 
+                </div>
+              </div>
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/testing.svg" alt="" />
+                  <span>Development in Test</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  Although development for testing close to canonic
+                  understanding of a developmer, it requires deeper knowledge in
+                  testing technices, design of test cases. With great attention
+                  to details I meticulously conduct necessary amount of testing
+                  to provide precise feedback to test manager.
+                </div>
+              </div>
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/devops.svg" alt="" />
+                  <span>DevOps</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  Perform integration of sowfare projects into CI/CD. Write
+                  necessary build scripts to perform configured flow to perform
+                  build, testing and release. Schedule execution of such
+                  scripts. Create specifice triggers.
+                </div>
+              </div>
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/robot.svg" alt="" />
+                  <span>Automation Test</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  Design and implement of automation test project to perform
+                  function testing for End-to-End test scenairos for front-back
+                  and back-end applications. Analyze function requirements to
+                  make test case design for automation tesing.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- WORK -->
+          <section id="work" class="hidden" style="position: absolute">
+            <div>work</div>
+          </section>
+
+          <!-- PROJECTS -->
+          <section id="projects" class="hidden" style="position: absolute">
+            <div>projects</div>
+          </section>
+          <section id="education" class="hidden" style="position: absolute">
+            <div>education</div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
