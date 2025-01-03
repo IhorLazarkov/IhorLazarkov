@@ -61,11 +61,11 @@
       <section id="right_panel">
         <div id="rigth_actions_container">
           <nav id="actions">
-            <button to="home" class="active">
+            <button to="home" class="">
               <img src="./resources/home.svg" alt="home" />
               <span style="display: block">home</span>
             </button>
-            <button to="work" class="">
+            <button to="work" class="active">
               <img src="./resources/work.svg" alt="work" />
               <span style="display: block">work</span>
             </button>
@@ -85,7 +85,7 @@
         </div>
         <div id="rigth_info_container" style="position: relative">
           <!-- HOME -->
-          <section id="home" class="appear" style="position: absolute">
+          <section id="home" class="hidden" style="position: absolute">
             <div style="display: flex; align-items: center">
               <h3 style="font-size: 1.2em">ABOUT ME</h3>
               <hr
@@ -170,8 +170,187 @@
           </section>
 
           <!-- WORK -->
-          <section id="work" class="hidden" style="position: absolute">
-            <div>Work page to be developed</div>
+          <section id="work" class="appear" style="position: absolute">
+            <nav>
+              <button class="" to="epam">
+                <h4 style="display: inline">EPAM Systems</h4>
+                <span>| Oct 2008 - May 2022</span>
+              </button>
+              <button class="" to="cisco">
+                <h4 style="display: inline">Cisco Meraki</h4>
+                <span>| May 2022 - May 2024</span>
+              </button>
+              <button class="active" to="accenture">
+                <h4 style="display: inline">Accenture</h4>
+                <span>| May 2024 - Present</span>
+              </button>
+            </nav>
+            <div id="accenture" class="work-tile appear">
+              <div class="work-tile-head">
+                <h4>Automation Test Engineer</h4>
+                <hr />
+              </div>
+              <div class="work-tile-body">
+                Work as senior technical automation test engineer in a team of 5
+                automation test engineers. Responsible to deliver automation
+                test framework for functional and integration testing for three
+                projects using Java, Selenium WD, Cucumber, RestAPI, JUnit.
+                Integration of automation framework into CI/CD by tailoring
+                Jenkins scripts and creation of schedulers. Communication with
+                product owners, domain knowledge experts to learn functionality,
+                demo of completed work, gather feedback and deliver
+                improvements. Execute tests, perform issue analyze, bug fix in
+                automation framework, provide test evidence.
+              </div>
+              <ul style="display: flex; flex-direction: column; gap: 10px">
+                <li>
+                  Contribute to automation test framework, architect solutions,
+                  best practices utilizing GRASP, GoF, LISP principles for OOP
+                  and both functional and programming
+                </li>
+                <li>
+                  Meticulous analyze code base of taken-over projects by
+                  execution of tests and reading the code base, to improve
+                  stability, remove false positive tests, decrease redundant
+                  code base
+                </li>
+                <li>
+                  After meticulous refactoring false-positive tests were
+                  removed, cleared 1800 lines of code, increased test execution
+                  from 40 minutes to 10 minutes resulting in drastically
+                  improved overall quality of automation test framework
+                </li>
+                <li>
+                  Established trust of teams in automation testing and its
+                  results by holistic approach to automation test engineering;
+                </li>
+                <li>
+                  Deserved key role in technical leadership by provide technical
+                  mentoring and solutions within the team
+                </li>
+                <li>
+                  Participate in conferences across company to share with best
+                  practices and innovative approaches in automation testing
+                </li>
+              </ul>
+            </div>
+            <div id="cisco" class="work-tile hidden">
+              <div class="work-tile-head">
+                <h4>Software QA</h4>
+                <hr />
+              </div>
+              <div class="work-tile-body">
+                Managed the responsibilities of multiple roles, including senior
+                software automation test engineer (SDET), and software test
+                engineer. Collaborated with various internal teams in an agile
+                environment. Established testing standards and procedures and
+                integrated automation testing into continuous integration and
+                continuous delivery (CI/CD) processes across multiple
+                environments.
+                <ul style="display: flex; flex-direction: column; gap: 10px">
+                  <li>
+                    Automated implementation of functional, end-to-end and API
+                    tests in existing Cypress and pyATS automation test
+                    frameworks and integration into CI\CD processes to test
+                    cloud monitoring application for new products resulting in
+                    continues seamless testing showing advanced learning,
+                    technical, programming and testing skills
+                  </li>
+                  <li>
+                    Architected and implemented automation test frameworks from
+                    scratch using WebdriverIO and led integration into existing
+                    CI/CD process to trigger execution of functional and
+                    end-to-end tests before merge into master which drastically
+                    improved quality of shippable product
+                  </li>
+                  <li>
+                    Created test plans and strategies using close communication
+                    with the QA team, development team, product owner, and
+                    product management team to ensure adequate test coverage
+                    resulting in establishing process standards and improving
+                    test management and communication skills
+                  </li>
+                  <li>
+                    Architected and implemented automation test frameworks and
+                    led implementation of reusable libraries and software for
+                    testing applying best programming practices, including
+                    clearly defined contracts (via interfaces), OOP, dependency
+                    injection (decupling and testability), functional
+                    programming, reusability, design patterns, and respective
+                    unit tests
+                  </li>
+                  <li>
+                    Efficiently orchestrated the execution of manual and
+                    automated tests for multiple environments using critical
+                    thinking, root cause analysis, and troubleshooting skills,
+                    resulting in discovering multiple critical and high priority
+                    issues before production
+                  </li>
+                  <li>
+                    Established effective test processes using CI/CD with
+                    extensive and effective validation points to ensure quality,
+                    resulting in catching defects before production of our own
+                    team, as well as defects that escaped from other teams
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="epam" class="work-tile hidden">
+              <div class="work-tile-head">
+                <h4>Senior Automation Test Engineer</h4>
+                <hr />
+              </div>
+              <div class="work-tile-body">
+                Worked in a fast-paced, agile environment on multiple complex
+                projects, with multiple teams of 5 employees each. Developed
+                test standards and strategies for new releases, defined the
+                scope of testing, and collaborated with technical teams and
+                product owners to discuss functional details. Designed and
+                executed Java-based automation testing and performance tests
+                frameworks and tools such as Selenium WD, Cucumber, FitNesse,
+                TestNG, Rest Assured and JMeter etc. for web applications and
+                RESTful application programming interface (API) services.
+                <ul style="display: flex; flex-direction: column; gap: 10px">
+                  <li>
+                    Leveraged technical expertise to design an automation test
+                    framework to validate databases and messages across all
+                    projects and tests for a client, resulting in 4-times faster
+                    test execution, decreased support time, and improved
+                    visibility of software quality using proficient programming
+                    skills, expertise in Java, programming design patterns
+                  </li>
+                  <li>
+                    Expanded testing coverage and capabilities by introducing
+                    new automation testing technology and transitioning away
+                    from the legacy system, which enabled cleaner tests and
+                    optimized readability, maintenance, and enhancements
+                  </li>
+                  <li>
+                    Led a decrease in regression execution time and enabled
+                    monitoring of software stability by implementing a necessary
+                    code base and new Gradle tasks to enhance reliability and
+                    integration of automation test frameworks into CI/CD
+                    processes
+                  </li>
+                  <li>
+                    Delivered reliable and scalable software by designing and
+                    integrating a new software project from scratch, including
+                    web applications, automation test frameworks, libraries, and
+                    plugins, to test front-end, back-end, and RESTful APIs. o
+                    Utilized Cucumber, Selenium, REST Assured, and numerous best
+                    practices, including configurability, reusability of
+                    components, object-oriented programming (OOP) concepts, Java
+                    design patterns, and functional programming.
+                  </li>
+                  <li>
+                    Decreased the time required for test preparation, test
+                    investigation, and QA environment health monitoring by
+                    developing web applications to facilitate testing using
+                    Spring Boot MVC, JavaScript, HTML, and CSS
+                  </li>
+                </ul>
+              </div>
+            </div>
           </section>
 
           <!-- PROJECTS -->
