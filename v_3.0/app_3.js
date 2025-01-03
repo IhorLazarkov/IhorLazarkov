@@ -2,7 +2,7 @@ window.onload = (data) => {
     // console.log({data});
 
     // Navigation tabs
-    let current_section = 'work';
+    let current_section = 'projects';
     const actionButtons = document.querySelectorAll('#actions > button');
 
     actionButtons.forEach(button => {

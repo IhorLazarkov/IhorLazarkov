@@ -65,11 +65,11 @@
               <img src="./resources/home.svg" alt="home" />
               <span style="display: block">home</span>
             </button>
-            <button to="work" class="active">
+            <button to="work" class="">
               <img src="./resources/work.svg" alt="work" />
               <span style="display: block">work</span>
             </button>
-            <button to="projects" class="">
+            <button to="projects" class="active">
               <img src="./resources/projects.svg" alt="projects" />
               <span style="display: block">projs</span>
             </button>
@@ -170,7 +170,7 @@
           </section>
 
           <!-- WORK -->
-          <section id="work" class="appear" style="position: absolute">
+          <section id="work" class="hidden" style="position: absolute">
             <nav>
               <button class="" to="epam">
                 <h4 style="display: inline">EPAM Systems</h4>
@@ -354,8 +354,39 @@
           </section>
 
           <!-- PROJECTS -->
-          <section id="projects" class="hidden" style="position: absolute">
-            <div>Projects page to be developed</div>
+          <section id="projects" class="appear">
+            <a href="https://rental-residences-hub.onrender.com">
+              <div class="project-tile">
+                <img
+                  src="../resources/rrh.png"
+                  alt="rental residences hub title image"
+                />
+                <h3>Rental Residences Hub</h3>
+                <p>
+                  This Web App is platform to find residence for vacation. User
+                  can filter all available residences, read its details and
+                  reviews of others.
+                </p>
+                <p>
+                  Logged in user can CRUD (Create, Read, Update and Delete)
+                  owned properties and reviews. There is a demo user available
+                  to login to have access to the CRUD. A registered user can
+                  create own residence for rent with its latitude and longtitude
+                  to pin point its real location on a map. This functionality
+                  significanlty improves user experiance during search for an
+                  accomodation for next vacation.
+                </p>
+                <p>
+                  Wed app will determine user's geolocation and pre-populate
+                  'country' filter criteria to provide all the properties within
+                  the country.
+                </p>
+                <p>
+                  <i>Front-end:</i> React, React-Router, HTML, CSS, Vite <br />
+                  <i>Backend-end:</i> Express, Sequelize 6, SQLite, PostgrSQL
+                </p>
+              </div>
+            </a>
           </section>
 
           <!-- EDUCATION -->
