@@ -157,6 +157,7 @@
     color: inherit;
     cursor: pointer;
     transition: all 0.55s ease;
+    font-family: "Playwrite ES", serif;
   }
   #actions > button > * {
     --btn-size: 120%;
@@ -215,5 +216,6 @@
   .do-tile > .tile-description {
     font-size: 1.2em;
     text-align: justify;
+    font-family: var(--text-font);
   }
 }
