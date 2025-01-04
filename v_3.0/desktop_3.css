@@ -279,7 +279,7 @@
     width: 100%;
   }
   #education {
-    padding: 2%;
+    padding: 0 2%;
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -304,5 +304,27 @@
     width: 3.5em;
     border-right: 1px solid var(--primary2);
     padding-right: 10px;
+  }
+
+  #awards{
+    box-sizing: border-box;
+    width: 80%;
+    padding: 2%;
+    display: flex;
+    /* flex-direction: column;
+    align-items: center; */
+    gap: 20px;
+  }
+
+  #awards .award-tile {
+    border: var(--debug) solid pink;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid var(--background-primary1);
+    filter: drop-shadow(1px 1px 4px var(--background-primary2));
+    background-color: var(--background-primary2);
+    border-radius: 10px;
   }
 }

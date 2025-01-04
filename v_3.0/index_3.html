@@ -51,7 +51,7 @@
               </div>
             </div>
             <a
-              href="./resources/Lazarkov_Ihor_Resume_4.1.docx"
+              href="../resources/Lazarkov_Ihor_Resume_4.1.docx"
               alt="download resume"
               >download resume</a
             >
@@ -61,7 +61,7 @@
       <section id="right_panel">
         <div id="rigth_actions_container">
           <nav id="actions">
-            <button to="home" class="">
+            <button to="home" class="active">
               <img src="./resources/home.svg" alt="home" />
               <span style="display: block">home</span>
             </button>
@@ -73,7 +73,7 @@
               <img src="./resources/projects.svg" alt="projects" />
               <span style="display: block">projs</span>
             </button>
-            <button to="education" class="active">
+            <button to="education" class="">
               <img src="./resources/education.svg" alt="education" />
               <span style="display: block">educ.</span>
             </button>
@@ -85,7 +85,7 @@
         </div>
         <div id="rigth_info_container" style="position: relative">
           <!-- HOME -->
-          <section id="home" class="hidden" style="position: absolute">
+          <section id="home" class="appear" style="position: absolute; z-index: 1;">
             <div style="display: flex; align-items: center">
               <h3 style="font-size: 1.2em">ABOUT ME</h3>
               <hr
@@ -170,7 +170,7 @@
           </section>
 
           <!-- WORK -->
-          <section id="work" class="hidden" style="position: absolute">
+          <section id="work" class="hidden" style="position: absolute; z-index: 1;">
             <nav>
               <button class="" to="epam">
                 <h4 style="display: inline">EPAM Systems</h4>
@@ -354,7 +354,7 @@
           </section>
 
           <!-- PROJECTS -->
-          <section id="projects" class="hidden" style="position: absolute">
+          <section id="projects" class="hidden" style="position: absolute; z-index: 0;">
             <a href="https://rental-residences-hub.onrender.com">
               <div class="project-tile">
                 <img
@@ -392,21 +392,11 @@
           <!-- EDUCATION -->
           <section
             id="education"
-            class="appear"
+            class="hidden"
             style="position: absolute; z-index: 1"
           >
             <div style="display: flex; flex-direction: column">
-              <div style="display: flex; align-items: center">
-                <h3 style="font-size: 1.2em">Post Secondary Education</h3>
-                <hr
-                  style="
-                    margin-bottom: 0;
-                    margin-top: 0;
-                    width: 40%;
-                    color: var(--primary2);
-                  "
-                />
-              </div>
+              <h3 style="font-size: 1.2em">Post Secondary Education</h3>
               <div style="display: flex">
                 <div class="education-tile">
                   <img src="./resources/diploma.svg" alt="diploma image" />
@@ -419,17 +409,7 @@
               </div>
             </div>
             <div style="display: flex; flex-direction: column">
-              <div style="display: flex; align-items: center">
-                <h3 style="font-size: 1.2em">Courses</h3>
-                <hr
-                  style="
-                    margin-bottom: 0;
-                    margin-top: 0;
-                    width: 40%;
-                    color: var(--primary2);
-                  "
-                />
-              </div>
+              <h3 style="font-size: 1.2em">Courses</h3>
               <div style="display: flex; flex-wrap: wrap; gap: 20px">
                 <div class="education-tile">
                   <img src="./resources/diploma.svg" alt="diploma image" />
@@ -469,17 +449,7 @@
               </div>
             </div>
             <div style="display: flex; flex-direction: column">
-              <div style="display: flex; align-items: center">
-                <h3 style="font-size: 1.2em">Univercity</h3>
-                <hr
-                  style="
-                    margin-bottom: 0;
-                    margin-top: 0;
-                    width: 40%;
-                    color: var(--primary2);
-                  "
-                />
-              </div>
+              <h3 style="font-size: 1.2em">Univercity</h3>
               <div
                 style="width: 100%; display: flex; flex: 1 0 100%; gap: 20px"
               >
@@ -504,8 +474,19 @@
           </section>
 
           <!-- AWARDS -->
-          <section id="awards" class="hidden" style="position: absolute">
-            <div>Awards page to be developed</div>
+          <section id="awards" class="hidden" style="position: absolute; z-index: 1;">
+            <div class="award-tile">
+              <img src="./resources/star-award.svg" alt="award icon" />
+              <h3>Cisco Meraki Award</h3>
+              <h4>Internal tallent</h4>
+              <span>2023</span>
+            </div>
+            <div class="award-tile">
+              <img src="./resources/star-award.svg" alt="award icon" />
+              <h3>Cisco Meraki Award</h3>
+              <h4>Internal tallent</h4>
+              <span>2022</span>
+            </div>
           </section>
         </div>
       </section>
