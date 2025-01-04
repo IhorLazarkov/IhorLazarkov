@@ -69,11 +69,11 @@
               <img src="./resources/work.svg" alt="work" />
               <span style="display: block">work</span>
             </button>
-            <button to="projects" class="active">
+            <button to="projects" class="">
               <img src="./resources/projects.svg" alt="projects" />
               <span style="display: block">projs</span>
             </button>
-            <button to="education" class="">
+            <button to="education" class="active">
               <img src="./resources/education.svg" alt="education" />
               <span style="display: block">educ.</span>
             </button>
@@ -354,7 +354,7 @@
           </section>
 
           <!-- PROJECTS -->
-          <section id="projects" class="appear">
+          <section id="projects" class="hidden" style="position: absolute">
             <a href="https://rental-residences-hub.onrender.com">
               <div class="project-tile">
                 <img
@@ -390,8 +390,117 @@
           </section>
 
           <!-- EDUCATION -->
-          <section id="education" class="hidden" style="position: absolute">
-            <div>Education page to be developed</div>
+          <section
+            id="education"
+            class="appear"
+            style="position: absolute; z-index: 1"
+          >
+            <div style="display: flex; flex-direction: column">
+              <div style="display: flex; align-items: center">
+                <h3 style="font-size: 1.2em">Post Secondary Education</h3>
+                <hr
+                  style="
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    width: 40%;
+                    color: var(--primary2);
+                  "
+                />
+              </div>
+              <div style="display: flex">
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h3>App Academy, CA</h3>
+                    <h4>Fullstack Developer</h4>
+                    <span>April 2024 - Present</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <div style="display: flex; align-items: center">
+                <h3 style="font-size: 1.2em">Courses</h3>
+                <hr
+                  style="
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    width: 40%;
+                    color: var(--primary2);
+                  "
+                />
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 20px">
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h4>Node.JS application Development</h4>
+                    <span>Feb 2023</span>
+                    <a
+                      style="color: inherit; font-size: 1.1em"
+                      href="https://www.credly.com/badges/fa8800e6-8dcd-41fd-be33-322efb7f491f/linked_in_profile"
+                      >See certificate</a
+                    >
+                  </span>
+                </div>
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h4>Introduction to Node.Js</h4>
+                    <span>Dec 2022</span>
+                    <a
+                      style="color: inherit; font-size: 1.1em"
+                      href="https://courses.edx.org/certificates/181bd401645c4501a20ae4b402d27f7a"
+                      >See certificate</a
+                    >
+                  </span>
+                </div>
+                <div class="education-tile">
+                  <img
+                    style="width: 11em; object-fit: cover"
+                    src="./resources/performance-cert.jpeg"
+                    alt="ceritiface image"
+                  />
+                  <span>
+                    <h4>Performance Testing Course</h4>
+                    <span>Oct - Dec 2021</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <div style="display: flex; align-items: center">
+                <h3 style="font-size: 1.2em">Univercity</h3>
+                <hr
+                  style="
+                    margin-bottom: 0;
+                    margin-top: 0;
+                    width: 40%;
+                    color: var(--primary2);
+                  "
+                />
+              </div>
+              <div
+                style="width: 100%; display: flex; flex: 1 0 100%; gap: 20px"
+              >
+                <div class="education-tile">
+                  <img src="./resources/diploma-gold.svg" alt="diploma image" />
+                  <span>
+                    <h3>Odessa National Univercity I.I. Mechnikov</h3>
+                    <h4>Masters in Computer Systems and Networks</h4>
+                    <span>2005 - 2006</span>
+                  </span>
+                </div>
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h3>Odessa National Univercity I.I. Mechnikov</h3>
+                    <h4>Bachelor in Computer Systems and Networks</h4>
+                    <span>2001 - 2005</span>
+                  </span>
+                </div>
+              </div>
+            </div>
           </section>
 
           <!-- AWARDS -->
