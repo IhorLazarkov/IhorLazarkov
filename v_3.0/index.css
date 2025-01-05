@@ -3,9 +3,11 @@ section#main {
   margin: 5% 15%;
   padding: 20px;
   box-sizing: border-box;
-  border: var(--debug) solid yellowgreen;
-  border-radius: 60% 10% 60% 10%;
   background-color: var(--background-primary1);
+  border: 1px solid var(--background-primary2);
+  border-radius: 60% 10% 60% 10%;
+  filter: drop-shadow(3px 1px 3px var(--background-primary2));
+
 
   display: flex;
 }
@@ -21,12 +23,12 @@ section#main div.section {
   flex-direction: column;
   gap: 20px;
 }
-span {
+.section span.acent {
   color: var(--primary2);
   font-size: 1em;
 }
 div#content {
-    flex-grow: 1;
+  flex-grow: 1;
   border: var(--debug) solid green;
   width: 40%;
   display: flex;
@@ -37,21 +39,21 @@ div#content p {
   display: flex;
   flex-direction: column;
 }
-section#main>img {
+section#main > img {
   width: 35%;
   object-fit: cover;
-  filter: drop-shadow(1px 1px 4px var(--background-primary2));
-  border-radius: 50% 40% 45% 50%;
+  border-radius: 60% 40% 40% 60%;
 }
 
 a {
   align-self: flex-start;
   font-family: var(--headers-font);
-  font-size: 20px;
+  font-size: 15px;
   text-decoration: none;
-  color: yellowgreen;
-  border: 1px solid yellowgreen;
+  color: var(--background-primary1);
+  border: 1px solid var(--background-primary2);
+  background-color: yellowgreen;;
   border-radius: 10px;
-  margin: 0 0 10px 20px;
-  padding: 15px;
+  padding: 10px;
+  filter: drop-shadow(1px 1px 4px var(--background-primary2));
 }
