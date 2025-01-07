@@ -42,7 +42,7 @@ div#content p {
 section#main > img {
   width: 35%;
   object-fit: cover;
-  border-radius: 60% 40% 40% 60%;
+  border-radius: 0% 0% 10% 10%;
 }
 
 a {

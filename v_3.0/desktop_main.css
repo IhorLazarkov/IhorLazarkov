@@ -1,4 +1,4 @@
-@media screen and (width > 701px) {
+@media screen and (width >= 1051px) {
   body {
     margin: 10px;
     padding: 0px;

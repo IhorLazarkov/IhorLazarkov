@@ -1,4 +1,7 @@
-@import "./desktop_3.css";
+@import "./desktop_main.css";
+@import "./desktop_title.css";
+@import "./mobile_main.css";
+@import "./mobile_title.css";
 /* Headers font */
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+ES:wght@100..400&display=swap");
 /* action tab font */
