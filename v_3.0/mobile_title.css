@@ -43,7 +43,7 @@
     align-self: fle;
   }
 
-  a {
+  #main > #content a {
     align-self: flex-start;
     font-family: var(--headers-font);
     font-size: 15px;
