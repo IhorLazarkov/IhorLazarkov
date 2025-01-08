@@ -9,8 +9,11 @@
 
 body {
   --debug: 0px;
-  --background-primary2: #e0c1b3;
-  --primary1: #aeb4a9;
+  --background-primary1: lightgrey;
+  --background-primary2: grey;
+  --primary2: #cc5803;
+  --primary1: #d295bf;
+  --border-color: #e3e3e3;
   background-color: var(--background-primary2);
 
   /* heading fonts */
@@ -29,7 +32,7 @@ body {
     --text-color: var(--border-color);
     background-color: var(--background-primary2);
     color: var(--text-color);
-    position: relative;
+    /* position: relative; */
   }
 }
 

@@ -54,7 +54,7 @@
     font-family: var(--headers-font);
     font-size: 15px;
     text-decoration: none;
-    color: var(--background-primary1);
+    color: var(--primary2);
     border: 1px solid var(--background-primary2);
     background-color: yellowgreen;
     border-radius: 10px;

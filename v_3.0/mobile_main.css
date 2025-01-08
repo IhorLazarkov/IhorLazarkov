@@ -109,7 +109,7 @@
     background-color: var(--background-primary1);
   }
   .do-tile {
-    margin: 30px 0
+    margin: 30px 0;
   }
   #projects {
     display: flex;
@@ -130,7 +130,7 @@
     flex-direction: column;
     gap: 10px;
   }
-  #awards{
+  #awards {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -146,9 +146,35 @@
     width: 15%;
     border-radius: 10px;
   }
-  .award-tile h3 ,
+  .award-tile h3,
   .award-tile h4 {
     font-size: medium;
     margin: 0;
+  }
+  #work {
+    position: relative;
+  }
+  #work > nav {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 20px 0;
+  }
+  #work > nav > button.active {
+    color: var(--primary2);
+  }
+  #work > div {
+    position: absolute;
+  }
+
+  #education > div:last-child > div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #education div.education-tile {
+    border: var(--border-color) solid 1px;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
   }
 }
