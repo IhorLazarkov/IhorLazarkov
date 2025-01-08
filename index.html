@@ -3,258 +3,137 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./resources/index.css" />
-    <title>Ihor Lazarkov</title>
+    <link rel="stylesheet" href="./resources/style.css" />
+    <title>Ihor Lazarkov - Profile</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul style="margin: 20px">
-          <li style="font-size: 29px">Full stack porjects for assessment</li>
-          <ul class="projects-container">
-            <li class="project-card">
-              <a href="https://rental-residences-hub.onrender.com">
-                <div class="photo-container">
-                  <img
-                    class="preview"
-                    src="./resources/rrh.png"
-                    alt="screenshot of layout for desktop"
-                  />
-                  <img
-                    class="preview-mobile"
-                    src="./resources/rrh-mobile.png"
-                    alt="screenshot of layout for mobile"
-                  />
-                </div>
-                <h2>Rental Residence Hub</h2>
-                <p>
-                  This Web App is platform to find residence for vacation. User
-                  can filter all available residences, read its details and
-                  reviews of others.
-                </p>
-                <p>
-                  Logged in user can CRUD (Create, Read, Update and Delete)
-                  owned properties and reviews. There is a demo user available
-                  to login to have access to the CRUD. A registered user can
-                  create own residence for rent with its latitude and longtitude
-                  to pin point its real location on a map. This functionality
-                  significanlty improves user experiance during search for an
-                  accomodation for next vacation.
-                </p>
-                <p>
-                  Wed app will determine user's geolocation and pre-populate
-                  'country' filter criteria to provide all the properties within
-                  the country.
-                </p>
-                <i>Front-end:</i> React, React-Router, HTML, CSS, Vite <br />
-                <i>Backend-end:</i> Express, Sequelize 6, SQLite, PostgrSQL
-                <a href="https://github.com/IhorLazarkov/rental-residences-hub">
-                  <img src="./resources/icon-github.svg" alt="source code"
-                /></a>
-                <p>
-                  <b>Please be patient:</b>
-                  the web app is hosted on free host-service therefor please be
-                  patient for first load. I measured and it might take greater
-                  than 1min to receive a first bite.
-                </p>
-              </a>
-            </li>
-          </ul>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="section">
-        <h2 class="title">This page is under development... However</h2>
-        <div class="description">
+    <section id="main">
+      <div id="content">
+        <div class="section">
           <p>
-            I still can tell you a little bit about me. My passion is coding and
-            design. And Full-stack Web development is the place where I can
-            implement my ideas. I enjoy to write software as elegant piece of
-            code. With my strong background in testing I realy believe I can
-            make a difference in software engineering and deliver reliable
-            software that clients can enjoy!
+            Hi, my name is <span class="acent">Ihor Lazarkov</span> and I am
+            <span class="acent"> Full Stack Developer. </span>
           </p>
-          <p>
-            I am in software engineering since 2006. Although I started as Test
-            Engineer my pasion for coding was alive and I tried to make use of
-            it in every opportunity. Thus, I vivedly remeber when I was testing
-            desktop app for Windows platform I came accros an issue when
-            standard 'save as' dialog was somewhat broken. I addressed it, but
-            it was not accepted by development team as issue. So I took Win32
-            API and generated the dialog and prooved my point. From that moment
-            my career as Automation Test Engineer has started.
-          </p>
-          <p>
-            I graduated in 2006 as master of Computer System and Networs. My
-            diploma was about optimization of computer software, that works with
-            graphics, by using C/C++ with assembler. Oh, yeah... I wrote
-            programes on assembler: protocol RS-232, card games and something
-            else I don't remember already, but those two were main output.
-          </p>
-          <p>
-            I still pursue my dream to become Full-stack Software Engineer and
-            for that reason I am undergoing Post Secondary graduation in
-            <a class="icon-in-text" href="https://www.appacademy.io">
-              <img
-                alt="App Academy Logo Icon"
-                class="tech-icon"
-                src="https://assets-global.website-files.com/5dcc7f8c449e597ed83356b8/6269b3a19f67fd137a262d0a_A%20Logo%20Main%20-%20Red.svg"
-              />
-            </a>
-            (certified Post Second academy by state California) part-time course
-            for employed students for entire year. I see how people from
-            different non-computer background are struggling and not-giving up
-            make me feel so proude of them!
-          </p>
+          <a href="./details.html">See details >></a>
         </div>
-      </section>
-      <section class="section">
-        <div id="action-buttons-container">
-          <div id="contact-me-container">
-            <ul id="contact-me-menu">
-              <il>
-                <a
-                  href="https://ihorlazarkov.github.io/IhorLazarkov"
-                  alt="git hub"
-                >
-                  <img
-                    class="icon-contact-me"
-                    src="./resources/icon-github.svg"
-                    alt="github logo"
-                  />
-                </a>
-              </il>
-              <il>
-                <a
-                  href="https://www.linkedin.com/in/ihorlazarkov"
-                  alt="linked In"
-                >
-                  <img
-                    class="icon-contact-me"
-                    src="./resources/icon-linkedin.svg"
-                    alt="github logo"
-                  />
-                </a>
-              </il>
-              <il>
-                <a
-                  href="./resources/Lazarkov_Ihor_Resume_4.1.docx"
-                  alt="download resume"
-                >
-                  <img
-                    class="icon-contact-me"
-                    src="./resources/icons8-cv-80.png"
-                    alt="resume"
-                  />
-                </a>
-              </il>
-            </ul>
+        <div class="section">
+          <div
+            style="
+              box-sizing: border-box;
+              margin: 15px 0;
+              display: flex;
+              align-items: center;
+              flex-wrap: wrap;
+              gap: 10px;
+            "
+          >
+            <img
+              src="./resources/icons8-html-96.png"
+              alt=""
+            />
+            <img
+              src="./resources/icons8-js-100.png"
+              alt=""
+            />
+            <img
+              src="./resources/icons8-css-96.png"
+              alt=""
+            />
+            <img
+              src="./resources/icon-reactjs.svg"
+              alt=""
+            />
+            <img
+              src="./resources/icon-postgresql.svg"
+              alt=""
+            />
+            <img src="./resources/mocha.svg" alt="" />
+            <img
+              src="./resources/icon-cypress.png"
+              alt=""
+            />
+            <span>...</span>
           </div>
         </div>
-      </section>
-      <section class="section">
-        <ul id="tech-stack-items">
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icons8-html-96.png"
-              alt="html icon"
-            />
-          </il>
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icons8-css-96.png"
-              alt="css icon"
-            />
-          </il>
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icons8-js-100.png"
-              alt="java script icon"
-            />
-          </il>
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icons8-typescript-56.png"
-              alt="type script icon"
-            />
-          </il>
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icon-reactjs.svg"
-              alt="react js icon"
-            />
-          </il>
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icon-postgresql.svg"
-              alt="posgresql icon"
-            />
-          </il>
-          <il>
-            <img
-              class="tech-icon"
-              src="./resources/icon-cypress.png"
-              alt="cypress io"
-            />
-          </il>
-          <il>
-            <img
-              src="./resources/icons8-github.svg"
-              alt="github"
-              class="tech-icon"
-            />
-          </il>
-          <il>
-            <img
-              src="./resources/icons8-gitlab.svg"
-              alt="github"
-              class="tech-icon"
-            />
-          </il>
-          <il>
-            <img
-              src="./resources/icons8-docker-logo.svg"
-              alt="github"
-              class="tech-icon"
-            />
-          </il>
-          <il>
-            <img src="./resources/mocha.svg" alt="github" class="tech-icon" />
-          </il>
-        </ul>
-      </section>
-      <section class="section">
-        <ul id="companies">
-          <il
-            ><a href="https://www.epam.com"
-              ><img
-                class="company-icon"
-                src="./resources/epam-logo.png"
-                alt="" /></a
-          ></il>
-          <il
-            ><a href="https://www.meraki.cisco.com"
-              ><img
-                class="company-icon custom"
-                src="./resources/cisco-meraki-logo.png" /></a
-          ></il>
-          <il
-            ><a href="https://www.luxoft.com"
-              ><img
-                class="company-icon"
-                src="./resources/Luxoft_icon.png"
-                alt="" /></a
-          ></il>
-        </ul>
-      </section>
-    </main>
-    <footer></footer>
+        <div class="section">
+          <div style="display: flex; gap: 20px">
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+              "
+            >
+              <img style="width: 60%" src="./resources/star-award.svg" alt="" />
+              <span>Cisco Meraki</span>
+              <span>2022</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+              "
+            >
+              <img style="width: 60%" src="./resources/star-award.svg" alt="" />
+              <span>Cisco Meraki</span>
+              <span>2023</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+              "
+            >
+              <img style="width: 90%" src="./resources/awards.svg" alt="" />
+              <span>15 years</span>
+              <span>in SQA</span>
+            </div>
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+              "
+            >
+              <img style="width: 100%" src="./resources/awards.svg" alt="" />
+              <span>8 years</span>
+              <span>SDET</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="./resources/profile.png" alt="title image" />
+    </section>
+    <div
+      style="
+        position: absolute;
+        top: 0;
+        left: 200px;
+        width: calc(100vw / 2);
+        height: calc(100vh / 2);
+        z-index: -1;
+        display: grid;
+        grid-template-columns: auto;
+        transform: rotate(45deg) scale(4);
+        opacity: 0.5;
+      "
+    >
+      <div style="background-color: var(--background-primary1)"></div>
+      <div style="background-color: var(--background-primary2)"></div>
+      <div style="background-color: var(--background-primary1)"></div>
+      <div style="background-color: var(--background-primary2)"></div>
+      <div style="background-color: var(--background-primary1)"></div>
+      <div style="background-color: var(--background-primary2)"></div>
+      <div style="background-color: var(--background-primary1)"></div>
+      <div style="background-color: var(--background-primary2)"></div>
+      <div style="background-color: var(--background-primary1)"></div>
+      <div style="background-color: var(--background-primary2)"></div>
+    </div>
   </body>
 </html>

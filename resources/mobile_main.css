@@ -92,7 +92,7 @@
   }
   #actions > button {
     text-align: center;
-    background-color: var(--background-primary1);
+    background-color: var(--background-primary2);
     border: 1px solid var(--border-color);
     color: inherit;
     cursor: pointer;
