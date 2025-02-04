@@ -1,7 +1,7 @@
 @media screen and (width > 1051px) {
   section#main {
     position: relative;
-    margin: 5% 15%;
+    margin: 5% 10%;
     padding: 20px;
     box-sizing: border-box;
     background-color: var(--background-primary1);
@@ -13,7 +13,7 @@
   }
   section#main div.section {
     box-sizing: border-box;
-    width: 80%;
+    width: 90%;
     border: var(--debug) solid red;
     color: inherit;
     font-family: var(--text-font);
@@ -34,7 +34,7 @@
   div#content {
     flex-grow: 1;
     border: var(--debug) solid green;
-    width: 40%;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
@@ -43,8 +43,15 @@
     display: flex;
     flex-direction: column;
   }
-  section#main > img {
-    width: 35%;
+  div#profile_pic_container {
+    margin-top: 10px;
+    min-width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  div#profile_pic_container > img:first-child {
     object-fit: cover;
     border-radius: 0% 0% 10% 10%;
   }
