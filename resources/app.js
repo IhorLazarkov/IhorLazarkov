@@ -26,7 +26,7 @@ window.onload = (data) => {
             const section = document.querySelector(`#${current_section}`);
             //make it appear
             const clazz = section.getAttribute("class");
-            console.log({ current_section, clazz });
+            // console.log({ current_section, clazz });
             const newClazz = clazz.replace("hidden", "appear").replace("hide", '').trim()
             section.setAttribute("class", newClazz)
         })
