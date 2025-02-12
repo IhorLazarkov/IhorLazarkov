@@ -315,4 +315,9 @@
     background-color: var(--background-primary2);
     border-radius: 10px;
   }
+
+  .new-container {
+    bottom: 17px;
+    left: -10px;
+  }  
 }
