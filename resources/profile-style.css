@@ -1,0 +1,52 @@
+body {
+  --text-color: #403d39;
+  --emphesis-color: #005ce6;
+  padding: 0;
+  margin: 0;
+  background-size: cover;
+  color: var(--text-color);
+  background-image: url("./title_scene-min.png");
+}
+
+main {
+  margin: 5% 0 0 5%;
+  & h1 {
+    font-size: 3em;
+    color: var(--emphesis-color);
+  }
+  & h2 {
+    font-size: 2em;
+  }
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.8em;
+}
+
+div {
+  cursor: pointer;
+  width: 40px;
+  margin-top: 100px;
+  border: 1px solid orange;
+  padding: 20px;
+  background-color: orange;
+  border-radius: 30px;
+  text-align: justify;
+  & a {
+    color: #ab68ff;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+a{
+    text-decoration: none;
+}
+
+footer {
+  margin: 2% 0 0 5%;
+  display: flex;
+  justify-content: baseline;
+}
