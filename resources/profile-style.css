@@ -20,8 +20,17 @@ body {
       font-size: 2em;
     }
   }
-  & ul{
+  & ul {
     font-size: 1.8em;
+  }
+  footer {
+    margin: 2% 0 0 5%;
+    justify-content: baseline;
+    align-items: center;
+
+    & span:last-child {
+      font-size: 3em;
+    }
   }
 }
 
@@ -36,8 +45,24 @@ body {
     & h2 {
       font-size: 1.5em;
     }
-    &ul{
-      font-size: 1em;
+    & ul {
+      font-size: 1.3em;
+      padding: 10px;
+    }
+  }
+  footer {
+    margin: 5% 0 0 5%;
+    justify-content: baseline;
+    flex-direction: column;
+    gap: 20px;
+
+    & image {
+      object-fit: cover;
+      width: 100px;
+    }
+
+    & span:last-child {
+      font-size: 3em;
     }
   }
 }
@@ -75,7 +100,6 @@ a {
 }
 
 footer {
-  margin: 2% 0 0 5%;
   display: flex;
-  justify-content: baseline;
+  gap: 20px;
 }
