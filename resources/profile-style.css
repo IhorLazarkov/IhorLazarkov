@@ -5,7 +5,20 @@ body {
   margin: 0;
   background-size: cover;
   color: var(--text-color);
-  background-image: url("./title_scene-min.png");
+  /* background-image: url("./title_scene-min.png"); */
+}
+
+@media screen and (width > 1051px) {
+  body {
+    background-image: url("./title_scene-min.png");
+  }
+}
+
+@media screen and (width <= 1050px) {
+  body {
+    background-image: url("./title-mobile-II.png");
+  }
+  
 }
 
 main {
