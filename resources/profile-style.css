@@ -12,23 +12,40 @@ body {
   body {
     background-image: url("./title_scene-min.png");
   }
+  main {
+    & h1 {
+      font-size: 3em;
+    }
+    & h2 {
+      font-size: 2em;
+    }
+  }
+  & ul{
+    font-size: 1.8em;
+  }
 }
 
 @media screen and (width <= 1050px) {
   body {
     background-image: url("./title-mobile-II.png");
   }
-  
+  main {
+    & h1 {
+      font-size: 2em;
+    }
+    & h2 {
+      font-size: 1.5em;
+    }
+    &ul{
+      font-size: 1em;
+    }
+  }
 }
 
 main {
   margin: 5% 0 0 5%;
   & h1 {
-    font-size: 3em;
     color: var(--emphesis-color);
-  }
-  & h2 {
-    font-size: 2em;
   }
 }
 
@@ -36,7 +53,6 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  font-size: 1.8em;
 }
 
 div {
@@ -51,11 +67,11 @@ div {
   & a {
     color: #ab68ff;
     font-weight: 700;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
 }
-a{
-    text-decoration: none;
+a {
+  text-decoration: none;
 }
 
 footer {
