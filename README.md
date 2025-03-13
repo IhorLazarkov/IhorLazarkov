@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @IhorLazarkov and I'm engineer. Profile: https://ihorlazarkov.github.io/IhorLazarkov/
+- 👋 Hi, I’m @IhorLazarkov and I'm a sowftware engineer. Profile: https://ihorlazarkov.github.io/IhorLazarkov/
 - 👀 I’m interested in full stack development.
 - 🌱 I’m currently continue to work as Software Engineer in Test (SET)
 - 🧑🏼‍💻 I'm a student in AppAcademy (certified post secondary academy) as Full-stack Developer
