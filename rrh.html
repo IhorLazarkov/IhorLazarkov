@@ -18,7 +18,36 @@
         <li>Geo location</li>
       </ul>
 
-      <div>
+      <div id="info_section" class="slide_in">
+        <span>This app is secured by https with</span>
+        <h3>Self signed certificate</h3>
+        <section class="info_section_description">
+          <span>
+            It's not confirmed by CA department because the server doesn't have
+            domain name <i>yet</i>, <span style="color: orange;">therefor 
+            it will be shown as <span style="color: red;">not trasted</span> </span> by the browser.
+          </span>
+          <span>
+            I treat my visiter's security as top priority therefor I'd like to
+            provide key id to compare. 
+          </span>
+          <span>
+            When you click on "Visit" button it will take you
+            to the App. In the address bar you can open certificate's details,
+            among its details there is <b>key id</b>, 
+            please compare it with the one below.
+          </span>
+          <span style="border-bottom: 1px solid orange"> <i>Key ID:</i></span>
+          <span>
+            D1 8F F5 32 3B 9F BE 07 28 F0 D9 13 A6 34 5E D7 ED 64 EE 88
+          </span>
+        </section>
+        <section id="close_info" class="close_info_container">
+          <div class="rotate"><div style="rotate: 45deg;">+</div></div>
+        </section>
+      </div>
+
+      <div id="visit_button">
         <a href="https://99.98.183.163:3001/">visit</a>
       </div>
     </main>
@@ -36,5 +65,12 @@
         ></span
       >
     </footer>
+    <script>
+      document.querySelector('#close_info').addEventListener('click', (e) => {
+        const info_section = document.querySelector('#info_section')
+        const clazz = info_section.getAttribute('class')
+        info_section.setAttribute('class', clazz.replace("slide_in", "slide_out"))
+      })
+    </script>
   </body>
 </html>

@@ -289,13 +289,13 @@
     border-radius: 10px;
   }
 
-  .education-tile img{
+  .education-tile img {
     width: 3.5em;
     border-right: 1px solid var(--primary2);
     padding-right: 10px;
   }
 
-  #awards{
+  #awards {
     box-sizing: border-box;
     width: 80%;
     padding: 2%;
@@ -319,5 +319,5 @@
   .new-container {
     bottom: 17px;
     left: -10px;
-  }  
+  }
 }

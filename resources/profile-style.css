@@ -80,10 +80,84 @@ ul {
   gap: 20px;
 }
 
-div {
+div#info_section {
+  position: relative;
+  padding: 10px;
+  width: 330px;
+  color: beige;
+  border-radius: 10px;
+  border: 7px double orange;
+  background-color: #403d39;
+
+  & h3 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid orange;
+  }
+
+  & section.info_section_description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  & .close_info_container {
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 2.4rem;
+    will-change: auto;
+  }
+}
+.rotate {
+  animation: 3s infinite rotate;
+}
+.slide_out{
+  animation: slide_out 1s 1 linear forwards;
+}
+.slide_in{
+  animation: slide_in 1s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(90deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+@keyframes slide_in {
+  0%{
+    transform: translateX(30%);
+    opacity: 0;
+  }
+  100%{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slide_out {
+  0%{
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  100%{
+    transform: translateX(-150%);
+    opacity: 0;
+    display: none;
+  }
+}
+
+div#visit_button {
   cursor: pointer;
   width: 40px;
-  margin-top: 100px;
+  margin-top: 35px;
   border: 1px solid orange;
   padding: 20px;
   background-color: orange;
