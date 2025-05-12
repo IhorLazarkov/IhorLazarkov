@@ -1,6 +1,9 @@
 @media screen and (width <= 1050px) {
   body {
     border: var(--debug) solid black;
+    overflow-x: hidden;
+    height: calc(100vh);
+    overflow-y: auto;
   }
   section#main {
     box-sizing: border-box;

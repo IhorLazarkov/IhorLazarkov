@@ -1,8 +1,12 @@
 @media screen and (width > 1051px) {
+  body{
+    height: 100vh;
+    overflow: hidden;
+  }
   section#main {
     position: relative;
-    margin: 5% 10%;
-    padding: 20px;
+    margin: 0 10%;
+    padding: 0;
     box-sizing: border-box;
     background-color: var(--background-primary1);
     border: 1px solid var(--background-primary2);
