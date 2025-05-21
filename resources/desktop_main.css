@@ -7,7 +7,7 @@
   main {
     display: grid;
     grid-template-columns: 0.7fr 3fr;
-    height: calc(100vh);
+    height: calc(100vh + 22%);
   }
   section {
     border: var(--debug) solid red;
@@ -120,7 +120,7 @@
   #rigth_actions_container {
     box-sizing: border-box;
     border: var(--debug) solid sandybrown;
-    height: 10%;
+    height: 80px;
     width: 100%;
 
     display: flex;
@@ -128,7 +128,7 @@
   }
   #rigth_info_container {
     box-sizing: border-box;
-    width: 100%;
+    /* width: 100%; */
     border: var(--debug) solid salmon;
     border-radius: 10px;
     background-color: var(--background-primary1);
@@ -150,11 +150,14 @@
     cursor: pointer;
     transition: all 0.55s ease;
     font-family: "Playwrite ES", serif;
+
+    & img {
+      width: 2em;
+      object-fit: cover;
+    }
   }
   #actions > button > * {
-    --btn-size: 120%;
-    width: var(--btn-size);
-    font-size: var(--btn-size);
+    font-size: 1.5em;
   }
 
   #actions > button.active {
@@ -253,7 +256,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap:3px;
+    gap: 3px;
   }
   #projects a {
     color: inherit;
@@ -269,6 +272,9 @@
     border-radius: 10px;
   }
   #projects .project-tile img {
+    width: 100%;
+  }
+  #projects .project-tile video {
     width: 100%;
   }
   #education {
