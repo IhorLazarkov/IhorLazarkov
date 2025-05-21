@@ -1,7 +1,6 @@
 @media screen and (width > 1051px) {
   body{
     height: 100vh;
-    overflow: hidden;
   }
   section#main {
     position: relative;
