@@ -14,10 +14,9 @@
 </p>
 
 
-- 👋 Hi, I’m @IhorLazarkov and I'm a sowftware engineer.
+- 👋 Hi, I'm a sowftware engineer with graduation at App Academy (post secondary education) https://www.appacademy.io/privacy-policy.
 - 👀 I’m interested in full stack development and architecture (both monolith and microservices).
 - 🌱 I’m currently continue to work as Software Developer in Test (SET)
-- 🧑🏼‍💻 I'm a student as Full-stack Developer in App Academy (post secondary education) https://www.appacademy.io/privacy-policy
 - 💞️ I’m open for collaboration and constribution
 
 <!---
