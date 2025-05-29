@@ -5,26 +5,21 @@
   section#main {
     position: relative;
     margin: 0 10%;
-    padding: 0;
+    padding: 1rem;
     box-sizing: border-box;
-    background-color: var(--background-primary1);
-    border: 1px solid var(--background-primary2);
-    border-radius: 60% 10% 60% 10%;
+    border-radius: 10px;
     filter: drop-shadow(3px 1px 3px var(--background-primary2));
 
     display: flex;
   }
   section#main div.section {
     box-sizing: border-box;
-    width: 90%;
     border: var(--debug) solid red;
     color: inherit;
     font-family: var(--text-font);
-    margin: 20px 0 0 20px;
 
     display: flex;
     flex-direction: column;
-    gap: 20px;
   }
   div.section img {
     width: 13%;

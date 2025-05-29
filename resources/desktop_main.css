@@ -120,7 +120,7 @@
   #rigth_actions_container {
     box-sizing: border-box;
     border: var(--debug) solid sandybrown;
-    height: 80px;
+    height: 88px;
     width: 100%;
 
     display: flex;
@@ -264,12 +264,12 @@
   }
   #projects .project-tile {
     cursor: pointer;
-    border: 5px solid pink;
     padding: 15px;
     border: 1px solid var(--background-primary1);
     filter: drop-shadow(1px 1px 4px var(--background-primary2));
     background-color: var(--background-primary2);
     border-radius: 10px;
+    height: 100%;
   }
   #projects .project-tile img {
     width: 100%;
@@ -295,6 +295,11 @@
     filter: drop-shadow(1px 1px 4px var(--background-primary2));
     background-color: var(--background-primary2);
     border-radius: 10px;
+  }
+
+  .education-tile img:first-child{
+    max-height: 10.5rem;
+    width: auto;
   }
 
   .education-tile img {
