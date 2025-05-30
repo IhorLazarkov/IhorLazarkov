@@ -1,6 +1,6 @@
 # Welcome!
 
-- 👋 I'm a Ihor Lazarkov and I am a Sowftware Engineer with 8+ years of experience in SDET and 15+ years in Software QA Automation.
+- 👋 I'm a Sowftware Engineer with 8+ years of experience in SDET and 15+ years in Software QA Automation.
 - 👀 I’m interested in full stack development role for monolith and/or microservices architectures.
 - 🌱 I’m currently continue to work as Software Developer in Test (SET) as contractor at Accenture.
 - 💞️ I’m open for collaboration and constribution
