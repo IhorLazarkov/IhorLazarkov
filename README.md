@@ -1,9 +1,9 @@
 # Welcome!
 
-- 👋 I'm a Sowftware Engineer with 8+ years of experience in SDET and 15+ years in Software QA Automation.
-- 👀 I’m interested in full stack development role for monolith and/or microservices architectures.
-- 🌱 I’m currently continue to work as Software Developer in Test (SET) as contractor at Accenture.
-- 💞️ I’m open for collaboration and constribution
+- 👋 I'm a Sowftware Engineer with 8+ years of experience in SDET and 15+ years in Software QA Automation;
+- 👀 I’m interested in full stack development role for monolith and/or microservices architectures;
+- 🌱 I’m currently continue to work as Software Developer in Test (SET) as contractor at Accenture;
+- 💞️ I’m open for collaboration and constribution.
 
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=ihorlazarkov&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook)
