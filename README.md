@@ -1,3 +1,10 @@
+# Welcom!
+
+- 👋 I'm a sowftware engineer with strong backgrand and 8+ years of experience in SDET and Software Automation Testing and 15+ SQA.
+- 👀 I’m interested in full stack development role for monolith and/or microservices architectures.
+- 🌱 I’m currently continue to work as Software Developer in Test (SET) as contractor at Accenture.
+- 💞️ I’m open for collaboration and constribution
+
 # 📊 GitHub Stats:
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=ihorlazarkov&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact&hide=jupyter%20notebook)
 ![](https://github-readme-stats.vercel.app/api?username=ihorlazarkov&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
@@ -12,12 +19,6 @@
     <img src="https://skillicons.dev/icons?i=html,css,bootstrap,jquery,javascript,ts,react,redux,sequelize,mocha,cypress,vite,npm,nodejs,nginx,threejs,python,flask,postgres,sqlite,git,github,docker,k8s,java,hibernate,spring,selenium,gherkin,jenkins,gitlab,gradle,maven,grafana,postman,blender,idea,vscode" heigth="40"/>
   </a>
 </p>
-
-
-- 👋 Hi, I'm a sowftware engineer with graduation at App Academy (post secondary education) https://www.appacademy.io/privacy-policy.
-- 👀 I’m interested in full stack development and architecture (both monolith and microservices).
-- 🌱 I’m currently continue to work as Software Developer in Test (SET)
-- 💞️ I’m open for collaboration and constribution
 
 <!---
 IhorLazarkov/IhorLazarkov is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
