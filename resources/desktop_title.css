@@ -11,6 +11,7 @@
     filter: drop-shadow(3px 1px 3px var(--background-primary2));
 
     display: flex;
+    gap: 1rem;
   }
   section#main div.section {
     box-sizing: border-box;
@@ -42,7 +43,7 @@
     flex-direction: column;
   }
   div#profile_pic_container {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     min-width: 50%;
     height: 100%;
     display: flex;
@@ -62,7 +63,7 @@
     color: var(--primary2);
     border: 1px solid var(--background-primary2);
     background-color: yellowgreen;
-    border-radius: 10px;
+    border-radius: 0px;
     padding: 10px;
     filter: drop-shadow(1px 1px 4px var(--background-primary2));
   }
