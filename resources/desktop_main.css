@@ -7,7 +7,7 @@
   main {
     display: grid;
     grid-template-columns: 0.7fr 3fr;
-    height: calc(100vh + 22%);
+    height: calc(100vh + 23%);
   }
   section {
     border: var(--debug) solid red;
@@ -133,6 +133,13 @@
     border-radius: 10px;
     background-color: var(--background-primary1);
     flex-grow: 1;
+
+    & h4 {
+      margin-block: 1em;
+    }
+    & p {
+      margin-block: 0;
+    }
   }
   #actions {
     border-radius: 10px;

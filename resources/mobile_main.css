@@ -3,14 +3,14 @@
     border: var(--debug) solid black;
     margin: 0px;
     padding: 0px;
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
   }
   main {
     box-sizing: border-box;
     border: var(--debug) solid red;
     width: 90%;
-    height: 100%;
+    /* height: auto; */
     margin: auto;
     text-align: justify;
     position: relative;
