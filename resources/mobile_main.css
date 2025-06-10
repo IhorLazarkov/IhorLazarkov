@@ -123,8 +123,14 @@
     text-decoration: none;
     color: inherit;
   }
-  #projects .project-tile img {
-    display: none;
+  #projects .project-tile {
+    & > div:first-child {
+      width: fix-content;
+
+      & img {
+        width: 100%;
+      }
+    }
   }
   .project-tile {
     padding: 10px;
@@ -179,11 +185,16 @@
     border-radius: 10px;
     margin: 10px 0;
     padding: 10px;
+    & > div {
+      width: 100%;
+      & img {
+        width: 100%;
+      }
+    }
   }
 
   .new-container {
     bottom: -10px;
     right: 0px;
   }
-  
 }
