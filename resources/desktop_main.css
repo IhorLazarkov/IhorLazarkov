@@ -7,7 +7,7 @@
   main {
     display: grid;
     grid-template-columns: 0.7fr 3fr;
-    height: calc(100vh + 23%);
+    height: calc(100vh + 28%);
   }
   section {
     border: var(--debug) solid red;
@@ -31,7 +31,7 @@
   }
   #photo_container > img {
     object-fit: cover;
-    width: 60%;
+    width: 68%;
     position: absolute;
     left: 20%;
     top: 30%;
@@ -81,7 +81,7 @@
   .contact_me_info {
     box-sizing: border-box;
     width: 90%;
-    height: 30%;
+    height: 12%;
     margin: 10px auto;
     border: var(--debug) solid blue;
     display: flex;
