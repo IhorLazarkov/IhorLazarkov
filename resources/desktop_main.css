@@ -304,7 +304,7 @@
     border-radius: 10px;
   }
 
-  .education-tile img:first-child{
+  .education-tile img:first-child {
     max-height: 10.5rem;
     width: auto;
   }
@@ -317,23 +317,45 @@
 
   #awards {
     box-sizing: border-box;
-    width: 80%;
+    width: 100%;
     padding: 2%;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3px;
 
-  #awards .award-tile {
-    border: var(--debug) solid pink;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border: 1px solid var(--background-primary1);
-    filter: drop-shadow(1px 1px 4px var(--background-primary2));
-    background-color: var(--background-primary2);
-    border-radius: 10px;
+    & .award-tile {
+      border: var(--debug) solid pink;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border: 1px solid var(--background-primary1);
+      filter: drop-shadow(1px 1px 4px var(--background-primary2));
+      background-color: var(--background-primary2);
+      border-radius: 10px;
+      font-size: clamp(1.3rem, 1rem, 2rem);
+
+      & div {
+        width: 50%;
+        & img {
+          width: 100%;
+        }
+      }
+
+      & p {
+        text-justify: distribute;
+      }
+
+      & h4,h5 {
+        margin-block: 0;
+      }
+    }
+
+    & .award-tile:last-child > p::before,
+    & .award-tile:last-child > p::after {
+      content: '"';
+      font-size: 1.5rem;
+    }
   }
 
   .new-container {
