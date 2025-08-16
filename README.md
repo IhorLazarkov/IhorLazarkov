@@ -17,7 +17,7 @@
 # 💻 Tech Stack:
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,bootstrap,jquery,javascript,ts,react,redux,sequelize,mocha,cypress,vite,npm,nodejs,nginx,threejs,python,flask,postgres,sqlite,git,github,docker,k8s,java,hibernate,spring,selenium,gherkin,jenkins,gitlab,gradle,maven,grafana,postman,blender,idea,vscode" heigth="40"/>
+    <img src="https://skillicons.dev/icons?i=aws,html,css,bootstrap,jquery,javascript,ts,react,redux,sequelize,mocha,cypress,vite,npm,nodejs,nginx,threejs,python,flask,postgres,sqlite,git,github,docker,k8s,java,hibernate,spring,selenium,gherkin,jenkins,gitlab,gradle,maven,grafana,postman,blender,idea,vscode" heigth="40"/>
   </a>
 </p>
 
