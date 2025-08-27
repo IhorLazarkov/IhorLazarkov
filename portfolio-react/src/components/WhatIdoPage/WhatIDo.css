@@ -1,0 +1,38 @@
+.article {
+  margin-top: 6em;
+}
+
+.what-i-do-container {
+  --left-side-w: 20%;
+  position: relative;
+
+  & .left-side {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--left-side-w);
+  }
+
+  & .right-side {
+    margin-left: calc(100% - (100% - var(--left-side-w)));
+  }
+
+  & ul {
+    
+    margin: 0;
+    list-style: none;
+
+    & li {
+      cursor: pointer;
+      margin-bottom: 1em;
+    }
+
+    & li:hover {
+      text-decoration: underline;
+    }
+
+    & li.active::before {
+      content: "ᐧ ";
+    }
+  }
+}
