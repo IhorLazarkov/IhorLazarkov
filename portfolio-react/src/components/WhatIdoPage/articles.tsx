@@ -2,12 +2,16 @@ import type { ReactElement } from "react";
 
 const fsEngineer: ReactElement = <div id="fs-article">
     <h1>Full Stack Developer</h1>
-    <p>
-        As Full Stack Developer, I am passionate about designing and
-        implementing innovative programmatic solutions for both
-        front-end and back-end development. My goal is to deliver
-        efficient, user-friendly, and scalable applications tailored
-        to meet client needs.
+    <p>I have 10+ projects under my belt for e-commers and web-applications as tools to facilitate software development.</p>
+    <p>In these projects I developed interactive web-pages with developed reusable React components with optimal utilization of react hooks,
+        communicating to backend via REST calls via HTTP(s) and realtime updates via WS(S) (WebSocket) events
+        using sync/async functions, try/catch blocks to catch errors and transfer them to error handling middlewares.
+    </p>
+    <p>Integrated ORM systems to establish persistence of state of web-service by creating models with validators and
+        dependencies (e.g. one-to-one, one-to-many, many-to-many), versioned migrations to create tables in database and schema, and seed files to populate values in database to perform testing or demos.
+    </p>
+    <p> I am passionate about designing and implementing innovative programmatic solutions.
+        My goal is to deliver efficient, user-friendly, and scalable applications tailored to meet client needs.
     </p>
 </div>
 
@@ -24,7 +28,7 @@ const seEngineer: ReactElement = <div id="se-article">
     <ul style={{ listStyle: "outside" }}>
         <li><b>Programming language:</b> Java, JavaScript, TypeScript, Python</li>
         <li><b>Network technologies:</b> HTTP(S)1.1/2, TLS, gRPC, WebRTC, WebSockets, REST, NodeJS, Browser API</li>
-        <li><b>Frameworks:</b> React, Bootstrap, jQuery, Spring Boot, Flask</li>
+        <li><b>Frameworks:</b> React, Bootstrap, jQuery, Redux, Spring Boot, Flask</li>
         <li><b>ORM:</b> Sequelize, Alembic, SQLAlchemy, Hibernate</li>
         <li><b>DB:</b> Oracle, Postgreas</li>
         <li><b>Message/Notification technologies:</b> Kafka, IBM MQ, Tibco EMS, Rebit MQ</li>

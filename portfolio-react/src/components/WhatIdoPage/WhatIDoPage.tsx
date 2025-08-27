@@ -9,9 +9,8 @@ function WhatIDoPage() {
             <div className="what-i-do-container">
                 <div className="left-side">
                     <ul>
-                        {Object.entries(articles).map(([k, v], index) => {
+                        {Object.entries(articles).map(([k, v]) => {
                             const { ref } = v;
-                            console.log({ k, ref, index });
                             return <li key={k}><a href={`#${ref}`}>{k}</a></li>
                         })}
                     </ul>
