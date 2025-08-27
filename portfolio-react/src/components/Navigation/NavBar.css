@@ -1,0 +1,27 @@
+nav {
+    width: 60%;
+
+    position: fixed;
+    top: 0;
+    left: 25%;
+    margin-top: 1em;
+    padding-inline: 1em;
+
+    border: 1px solid var(--border-color);
+
+    & ul {
+        padding: 0;
+        list-style: none;
+
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        filter: drop-shadow(10px);
+
+        & li {
+            cursor: pointer;
+        }
+
+    }
+}
