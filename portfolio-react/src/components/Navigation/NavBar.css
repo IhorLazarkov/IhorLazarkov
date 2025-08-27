@@ -1,9 +1,10 @@
 nav {
     width: 60%;
+    z-index: 1;
 
     position: fixed;
     top: 0;
-    left: 25%;
+    left: 20%;
     margin-top: 1em;
     padding-inline: 1em;
 
