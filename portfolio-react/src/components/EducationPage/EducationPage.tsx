@@ -3,21 +3,23 @@ import "./Education.css"
 function EducationPage() {
     return (<section className="article">
         <h1>Univercity</h1>
-        <div className="education-tile">
-            <img src="diploma-gold.svg" alt="diploma image" />
-            <span>
-                <h3>Odessa National University I.I. Mechnikov</h3>
-                <h4>Masters in Computer Systems and Networks</h4>
-                <span>2005 - 2006</span>
-            </span>
-        </div>
-        <div className="education-tile">
-            <img src="diploma.svg" alt="diploma image" />
-            <span>
-                <h3>Odessa National University I.I. Mechnikov</h3>
-                <h4>Bachelor in Computer Systems and Networks</h4>
-                <span>2001 - 2005</span>
-            </span>
+        <div className="education-container">
+            <div className="education-tile">
+                <img src="diploma-gold.svg" alt="diploma image" />
+                <span>
+                    <h3>Odessa National University I.I. Mechnikov</h3>
+                    <h4>Masters in Computer Systems and Networks</h4>
+                    <span>2005 - 2006</span>
+                </span>
+            </div>
+            <div className="education-tile">
+                <img src="diploma.svg" alt="diploma image" />
+                <span>
+                    <h3>Odessa National University I.I. Mechnikov</h3>
+                    <h4>Bachelor in Computer Systems and Networks</h4>
+                    <span>2001 - 2005</span>
+                </span>
+            </div>
         </div>
         <h1>Post Second Education</h1>
         <div className="education-tile">

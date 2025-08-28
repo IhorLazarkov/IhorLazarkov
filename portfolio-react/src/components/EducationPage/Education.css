@@ -1,3 +1,10 @@
+.article:has(.education-container){
+  width: 90%;
+  margin: 0 auto;
+}
+.education-container{
+  display: flex;
+}
 .education-tile {
   width: 50%;
   display: flex;
@@ -9,6 +16,9 @@
 }
 
 @media only screen and (width <= 1000px) {
+.education-container{
+  flex-direction: column;
+}
   .education-tile {
     width: 100%;
   }
