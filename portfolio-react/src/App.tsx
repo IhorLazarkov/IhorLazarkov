@@ -12,12 +12,12 @@ const router = createBrowserRouter([
   {
     element: <Navigation />,
     children: [
-      { path: "/", element: <HomePage /> },
-      { path: "/whatido", element: <WhatIDoPage /> },
-      { path: "/experiance", element: <ExperiancePage /> },
-      { path: "/projects", element: <ProjectsPage /> },
-      { path: "/education", element: <EducationPage /> },
-      { path: "/awards", element: <AwardsPage /> },
+      { path: "/IhorLazarkov/", element: <HomePage /> },
+      { path: "/IhorLazarkov/whatido", element: <WhatIDoPage /> },
+      { path: "/IhorLazarkov/experiance", element: <ExperiancePage /> },
+      { path: "/IhorLazarkov/projects", element: <ProjectsPage /> },
+      { path: "/IhorLazarkov/education", element: <EducationPage /> },
+      { path: "/IhorLazarkov/awards", element: <AwardsPage /> },
     ]
   }
 ])
