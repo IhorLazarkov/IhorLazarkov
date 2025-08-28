@@ -1,0 +1,15 @@
+.education-tile {
+  width: 50%;
+  display: flex;
+  gap: 1em;
+
+  & img {
+    width: 30%;
+  }
+}
+
+@media only screen and (width <= 1000px) {
+  .education-tile {
+    width: 100%;
+  }
+}
