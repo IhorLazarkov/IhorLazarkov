@@ -20,7 +20,7 @@
   }
 
   & .media-icons {
-    width: 20%;
+    width: calc(100% / 3);
     display: flex;
     justify-content: space-around;
 
