@@ -1,0 +1,38 @@
+
+.what-i-do-container {
+  --left-side-w: 20%;
+  position: relative;
+
+  & .left-side {
+    position: fixed;
+    left: 0;
+    top: 20%;
+    width: var(--left-side-w);
+
+    & ul {
+      & a {
+        cursor: pointer;
+        text-decoration: none;
+      }
+
+      & li:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  & .right-side {
+    --margin-left: calc(100% - (100% - var(--left-side-w)));
+    margin-left: var(--margin-left);
+    width: calc(60%);
+  }
+
+  & ul {
+    margin: 0;
+    list-style: none;
+
+    & li {
+      margin-bottom: 1em;
+    }
+  }
+}

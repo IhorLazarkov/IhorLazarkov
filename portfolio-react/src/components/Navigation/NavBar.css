@@ -1,0 +1,45 @@
+nav {
+  width: 60%;
+  z-index: 1;
+  background-color: var(--bg-color);
+
+  /* position: sticky;
+  top: 0;
+  left: 20%; */
+  padding-inline: 1em;
+  margin: 0 auto;
+
+  border: 1px solid var(--border-color);
+
+  & ul:first-child svg {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  & ul {
+    padding: 0;
+    list-style: none;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+
+    filter: drop-shadow(10px);
+
+    & li {
+      cursor: pointer;
+    }
+
+    & a {
+      text-decoration: none;
+      text-transform: lowercase;
+      color: inherit;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    & a:hover {
+      text-decoration: underline;
+    }
+  }
+}

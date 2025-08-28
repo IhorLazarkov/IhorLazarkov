@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ihor Lazarkov - Profile</title>
+    <link rel="stylesheet" href="./resources/style.css" />
+    <script defer src="./resources/app.js"></script>
+  </head>
+  <body>
+    <main>
+      <section id="left_panenl">
+        <div id="left_info_container">
+          <div id="photo_container">
+            <img src="./resources/profile.png" alt="" />
+          </div>
+          <div id="contact_me_container">
+            <div style="font-size: 2em">Ihor Lazarkov</div>
+            <div style="font-size: 1.3em">Full-Stack Developer</div>
+            <div style="font-size: 1em">Automation Test Architect</div>
+            <div class="media">
+              <a href="https://github.com/ihorLazarkov">
+                <img src="./resources/github.svg" alt="github" />
+              </a>
+              <a href="https://linkedin.com/in/ihorlazarkov">
+                <img src="./resources/linkedin.svg" alt="linked in" />
+              </a>
+              <a href="https://www.facebook.com/igor.lazarkov">
+                <img src="./resources/facebook.svg" alt="facebook" />
+              </a>
+            </div>
+            <div class="contact_me_info">
+              <div class="contact_me_tile">
+                <div class="icon">
+                  <img src="./resources/phone.svg" alt="" />
+                </div>
+                <div class="value">
+                  <!-- <div style="font-size: small">phone</div> -->
+                  <div>+1 (615) 506 - 9411</div>
+                </div>
+              </div>
+              <div class="contact_me_tile">
+                <div class="icon">
+                  <img src="./resources/mail.svg" alt="email" />
+                </div>
+                <div class="value">
+                  <!-- <div style="font-size: small">email</div> -->
+                  <div>ilazarkov@gmail.com</div>
+                </div>
+              </div>
+            </div>
+            <a
+              href="./resources/IhorLazarkov-resume-dev.docx"
+              alt="download resume"
+              >download resume</a
+            >
+          </div>
+        </div>
+      </section>
+      <section id="right_panel">
+        <div id="rigth_actions_container">
+          <nav id="actions">
+            <button to="home" class="active">
+              <img src="./resources/home.svg" alt="home" />
+              <span style="display: block">home</span>
+            </button>
+            <button to="work" class="">
+              <img src="./resources/work.svg" alt="work" />
+              <span style="display: block">work</span>
+            </button>
+            <button to="projects" class="new">
+              <img src="./resources/projects.svg" alt="projects" />
+              <span style="display: block">projects</span>
+              <!-- <div class="new-container">
+                new
+              </div>         -->
+            </button>
+            <button to="education" class="">
+              <img src="./resources/education.svg" alt="education" />
+              <span style="display: block">education</span>
+            </button>
+            <button to="awards" class="">
+              <img src="./resources/awards.svg" alt="education" />
+              <span style="display: block">awards</span>
+            </button>
+          </nav>
+        </div>
+        <div id="rigth_info_container" style="position: relative">
+          <!-- HOME -->
+          <section
+            id="home"
+            class="appear"
+            style="position: absolute; z-index: 1"
+          >
+            <h4 style="font-size: 1.2em; color: var(--primary2)">ABOUT ME</h4>
+            <p style="font-size: 1.2em">
+              Client-centric Full-stack Developer with 8+ years of experience in
+              Software Development for Testing and 15 years in Software QA.
+              Proven ability to build robust, scalable solutions, leveraging
+              extensive expertise in Software Development for Testing,
+              debugging, and system understanding. Passionate about Software
+              Engineering and creation of resilient full-stack applications.
+            </p>
+            <h4 style="font-size: 1.2em; color: var(--primary2)">
+              Technical Skills
+            </h4>
+            <p style="font-size: 1.2em">
+              JavaScript, TypeScript, Java, Python; React, Flask | ExpressJS,
+              NodeJS, NGINX | HTML, CSS, jQuery, Bootstrap, SpringBootMVC| TDD,
+              BDD, Cucumber, Cypress, WebDriverIO, Selenium, Serenity BDD,
+              FitNesse, Mocha, JUnit, TestNG, PyTest, RestAssure, Postman,
+              JMeter| HTTP 1.1, HTTP 2, HTTPS, WebSockets (ws), gRPC, REST, EMS,
+              MQ; Sequelize, SQLAlchemi, Alembic, Hibernate, SQL, Postgres,
+              Oracle, SQLite | Docker, K8S, Gradle, npm, pip, pipenv, git,
+              GitHub, Jenkins, GitLab, Graphana, Chrome, Safari, devtools,
+              react-devtools, geolocation API, Google MAP API, Speech
+              Recognition API.
+            </p>
+            <h4 style="font-size: 1.2em; color: var(--primary2)">WHAT I DO</h4>
+            <div class="do-tile-container">
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/web-page.svg" alt="" />
+                  <span>Full-Stack Development</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  As Full Stack Developer, I am passionate about designing and
+                  implementing innovative programmatic solutions for both
+                  front-end and back-end development. My goal is to deliver
+                  efficient, user-friendly, and scalable applications tailored
+                  to meet client needs.
+                </div>
+              </div>
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/testing.svg" alt="" />
+                  <span>Development in Test</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  As a Developer in Test, I bridge the gap between development
+                  and quality assurance with attention to details and a
+                  collaborative approach. I identify issues early, optimize
+                  testing processes, and deliver actionable insights to ensure
+                  reliable, high-performant software.
+                </div>
+              </div>
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/devops.svg" alt="" />
+                  <span>DevOps</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  As a DevOps specialist, I integrate software projects into
+                  CI/CD pipelines by creating and maintaining efficient build
+                  scripts to automate workflows for building, testing, and
+                  releasing applications. I schedule script executions,
+                  configure custom triggers, and ensure seamless deployment
+                  processes to enhance delivery speed and reliability
+                </div>
+              </div>
+              <div class="do-tile">
+                <div class="tile-title">
+                  <img src="./resources/robot.svg" alt="" />
+                  <span>Automation Test</span>
+                </div>
+                <hr />
+                <div class="tile-description">
+                  As a Test Automation Engineer, I design and implement
+                  automation frameworks to perform functional testing of
+                  end-to-end scenarios for both front-end and back-end
+                  applications. By analyzing functional requirements, I create
+                  robust and efficient test case designs to ensure comprehensive
+                  and reliable automated testing.
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- WORK -->
+          <section
+            id="work"
+            class="hidden"
+            style="position: absolute; z-index: 1"
+          >
+            <nav>
+              <button class="" to="epam">
+                <h4 style="display: inline">EPAM Systems</h4>
+                <span>| Oct 2008 - May 2022</span>
+              </button>
+              <button class="" to="cisco">
+                <h4 style="display: inline">Cisco Meraki</h4>
+                <span>| May 2022 - May 2024</span>
+              </button>
+              <button class="active" to="accenture">
+                <h4 style="display: inline">Accenture</h4>
+                <span>| May 2024 - Present</span>
+              </button>
+            </nav>
+            <div id="accenture" class="work-tile appear">
+              <div class="work-tile-head">
+                <h4>Software Engineer, Testing</h4>
+                <hr />
+              </div>
+              <div class="work-tile-body">
+                Worked as Senior Software Engineer in Test in a team of 6
+                engineers. Responsible for delivering software for automation
+                testing of functional and integration tests with following
+                integration into CI/CD. Communication with product ownership to
+                learn functionality, demo of completed work, gather feedback and
+                deliver improvements.
+              </div>
+              <div>
+                <p>
+                  <i>Tech stack:</i>Java, Selenium WB, Serenity BDD, Cucumber,
+                  Applitools, Gradle, Jenkins, Git
+                </p>
+              </div>
+              <ul style="display: flex; flex-direction: column; gap: 10px">
+                <li>
+                  Contributed to software for automation testing with
+                  development of architectural solutions and best practices by
+                  utilization of OOP principles (e.g. polymorphism, inheritance,
+                  encapsulation) programming design patterns (e.g. Builder,
+                  Singletone, Factory, Commander or Strategy, Facade) and
+                  decoupling implementation and encapsulation via abstract
+                  methods, interfaces and functional interfaces;
+                </li>
+                <li>
+                  Developed reliable software for automation testing of
+                  Web-pages and solved high-complex problems by thorough
+                  analysis of HTML, CSS and JavaScript via effective use of
+                  Dev-tools to identify mechanism of functioning of components
+                  of the page;
+                </li>
+                <li>
+                  Design test scenarios in Gherkin language using parametrizable
+                  instructions, DataTables, Scenario Outline for reusability
+                  with maximum level of readability for non-technical people as
+                  well as with exhaustive level of details to make test valuable
+                  assets and source of truth;
+                </li>
+                <li>
+                  Development of glue code (executable code associated with each
+                  command in feature file) and organizing it in clear per web
+                  page and/or per functionality manner to establish clear
+                  ownership and responsibilities to avoid code duplication and
+                  improve maintenance;
+                </li>
+                <li>
+                  Meticulous code analysis of transitioned project by debugging,
+                  executing of tests, gaining ownership of a code-base,
+                  refactoring and as a result stability improvements, decrease
+                  of duplicated code by ~1800 lines and tests execution time by
+                  up to 40%;
+                </li>
+              </ul>
+            </div>
+            <div id="cisco" class="work-tile hidden">
+              <div class="work-tile-head">
+                <h4>Software Engineer, Testing</h4>
+                <hr />
+              </div>
+              <div>
+                <p>
+                  <i>Tech stack:</i>JavaScript, TypeScript, Cypress,
+                  WebDriverIO, Applitools, GitLab, Git
+                </p>
+              </div>
+              <div class="work-tile-body">
+                Worked as Senior Software Engineer in Test, and software test
+                engineer in a team of 5. Developed software for functional, E2E
+                and API testing using in-house and new automation test
+                frameworks. Completed test planning and test design. Established
+                testing standards and processes.
+                <ul style="display: flex; flex-direction: column; gap: 10px">
+                  <li>
+                    Successfully accomplished thorough testing of an application
+                    during pivotal change of the business model of the company
+                    by developing and execution of a test plan that consisted of
+                    multiple phases to accommodate and deliver KPIs;
+                  </li>
+                  <li>
+                    Developed software from scratch for functional and
+                    integration testing of front-end and back-end;
+                  </li>
+                  <li>
+                    Defined, together with the team, and developed quality gates
+                    for the functional changes that drastically improved
+                    stability of builds and prevented several critical defects
+                    of being promoted to production which saved the company’s
+                    reputation and improved productivity of teams what would
+                    switch for bug fix otherwise;
+                  </li>
+                  <li>
+                    Effective communication with team members by defining a
+                    clear agenda, questions and timeframe for meetings.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div id="epam" class="work-tile hidden">
+              <div class="work-tile-head">
+                <h4>Senior Automation Test Engineer</h4>
+                <hr />
+              </div>
+              <div class="work-tile-body">
+                Worked in a fast-paced, agile environment on multiple complex
+                projects, with multiple teams of 5 employees each. Developed
+                test standards and strategies for new releases, defined the
+                scope of testing, and collaborated with technical teams and
+                product owners to discuss functional details. Designed and
+                executed Java-based automation testing and performance tests
+                frameworks and tools such as Selenium WD, Cucumber, FitNesse,
+                TestNG, Rest Assured and JMeter etc. for web applications and
+                RESTful application programming interface (API) services.
+                <ul style="display: flex; flex-direction: column; gap: 10px">
+                  <li>
+                    Leveraged technical expertise to design an automation test
+                    framework to validate databases and messages across all
+                    projects and tests for a client, resulting in 4-times faster
+                    test execution, decreased support time, and improved
+                    visibility of software quality using proficient programming
+                    skills, expertise in Java, programming design patterns
+                  </li>
+                  <li>
+                    Expanded testing coverage and capabilities by introducing
+                    new automation testing technology and transitioning away
+                    from the legacy system, which enabled cleaner tests and
+                    optimized readability, maintenance, and enhancements
+                  </li>
+                  <li>
+                    Led a decrease in regression execution time and enabled
+                    monitoring of software stability by implementing a necessary
+                    code base and new Gradle tasks to enhance reliability and
+                    integration of automation test frameworks into CI/CD
+                    processes
+                  </li>
+                  <li>
+                    Delivered reliable and scalable software by designing and
+                    integrating a new software project from scratch, including
+                    web applications, automation test frameworks, libraries, and
+                    plugins, to test front-end, back-end, and RESTful APIs. o
+                    Utilized Cucumber, Selenium, REST Assured, and numerous best
+                    practices, including configurability, reusability of
+                    components, object-oriented programming (OOP) concepts, Java
+                    design patterns, and functional programming.
+                  </li>
+                  <li>
+                    Decreased the time required for test preparation, test
+                    investigation, and QA environment health monitoring by
+                    developing web applications to facilitate testing using
+                    Spring Boot MVC, JavaScript, HTML, and CSS
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- PROJECTS -->
+          <section
+            id="projects"
+            class="hidden"
+            style="position: absolute; z-index: 0"
+          >
+            <a href="https://99.98.183.163:3003/">
+              <div class="project-tile">
+                <video
+                  src="./resources/demo-1.mov"
+                  type="video/mov"
+                  autoplay
+                  loop
+                  preload="auto"
+                  muted
+                ></video>
+                <h3>Forno Roma</h3>
+                <p>
+                  This is complete online pizzeria where user can view menu,
+                  create orders with add-ons (except paying of course). User can
+                  observe order status in-live and many more. I completed this
+                  project in 3 weeks. The UI/UX design, frontend and backend,
+                  html, css etc are completely mine work whereas chat GPT really
+                  helped me to select colors, fonts and name.
+                </p>
+                <p>
+                  Innovative thing in this project is an agent that understands
+                  voice and add pizzas to a cart.
+                </p>
+                <p>Its layout tailored for desktops only for now!</p>
+                <div class="tech-details">
+                  <div class="status-container">
+                    <span class="status-label">Status:</span>
+                    <span class="status-indecator pules">🟢</span>
+                  </div>
+                  <div>http(s)/1.1</div>
+                  <div>ws</div>
+                  <div>javascript</div>
+                  <div>css</div>
+                  <div>react</div>
+                  <div>redux</div>
+                  <div>express</div>
+                  <div>websocket</div>
+                  <div>speach recognition API</div>
+                  <div>sqlite</div>
+                  <div>postgres</div>
+                  <div>vite</div>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://ihorlazarkov.github.io/IhorLazarkov/rrh.html">
+              <div class="project-tile">
+                <video
+                  src="./resources/rrh-1.mov"
+                  type="video/mov"
+                  autoplay
+                  loop
+                  preload="auto"
+                  muted
+                ></video>
+                <h3>Rental Residences Hub</h3>
+                <p>
+                  The application designed to help users find vacation rentals
+                  effortlessly. Intuitive use, filtering of available
+                  properties, view detailed descriptions and reviews.
+                </p>
+                <p>
+                  There were 60 pages of requirements regarding UI that were
+                  implemented in 3 weeks, and I am proud of the result.
+                  Minimalistic design, blue and white colors patterns and live
+                  geolocation make it light and pleasant to use.
+                </p>
+                <p>The layout supports both desktop and mobile.</p>
+                <div class="tech-details">
+                  <div class="status-container">
+                    <span class="status-label">Status:</span>
+                    <span class="status-indecator pules">🟢</span>
+                  </div>
+                  <div>react</div>
+                  <div>redux</div>
+                  <div>javascript</div>
+                  <div>html</div>
+                  <div>css</div>
+                  <div>express</div>
+                  <div>sequelize</div>
+                  <div>geolocation API</div>
+                  <div>Google Map API</div>
+                  <div>sqlite</div>
+                  <div>postgresql</div>
+                  <div>vite</div>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://99.98.183.163:3002/">
+              <div class="project-tile">
+                <div>
+                  <img src="./resources/psw.png" alt="Woodworking tool app" />
+                </div>
+                <h3>Woodworking tool</h3>
+                <p>
+                  This online store is a product of team of 4 people what we
+                  made for 2 weeks. A customer may review all information about
+                  a poriduct (e.g. description, reviews), add to a cart, rate
+                  and leave a review.
+                </p>
+                <p>
+                  During work on this project I am proud of being all for my
+                  team: contribute in design, support, issue analysis and fix.
+                </p>
+                <p>Its layout tailored for desktops only for now!</p>
+                <div class="tech-details">
+                  <div class="status-container">
+                    <span class="status-label">Status:</span>
+                    <span class="status-indecator pules">🟢</span>
+                  </div>
+                  <div>react</div>
+                  <div>redux</div>
+                  <div>css</div>
+                  <div>flask</div>
+                  <div>wtform</div>
+                  <div>alembic</div>
+                  <div>sqlalchemy</div>
+                  <div>sqlite</div>
+                  <div>postgresql</div>
+                  <div>vite</div>
+                </div>
+              </div>
+            </a>
+          </section>
+
+          <!-- EDUCATION -->
+          <section
+            id="education"
+            class="hidden"
+            style="position: absolute; z-index: 1"
+          >
+            <div style="display: flex; flex-direction: column">
+              <h3 style="font-size: 1.2em">Post Secondary Education</h3>
+              <div style="display: flex">
+                <div class="education-tile">
+                  <div>
+                    <img src="./resources/SE_Diploma.png" alt="diploma image" />
+                  </div>
+                  <span>
+                    <h3>App Academy, CA</h3>
+                    <h4>Software Engineer</h4>
+                    <span>June 2024 - May 2025</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <h3 style="font-size: 1.2em">University</h3>
+              <div
+                style="width: 100%; display: flex; flex: 1 0 100%; gap: 20px"
+              >
+                <div class="education-tile">
+                  <img src="./resources/diploma-gold.svg" alt="diploma image" />
+                  <span>
+                    <h3>Odessa National University I.I. Mechnikov</h3>
+                    <h4>Masters in Computer Systems and Networks</h4>
+                    <span>2005 - 2006</span>
+                  </span>
+                </div>
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h3>Odessa National University I.I. Mechnikov</h3>
+                    <h4>Bachelor in Computer Systems and Networks</h4>
+                    <span>2001 - 2005</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column">
+              <h3 style="font-size: 1.2em">Courses</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 20px">
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h4>Node.JS application Development</h4>
+                    <span>Feb 2023</span>
+                    <a
+                      style="color: inherit; font-size: 1.1em"
+                      href="https://www.credly.com/badges/fa8800e6-8dcd-41fd-be33-322efb7f491f/linked_in_profile"
+                      >See certificate</a
+                    >
+                  </span>
+                </div>
+                <div class="education-tile">
+                  <img src="./resources/diploma.svg" alt="diploma image" />
+                  <span>
+                    <h4>Introduction to Node.Js</h4>
+                    <span>Dec 2022</span>
+                    <a
+                      style="color: inherit; font-size: 1.1em"
+                      href="https://courses.edx.org/certificates/181bd401645c4501a20ae4b402d27f7a"
+                      >See certificate</a
+                    >
+                  </span>
+                </div>
+                <div class="education-tile">
+                  <img
+                    style="width: 11em; object-fit: cover"
+                    src="./resources/performance-cert.jpeg"
+                    alt="ceritiface image"
+                  />
+                  <span>
+                    <h4>Performance Testing Course</h4>
+                    <span>Oct - Dec 2021</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- AWARDS -->
+          <section
+            id="awards"
+            class="hidden"
+            style="position: absolute; z-index: 1"
+          >
+            <div class="award-tile">
+              <div>
+                <img src="./resources/star-award.svg" alt="award icon" />
+              </div>
+              <h3>Cisco Meraki Award</h3>
+              <h4>Internal tallent</h4>
+              <span>2022</span>
+            </div>
+            <div class="award-tile">
+              <div>
+                <img src="./resources/star-award.svg" alt="award icon" />
+              </div>
+              <h3>Cisco Meraki Award</h3>
+              <h4>Internal tallent</h4>
+              <span>2023</span>
+            </div>
+            <div class="award-tile">
+              <p>
+                Ihor is a very sincere and dedicated SDET Engineer. His clarity
+                and concepts of test automation to cover the quality of the
+                product was impressive. He preached the test automation pyramid
+                while we worked together at Meraki and was also instrumental in
+                right execution for the product quality. Ihor is a quick and
+                ambitious learner and always wanted to explore more and more of
+                knowledge and skill set.
+              </p>
+              <h4>Sonum Matur</h4>
+              <h5>Software Engineering Manager</h5>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
