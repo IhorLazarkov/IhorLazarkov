@@ -1,0 +1,48 @@
+.article:has(.project-tile){
+  width: 90%;
+  margin: 0 auto;
+}
+
+.project-tile {
+  display: flex;
+  gap: 1em;
+  margin-block: 1em;
+
+  & video {
+    width: 50%;
+  }
+
+  & h3 {
+    margin-top: 0;
+  }
+
+  & .project-description {
+    display: flex;
+    gap: 0.8em;
+    flex-direction: column;
+  }
+
+  & .tech-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+  }
+  & p {
+    margin: 0;
+  }
+
+  & div:has(img) {
+    width: 100%;
+    margin-block: auto;
+
+    & img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  & a:has(svg){
+    fill: var(--border-color);
+    display: flex;
+  }
+}
