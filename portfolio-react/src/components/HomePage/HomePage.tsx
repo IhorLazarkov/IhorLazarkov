@@ -14,7 +14,7 @@ export default function HomePage() {
         <div className="intro-container">
             <div className="round-img-container">
                 <div className="frame"
-                    style={{ backgroundImage: `url(/profile.png)` }}
+                    style={{ backgroundImage: `url(./public/profile.png)` }}
                 ></div>
             </div>
             <h1>Ihor Lazarkov</h1>
