@@ -2,7 +2,7 @@ import "./Education.css"
 
 function EducationPage() {
     return (<section className="article">
-        <h1>Univercity</h1>
+        <h1>University</h1>
         <div className="education-container">
             <div className="education-tile">
                 <img src="diploma-gold.svg" alt="diploma image" />
