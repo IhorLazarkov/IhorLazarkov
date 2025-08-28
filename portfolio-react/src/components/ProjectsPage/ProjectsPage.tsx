@@ -12,7 +12,7 @@ function ProjectsPage() {
         <div className="project-tile">
             <video
                 src="demo-1.mov"
-                type="video/mov"
+                // type="video/mov"
                 autoPlay
                 loop
                 preload="auto"
@@ -68,7 +68,7 @@ function ProjectsPage() {
         <div className="project-tile">
             <video
                 src="rrh-1.mov"
-                type="video/mov"
+                // type="video/mov"
                 autoPlay
                 loop
                 preload="auto"
