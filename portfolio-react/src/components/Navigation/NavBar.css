@@ -54,7 +54,11 @@ nav {
     z-index: 1;
 
     & li {
+<<<<<<< HEAD
       font-size: 0.8em;
+=======
+      font-size: 0.9em;
+>>>>>>> main
     }
   }
 
@@ -77,6 +81,32 @@ nav {
       padding-top: 3em;
     }
   }
+<<<<<<< HEAD
+=======
+  /* Projects */
+  .project-tile {
+    flex-direction: column;
+    padding-top: 3em;
+  }
+  /* Awards */
+  .article:has(.award-tile) {
+    padding-top: 3em;
+  }
+  /* Education */
+  .article:has(.education-container) {
+    padding-top: 3em;
+  }
+  /* Awards */
+  .article:has(.award-tile) {
+    width: 85%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    & .award-tile{
+      width: 100%;
+    }
+  }
+>>>>>>> main
 }
 
 @media only screen and (orientation: portrait) {

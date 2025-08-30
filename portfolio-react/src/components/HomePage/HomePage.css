@@ -10,16 +10,20 @@
   justify-content: center;
   gap: 0.1em;
 
-  & h1,
-  h2 {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-
-  & h2 {
-    margin-top: 0;
+  & .title-container {
+    text-align: center;
+    & * {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
   }
 
   & .media-icons {
+<<<<<<< HEAD
+=======
+    margin-top: 3em;
+>>>>>>> main
     width: calc(100% / 3);
     display: flex;
     justify-content: space-around;

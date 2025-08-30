@@ -11,7 +11,12 @@ const fsEngineer: ReactElement = <div id="fs-article">
 const seEngineer: ReactElement = <div id="se-article">
     <h1>Software Engineer</h1>
     <p>I became a certified Software Engineer on June 2025 at App Academy.</p>
+<<<<<<< HEAD
     <p>My skillset encompasses Full Stack Development, complemented by substantial experience in Software Engineering in Test – skills that have prepared me for a successful and productive Mid-Senior Software Engineer position.</p>
+=======
+    <p>My skillset encompasses Full Stack Engineering what complemented by substantial experience in Software Engineering in Test – skills that have prepared me for a successful and productive Mid-Senior Software Engineer position.</p>
+    <p>Also I support release process together with DevOps team by observing installation process. Perform critical rollback activities in case of failure.</p>
+>>>>>>> main
     <p>My technological stack includes:</p>
     <ul style={{ listStyle: "outside" }}>
         <li><strong>Programming Languages:</strong> Java, JavaScript, TypeScript, Python</li>
