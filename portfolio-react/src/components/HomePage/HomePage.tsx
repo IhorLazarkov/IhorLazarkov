@@ -13,7 +13,7 @@ export default function HomePage() {
         <div className="intro-container">
             <div className="round-img-container">
                 <div className="frame"
-                    style={{ backgroundImage: `url(./public/profile.png)` }}
+                    style={{ backgroundImage: `url(./public/profile.webp)` }}
                 ></div>
             </div>
             <div className="title-container">
