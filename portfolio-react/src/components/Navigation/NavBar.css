@@ -64,12 +64,16 @@ nav {
   }
   /* What I do articles */
   .what-i-do-container {
+    width: 90%;
+    margin: 0 auto;
     & h1:first-of-type {
       padding-top: 3em;
     }
   }
   /* Experiance */
   .article:has(.work-tile) {
+    width: 90%;
+    margin: 0 auto;
     & .work-tile {
       width: 100%;
     }
@@ -96,7 +100,7 @@ nav {
     margin: 0 auto;
     flex-direction: column;
 
-    & .award-tile{
+    & .award-tile {
       width: 100%;
     }
   }

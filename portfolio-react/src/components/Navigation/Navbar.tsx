@@ -7,7 +7,13 @@ export default function NavBar() {
     return (
         <nav>
             <ul>
-                <li><Link to="/IhorLazarkov/"><FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></Link></li>
+                <li>
+                    <Link
+                        to="/IhorLazarkov/"
+                        aria-label="Return to home page">
+                        <FontAwesomeIcon icon={faHouse}></FontAwesomeIcon>
+                    </Link>
+                </li>
                 <li><Link to="/IhorLazarkov/whatido">What I Do?</Link></li>
                 <li><Link to="/IhorLazarkov/experiance">Experiance</Link></li>
                 <li><Link to="/IhorLazarkov/projects">Projects</Link></li>

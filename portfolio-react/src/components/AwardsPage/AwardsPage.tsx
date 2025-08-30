@@ -23,9 +23,7 @@ function AwardsPage() {
             </span>
         </div>
         <div className="award-tile column-layout">
-            <p><q>
-
-                Ihor is a very sincere and dedicated SDET Engineer. His clarity
+            <p><q>Ihor is a very sincere and dedicated SDET Engineer. His clarity
                 and concepts of test automation to cover the quality of the
                 product was impressive. He preached the test automation pyramid
                 while we worked together at Meraki and was also instrumental in
