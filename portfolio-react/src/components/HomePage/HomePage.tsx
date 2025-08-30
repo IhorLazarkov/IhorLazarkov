@@ -24,18 +24,21 @@ export default function HomePage() {
                 <Link
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit my github profile"
                     to="https://github.com/ihorLazarkov">
                     <FontAwesomeIcon icon={faGithub} />
                 </Link>
                 <Link
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit my linkedin page"
                     to="https://linkedin.com/in/ihorlazarkov">
                     <FontAwesomeIcon icon={faLinkedinIn} />
                 </Link>
                 <Link
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit my facebook page"
                     to="https://www.facebook.com/igor.lazarkov">
                     <FontAwesomeIcon icon={faFacebookF} />
                 </Link>
