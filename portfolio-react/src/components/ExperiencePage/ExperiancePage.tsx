@@ -2,6 +2,76 @@ import "./Experiance.css"
 
 function ExperiancePage() {
     return (<section className="article">
+        <div className="work-tile">
+            <div className="work-tile-head">
+                <h4>Full Stack Software Engineer - LVC Solutions, USA, Remote | July 2025 - Present</h4>
+                <hr />
+            </div>
+            <div className="work-tile-body">
+                Worked as a Software Engineer in an agile environment with 2 more engineers to design and implement SaaS for marketing.
+            </div>
+            <div>
+                <p><i>Tech stack:</i>
+                    JavaScript, React, HTML, CSS, ExpressJS, JSON, Git, Github
+                </p>
+            </div>
+            <ul>
+                <li>
+                    Positively impacted project by establishing development process of new components by communicating values of open, creative and inclusive environment resulting in improved productivity and decreased team nervousness (brevity);
+                </li>
+                <li>
+                    Implement re-usable complex (eg. accordion, filterable lists, tabs) components using JSX, parametrization via variables or data in JSON, React hooks (e.g. useState, useRef, useContext, useReducer) with respective styling via CSS file and in-line style attribute;
+                </li>
+                <li>
+                    Debug and bugfix of 10+ of issues, perform root-cause analyze using dev tools (e.g. DevTools, React-Devtools);
+                </li>
+                <li>
+                    Measure quality of the web application by performing testing with network throttle and profiling using DevTools and react-devtools profiling;
+                </li>
+                <li>
+                    Supervise release processes with DevOps team and perform or supervise rollback in case of failure;
+                </li>
+                <li>
+                    Perform a leading engineering role by sharing ideas for technical and UI/UX problems that influence the improvement of productivity and establish open and professional collaboration in the team.
+                </li>
+            </ul>
+        </div>
+        <div className="work-tile">
+            <div className="work-tile-head">
+                <h4>Software Engineer (open-source contributor), Front End - Layer5, USA, Remote | March 2025 - Present</h4>
+                <hr />
+            </div>
+            <div className="work-tile-body">
+                Worked as a Software Engineer in an open-source project with an international team of contributors. The project provides standardized components for Layer5 projects.
+            </div>
+            <div>
+                <p><i>Tech stack:</i> JavaScript, TypeScript, React, CSS, Gatsby, Vite</p>
+            </div>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <li>
+                    Gained expertise in existing JSX, TSX, CSS codebase by analyzing requirements, unit tests, codebases to become domain knowledge expert;
+                </li>
+                <li>
+                    Implement functionalities applying well-fit data-structures (e.g. map, list, set), architecture (using interfaces, types, OOP principles), design patterns (e.g. Singleton, Builder, Commander, Factory) that provide a maintainable and scalable codebase;
+                </li>
+                <li>
+                    Analyze existing codebase (presence of media queries, aria-label attributes etc) to audit its adherence to responsive web design and accessibility practice;
+                </li>
+                <li>
+                    Debug new and existing issues, code analyze resulting in gain of knowledge in project architecture (classes, interfaces etc.);
+                </li>
+                <li>
+                    Bug fix by implementing clean and documented code utilizing declared types, interfaces, enums;
+                </li>
+                <li>
+                    Managed code contributions via Git, regularly merging updates and submitting well-documented pull requests;
+                </li>
+                <li>
+                    Participate in community meetings, attentively listen to changes being introduced by others and present completed work.
+                </li>
+            </ul>
+
+        </div>
         <div id="accenture" className="work-tile">
             <div className="work-tile-head">
                 <h4>Software Engineer, Testing | Accenture | May 2024 - Present</h4>
