@@ -14,10 +14,10 @@ const router = createBrowserRouter([
     children: [
       { path: "/IhorLazarkov/", element: <HomePage /> },
       { path: "/IhorLazarkov/whatido", element: <WhatIDoPage /> },
-      { path: "/IhorLazarkov/experiance", element: <ExperiancePage /> },
+      { path: "/IhorLazarkov/experience", element: <ExperiancePage /> },
       { path: "/IhorLazarkov/projects", element: <ProjectsPage /> },
       { path: "/IhorLazarkov/education", element: <EducationPage /> },
-      { path: "/IhorLazarkov/awards", element: <AwardsPage /> },
+      { path: "/IhorLazarkov/recognition", element: <AwardsPage /> },
     ]
   }
 ])
