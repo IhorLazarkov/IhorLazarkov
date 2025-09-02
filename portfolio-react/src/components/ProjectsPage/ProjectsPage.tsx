@@ -139,7 +139,7 @@ function ProjectsPage() {
                 <p>
                     This online store is a product of team of 4 people what we
                     made for 2 weeks. A customer may review all information about
-                    a poriduct (e.g. description, reviews), add to a cart, rate
+                    a product (e.g. description, reviews), add to a cart, rate
                     and leave a review.
                 </p>
                 <p>
@@ -165,7 +165,7 @@ function ProjectsPage() {
                 </div>
             </div>
         </div>
-        <h3>Small porjects/prototypes</h3>
+        <h3>Small projects/prototypes</h3>
         <div className="project-tile">
             <div>
                 <img src="https://media.licdn.com/dms/image/v2/D4E22AQEqCak_rd8jEg/feedshare-shrink_800/B4EZgAa08RGwAg-/0/1752353690220?e=1759363200&v=beta&t=qWwFfTOyWFYwBmistiFARTCyzTYOeRP5yPolEQ0Q8yE" alt="" />
