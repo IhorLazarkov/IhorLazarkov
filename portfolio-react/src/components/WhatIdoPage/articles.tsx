@@ -22,7 +22,7 @@ const seEngineer: ReactElement = <div id="se-article">
         <li><strong>ORM:</strong> Sequelize, Alembic, SQLAlchemy, Hibernate</li>
         <li><strong>Databases:</strong> Oracle, PostgreSQL</li>
         <li><strong>Message/Notification Technologies:</strong> Kafka, IBM MQ, Tibco EMS, RabbitMQ</li>
-        <li><strong>Testing:</strong> Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver, Postman, RestAssured</li>
+        <li><strong>Testing:</strong> Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver, Postman, RestAssured, Cucumber, Serenity BDD, Gherkin</li>
         <li><strong>CI/CD:</strong> Jenkins, GitLab CI, TeamCity</li>
         <li><strong>AI:</strong> Ollama, Gemma3:4b, FAISS, SentenceTransformers</li>
         <li><strong>Version Control:</strong> Git, GitHub</li>
