@@ -3,17 +3,17 @@ import type { ReactElement } from "react";
 const fsEngineer: ReactElement = <div id="fs-article">
     <h1>Full Stack Developer</h1>
     <p>I have 10+ projects under my belt for e-commerce and web applications as tools to facilitate software development.</p>
-    <p>In these projects, I developed interactive web pages with developed reusable React components, utilizing optimal React hooks, communicating to the backend via REST calls over HTTP(S) and real-time updates via WebSockets (WS/WS) events using sync/async functions, try/catch blocks to handle errors and transfer them to error handling middleware.</p>
-    <p>I integrated ORM systems to establish the persistence of state for web services by creating models with validators and dependencies (e.g., one-to-one, one-to-many, many-to-many), versioned migrations to create database tables and schemas, and seed files to populate values in the database for testing or demos.</p>
+    <p>In these projects, I developed interactive web pages with created from scratch reusable React components, utilizing optimal React hooks, communicating to the backend via REST calls over HTTP(S)1.1 and real-time updates via WebSockets (WSS/WS) events using sync/async functions, try/catch blocks to handle errors and transfer them to error handling middleware.</p>
+    <p>I integrated ORM systems to establish persistence of a client state by creating models with validators and relations (e.g. one-to-one, one-to-many, many-to-many), versioned migrations to create database tables and schemas, and seed files to populate values in the database for testing or demos.</p>
+    <p>Also, I support release processes together with DevOps team by observing and consulting installation process. Perform critical rollback activities in case of failure.</p>
     <p>I am passionate about designing and implementing innovative programmatic solutions. My goal is to deliver efficient, user-friendly, and scalable applications tailored to meet client needs.</p>
 </div>
 
 const seEngineer: ReactElement = <div id="se-article">
     <h1>Software Engineer</h1>
-    <p>I've been Software Engineer for 9+ years and created Software to test desktop, web-application including frontend and backend.</p>
+    <p>I've been Software Engineer for 9+ years and created software to test desktop, web-application including frontend and backend.</p>
     <p>Even thought on June 2025 I graduated at App Academy and became certified Software Engineer.</p>
     <p>My skill set encompasses Full Stack Engineering what complemented by substantial experience in Software Engineering in Test – skills that have prepared me for a successful and productive Mid-Senior Software Engineer position.</p>
-    <p>Also I support release processes together with DevOps team by observing and consulting installation process. Perform critical rollback activities in case of failure.</p>
     <p>My technological stack includes:</p>
     <ul style={{ listStyle: "outside" }}>
         <li><strong>Programming Languages:</strong> Java, JavaScript, TypeScript, Python</li>
@@ -22,7 +22,7 @@ const seEngineer: ReactElement = <div id="se-article">
         <li><strong>ORM:</strong> Sequelize, Alembic, SQLAlchemy, Hibernate</li>
         <li><strong>Databases:</strong> Oracle, PostgreSQL</li>
         <li><strong>Message/Notification Technologies:</strong> Kafka, IBM MQ, Tibco EMS, RabbitMQ</li>
-        <li><strong>Testing:</strong> Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver</li>
+        <li><strong>Testing:</strong> Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver, Postman, RestAssured</li>
         <li><strong>CI/CD:</strong> Jenkins, GitLab CI, TeamCity</li>
         <li><strong>AI:</strong> Ollama, Gemma3:4b, FAISS, SentenceTransformers</li>
         <li><strong>Version Control:</strong> Git, GitHub</li>
