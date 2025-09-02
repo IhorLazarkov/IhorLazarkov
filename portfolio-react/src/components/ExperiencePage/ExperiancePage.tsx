@@ -15,7 +15,7 @@ function ExperiancePage() {
                     JavaScript, React, HTML, CSS, ExpressJS, JSON, Git, Github
                 </p>
             </div>
-            <ul>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 <li>
                     Positively impacted project by establishing development process of new components by communicating values of open, creative and inclusive environment resulting in improved productivity and decreased team nervousness (brevity);
                 </li>
