@@ -13,7 +13,7 @@ function ProjectsPage() {
             <video
                 src="demo-1.mov"
                 // type="video/mov"
-                // autoPlay
+                autoPlay
                 loop
                 preload="auto"
                 muted
@@ -69,7 +69,7 @@ function ProjectsPage() {
             <video
                 src="rrh-1.mov"
                 // type="video/mov"
-                // autoPlay
+                autoPlay
                 loop
                 preload="auto"
                 muted
