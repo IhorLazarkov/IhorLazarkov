@@ -13,7 +13,7 @@ function ProjectsPage() {
             <video
                 src="demo-1.mov"
                 // type="video/mov"
-                // autoPlay
+                autoPlay
                 loop
                 preload="auto"
                 muted
@@ -57,7 +57,7 @@ function ProjectsPage() {
                     <div>redux</div>
                     <div>express</div>
                     <div>websocket</div>
-                    <div>speach recognition API</div>
+                    <div>speech recognition API</div>
                     <div>sqlite</div>
                     <div>postgres</div>
                     <div>vite</div>
@@ -69,14 +69,14 @@ function ProjectsPage() {
             <video
                 src="rrh-1.mov"
                 // type="video/mov"
-                // autoPlay
+                autoPlay
                 loop
                 preload="auto"
                 muted
             ></video>
             <div className="project-description">
 
-                <a href="https://ihorlazarkov.github.io/IhorLazarkov/rrh.html"
+                <a href="https://99.98.183.163:3001/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

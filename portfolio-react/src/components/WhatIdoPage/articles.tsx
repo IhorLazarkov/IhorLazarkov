@@ -39,11 +39,11 @@ const setEngineer: ReactElement = <div id="set-article">
     <p>My responsibilities included the architecture and implementation of software for automated testing (an automation testing framework) of both frontend and backend applications.</p>
     <p>Each isolated automation testing framework is similar to a production software project. It encompasses source code, resources, configurations, and tests (when internal services/functionalities – such as converters, readers, and extractors – need to be tested). Therefore, an engineer must apply programming patterns and best practices:</p>
     <ul style={{ listStyle: "outside" }}>
-        <li>Data structures (e.g., Set, List, Map, Queue, Stack) with different implementations (e.g., LinkedList, Hash)</li>
-        <li>Understanding the pros and cons of object-oriented and functional programming paradigms, and their application.</li>
-        <li>Decoupling solves architectural problems related to testability, technology migration, maintenance/bug fixing, and new feature development.</li>
-        <li>SOLID – a set of architectural concepts that I consistently apply to my architectural solutions.</li>
-        <li>Design patterns (e.g., Singleton, Builder, Factory, Facade, Executor, Adapter)</li>
+        <li><strong>Data structures</strong> (e.g., Set, List, Map, Queue, Stack) with different implementations (e.g., LinkedList, Hash)</li>
+        <li><strong>Understanding</strong> the pros and cons of object-oriented and functional programming paradigms, and their application.</li>
+        <li><strong>Decoupling</strong> solves architectural problems related to testability, technology migration, maintenance/bug fixing, and new feature development.</li>
+        <li><strong>SOLID</strong> – a set of architectural concepts that I consistently apply to my architectural solutions.</li>
+        <li><strong>Design patterns</strong> (e.g., Singleton, Builder, Factory, Facade, Executor, Adapter)</li>
     </ul>
     <p>When testing backend applications, it's crucial to verify that messages sent and received through Queue Management systems (e.g., Kafka, IBM MQ, Tibco EMS, RabbitMQ) are expected and in the correct order. To achieve this, I implemented code to connect to a broker and subscribe to topics or queues.</p>
     <p>This connection can be implemented as a connection pool, or as a Singleton (which is frequently utilized for automation testing). Furthermore, remember to perform thorough validation on the database side to ensure that the state is properly persisted. I’ve worked extensively with Oracle and PostgreSQL databases, writing numerous SQL queries utilizing Inner/Left/Outer joins and filtering/grouping. I developed a progressive wrapper that acted as a poller, executing SQL queries in a loop within a defined time interval. This significantly reduced test execution time and dramatically improved test reliability.</p>
