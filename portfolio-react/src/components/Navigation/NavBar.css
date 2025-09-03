@@ -65,7 +65,7 @@ nav {
   /* What I do articles */
   .what-i-do-container {
     width: 85%;
-    margin: 0 auto;;
+    margin: 0 auto;
 
     & h1:first-of-type {
       padding-top: 3em;
@@ -85,20 +85,40 @@ nav {
   /* Experience */
   .article:has(.work-tile) {
     & .work-tile {
-      width: 100%;
+      width: 85%;
+      margin: 0 auto;
     }
     & h4:first-of-type {
       padding-top: 3em;
     }
+
+    & p {
+      padding-top: 0.45em;
+      line-height: 1.8em;
+      word-spacing: 0.2em;
+    }
+
+    & ul {
+      padding-left: 0;
+      list-style: inside;
+    }
   }
   /* Projects */
+  .article:has(.project-tile) {
+    padding-top: 3em;
+  }
   .project-tile {
     flex-direction: column;
     padding-top: 3em;
-
+    
     & video {
       width: 100% !important;
       height: auto;
+    }
+
+    & ul {
+      padding-left: 0;
+      list-style: inside;
     }
   }
 
