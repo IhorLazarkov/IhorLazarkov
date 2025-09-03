@@ -54,7 +54,7 @@ nav {
     z-index: 1;
 
     & li {
-      font-size: 0.9em;
+      font-size: 0.87em;
     }
   }
 
@@ -64,11 +64,25 @@ nav {
   }
   /* What I do articles */
   .what-i-do-container {
+    width: 85%;
+    margin: 0 auto;;
+
     & h1:first-of-type {
       padding-top: 3em;
     }
+
+    & p {
+      padding-top: 0.45em;
+      line-height: 1.8em;
+      word-spacing: 0.2em;
+    }
+
+    & ul {
+      padding-left: 0;
+      list-style: none !important;
+    }
   }
-  /* Experiance */
+  /* Experience */
   .article:has(.work-tile) {
     & .work-tile {
       width: 100%;
@@ -81,7 +95,13 @@ nav {
   .project-tile {
     flex-direction: column;
     padding-top: 3em;
+
+    & video {
+      width: 100% !important;
+      height: auto;
+    }
   }
+
   /* Awards */
   .article:has(.award-tile) {
     padding-top: 3em;
@@ -96,7 +116,7 @@ nav {
     margin: 0 auto;
     flex-direction: column;
 
-    & .award-tile{
+    & .award-tile {
       width: 100%;
     }
   }
