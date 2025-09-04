@@ -55,6 +55,9 @@ nav {
 
     & li {
       font-size: 0.87em;
+      & a {
+        text-transform: uppercase;
+      }
     }
   }
 
@@ -109,7 +112,7 @@ nav {
   }
   .project-tile {
     flex-direction: column;
-    padding-top: 3em;
+    padding-top: 2em;
     
     & video {
       width: 100% !important;
@@ -129,6 +132,11 @@ nav {
   /* Education */
   .article:has(.education-container) {
     padding-top: 3em;
+
+    & .education-tile {
+      flex-direction: column;
+      margin-bottom: 1em;;
+    }
   }
   /* Awards */
   .article:has(.award-tile) {
