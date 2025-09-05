@@ -2,7 +2,12 @@ import "./NavBar.css"
 import { Link } from "react-router-dom";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP); // register the hook to avoid React version discrepancies 
 
 export default function NavBar() {
 
@@ -27,11 +32,54 @@ export default function NavBar() {
 }
 
 function MobileMenu() {
+    const scrollY = useRef(window.scrollY)
     const [isOpen, setOpen] = useState(false)
+    const [isHide, setHide] = useState(false)
+
+    // GSAP
+    const container = useRef(null)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const delta = scrollY.current - window.scrollY
+            if (delta > 0) {
+                if (delta > 10) {
+                    scrollY.current = window.scrollY
+                }
+                setHide(false)
+            }
+            else {
+                if (delta < 0) {
+                    scrollY.current = window.scrollY
+                }
+                if (window.scrollY > 0)
+                    setHide(true)
+            }
+        };
+        window.addEventListener("scroll", handleScroll)
+        return () => {
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [])
+
+    // Animation for the nav bar
+    useGSAP(() => {
+        if (isHide) {
+            gsap.to(container.current, { y: -100, duration: 0.5 })
+        } else if (!isHide) {
+            gsap.to(container.current, { y: 0, duration: 0.5 })
+        }
+    }, {
+        scope: container,
+        dependencies: [isHide]
+    });
+
+
     return (<>
         <div role="navigation" aria-label="main navigation">
             <div style={{ position: "relative" }}>
                 <div
+                    ref={container}
                     style={{
                         cursor: "pointer",
                         zIndex: "2",
@@ -49,9 +97,10 @@ function MobileMenu() {
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             height="32px"
-                            viewBox="0 -960 960 960"
                             width="32px"
-                            style={{ fill: "var(--border-color)" }}                    >
+                            viewBox="0 -960 960 960"
+                            style={{ fill: "var(--border-color)" }}
+                        >
                             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                         </svg>
                     ) : (
@@ -59,8 +108,8 @@ function MobileMenu() {
                             style={{ fill: "var(--border-color)" }}
                             xmlns="http://www.w3.org/2000/svg"
                             height="32px"
-                            viewBox="0 -960 960 960"
                             width="32px"
+                            viewBox="0 -960 960 960"
                         >
                             <path d="M120-680v-80h720v80H120Zm0 480v-80h720v80H120Zm0-240v-80h720v80H120Z" />
                         </svg>
