@@ -34,7 +34,7 @@ function AwardsPage() {
             </p>
             <span>
                 <h4>Sonum Matur</h4>
-                <h5>Software Engineering Manager</h5>
+                <h5>Software Engineering Manager @ Cisco Meraki</h5>
             </span>
         </div>
     </section>);
