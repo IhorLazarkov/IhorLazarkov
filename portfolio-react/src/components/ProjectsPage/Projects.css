@@ -1,4 +1,4 @@
-.article:has(.project-tile){
+.article:has(.project-tile) {
   width: 90%;
   margin: 0 auto;
 }
@@ -7,19 +7,25 @@
   display: flex;
   gap: 1em;
   margin-block: 1em;
+  padding: 0.4em;
+  border: 0px solid var(--border-color);
+  box-shadow: 1px 1px 7px 0.5px var(--border-color);
 
   & video {
-    width: 50%;
+    width: auto;
+    height: 100%;
   }
 
-  & h3 {
-    margin-top: 0;
+  & h4 {
+    margin: 0.1em;
   }
 
   & .project-description {
-    display: flex;
-    gap: 0.8em;
-    flex-direction: column;
+    & p {
+      padding-block: 0.45em;
+      line-height: 1.6em;
+      word-spacing: 0.2em;
+    }
   }
 
   & .tech-details {
@@ -41,8 +47,15 @@
     }
   }
 
-  & a:has(svg){
+  & a:has(svg) {
     fill: var(--border-color);
     display: flex;
+    align-items: baseline;
+
+    & svg {
+      margin-left: 0.2em;
+      width: 12px;
+      height: 12px;
+    }
   }
 }

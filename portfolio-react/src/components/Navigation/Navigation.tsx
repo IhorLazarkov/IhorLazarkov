@@ -39,15 +39,13 @@ function ScrollUp() {
         style={{
             position: "fixed",
             right: "10px",
-            bottom: "15px",
-            filter: "drop-shadow(20px)"
+            bottom: "15px"
         }}>
         <a
             href="#"
             style={{
-                padding: "0.6em",
+                padding: "0.4em",
                 backgroundColor: "rgba(0,0,0,0.4)",
-                borderRadius: "50%",
                 textAlign: "center",
                 fontSize: "18px",
             }}
