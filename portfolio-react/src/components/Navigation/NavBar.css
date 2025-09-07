@@ -71,7 +71,8 @@ nav {
     margin: 0 auto;
 
     & h1:first-of-type {
-      padding-top: 3em;
+      padding-top: 1.5em;
+      text-align: center;
     }
 
     & p {
@@ -121,7 +122,11 @@ nav {
 
     & ul {
       padding-left: 0;
-      list-style: inside;
+      list-style: inside !important;
+
+      & li{
+        margin-block: 0.4em;
+      }
     }
   }
 

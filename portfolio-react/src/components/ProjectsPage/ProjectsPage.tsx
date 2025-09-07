@@ -13,23 +13,21 @@ function ProjectsPage() {
             <video
                 src="demo-1.mov"
                 // type="video/mov"
-                autoPlay
                 loop
+                controls
                 preload="auto"
-                muted
-            ></video>
+                muted></video>
             <div className="project-description">
 
                 <a href="https://99.98.183.163:3003/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <h3>Forno Roma</h3>
+                    <h4>Forno Roma</h4>
                     <svg xmlns="http://www.w3.org/2000/svg"
-                        height="24px" viewBox="0 -960 960 960"
-                        width="24px">
-                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
-
+                        viewBox="0 -960 960 960">
+                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+                    </svg>
                 </a>
                 <p>
                     This is complete online pizzeria where user can view menu,
@@ -44,13 +42,9 @@ function ProjectsPage() {
                     voice and add pizzas to a cart.
                 </p>
                 <p>Its layout tailored for desktops only for now!</p>
-                <div className="status-container">
-                    <span className="status-label">Status:</span>
-                    <span className="status-indecator pules">🟢</span>
-                </div>
                 <div className="tech-details">Tech stack:
-                    <div>http(s)/1.1</div>
-                    <div>ws</div>
+                    <div>HTTP(S)/1.1</div>
+                    <div>WS(S)</div>
                     <div>javascript</div>
                     <div>css</div>
                     <div>react</div>
@@ -62,14 +56,23 @@ function ProjectsPage() {
                     <div>postgres</div>
                     <div>vite</div>
                 </div>
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}>
+                    <span>
+                        <FontAwesomeIcon style={{ width: "18px", height: "18px", verticalAlign: "middle" }} icon={faGithub} />
+                        <Link to="https://github.com/IhorLazarkov/FronoPizza">Source code is here</Link>
+                    </span>
+                    <span>Status: 🟢</span>
+                </div>
             </div>
         </div>
 
         <div className="project-tile">
             <video
                 src="rrh-1.mov"
-                // type="video/mov"
-                autoPlay
+                controls
                 loop
                 preload="auto"
                 muted
@@ -80,12 +83,12 @@ function ProjectsPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <h3>Rental Residences Hub</h3>
+                    <h4>Rental Residences Hub</h4>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         height="24px" viewBox="0 -960 960 960"
                         width="24px">
-                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
-
+                        <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" />
+                    </svg>
                 </a>
                 <p>
                     The application designed to help users find vacation rentals
@@ -99,11 +102,8 @@ function ProjectsPage() {
                     geolocation make it light and pleasant to use.
                 </p>
                 <p>The layout supports both desktop and mobile.</p>
-                <div className="status-container">
-                    <span className="status-label">Status:</span>
-                    <span className="status-indecator pules">🟢</span>
-                </div>
                 <div className="tech-details">Tech stack:
+                    <div>HTTP(S)/1.1</div>
                     <div>react</div>
                     <div>redux</div>
                     <div>javascript</div>
@@ -117,6 +117,16 @@ function ProjectsPage() {
                     <div>postgresql</div>
                     <div>vite</div>
                 </div>
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}>
+                    <span>
+                        <FontAwesomeIcon style={{ width: "18px", height: "18px", verticalAlign: "middle" }} icon={faGithub} />
+                        <Link to="https://github.com/IhorLazarkov/rental-residences-hub">Source code is here</Link>
+                    </span>
+                    <span>Status: 🟢</span>
+                </div>
             </div>
         </div>
 
@@ -129,7 +139,7 @@ function ProjectsPage() {
                 <a href="https://99.98.183.163:3002/"
                     target="_blank"
                     rel="noopener noreferrer">
-                    <h3>Woodworking tool</h3>
+                    <h4>Woodworking tool</h4>
                     <svg xmlns="http://www.w3.org/2000/svg"
                         height="24px" viewBox="0 -960 960 960"
                         width="24px">
@@ -147,10 +157,6 @@ function ProjectsPage() {
                     team: contribute in design, support, issue analysis and fix.
                 </p>
                 <p>Its layout tailored for desktops only for now!</p>
-                <div className="status-container">
-                    <span className="status-label">Status:</span>
-                    <span className="status-indecator pules">🟢</span>
-                </div>
                 <div className="tech-details">Tech stack:
                     <div>react</div>
                     <div>redux</div>
@@ -163,9 +169,19 @@ function ProjectsPage() {
                     <div>postgresql</div>
                     <div>vite</div>
                 </div>
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between"
+                }}>
+                    <span>
+                        <FontAwesomeIcon style={{ width: "18px", height: "18px", verticalAlign: "middle" }} icon={faGithub} />
+                        <Link to="https://github.com/IhorLazarkov/ps_woodworking">Source code is here</Link>
+                    </span>
+                    <span>Status: 🟢</span>
+                </div>
             </div>
         </div>
-        <h3>Small projects/prototypes</h3>
+        <h4>Small projects/prototypes</h4>
         <div className="project-tile">
             <div>
                 <img src="https://media.licdn.com/dms/image/v2/D4E22AQEqCak_rd8jEg/feedshare-shrink_800/B4EZgAa08RGwAg-/0/1752353690220?e=1759363200&v=beta&t=qWwFfTOyWFYwBmistiFARTCyzTYOeRP5yPolEQ0Q8yE" alt="" />
@@ -186,10 +202,10 @@ function ProjectsPage() {
         </div>
         <div className="project-tile">
             <div>
-                <img src="https://media.licdn.com/dms/image/v2/D4E05AQGAgpMpiNKnAw/videocover-high/B4EZi0xD_eGoCI-/0/1755379418951?e=1756944000&v=beta&t=FrgvuJ00AGqo4zfqlp6eK1JlQRI3rUD68-kgWGblkko" alt="" />
+                <img src="notification-manager.png" alt="" />
             </div>
             <div className="project-description">
-                <h3>Notification Manager</h3>
+                <h4>Notification Manager</h4>
                 <div>
                     <FontAwesomeIcon style={{ width: "24px", height: "24px", verticalAlign: "middle" }} icon={faGithub} />
                     <Link to="https://github.com/IhorLazarkov/notify-kaleidoscope">Source code is here</Link>
