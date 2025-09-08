@@ -81,7 +81,6 @@ function MobileMenu() {
                 <div
                     ref={container}
                     style={{
-                        cursor: "pointer",
                         zIndex: "2",
                         position: "fixed",
                         top: "0",
@@ -89,23 +88,32 @@ function MobileMenu() {
                         width: "100%",
                         backgroundColor: "var(--bg-color)",
                         boxSizing: "border-box",
-                        padding: "0.5em"
-                    }}
-                    onClick={() => setOpen(!isOpen)}>
+                        padding: "0.5em",
+                        display: "flex",
+                        justifyContent: "space-between",
+                    }}>
 
                     {isOpen ? (
                         <svg
+                            onClick={() => setOpen(false)}
                             xmlns="http://www.w3.org/2000/svg"
                             height="32px"
                             width="32px"
                             viewBox="0 -960 960 960"
-                            style={{ fill: "var(--border-color)" }}
+                            style={{
+                                fill: "var(--border-color)",
+                                cursor: "pointer"
+                            }}
                         >
                             <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                         </svg>
                     ) : (
                         <svg
-                            style={{ fill: "var(--border-color)" }}
+                            onClick={() => setOpen(true)}
+                            style={{
+                                fill: "var(--border-color)",
+                                cursor: "pointer",
+                            }}
                             xmlns="http://www.w3.org/2000/svg"
                             height="32px"
                             width="32px"
@@ -114,6 +122,22 @@ function MobileMenu() {
                             <path d="M120-680v-80h720v80H120Zm0 480v-80h720v80H120Zm0-240v-80h720v80H120Z" />
                         </svg>
                     )}
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        height="32px"
+                        width="32px"
+                        viewBox="0 -960 960 960"
+                        style={{
+                            cursor: "pointer",
+                            fill: "var(--border-color)",
+                            marginRight: "1em"
+                        }}
+                        onClick={() => {
+                            window.navigator.share({
+                                url: "https://ihorlazarkov.github.io/IhorLazarkov/"
+                            })
+                        }}>
+                        <path d="M240-40q-33 0-56.5-23.5T160-120v-440q0-33 23.5-56.5T240-640h120v80H240v440h480v-440H600v-80h120q33 0 56.5 23.5T800-560v440q0 33-23.5 56.5T720-40H240Zm200-280v-447l-64 64-56-57 160-160 160 160-56 57-64-64v447h-80Z" />
+                    </svg>
                 </div>
                 {isOpen && <nav
                     role="navigation"
