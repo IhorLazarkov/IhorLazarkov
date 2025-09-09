@@ -70,3 +70,87 @@
     align-items: center;
   }
 }
+
+.morph-container {
+  flex-grow: 0.2;
+  align-content: end;
+  position: relative;
+
+  & * {
+    cursor: pointer;
+  }
+
+  & span {
+    --font-size: 1.5em;
+    position: absolute;
+    bottom: calc(var(--font-size) / 2);
+    right: calc(var(--font-size) / 2);
+    color: black;
+    font-weight: 600;
+    font-size: var(--font-size);
+    opacity: 0.5;
+  }
+}
+
+#morph {
+  height: 64px;
+  width: 64px;
+  background-color: var(--border-color);
+  animation: morph 7.5s linear infinite alternate, rotate 15s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes morph {
+  0% {
+    border-radius: 60% 45% 45% 70% / 60% 45% 45% 70%;
+    box-shadow: 1px 1px 5px 3px pink;
+  }
+  50% {
+    border-radius: 40% 70% 60% 45% / 40% 70% 60% 45%;
+    box-shadow: 1px 1px 4px 2px purple;
+  }
+  100% {
+    border-radius: 60% 45% 45% 70% / 60% 45% 45% 70%;
+    box-shadow: 1px 1px 5.5px 2.5px yellow;
+  }
+}
+
+@media only screen and (width <= 940px) and (orientation: landscape) {
+  .intro-container {
+    padding-top: 10%;
+    height: 95vh;
+  }
+
+  .morph-container {
+    & span {
+      --font-size: 1.25em;
+      bottom: calc(var(--font-size) / 2);
+      right: calc(var(--font-size) / 2);
+      font-size: var(--font-size);
+    }
+    & #morph {
+      width: 46px;
+      height: 46px;
+    }
+  }
+
+  @keyframes morph {
+    0% {
+      border-radius: 60% 45% 45% 70% / 60% 45% 45% 70%;
+    }
+    50% {
+      border-radius: 40% 70% 60% 45% / 40% 70% 60% 45%;
+    }
+    100% {
+      border-radius: 60% 45% 45% 70% / 60% 45% 45% 70%;
+    }
+  }
+}
