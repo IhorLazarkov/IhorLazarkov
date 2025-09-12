@@ -1,6 +1,6 @@
 import "./AiAgent.css"
 import { answers } from "./answers"
-import { useReducer, useRef, useState, type ReactElement, type UIEvent, } from "react";
+import { useReducer, useRef, useState, type ReactElement } from "react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -34,26 +34,29 @@ const reducer = (state: ReactElement[], action: { type: string, payload: string 
 }
 
 function AiAgentPage() {
-    function qHandler(e: UIEvent<HTMLElement>) {
-        setIsShowGeering(false)
+    function qHandler(e: React.MouseEvent<HTMLElement>) {
+        const target = e.target as HTMLElement
+        setIsShowGreeting(false)
         window.scrollTo(0, 0)
         dispatch({ type: "CLEAR", payload: "" });
-        dispatch({ type: "ADD_ANSWER", payload: e.target.textContent })
+        dispatch({ type: "ADD_ANSWER", payload: target.textContent as string })
     }
     const [answers, dispatch] = useReducer(reducer, Object.values(initAnswers))
-    const [isShowGeering, setIsShowGeering] = useState(true)
+    const [isShowGreeting, setIsShowGreeting] = useState(true)
     const container = useRef(null)
 
     useGSAP(() => {
-        const tl = gsap.timeline()
-        tl.from(".question", { opacity: 0, duration: 1 })
+        const mm = gsap.matchMedia()
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            const tl = gsap.timeline()
+            tl.from(".question", { opacity: 0, duration: 1 })
 
-        const items = gsap.utils.toArray(".answer h4, .answer p, .answer ul li, button")
-        items.forEach((element) => {
-            tl.from(element, { opacity: 0, duration: 0.7 })
+            const items = gsap.utils.toArray(".answer h4, .answer p, .answer ul li, button")
+            items.forEach((element) => {
+                tl.from(element as HTMLElement, { opacity: 0, duration: 0.5 })
+            })
         })
     }, {
-        scope: container.current,
         dependencies: [answers]
     })
 
@@ -62,7 +65,7 @@ function AiAgentPage() {
             className="answers-container"
             style={{ padding: "1em" }}
         >
-            {isShowGeering && <div style={{
+            {isShowGreeting && <div style={{
                 border: "1px solid var(--info)",
                 marginBlock: "0.3em",
                 padding: "0.6em",

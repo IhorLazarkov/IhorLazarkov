@@ -15,8 +15,11 @@ export default function HomePage() {
 
     useGSAP(() => {
         const lt = gsap.timeline({ autoRemoveChildren: true })
-        lt.from(".morph-container, #morph", { opacity: 0, y: -10, scale: 0.8, duration: 0.8, ease: "circ" })
-            .from("div.try-agent", { y: 3, opacity: 0, duration: 2, delay: 0.3, ease: "back" })
+        const mm = gsap.matchMedia()
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            lt.from(".morph-container, #morph", { opacity: 0, scale: 0.8, duration: 0.8, ease: "circ" })
+        })
+        lt.from("div.try-agent", { y: 3, opacity: 0, duration: 2, delay: 0.3, ease: "back" })
     })
 
     return (
@@ -64,7 +67,7 @@ export default function HomePage() {
                 <div id="morph"></div>
                 <span>AI</span>
             </div>
-            <div className="try-agent" style={{ marginTop: "0.5em", fontSize: "0.9em"}}>try agent</div>
+            <div className="try-agent" style={{ marginTop: "0.5em", fontSize: "0.9em" }}>try agent</div>
             <div style={{
                 position: "absolute",
                 bottom: "0",
