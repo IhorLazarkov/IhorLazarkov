@@ -81,22 +81,21 @@
   }
 
   & span {
-    --font-size: 1.5em;
+    --font-size: 1.3em;
     position: absolute;
     bottom: calc(var(--font-size) / 2);
     right: calc(var(--font-size) / 2);
     color: black;
     font-weight: 600;
     font-size: var(--font-size);
-    opacity: 0.5;
   }
 }
 
 #morph {
-  height: 64px;
-  width: 64px;
+  height: 52px;
+  width: 52px;
   background-color: var(--border-color);
-  animation: morph 7.5s linear infinite alternate, rotate 15s linear infinite;
+  animation: morph 7.5s linear infinite alternate, rotate 14s linear infinite;
 }
 
 @keyframes rotate {

@@ -5,10 +5,20 @@ import {
     faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function HomePage() {
+    const navigation = useNavigate()
+
+    useGSAP(() => {
+        const lt = gsap.timeline()
+        lt.from(".morph-container, #morph", { opacity: 0, y: -10, scale: 0.8, duration: 1 })
+            .from("div.try-agent", { y: 20, opacity: 0, duration: 1, delay: 0 })
+    })
+
     return (
         <div className="intro-container">
             <div className="round-img-container">
@@ -49,10 +59,12 @@ export default function HomePage() {
                         <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
                 </div>
             </div>
-            <div className="morph-container">
+            <div className="morph-container"
+                onClick={() => navigation("/IhorLazarkov/agent")}>
                 <div id="morph"></div>
                 <span>AI</span>
             </div>
+            <div className="try-agent" style={{ marginTop: "0.5em", fontSize: "0.9em" }}>try agent</div>
             <div style={{
                 position: "absolute",
                 bottom: "0",

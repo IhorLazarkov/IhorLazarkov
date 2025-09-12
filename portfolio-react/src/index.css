@@ -6,6 +6,7 @@
   color-scheme: light dark;
   --border-color: #ffffff;
   --bg-color: #242424;
+  --info: lightblue;
   color: var(--border-color);
   background-color: var(--bg-color);
 
@@ -28,5 +29,12 @@
     background-color: #ffffff;
     --bg-color: #ffffff;
     --border-color: #272727;
+    --info: rgb(39, 39, 223);
+  }
+
+  .morph-container {
+    & span {
+      color: var(--bg-color) !important;
+    }
   }
 }

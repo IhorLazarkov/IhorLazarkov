@@ -153,6 +153,11 @@ nav {
       width: 100%;
     }
   }
+  /* AI agent */
+  .ai-agent-container {
+    width: 90% !important;
+    --nav-bar-h: 4em !important;
+  }
 }
 
 @media only screen and (orientation: portrait) {

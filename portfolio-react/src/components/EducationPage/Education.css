@@ -10,8 +10,9 @@
   display: flex;
   gap: 1em;
 
-  & img {
+  & img, svg {
     width: 30%;
+    fill: var(--border-color);
   }
 }
 

@@ -1,0 +1,33 @@
+.ai-agent-container {
+  --nav-bar-h: 0em;
+  --width: 80%;
+  border: 0px solid red;
+
+  width: var(--width);
+  margin: var(--nav-bar-h) auto 0 auto;
+
+  & .actions-toolbar {
+
+    & nav {
+      width: 100%;
+      border-color: var(--bg-color);
+    }
+
+    & button {
+      cursor: pointer;
+      font-size: 1em;
+      width: fit-content;
+      background-color: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 0.2em;
+      margin-block: 0.3em;
+      padding-block: 0.2em;
+    }
+  }
+
+  & .answer{
+    & li {
+      margin-top: 0.4em;
+    }
+  }
+}
