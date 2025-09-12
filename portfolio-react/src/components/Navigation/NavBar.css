@@ -114,7 +114,7 @@ nav {
   .project-tile {
     flex-direction: column;
     padding-top: 2em;
-    
+
     & video {
       width: 100% !important;
       height: auto;
@@ -124,7 +124,7 @@ nav {
       padding-left: 0;
       list-style: inside !important;
 
-      & li{
+      & li {
         margin-block: 0.4em;
       }
     }
@@ -140,7 +140,7 @@ nav {
 
     & .education-tile {
       flex-direction: column;
-      margin-bottom: 1em;;
+      margin-bottom: 1em;
     }
   }
   /* Awards */
@@ -152,6 +152,11 @@ nav {
     & .award-tile {
       width: 100%;
     }
+  }
+  /* AI agent */
+  .ai-agent-container {
+    width: 90% !important;
+    --nav-bar-h: 4em !important;
   }
 }
 

@@ -70,7 +70,35 @@ function ExperiancePage() {
                     Participate in community meetings, attentively listen to changes being introduced by others and present completed work.
                 </li>
             </ul>
-
+        </div>
+        <div className="work-tile">
+            <div className="work-tile-head">
+                <h4>(Experience in Post Secondary education) Full Stack Engineer - App Academy, Remote | Dec 2024 - May 2025</h4>
+                <hr />
+            </div>
+            <div className="work-tile-body">
+                Worked as Full-Stack Development in a team of up to 4
+                engineers to create e-commerce web-applications.
+                Contributed in architecture design, implementation of
+                back-end and front-end components, code review, testing,
+                merge and deployments.
+            </div>
+            <div>
+                <p>
+                    <i>Tech stack:</i>HTML, CSS, React, JavaScript, Flask, Redux, Sequelize, SQLAchemi, SQLite, Postgres, Docker, Git, Geolocation API, Speech recognition API, Google Maps API
+                </p>
+            </div>
+            <ul style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+                <li>Created host server from ground-up by configuring NGINX to serve as reverse proxy to both HTTP 1.1 and WebSockets web-services and web-apps with support of HTTPS with self-sign certificate generated via openssl;</li>
+                <li>Integrated ORM systems to establish persistence of state of web-service by creating models with validators and dependencies (e.g. one-to-one, one-to-many, many-to-many), versioned migrations to create tables in database and schema, and seed files to populate values in database to perform testing or demos.</li>
+                <li>Designed and Implemented GET, POST, PUT, DELETE routes and error-handling middleware based on HTTP 1.1 for RESTful web-services using sync/async functions, try/catch blocks to catch errors and transfer them to error handling middlewares for resilience and overall up-time;</li>
+                <li>Implemented and Tested transactional data persistence by using Transaction entity of ORM within try/catch block in sensitive pieces of functionality such as update or delete of an item and its dependent entities to guarantee data integrity;</li>
+                <li>Implemented state management store on client side of web-app with utilizing of sync and async (thunk) approaches to perform CRUD communications with back-end;</li>
+                <li>Designed and developed reusable React UI components with optimal utilization of react hooks (e.g. useState, useRef, useSelect etc.) for optimal rendering to provide better responsiveness and user experience;</li>
+                <li>Perform effective bug fix by efficient root cause analysis utilizing debugging tools (e.g. Chrome devotools, React devtools), analyzing logs and applying of gained high level of expertise in the business domain which helped a team to deliver on time;</li>
+                <li>Communicated effectively within a team by creating meeting agenda and timeframe, responsive to emails, analyzing issues independently and asking questions with clearly composed questions;</li>
+                <li>Gathered web-apps statistics using Grafana to identify users visits rate daily, journey paths by storing called URIs with sessions Ids.</li>
+            </ul>
         </div>
         <div id="accenture" className="work-tile">
             <div className="work-tile-head">

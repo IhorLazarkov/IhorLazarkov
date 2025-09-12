@@ -7,6 +7,7 @@ import ExperiancePage from './components/ExperiencePage/ExperiancePage'
 import ProjectsPage from './components/ProjectsPage/ProjectsPage'
 import EducationPage from './components/EducationPage/EducationPage'
 import AwardsPage from './components/AwardsPage/AwardsPage'
+import AiAgentPage from './components/AiAgentPage/AiAgentPage'
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "/IhorLazarkov/projects", element: <ProjectsPage /> },
       { path: "/IhorLazarkov/education", element: <EducationPage /> },
       { path: "/IhorLazarkov/recognition", element: <AwardsPage /> },
+      { path: "/IhorLazarkov/agent", element: <AiAgentPage /> },
     ]
   }
 ])

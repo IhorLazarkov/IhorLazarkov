@@ -5,10 +5,23 @@ import {
     faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function HomePage() {
+    const navigation = useNavigate()
+
+    useGSAP(() => {
+        const lt = gsap.timeline({ autoRemoveChildren: true })
+        const mm = gsap.matchMedia()
+        mm.add("(prefers-reduced-motion: no-preference)", () => {
+            lt.from(".morph-container, #morph", { opacity: 0, scale: 0.8, duration: 0.8, ease: "circ" })
+        })
+        lt.from("div.try-agent", { y: 3, opacity: 0, duration: 2, delay: 0.3, ease: "back" })
+    })
+
     return (
         <div className="intro-container">
             <div className="round-img-container">
@@ -49,16 +62,19 @@ export default function HomePage() {
                         <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
                 </div>
             </div>
+            <div className="morph-container"
+                onClick={() => navigation("/IhorLazarkov/agent")}>
+                <div id="morph"></div>
+                <span>AI</span>
+            </div>
+            <div className="try-agent" style={{ marginTop: "0.5em", fontSize: "0.9em" }}>try agent</div>
             <div style={{
                 position: "absolute",
                 bottom: "0",
-                fontSize:"0.6em"
+                fontSize: "0.5em"
             }}>
-                © {new Date().getFullYear()} Ihor Lazarkov. All rights reserved.</div>
-            {/* <ul>
-               <li><FontAwesomeIcon icon={faMobile}/> (615) 506 - 9411 <FontAwesomeIcon icon={faCopy}/></li>
-               <li><FontAwesomeIcon icon={faMailBulk}/> ilazarkov@gmail.com <FontAwesomeIcon icon={faCopy}/></li> 
-            </ul> */}
+                © {new Date().getFullYear()} Ihor Lazarkov. All rights reserved.
+            </div>
         </div>
     );
 }
