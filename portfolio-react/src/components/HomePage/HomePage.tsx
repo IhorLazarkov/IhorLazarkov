@@ -19,7 +19,7 @@ export default function HomePage() {
         mm.add("(prefers-reduced-motion: no-preference)", () => {
             lt.from(".morph-container, #morph", { opacity: 0, scale: 0.8, duration: 0.8, ease: "circ" })
         })
-        lt.from("div.try-agent", { y: 3, opacity: 0, duration: 2, delay: 0.3, ease: "back" })
+        lt.from("div.try-agent", { y: 3, opacity: 0, duration: 1, ease: "back" })
     })
 
     return (

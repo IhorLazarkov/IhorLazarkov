@@ -34,8 +34,9 @@ nav {
       font-weight: bold;
     }
 
-    & a:hover {
+    & .active, a:hover {
       text-decoration: underline;
+      text-underline-offset: 0.3em;;
     }
   }
 }
@@ -82,8 +83,8 @@ nav {
     }
 
     & ul {
-      padding-left: 0;
-      list-style: none !important;
+      /* padding-left: 0; */
+      list-style: inside;
     }
   }
   /* Experience */

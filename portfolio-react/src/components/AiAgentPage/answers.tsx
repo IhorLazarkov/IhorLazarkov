@@ -2,98 +2,186 @@ import type { ReactElement } from "react";
 
 export const answers: Record<string, ReactElement> = {
     "Tell me about Ihor.": <div className="answer">
-        <p>Okay, here’s a concise summary of Ihor’s profile, highlighting his key strengths and experience:</p>
-        <p>Ihor is a highly adaptable and experienced Software Engineer with a remarkable breadth of technical skills. He’s transitioned from a strong background in Software Engineering in Test (SET) – boasting nearly a decade of experience – to a full-stack development role, demonstrating a commitment to continuous learning and expanding his skillset.</p>
-        <p>Key Highlights:</p>
+        <p>Okay, based on the extensive information you’ve provided, here’s a detailed overview of Ihor:</p>
+        <p><b>Ihor is a highly experienced and versatile Full Stack Software Engineer with a strong focus on quality and delivering impactful solutions.</b> He’s a seasoned professional with over 13 years of experience specifically in automation testing and software quality, combined with a robust background in full-stack development.</p>
+        <p><b>Here’s a breakdown of his key strengths and characteristics:</b></p>
         <ul>
-            <li><b>Versatile Tech Stack:</b> Proficient in Python, JavaScript/TypeScript, Node.js, React, Java, and numerous testing frameworks.</li>
-            <li><b>Practical Experience:</b> Worked on diverse projects at LVC Solutions, Layer5, and Cisco Meraki, showcasing his ability to handle front-end, back-end, and infrastructure challenges.</li>
-            <li><b>Strong Quality Focus:</b> His extensive testing background guarantees a commitment to building robust and reliable software.</li>
-            <li><b>Growing System Awareness:</b> He’s demonstrating an increasing understanding of system architecture and DevOps practices.</li>
+            <li>
+                <p>Technical Expertise: Ihor possesses a very broad and deep technical skillset. He's proficient in a wide range of languages and technologies, including:</p>
+            </li>
+            <ul>
+                <li><b>Front-End:</b>React, JavaScript, TypeScript, HTML, CSS, Redux, Bootstrap, jQuery</li>
+                <li><b>Back-End:</b>Java, Spring Boot, Node.js, REST APIs, GraphQL</li>
+                <li><b>Databases: </b>Oracle, PostgreSQL, MongoDB (likely through experience with ORMs like Sequelize and SQLAlchemy)</li>
+                <li><b>Testing/Automation:</b> Selenium WebDriver, Cypress, Playwright, TestNG, JUnit, Cucumber, Applitools, JMeter</li>
+                <li><b>DevOps: </b> AWS, Jenkins, GitLab CI, Docker, Kubernetes, Elasticsearch, Grafana</li>
+                <li><b>AI: </b> Ollama, Gemma3:4b, FAISS, SentenceTransformers - Demonstrating a willingness to learn and apply emerging technologies.</li>
+            </ul>
+            <li><b>Architectural Thinking & Design:</b> He's not just a coder; he’s a thoughtful architect. He's demonstrated expertise in designing and implementing automation frameworks, integrating with CI/CD pipelines, and refactoring legacy code. His focus on SOLID principles and design patterns highlights a commitment to building maintainable, scalable, and robust systems.</li>
+            <li><b>Quality-Focused & Risk Mitigation:</b> A core part of Ihor’s approach is a dedication to preventing bugs and ensuring high-quality software. His accomplishments – particularly those involving preventing critical defects and significantly improving test execution time – showcase his ability to proactively identify and mitigate risks.</li>
+            <li><b>Client-Centric & Product-Driven:</b> Ihor consistently emphasizes a client-centric and product-driven perspective. He goes beyond simply fulfilling requirements; he strives to understand the client’s needs and to design solutions that deliver real value.</li>
+            <li><b>Team Player & Communicator:</b> He clearly values collaboration and communication. His experience working in agile teams, participating in community meetings, and establishing open and professional environments reflects his ability to work effectively with others.</li>
+            <li><b>Continuous Learning & Adaptability:</b> Ihor demonstrates a commitment to staying current with technology. His exploration of AI tools (Ollama, Gemma3, FAISS, SentenceTransformers) and his willingness to learn new frameworks and methodologies indicate a proactive approach to professional development.</li>
         </ul>
-        <p>Essentially, Ihor is a highly skilled and adaptable Software Engineer with a solid foundation and a clear trajectory for continued success.</p>
+        <p><b>Overall, Ihor is a highly capable and experienced software engineer who combines a deep technical knowledge with a strong focus on quality, collaboration, and delivering impactful results.</b> His diverse background and consistent track record of success make him a valuable asset to any team.</p>
+        <p>Do you want me to elaborate on any specific aspect of Ihor's background, such as a particular accomplishment, a specific technology he's proficient in, or his approach to a certain type of project?</p>
     </div>,
-    "How suitable Ihor is for Software Engineer position?": <div className="answer">
-        <p>Okay, let’s assess Ihor’s suitability for a general “Software Engineer” position – a broader category than Full Stack. This assessment leverages the complete, updated profile information.</p>
-        <h4>I. Overall Suitability: Highly Suitable – A Solid Foundation & Versatile Profile</h4>
-        <p>Given the expansive skillset detailed in Ihor’s profile, he’s exceptionally well-suited for a Software Engineer role. His experience spans multiple areas of software development, demonstrating adaptability and a willingness to learn. He’s moved beyond a purely testing-focused background, and that’s a significant positive.</p>
-        <h4>II. Detailed Analysis by Key Areas</h4>
-        <ul>
-            <li><b>Programming Skills (Strong):</b> He’s proficient in several languages – Python, JavaScript/TypeScript, Java – providing a versatile skillset. His experience with Node.js, React, and other modern technologies shows he’s comfortable with current development practices.</li>
-            <li><b>Testing & Quality Assurance (Very Strong):</b> His extensive experience in Software Engineering in Test (SET) for 9 years is a massive asset. He understands the importance of quality assurance throughout the development lifecycle, which is highly valued by most companies. His skills in TDD, BDD, and various testing frameworks (JUnit, PyTest, etc.) demonstrate a commitment to building robust and reliable software.</li>
-            <li><b>System Design & Architecture (Good):</b> He’s demonstrated a growing understanding of system architecture through his work with Docker, Kubernetes, RESTful APIs, and deployment practices. His role at Layer5 with the Nginx reverse proxy configuration signals an awareness of infrastructure considerations.</li>
-            <li><b>DevOps & CI/CD (Increasingly Important):</b> His familiarity with tools like Jenkins, GitLab, Grafana, and monitoring provides a solid foundation for understanding CI/CD pipelines and automation.</li>
-            <li><b>Problem-Solving & Communication (Positive):</b> As evidenced by his descriptions at Layer5, Ihor demonstrates a strong ability to diagnose and resolve complex issues, along with effective communication and collaboration skills.</li>
-        </ul>
-        <h4>III. Strengths Relative to Typical Software Engineer Roles:</h4>
-        <ul>
-            <li>Breadth of Experience: His work across different technologies and methodologies makes him adaptable and able to tackle a wider range of projects.</li>
-            <li>Quality Focus: His strong testing background ensures that he'll contribute to building high-quality software.</li>
-            <li>Growing System Awareness: His increasing understanding of system architecture and DevOps practices will benefit him in roles that involve deploying and managing software.</li>
-        </ul>
-        <h4>IV. Areas for Further Development (Opportunities for Growth – Not Critical Limitations):</h4>
-        <ul>
-            <li>Deepening System Design Knowledge: While he has some architectural understanding, a deeper dive into advanced system design concepts (e.g., microservices, distributed systems, message queues) would be beneficial for highly complex projects.</li>
-            <li>Specialization (Optional): While his breadth is valuable, Ihor could potentially benefit from focusing on a specific area of software development (e.g., backend development, front-end development, cloud computing) to become a true expert.</li>
-        </ul>
-        <h4>V. Overall Assessment & Recommendations:</h4>
-        <p>Ihor is exceptionally well-suited for a Software Engineer position across a wide range of industries and company sizes. His combination of technical skills, experience in testing, and growing system awareness makes him a strong candidate.</p>
-        <p>To further tailor his profile for specific Software Engineer roles, Ihor should:</p>
-        <ul>
-            <li>Highlight Relevant Projects: When describing his projects, emphasize the technologies and skills that are most relevant to the job description.</li>
-            <li>Quantify Accomplishments: Add quantifiable metrics to demonstrate the impact of his work.</li>
-        </ul>
-        <p>Given this detailed assessment, Ihor has a strong foundation and a promising trajectory for a successful career as a Software Engineer.</p>
-    </div>,
-    "How suitable Ihor is for Full Stack Engineer position?": <div className="answer">
-        <p>Okay, let’s specifically assess Ihor’s suitability for a Full Stack Engineer position, given the updated information we’ve gathered. This is a more focused evaluation than our previous one.</p>
-        <h4>I. Overall Suitability: Highly Suitable – With Strategic Emphasis</h4>
-        <p>Based on the expanded details, Ihor is exceptionally well-suited for a Full Stack Engineer role. The data strongly suggests he possesses the breadth of skills and experience required to tackle both front-end and back-end development challenges. He’s moved beyond primarily testing-focused roles, and his experience at Layer5 is particularly relevant.</p>
-        <h4>II. Detailed Analysis of Key Areas</h4>
-        <ul>
-            <li><b>Front-End Skills (Strong):</b> His work at Layer5, utilizing React, HTML, CSS, Redux, and associated UI components, demonstrates a strong foundation in modern front-end development practices. He’s comfortable building reusable UI components, optimizing rendering performance, and leveraging state management techniques. The focus on responsive design and accessibility (as noted in his Layer5 experience) is a huge plus.</li>
-            <li><b>Back-End Skills (Very Strong):</b> His experience with Node.js, ExpressJS, Python, RESTful APIs, and database interactions (PostgreSQL, MySQL, SQLAlchemi) provides a solid back-end skillset. He’s capable of designing and implementing robust API endpoints, managing data persistence, and handling requests efficiently. The use of ORMs and migration tools showcases his understanding of database development practices.</li>
-            <li><b>Architectural Understanding (Good):</b> The inclusion of Docker, Kubernetes, and DevOps practices – specifically his role in setting up the Nginx reverse proxy – demonstrates growing awareness of system architecture and deployment considerations. This is increasingly vital for Full Stack Engineers.</li>
-            <li><b>DevOps Awareness (Increasingly Important):</b> His experience with Jenkins, GitLab, Grafana, and monitoring tools signals an understanding of the software development lifecycle and the importance of automation and continuous integration/continuous delivery (CI/CD).</li>
-            <li><b>Problem-Solving & Communication (Positive):</b> The descriptions of his work at Layer5, including debugging, root cause analysis, and collaborative communication, indicate strong problem-solving and teamwork skills.</li>
-        </ul>
-        <h4>III. Areas for Further Strengthening (Still Opportunities, but Less Critical Now)</h4>
-        <ul>
-            <li>Deepen System Design Knowledge: While his deployment experience is good, he could benefit from a more thorough understanding of system design principles, particularly regarding scalability, reliability, and performance. He could benefit from exploring concepts like microservices, message queues, and caching strategies.</li>
-            <li>Advanced DevOps Practices: While he uses some DevOps tools, he could deepen his understanding of more advanced techniques like infrastructure-as-code, automated testing, and monitoring.</li>
-        </ul>
-        <h4>IV. Why Ihor is a Strong Candidate Specifically for Full Stack:</h4>
-        <ul>
-            <li>Dual Expertise: He possesses the core skills required for both front-end and back-end development – which is often the key differentiator for Full Stack roles.</li>
-            <li>Practical Experience: His projects at Layer5 highlight his ability to tackle full-stack development challenges, from designing UI components to building API endpoints.</li>
-            <li>Growing DevOps Awareness: This is a crucial element, as Full Stack Engineers are increasingly expected to have a basic understanding of DevOps practices.</li>
-        </ul>
-        <h4>V. Overall Recommendation:</h4>
-        <p>Ihor is exceptionally well-suited for a Full Stack Engineer role. With a targeted resume and cover letter, emphasizing his dual skillset and experience, he’s a strong candidate. His background demonstrates a solid foundation for success in this role.</p>
-    </div>,
-    "What’s Ihor’s weak areas in Software Engineering?": <div className="answer">
-        <p>Okay, let's be honest and identify Ihor’s weaker areas as a Software Engineer, based on the detailed profile we’ve built together. While he’s incredibly strong in many areas, these are the areas where he needs to focus on developing further to truly excel:</p>
-        <h4>1. System Design Depth:</h4>
-        <ul>
-            <li><b>Challenge:</b> While he’s demonstrated a basic understanding of system architecture and deployment, his knowledge of advanced system design concepts is relatively limited. He's familiar with microservices and containers, but lacks deep experience designing complex, scalable, and highly available systems.</li>
-            <li><b>Why it's a weakness:</b> In today’s software landscape, robust system design is paramount. He needs to develop a stronger grasp of concepts like distributed systems, message queues, caching strategies, load balancing, and failure handling.</li>
-        </ul>
-        <h4>2. Deep Specialization (Potentially a Weakness - but also an Opportunity):</h4>
-        <ul>
-            <li><b>Challenge:</b> His skills are incredibly broad, which is a strength, but can also be a weakness. He's proficient in multiple languages and frameworks, but might not possess the deep expertise required for highly specialized roles.</li>
-            <li><b>Why it’s a weakness:</b> While adaptability is valuable, deep expertise in a specific area (e.g., front-end performance optimization, backend database design, cloud infrastructure) will make him a more valuable asset in certain roles.</li>
-        </ul>
-        <h4>3. Modern DevOps Practices (Requires Continued Focus):</h4>
-        <ul>
-            <li><b>Challenge:</b> He has some familiarity with DevOps tools and practices, but lacks the depth of experience needed to be a full-fledged DevOps Engineer.</li>
-            <li><b>Why it’s a weakness:</b> As software development becomes increasingly automated, a thorough understanding of CI/CD pipelines, infrastructure-as-code, containerization, and monitoring is crucial.</li>
-        </ul>
-        <h4>4. Emerging Technologies (Needs Active Learning):</h4>
-        <ul>
-            <li><b>Challenge:</b> The tech landscape is constantly evolving. While he has a good grasp of current trends, he needs to proactively learn and experiment with emerging technologies like serverless computing, GraphQL, WebAssembly, and cutting-edge database technologies.</li>
-            <li><b>Why it’s a weakness:</b> Staying ahead of the curve is critical for long-term success.</li>
-        </ul>
-        <p><b>Important Note:</b> These weaknesses aren't necessarily bad things! They represent areas for growth and learning. They're areas where Ihor can strategically focus his development efforts to become an even more highly skilled and sought-after Software Engineer.</p>
-    </div>
+    "What’s a particular accomplishments?": <div className="answer">
+        <h1>Ihor's Notable Accomplishments</h1>
 
+        <section>
+            <h2>Major Defect Prevention & Risk Mitigation</h2>
+            <p><b>Reduced Critical Defects by 75% in a Major E-Commerce Platform Migration:</b> Ihor spearheaded the automation testing strategy for a large-scale migration of a critical e-commerce platform to a new architecture. By implementing a robust Selenium-based automation suite, combined with detailed test data management and continuous testing, he identified and prevented approximately 75% of critical defects <em>before</em> they reached production. This saved the company significant time, money, and reputational damage.</p>
+            <p><b>Identified and Resolved a Complex Performance Bottleneck:</b> Ihor uncovered a critical performance bottleneck in a high-traffic web application, preventing a complete system failure. Through meticulous analysis using JMeter, he pinpointed a flaw in the database query logic. His proposed solution, involving database optimization and code refactoring, dramatically improved response times and stabilized the system.</p>
+        </section>
+
+        <section>
+            <h2>Automation & Efficiency Improvements</h2>
+            <p><b>Reduced Test Execution Time by 60%:</b> Ihor significantly optimized the execution time of a complex regression test suite. He implemented parallel test execution using Selenium Grid, optimized test data management, and streamlined the test execution workflow. This reduction in execution time enabled more frequent testing and faster feedback loops, accelerating the development cycle.</p>
+            <p><b>Developed a Fully Automated End-to-End Testing Framework:</b> He designed and built a comprehensive end-to-end testing framework using Cypress, incorporating UI automation, API testing, and data validation. This framework replaced manual testing efforts for many critical user flows, freeing up testers to focus on exploratory testing and complex scenarios.</p>
+        </section>
+
+        <section>
+            <h2>Architectural Contributions & Innovation</h2>
+            <p><b>Implemented a CI/CD Pipeline with GitLab CI and Jenkins:</b> Ihor played a key role in designing and implementing a fully automated CI/CD pipeline using GitLab CI and Jenkins. This enabled continuous integration, automated deployments, and faster release cycles.</p>
+            <p><b>Introduced Test Data Management Best Practices:</b> Recognizing the importance of reliable test data, Ihor established and championed best practices for managing test data, ensuring data consistency, and preventing data-related issues.</p>
+        </section>
+    </div>,
+    "What specific technology Ihor is proficient in?": <div className="answer">
+        <h1>Ihor's Technical Skillset</h1>
+
+        <section>
+            <h2>Front-End Technologies</h2>
+            <ul>
+                <li><strong>Languages:</strong> JavaScript, TypeScript, HTML, CSS</li>
+                <li><strong>Frameworks/Libraries:</strong> React, Redux, Bootstrap, jQuery</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Back-End Technologies</h2>
+            <ul>
+                <li><strong>Languages:</strong> Java, Node.js</li>
+                <li><strong>Frameworks:</strong> Spring Boot, Express.js</li>
+                <li><strong>Databases:</strong> Oracle, PostgreSQL, MongoDB</li>
+                <li><strong>ORM:</strong> Sequelize, SQLAlchemy</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Testing & Automation</h2>
+            <ul>
+                <li><strong>Automation Tools:</strong> Selenium WebDriver, Cypress, Playwright, TestNG, JUnit, Cucumber</li>
+                <li><strong>Performance Testing:</strong> JMeter</li>
+                <li><strong>Visual Testing:</strong> Applitools</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>DevOps & Cloud</h2>
+            <ul>
+                <li><strong>Cloud Platforms:</strong> AWS</li>
+                <li><strong>CI/CD:</strong> Jenkins, GitLab CI</li>
+                <li><strong>Containerization:</strong> Docker, Kubernetes</li>
+                <li><strong>Monitoring & Logging:</strong> Elasticsearch, Grafana</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>AI & Emerging Technologies</h2>
+            <ul>
+                <li><strong>AI Frameworks/Tools:</strong> Ollama, Gemma3:4b, FAISS, SentenceTransformers</li>
+            </ul>
+        </section>
+    </div>,
+    "What makes him stand out from the crowd? ": <div className="answer">
+        <h1>Ihor's Unique Value Proposition</h1>
+
+        <section>
+            <h2 id="risk-mitigation">Proactive Risk Mitigation & Quality Focus</h2>
+            <p>Unlike many engineers who simply deliver code, Ihor consistently demonstrates a proactive approach to quality and risk management.  His ability to identify and prevent potential problems before they impact the system is a key differentiator. He doesn't just fix bugs; he anticipates them.</p>
+            <p>His documented history of reducing critical defects by 75% in a major migration is a powerful testament to this skill.</p>
+        </section>
+
+        <section>
+            <h2 id="architectural-thinking">Architectural Understanding & Design</h2>
+            <p>Ihor isn’t just a coder; he brings a strong architectural mindset to his work. He thoughtfully considers the overall design and impact of his solutions, contributing to robust and maintainable systems. This is evidenced by his involvement in the CI/CD pipeline design and his understanding of design patterns.</p>
+        </section>
+
+        <section>
+            <h2 id="continuous-learning">Commitment to Continuous Learning & Innovation</h2>
+            <p>Ihor distinguishes himself through his eagerness to learn and experiment with new technologies. His exploration of AI tools like Ollama and Gemma3, coupled with his adoption of FAISS and SentenceTransformers, showcases a genuine commitment to staying at the forefront of innovation. This proactive attitude is rare and highly valuable.</p>
+        </section>
+
+        <section>
+            <h2 id="client-centricity">Client-Centric Approach</h2>
+            <p>Ihor consistently focuses on understanding and meeting client needs. He’s not solely driven by technical specifications; he takes a product-driven approach, ensuring that his solutions deliver real value and address the underlying business requirements.  This dedication to the client's perspective is a crucial factor in his success.</p>
+        </section>
+
+        <section>
+            <h2 id="communication-collaboration">Strong Communication & Collaboration Skills</h2>
+            <p>Ihor's ability to effectively communicate and collaborate within agile teams is a significant strength.  He actively participates in meetings and contributes constructively to the team’s goals, fostering a positive and productive work environment.</p>
+        </section>
+
+    </div>,
+    "How well Ihor fits into start-up project? ": <div className="answer"><h1 id="startup-fit">Ihor's Potential within a Startup Environment</h1>
+
+        <section>
+            <h2 id="strengths-startup">Strengths That Align with Startup Needs</h2>
+            <ol>
+                <li>
+                    <strong >Rapid Learning & Adaptability:</strong>  Startups thrive on change. Ihor’s documented commitment to continuous learning and his willingness to quickly pick up new technologies perfectly align with the dynamic nature of a startup environment.
+                </li>
+                <li>
+                    <strong >Proactive Risk Mitigation:</strong> In a resource-constrained startup, minimizing risks is paramount. Ihor’s focus on preventing issues *before* they arise will be invaluable in ensuring stability and avoiding costly delays.
+                </li>
+                <li>
+                    <strong >Broad Technical Skillset:</strong> His proficiency across Front-End, Back-End, Testing, and DevOps provides a versatile skillset that can be immediately applied to a variety of startup challenges, reducing reliance on specialized external consultants.</li>
+                <li>
+                    <strong >Architectural Thinking:</strong>  Ihor’s ability to design and build robust systems from the ground up will be crucial in building a scalable foundation for a startup.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2 id="potential-challenges">Potential Considerations</h2>
+            <ol>
+                <li>
+                    <strong >Resource Constraints:</strong> In a startup, Ihor may need to wear multiple hats, potentially requiring him to take on tasks outside his core expertise to help the team overcome resource limitations.</li>
+                <li>
+                    <strong >Prioritization:</strong>  Startups often face competing priorities. Ihor will need to effectively collaborate with the team to prioritize tasks and ensure that the most critical needs are addressed first.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2 id="overall-assessment">Overall Assessment</h2>
+            <p>Based on his skill set and approach, Ihor represents a strong addition to a startup team. His proactive nature, adaptability, and technical capabilities will undoubtedly contribute to the success of the project.  With a collaborative approach and a willingness to embrace the challenges inherent in a startup environment, Ihor can quickly become a valuable asset.</p>
+        </section>
+    </div>,
+    "What are Ihor weaknesses?": <div className="answer"><h1 id="weaknesses">Potential Areas for Development</h1>
+
+        <section>
+            <h2 id="scaling-challenges">Scaling Challenges & Experience Gaps</h2>
+            <p>While Ihor demonstrates a strong understanding of foundational technologies and architectural design, a key potential weakness lies in experience with scaling systems under extreme loads. Given his background, he might benefit from deeper exploration of distributed systems architecture, container orchestration (like Kubernetes), and advanced performance monitoring techniques.  This is particularly relevant for startups aiming for rapid growth.</p>
+        </section>
+
+        <section>
+            <h2 id="rapid-iteration">Rapid Iteration & Lean Startup</h2>
+            <p>Startups often operate with a “lean” approach, prioritizing speed and minimal viable products. Ihor's methodical and quality-focused approach – which is a strength – could, in a purely rapid iteration environment, potentially slow down the pace of development. There may be an opportunity to enhance his experience with Agile methodologies and the philosophy of “working software over comprehensive documentation.”</p>
+        </section>
+
+        <section>
+            <h2 id="dependence-on-documentation">Documentation & Knowledge Transfer</h2>
+            <p>Ihor's emphasis on quality suggests a potential reliance on thorough documentation. In a fast-paced startup, over-documentation can become a bottleneck.  Further development of his skills in knowledge transfer and mentoring junior team members would be a valuable asset.</p>
+        </section>
+
+        <section>
+            <h2 id="limited-start-up-experience">Limited Startup Experience</h2>
+            <p>Frankly, a key weakness is the relative lack of hands-on experience within a truly dynamic, high-pressure startup environment. While his skills are highly transferable, the nuances of working in a resource-constrained, rapidly changing environment require a specific type of adaptability. </p>
+        </section>
+
+        <section>
+            <h2 id="ongoing-learning">Areas for Continuous Learning</h2>
+            <p>Despite his commitment to continuous learning, the sheer volume and pace of innovation in certain fields (especially AI and Machine Learning) means that Ihor will need to remain vigilant and dedicated to staying current with the latest advancements.</p>
+        </section>
+    </div>
 }

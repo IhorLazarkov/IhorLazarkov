@@ -1,4 +1,3 @@
-
 .what-i-do-container {
   --left-side-w: 20%;
   position: relative;
@@ -10,13 +9,20 @@
     width: var(--left-side-w);
 
     & ul {
+      list-style: none;
+
       & a {
         cursor: pointer;
         text-decoration: none;
       }
 
+      & li {
+        margin-block: 1em;
+      }
+
       & li:hover {
         text-decoration: underline;
+        text-underline-offset: 0.3em;
       }
     }
   }
@@ -25,14 +31,13 @@
     --margin-left: calc(100% - (100% - var(--left-side-w)));
     margin-left: var(--margin-left);
     width: calc(60%);
-  }
-
-  & ul {
-    margin: 0;
-    list-style: none;
 
     & li {
-      margin-bottom: 1em;
+      list-style: outside;
+      margin-block: 1em;
+      & strong {
+        text-transform: uppercase;
+      }
     }
   }
 }
