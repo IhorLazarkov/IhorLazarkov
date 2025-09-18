@@ -9,27 +9,64 @@ const fsEngineer: ReactElement = <div id="fs-article">
     <p>I am passionate about designing and implementing innovative programmatic solutions. My goal is to deliver efficient, user-friendly, and scalable applications tailored to meet client needs.</p>
 </div>
 
-const seEngineer: ReactElement = <div id="se-article">
-    <h1>Software Engineer</h1>
-    <p>I've been Software Engineer for 9+ years and created software to test desktop, web-application including frontend and backend.</p>
-    <p>Even thought on June 2025 I graduated at App Academy and became certified Software Engineer.</p>
-    <p>My skill set encompasses Full Stack Engineering what complemented by substantial experience in Software Engineering in Test – skills that have prepared me for a successful and productive Mid-Senior Software Engineer position.</p>
-    <p>My technological stack includes:</p>
-    <ul style={{ listStyle: "outside" }}>
-        <li><strong>Programming Languages:</strong> Java, JavaScript, TypeScript, Python</li>
-        <li><strong>Network Technologies:</strong> HTTP(S)1.1/2, TLS, gRPC, WebRTC, WebSockets, REST, NodeJS, Browser APIs</li>
-        <li><strong>Frameworks:</strong> React, Bootstrap, jQuery, Redux, Spring Boot, Flask</li>
-        <li><strong>ORM:</strong> Sequelize, Alembic, SQLAlchemy, Hibernate</li>
-        <li><strong>Databases:</strong> Oracle, PostgreSQL</li>
-        <li><strong>Message/Notification Technologies:</strong> Kafka, IBM MQ, Tibco EMS, RabbitMQ</li>
-        <li><strong>Testing:</strong> Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver, Postman, RestAssured, Cucumber, Serenity BDD, Gherkin</li>
-        <li><strong>CI/CD:</strong> Jenkins, GitLab CI, TeamCity</li>
-        <li><strong>AI:</strong> Ollama, Gemma3:4b, FAISS, SentenceTransformers</li>
-        <li><strong>Version Control:</strong> Git, GitHub</li>
-        <li><strong>Virtualization Technologies:</strong> Docker, Kubernetes</li>
-        <li><strong>Cloud:</strong> AWS</li>
-        <li><strong>Project Management Tools:</strong> npm, pip/pipenv, Gradle</li>
-        <li><strong>Logging & Monitoring:</strong> Elasticsearch, Grafana</li>
+const aboutMe: ReactElement = <div id="aboutMe-article">
+    <h1>About Me</h1>
+    <p>
+        I'm Full Stack Engineer / Senior Software Engineer in Test (10+ years) / Senior Software Automaton Engineer (13+ years)
+        with a focus on building scalable, high-performance web apps and helping the firms to establish trust with its customers
+        by providing high-quality services. My strategy is to split work in phases that concentrated on
+        fast delivery of business critical functionality within high-quality standards and improve gradually.
+    </p>
+    <p>
+        I am product centric - regardless of position in a team I aspire to contribute and to be a supportive, transparent team player to deliver meaningful product.
+        Therefore, I've developed my expertise in software development as well as quality control.
+    </p>
+    <p>I am client centric. I often find my self spending extra time with a software for inspiration of innovation to make software better for client.</p>
+    <p>I believe in software should be simple.</p>
+
+    <div style={{
+        marginBlock: "1em",
+        display: "flex",
+        flexDirection: "column",
+        gap: "1",
+        border: "1px solid var(--border-color)",
+        padding: "1em"
+    }}>
+        <h4 style={{ margin: "0" }}>Notable accomplishments & achievements</h4>
+        <ul style={{ margin: "0" }}>
+            <li>Architected, designed and implemented POC of automation tool using Java Core, JavaEE, Spring Boot, Hibernate for ELT testing that laid a foundation for future success and growth of the team.</li>
+            <li>Prevent numerous bugs escaping to production what prevented damaging of firm's reputation and hours and hours of work of several teams to investigate, fix and rollback.</li>
+            <li>Drastic improvement of legacy automation framework of application with distributed services architecture
+                by design and implementation of adaptors to perform robust validation of database state persistence and EMS messages. Resulted in
+                60% decrease of automation execution time and 50% reliability improvement.
+            </li>
+            <li>Meticulous code analysis of a transitioned project by debugging,
+                gaining ownership of a code-base, refactoring and results are: stability improvements,
+                decrease of duplicated code by ~1800 lines, tests execution time is up by 40%.
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+const skills: ReactElement = <div id="skills-article">
+    <h3><i>Soft skills</i></h3>
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "1em" }}>
+        <span>COMMUNICATION</span>
+        <span>PROBLEM SOLVING</span>
+        <span>CRITICAL THINKING</span>
+        <span>CREATIVITY</span>
+        <span>NEW TECH LEARNER</span>
+    </div>
+    <h3><i>Hard skills</i></h3>
+    <ul>
+        <li><strong>Languages </strong><div style={{ marginTop: "0.3em" }}>Java, JavaScript, TypeScript, Python</div></li>
+        <li><strong>Front end development</strong><div style={{ marginTop: "0.3em" }}>HTML, CSS3, React.JS, Bootstrap, jQuery, Redux, Spring Boot MVC, Flask, Browser APIs</div></li>
+        <li><strong>Backend / DB development</strong><div style={{ marginTop: "0.3em" }}>Sequelize, Alembic, SQLAlchemy, Spring Boot Application, Hibernate, Oracle, PostgreSQL, NodeJS, HTTP(S)1.1/2, TLS, gRPC, WebRTC, WebSockets, REST</div></li>
+        <li><strong>Testing / Automation</strong> <div style={{ marginTop: "0.3em" }}>Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver, Postman, RestAssured, Cucumber, Serenity BDD, Gherkin</div></li>
+        <li><strong>Message/Notification Technologies</strong><div style={{ marginTop: "0.3em" }}>Kafka, IBM MQ, Tibco EMS, RabbitMQ</div></li>
+        <li><strong>DevOps / Hosting</strong><div style={{ marginTop: "0.3em" }}>AWS, Jenkins, GitLab CI, TeamCity, Docker, Kubernetes, Elasticsearch, Grafana</div></li>
+        <li><strong>AI</strong><div style={{ marginTop: "0.3em" }}>Ollama, Gemma3:4b, FAISS, SentenceTransformers</div></li>
     </ul>
 </div>
 
@@ -73,7 +110,8 @@ const devOps: ReactElement = <div id="devops-article">
 // exportdoEn
 type TArticle = { ref: string, element: ReactElement }
 export const articles: Record<string, TArticle> = {
-    "Software Engineer": { ref: "se-article", element: seEngineer },
+    "About Me": { ref: "aboutMe-article", element: aboutMe },
+    "Skills": { ref: "skills-article", element: skills },
     "Full Stack Developer": { ref: "fs-article", element: fsEngineer },
     "Software Engineer in Test": { ref: "set-article", element: setEngineer },
     "Automation Test Engineer": { ref: "ate-article", element: ateEngineer },

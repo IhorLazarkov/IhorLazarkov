@@ -8,11 +8,6 @@
 
   & .actions-toolbar {
 
-    & nav {
-      width: 100%;
-      border-color: var(--bg-color);
-    }
-
     & button {
       cursor: pointer;
       font-size: 1em;
@@ -20,7 +15,7 @@
       background-color: var(--bg-color);
       border: 1px solid var(--border-color);
       border-radius: 0.2em;
-      margin-block: 0.3em;
+      margin: 0.3em;
       padding-block: 0.2em;
     }
   }
