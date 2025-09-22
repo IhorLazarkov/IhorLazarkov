@@ -13,13 +13,17 @@ import { useGSAP } from "@gsap/react";
 export default function HomePage() {
     const navigation = useNavigate()
 
+
     useGSAP(() => {
-        const lt = gsap.timeline({ autoRemoveChildren: true })
+        const lt = gsap.timeline({ repeat: -1 })
         const mm = gsap.matchMedia()
         mm.add("(prefers-reduced-motion: no-preference)", () => {
-            lt.from(".morph-container, #morph", { opacity: 0, scale: 0.8, duration: 0.8, ease: "circ" })
+            gsap.from(".morph-container, #morph", { opacity: 0, scale: 0.8, duration: 0.8, ease: "circ" })
         })
-        lt.from("div.try-agent", { y: 3, opacity: 0, duration: 1, ease: "back" })
+        lt.add(gsap.from("div.try-agent", { y: 3, opacity: 0, duration: 1, ease: "back", delay: 4 }))
+        lt.add(gsap.to("div.try-agent", { y: -3, opacity: 0, duration: 1, ease: "back", delay: 4 }))
+
+        lt.play();
     })
 
     return (
@@ -67,7 +71,7 @@ export default function HomePage() {
                 <div id="morph"></div>
                 <span>AI</span>
             </div>
-            <div className="try-agent" style={{ marginTop: "0.5em", fontSize: "0.9em" }}>try agent</div>
+            <div className="try-agent" style={{ marginTop: "0.5em", fontSize: "0.9em" }}>try my agent</div>
             <div style={{
                 position: "absolute",
                 bottom: "0",

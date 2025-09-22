@@ -18,7 +18,7 @@ const aboutMe: ReactElement = <div id="aboutMe-article">
         fast delivery of business critical functionality within high-quality standards and improve gradually.
     </p>
     <p>
-        I am product centric - regardless of position in a team I aspire to contribute and to be a supportive, transparent team player to deliver meaningful product.
+        I am product centric - regardless of position I'm in I aspire to contribute and to be a supportive, transparent team player to deliver meaningful product.
         Therefore, I've developed my expertise in software development as well as quality control.
     </p>
     <p>I am client centric. I often find my self spending extra time with a software for inspiration of innovation to make software better for client.</p>
@@ -32,7 +32,7 @@ const aboutMe: ReactElement = <div id="aboutMe-article">
         border: "1px solid var(--border-color)",
         padding: "1em"
     }}>
-        <h4 style={{ margin: "0" }}>Notable accomplishments & achievements</h4>
+        <h4 style={{ margin: "0" }}>Notable accomplishments</h4>
         <ul style={{ margin: "0" }}>
             <li>Architected, designed and implemented POC of automation tool using Java Core, JavaEE, Spring Boot, Hibernate for ELT testing that laid a foundation for future success and growth of the team.</li>
             <li>Prevent numerous bugs escaping to production what prevented damaging of firm's reputation and hours and hours of work of several teams to investigate, fix and rollback.</li>
@@ -62,7 +62,7 @@ const skills: ReactElement = <div id="skills-article">
     <ul>
         <li><strong>Languages </strong><div style={{ marginTop: "0.3em" }}>Java, JavaScript, TypeScript, Python</div></li>
         <li><strong>Front end development</strong><div style={{ marginTop: "0.3em" }}>HTML, CSS3, React.JS, Bootstrap, jQuery, Redux, Spring Boot MVC, Flask, Browser APIs</div></li>
-        <li><strong>Backend / DB development</strong><div style={{ marginTop: "0.3em" }}>Sequelize, Alembic, SQLAlchemy, Spring Boot Application, Hibernate, Oracle, PostgreSQL, NodeJS, HTTP(S)1.1/2, TLS, gRPC, WebRTC, WebSockets, REST</div></li>
+        <li><strong>Backend / DB development</strong><div style={{ marginTop: "0.3em" }}>Sequelize, Alembic, SQLAlchemy, Spring Boot Application, Hibernate, Oracle, PostgreSQL, NodeJS, NGINX, HTTP(S)1.1/2, TLS, gRPC, WebRTC, WebSockets, REST</div></li>
         <li><strong>Testing / Automation</strong> <div style={{ marginTop: "0.3em" }}>Playwright, Cypress, WebDriverIO, Mocha, TestNG, JUnit, Selenium WebDriver, Postman, RestAssured, Cucumber, Serenity BDD, Gherkin</div></li>
         <li><strong>Message/Notification Technologies</strong><div style={{ marginTop: "0.3em" }}>Kafka, IBM MQ, Tibco EMS, RabbitMQ</div></li>
         <li><strong>DevOps / Hosting</strong><div style={{ marginTop: "0.3em" }}>AWS, Jenkins, GitLab CI, TeamCity, Docker, Kubernetes, Elasticsearch, Grafana</div></li>

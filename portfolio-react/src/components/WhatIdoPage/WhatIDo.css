@@ -30,7 +30,7 @@
   & .right-side {
     --margin-left: calc(100% - (100% - var(--left-side-w)));
     margin-left: var(--margin-left);
-    width: calc(60%);
+    width: 60%;
 
     & li {
       list-style: outside;

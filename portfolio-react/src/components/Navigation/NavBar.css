@@ -34,9 +34,10 @@ nav {
       font-weight: bold;
     }
 
-    & .active, a:hover {
+    & .active,
+    a:hover {
       text-decoration: underline;
-      text-underline-offset: 0.3em;;
+      text-underline-offset: 0.3em;
     }
   }
 }
@@ -183,5 +184,21 @@ nav {
   }
   .intro-container {
     height: 0;
+  }
+}
+
+@media only print {
+  div:has(nav) > div {
+    display: none !important;
+  }
+  div[role="navigation"]{
+    display: none !important;
+  }
+  .right-side {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  .left-side {
+    display: none;
   }
 }
