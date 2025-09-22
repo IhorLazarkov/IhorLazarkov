@@ -76,8 +76,7 @@ function MobileMenu() {
 
 
     return (<>
-        <div role="navigation" aria-label="main navigation">
-            <div style={{ position: "relative" }}>
+        <div role="navigation" aria-label="main navigation" style={{ position: "relative" }}>
                 <div
                     ref={container}
                     style={{
@@ -125,7 +124,6 @@ function MobileMenu() {
                     {SecondaryNavBar()}
                 </div>
                 {isOpen && <nav
-                    role="navigation"
                     style={{
                         position: "fixed",
                         left: "0",
@@ -149,7 +147,6 @@ function MobileMenu() {
                         <li><NavLink onClick={() => setOpen(false)} to="/IhorLazarkov/recognition">Recognition</NavLink></li>
                     </ul>
                 </nav>}
-            </div>
         </div>
     </>);
 }
@@ -157,7 +154,7 @@ function MobileMenu() {
 function DesktopMenu() {
     return (
         <>
-            <div style={{ display: "flex", alignItems: "center"}}>
+            <div style={{ display: "flex", alignItems: "center", position: "relative" }}>
                 <nav>
                     <ul>
                         <li><NavLink to="/IhorLazarkov/"><FontAwesomeIcon icon={faHouse}></FontAwesomeIcon></NavLink></li>
@@ -168,7 +165,9 @@ function DesktopMenu() {
                         <li><NavLink to="/IhorLazarkov/recognition">Recognition</NavLink></li>
                     </ul>
                 </nav>
-                {SecondaryNavBar()}
+                <div style={{ position: "absolute", right: "0", top: "10px" }}>
+                    {SecondaryNavBar()}
+                </div>
             </div>
         </>
     );
@@ -205,6 +204,23 @@ function SecondaryNavBar() {
                 <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
             </svg>
         </a>
+        <button style={{
+            backgroundColor: "inherit",
+            color: "inherit",
+            border: "0"
+        }}
+            onClick={() => window.print()}>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                height="32px"
+                width="32px"
+                viewBox="0 -960 960 960"
+                style={{
+                    cursor: "pointer",
+                    fill: "var(--border-color)",
+                    marginRight: "1em"
+                }}>
+                <path d="M640-640v-120H320v120h-80v-200h480v200h-80Zm-480 80h640-640Zm560 100q17 0 28.5-11.5T760-500q0-17-11.5-28.5T720-540q-17 0-28.5 11.5T680-500q0 17 11.5 28.5T720-460Zm-80 260v-160H320v160h320Zm80 80H240v-160H80v-240q0-51 35-85.5t85-34.5h560q51 0 85.5 34.5T880-520v240H720v160Zm80-240v-160q0-17-11.5-28.5T760-560H200q-17 0-28.5 11.5T160-520v160h80v-80h480v80h80Z" /></svg>
+        </button>
     </div>
     )
 }
