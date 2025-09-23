@@ -191,14 +191,17 @@ nav {
   div:has(nav) > div {
     display: none !important;
   }
-  div[role="navigation"]{
+  div[role="navigation"] {
     display: none !important;
   }
-  .right-side {
-    width: 100% !important;
-    margin: 0 !important;
+  /* Home page */
+  .intro-container {
+    display: none !important;
   }
-  .left-side {
-    display: none;
+  #root > main > section {
+    display: none !important;
+  }
+  #print-form {
+    display: block !important;
   }
 }

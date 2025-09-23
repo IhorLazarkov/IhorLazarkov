@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "./Navbar";
 import { RiArrowUpSLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
+import PrintPage from "../PrintPage/PrintPage";
 
 export default function Navigation() {
     return (
@@ -10,6 +11,7 @@ export default function Navigation() {
             <main>
                 <Outlet />
                 <ScrollUp />
+                <PrintPage />
             </main>
         </>
     )
