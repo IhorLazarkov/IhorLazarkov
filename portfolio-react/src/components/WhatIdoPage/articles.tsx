@@ -11,7 +11,7 @@ const fsEngineer: ReactElement = <div id="fs-article">
 
 const aboutMe: ReactElement = <div id="aboutMe-article">
     <h1>About Me</h1>
-    <p>
+    <p className="for-print-form">
         I'm Full Stack Engineer / Senior Software Engineer in Test (10+ years) / Senior Software Automaton Engineer (13+ years)
         with a focus on building scalable, high-performance web apps and helping the firms to establish trust with its customers
         by providing high-quality services. My strategy is to split work in phases that concentrated on
@@ -59,7 +59,7 @@ const skills: ReactElement = <div id="skills-article">
         <span>NEW TECH LEARNER</span>
     </div>
     <h3><i>Hard skills</i></h3>
-    <ul>
+    <ul className="for-print-form">
         <li><strong>Languages </strong><div style={{ marginTop: "0.3em" }}>Java, JavaScript, TypeScript, Python</div></li>
         <li><strong>Front end development</strong><div style={{ marginTop: "0.3em" }}>HTML, CSS3, React.JS, Bootstrap, jQuery, Redux, Spring Boot MVC, Flask, Browser APIs</div></li>
         <li><strong>Backend / DB development</strong><div style={{ marginTop: "0.3em" }}>Sequelize, Alembic, SQLAlchemy, Spring Boot Application, Hibernate, Oracle, PostgreSQL, NodeJS, NGINX, HTTP(S)1.1/2, TLS, gRPC, WebRTC, WebSockets, REST</div></li>
