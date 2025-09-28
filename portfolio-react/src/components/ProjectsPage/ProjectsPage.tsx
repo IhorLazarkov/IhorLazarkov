@@ -79,7 +79,7 @@ function ProjectsPage() {
             ></video>
             <div className="project-description">
 
-                <a href="https://99.98.183.163:3001/"
+                <a href="http://rrh.ihorlazarkov-swe.in/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
