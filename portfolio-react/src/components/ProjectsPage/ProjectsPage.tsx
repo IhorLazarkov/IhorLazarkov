@@ -19,7 +19,7 @@ function ProjectsPage() {
                 muted></video>
             <div className="project-description">
 
-                <a href="https://99.98.183.163:3003/"
+                <a href="https://fornoroma.ihorlazarkov-swe.in/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -136,7 +136,7 @@ function ProjectsPage() {
             </div>
             <div className="project-description">
 
-                <a href="https://99.98.183.163:3002/"
+                <a href="https://wwt.ihorlazarkov-swe.in/"
                     target="_blank"
                     rel="noopener noreferrer">
                     <h4>Woodworking tool</h4>
