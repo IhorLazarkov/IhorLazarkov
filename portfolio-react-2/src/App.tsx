@@ -12,7 +12,7 @@ function App() {
       <section>
         <h1>Ihor Lazarkov</h1>
         <h2>Software Engineer</h2>
-        <p>I build cost effective systems from ground-up for small and medium business.</p>
+        <p>I build cost effective software systems from ground-up for small and medium business.</p>
         <nav>
           <ul>
             <li><a href="#about"></a>about</li>
