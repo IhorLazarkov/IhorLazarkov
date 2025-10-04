@@ -1,0 +1,30 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  --border-color: rgb(255, 255, 255);
+  --bg-color: rgb(26, 26, 46);
+  --accent: #b638e7;
+  --secondary-text: #a8a8c0;
+  color: var(--secondary-text);
+  border-color: var(--border-color);
+  background-color: var(--bg-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+/* cross-document view transition */
+@view-transition {
+  navigation: auto;
+}
