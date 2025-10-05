@@ -250,7 +250,7 @@ function App() {
           <a href="https://lvcfairjob.com/"
             target="_blank"
             rel="noopener noreferrer">
-            <div className='timeframe'><img src="lvcfairjob.png" alt="" /></div>
+            <div className='timeframe'><img src="./public/lvcfairjob.png" alt="" /></div>
             <div className="project-content">
               <div>
                 <h4>LVC SpotlIght Media</h4>
@@ -276,7 +276,7 @@ function App() {
           <a href="http://lvcspotlightmedia.com/"
             target="_blank"
             rel="noopener noreferrer">
-            <div className='timeframe'><img src="lvcspotlightmedia.png" alt="" /></div>
+            <div className='timeframe'><img src="./public/lvcspotlightmedia.png" alt="" /></div>
             <div className="project-content">
               <div>
                 <h4>LVC SpotlIght Media</h4>
@@ -301,7 +301,7 @@ function App() {
           <a href="https://fornoroma.ihorlazarkov-swe.in"
             target="_blank"
             rel="noopener noreferrer">
-            <div className='timeframe'><img src="fornoroma.png" alt="" /></div>
+            <div className='timeframe'><img src="./public/fornoroma.png" alt="" /></div>
             <div className="project-content">
               <div>
                 <h4>Forno Roma</h4>
@@ -329,7 +329,7 @@ function App() {
           <a href="https://rrh.ihorlazarkov-swe.in"
             target="_blank"
             rel="noopener noreferrer">
-            <div className='timeframe'><img src="rrh.png" alt="" /></div>
+            <div className='timeframe'><img src="./public/rrh.png" alt="" /></div>
             <div className="project-content">
               <div>
                 <h4>Rental Residence Hub</h4>
@@ -357,7 +357,7 @@ function App() {
           <a href="https://wwt.ihorlazarkov-swe.in"
             target="_blank"
             rel="noopener noreferrer">
-            <div className='timeframe'><img src="wwt.png" alt="" /></div>
+            <div className='timeframe'><img src="./public/wwt.png" alt="" /></div>
             <div className="project-content">
               <div>
                 <h4>Wood Working Tools</h4>
