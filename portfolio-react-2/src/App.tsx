@@ -5,21 +5,43 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef } from 'react';
 
 function App() {
+  const leftRef = useRef(null);
+  const rightRef = useRef(null);
+
+  useEffect(() => {
+    const leftContainer = leftRef.current;
+    if (!leftContainer) return;
+    const handleWheelScroll = (event) => {
+      const rightContainer = rightRef.current;
+      if (rightContainer) {
+        event.preventDefault();
+        rightContainer.scrollTop += event.deltaY;
+      }
+    };
+    leftContainer.addEventListener('wheel', handleWheelScroll);
+    return () => {
+      leftContainer.removeEventListener('wheel', handleWheelScroll);
+    };
+  }, []); // Empty dependency array ensures this runs only once after the initial render
+
   return (<div id="main">
-    <header>
+    <header ref={leftRef}>
       <section>
-        <h1>Ihor Lazarkov</h1>
-        <h2>Software Engineer</h2>
-        <p>I build cost effective software systems from ground-up for small and medium business.</p>
-        <nav>
-          <ul>
-            <li><a href="#about"></a>about</li>
-            <li><a href="#experience"></a>experience</li>
-            <li><a href="#projects"></a>projects</li>
-          </ul>
-        </nav>
+        <div>
+          <h1>Ihor Lazarkov</h1>
+          <h2>Software Engineer</h2>
+          <p>I build cost effective software systems from ground-up for small and medium business.</p>
+          <nav>
+            <ul>
+              <li><a href="#about"></a>about</li>
+              <li><a href="#experience"></a>experience</li>
+              <li><a href="#projects"></a>projects</li>
+            </ul>
+          </nav>
+        </div>
 
         <div className="media-icons">
           <a
@@ -51,7 +73,7 @@ function App() {
 
       </section>
     </header>
-    <main>
+    <main ref={rightRef}>
       {/* About me section */}
       <section id="about" className="article">
         <p>I am Full Stack Engineer and my focus is to build cost-effective, scalable, maintainable and high-performance systems.
@@ -64,7 +86,7 @@ function App() {
         <p>Also, I work as Software Developer in Test at Accenture where I contribute to building streamlined automation testing infrastructure
           and software, ensuring high-confidence in quality of shippable software.
         </p>
-        <p><b>In the past</b> I had opportunity to work as Senior Software Engineer in Test to establishing infrastructure and creation of software for testing
+        <p><b>In the past</b> I had opportunity to work as Senior Software Engineer in Test to establish infrastructure and creation of software for testing
           for complex, distributed systems in finance and networking business in large corporations.
         </p>
         <p>In my spare time, I am a runner, participating in virtual running events within adidas runners community,
