@@ -50,8 +50,8 @@ function App() {
     return () => observer.disconnect();
   }, [])
 
-  return (<div id="main" ref={leftRef}>
-    <header >
+  return (<div id="main">
+    <header  ref={leftRef}>
       <section>
         <div>
           <h1>Ihor Lazarkov</h1>
