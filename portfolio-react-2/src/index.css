@@ -6,7 +6,7 @@
   color-scheme: dark;
   --border-color: rgb(255, 255, 255);
   --bg-color: rgb(26, 26, 46);
-  --accent: #b638e7;
+  --accent: rgb(54, 128, 55);
   --secondary-text: #a8a8c0;
   color: var(--secondary-text);
   border-color: var(--border-color);
@@ -16,8 +16,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  scroll-behavior: smooth;
 }
 
 body {

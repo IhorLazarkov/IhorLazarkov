@@ -44,6 +44,14 @@ header {
     font-size: 1.2em;
     font-weight: 500;
   }
+  & nav a{
+    text-decoration: none;
+    color: inherit;
+  }
+  & nav a.active{
+    color: var(--border-color);
+    font-size: large;
+  }
 
   & .media-icons {
     margin-top: 3em;
@@ -63,6 +71,9 @@ header {
 }
 
 main {
+
+  scroll-behavior: smooth;
+
   overflow-y: auto;
   & > * {
     padding-right: var(--main-margin);

@@ -8,13 +8,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef } from 'react';
 
 function App() {
-  const leftRef = useRef(null);
-  const rightRef = useRef(null);
+  const leftRef = useRef<HTMLDivElement>(null);
+  const rightRef = useRef<HTMLDivElement>(null);
+  const aboutRef = useRef<HTMLElement>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const experienceRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const leftContainer = leftRef.current;
     if (!leftContainer) return;
-    const handleWheelScroll = (event) => {
+    const handleWheelScroll = (event : WheelEvent) => {
       const rightContainer = rightRef.current;
       if (rightContainer) {
         event.preventDefault();
@@ -25,10 +28,30 @@ function App() {
     return () => {
       leftContainer.removeEventListener('wheel', handleWheelScroll);
     };
-  }, []); // Empty dependency array ensures this runs only once after the initial render
+  }, []);
 
-  return (<div id="main">
-    <header ref={leftRef}>
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const { id } = entry.target;
+        if (entry.isIntersecting) {
+          document.querySelector(`nav a[href='#${id}']`)!.classList.add('active');
+        } else {
+          document.querySelector(`nav a[href='#${id}']`)!.classList.remove('active');
+        }
+      });
+    }, { threshold: 0.3 })
+    if (!projectsRef.current || !aboutRef.current || !experienceRef.current) {
+      return;
+    }
+    observer.observe(aboutRef.current);
+    observer.observe(experienceRef.current);
+    observer.observe(projectsRef.current);
+    return () => observer.disconnect();
+  }, [])
+
+  return (<div id="main" ref={leftRef}>
+    <header >
       <section>
         <div>
           <h1>Ihor Lazarkov</h1>
@@ -36,9 +59,9 @@ function App() {
           <p>I build cost effective software systems from ground-up for small and medium business.</p>
           <nav>
             <ul>
-              <li><a href="#about"></a>about</li>
-              <li><a href="#experience"></a>experience</li>
-              <li><a href="#projects"></a>projects</li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#experience">Experience</a></li>
+              <li><a href="#projects">Projects</a></li>
             </ul>
           </nav>
         </div>
@@ -75,7 +98,7 @@ function App() {
     </header>
     <main ref={rightRef}>
       {/* About me section */}
-      <section id="about" className="article">
+      <section ref={aboutRef} id="about" className="article">
         <p>I am Full Stack Engineer and my focus is to build cost-effective, scalable, maintainable and high-performance systems.
           I have build my expertise over the course of 16 years in software production business.
         </p>
@@ -94,7 +117,7 @@ function App() {
       </section>
 
       {/* Experience */}
-      <section id="experience" className="article">
+      <section ref={experienceRef} id="experience" className="article">
 
         {/* LVC Solutions */}
         <div className="experience-card">
@@ -221,7 +244,7 @@ function App() {
       </section>
 
       {/* Projects */}
-      <section id="projects" className="article">
+      <section ref={projectsRef} id="projects" className="article">
 
         <div className="project-card">
           <a href="https://lvcfairjob.com/"
