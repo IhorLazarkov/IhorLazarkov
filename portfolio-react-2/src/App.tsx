@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const leftContainer = leftRef.current;
     if (!leftContainer) return;
-    const handleWheelScroll = (event : WheelEvent) => {
+    const handleWheelScroll = (event: WheelEvent) => {
       const rightContainer = rightRef.current;
       if (rightContainer) {
         // event.preventDefault();
@@ -69,32 +69,61 @@ function App() {
           </nav>
         </div>
 
-        <div className="media-icons">
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my github profile"
-            href="https://github.com/ihorLazarkov">
-            <FontAwesomeIcon icon={faGithub} />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my linkedin page"
-            href="https://linkedin.com/in/ihorlazarkov">
-            <FontAwesomeIcon icon={faLinkedinIn} />
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit my facebook page"
-            href="https://www.facebook.com/igor.lazarkov">
-            <FontAwesomeIcon icon={faFacebookF} />
-          </a>
-          <svg xmlns="http://www.w3.org/2000/svg"
-            height="24px" viewBox="0 -960 960 960"
-            width="24px">
-            <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
+        <div>
+          <div>
+            <a href="mailto:ilazarkov@gmail.com" style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "0.5em",
+              width:"fit-content",
+              border: "1px solid var(--secondary-text)",
+              paddingBlock: "0.5em",
+              paddingInline:"1em",
+              borderRadius:"20px",
+              textDecoration:"none",
+              color:"inherit"
+            }}>
+              <span>Email me</span>
+              <svg xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                width="24px"
+                viewBox="0 -960 960 960"
+                style={{
+                  cursor: "pointer",
+                  fill: "var(--secondary-text)",
+                }}>
+                <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" />
+              </svg>
+            </a>
+          </div>
+          <div className="media-icons">
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my github profile"
+              href="https://github.com/ihorLazarkov">
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my linkedin page"
+              href="https://linkedin.com/in/ihorlazarkov">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my facebook page"
+              href="https://www.facebook.com/igor.lazarkov">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <svg xmlns="http://www.w3.org/2000/svg"
+              height="24px" viewBox="0 -960 960 960"
+              width="24px">
+              <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
+          </div>
         </div>
 
       </section>
