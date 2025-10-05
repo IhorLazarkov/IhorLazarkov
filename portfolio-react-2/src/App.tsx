@@ -20,7 +20,7 @@ function App() {
     const handleWheelScroll = (event : WheelEvent) => {
       const rightContainer = rightRef.current;
       if (rightContainer) {
-        event.preventDefault();
+        // event.preventDefault();
         rightContainer.scrollTop += event.deltaY;
       }
     };
@@ -50,8 +50,8 @@ function App() {
     return () => observer.disconnect();
   }, [])
 
-  return (<div id="main">
-    <header  ref={leftRef}>
+  return (<div id="main" ref={leftRef}>
+    <header>
       <section>
         <div>
           <h1>Ihor Lazarkov</h1>
@@ -204,7 +204,7 @@ function App() {
               <div className="tech-stack">
                 <span>webdriver.io</span><span>cypress.io</span><span>html</span>
                 <span>css</span><span>javascript</span><span>typescript</span>
-                <span>python</span><span>docker</span><span>kuberneties</span>
+                <span>python</span><span>kuberneties</span>
               </div>
             </div>
           </a>
@@ -234,8 +234,7 @@ function App() {
               </p>
               <div className="tech-stack">
                 <span>java</span><span>fitnesse</span><span>imb mq</span>
-                <span>tbinco ems</span><span>sql</span><span>oracle</span>
-                <span>docker</span>
+                <span>tibco ems</span><span>sql</span><span>docker</span>
               </div>
             </div>
           </a>
@@ -253,7 +252,7 @@ function App() {
             <div className='timeframe'><img src="./lvcfairjob.png" alt="" /></div>
             <div className="project-content">
               <div>
-                <h4>LVC SpotlIght Media</h4>
+                <h4>Fair Job Portal</h4>
                 <svg xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 -960 960 960"
                   fill="var(--border-color)"
@@ -317,9 +316,8 @@ function App() {
               <div className="tech-stack">
                 <span>html</span><span>css</span><span>javascript</span><span>react.js</span>
                 <span>redux</span><span>sequelize</span>
-                <span>express.js</span><span>https server</span><span>websocket secure server</span>
-                <span>postgres</span><span>sqlight</span>
-                <span>nginx</span>
+                <span>express.js</span><span>https server</span><span>websocket server secure</span>
+                <span>postgres</span><span>sqlight</span><span>nginx</span>
               </div>
             </div>
           </a>
@@ -373,8 +371,7 @@ function App() {
               <div className="tech-stack">
                 <span>html</span><span>css</span><span>javascript</span><span>react.js</span>
                 <span>python</span><span>alembic</span><span>sqlalchemy</span>
-                <span>postgres</span><span>sqlight</span>
-                <span>nginx</span>
+                <span>postgres</span><span>sqlight</span><span>nginx</span>
               </div>
             </div>
           </a>

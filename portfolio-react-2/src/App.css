@@ -1,6 +1,10 @@
 #root {
-
-  background: radial-gradient(600px at 100px 100px, rgba(29, 78, 216, 0.15), transparent 60%);
+  background: radial-gradient(
+    600px at 100px 100px,
+    rgba(29, 78, 216, 0.15),
+    transparent 60%
+  );
+  background-attachment: fixed;
 
   & * {
     box-sizing: border-box;
@@ -44,11 +48,14 @@ header {
     font-size: 1.2em;
     font-weight: 500;
   }
-  & nav a{
+  & nav {
+    margin-top: 5em;
+  }
+  & nav a {
     text-decoration: none;
     color: inherit;
   }
-  & nav a.active{
+  & nav a.active {
     color: var(--border-color);
     font-size: large;
   }
@@ -71,7 +78,6 @@ header {
 }
 
 main {
-
   scroll-behavior: smooth;
 
   overflow-y: auto;
@@ -81,6 +87,10 @@ main {
 
   & :is(#experience, #projects) {
     margin-block: 4em;
+  }
+
+  & p:first-of-type{
+    margin-top: 0;
   }
 }
 
