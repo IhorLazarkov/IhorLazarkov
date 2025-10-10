@@ -9,29 +9,12 @@ import { useEffect, useRef } from 'react';
 import { experiences, projects } from './data';
 import ExperienceCard from './components/ExperienceCard';
 import ProjectCard from './components/ProjectCard';
+import ClientToAgent from './components/ClientToAgent/ClientToAgent';
 
 function App() {
-  const leftRef = useRef<HTMLDivElement>(null);
-  const rightRef = useRef<HTMLDivElement>(null);
   const aboutRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const leftContainer = leftRef.current;
-    if (!leftContainer) return;
-    const handleWheelScroll = (event: WheelEvent) => {
-      const rightContainer = rightRef.current;
-      if (rightContainer) {
-        // event.preventDefault();
-        rightContainer.scrollTop += event.deltaY;
-      }
-    };
-    leftContainer.addEventListener('wheel', handleWheelScroll);
-    return () => {
-      leftContainer.removeEventListener('wheel', handleWheelScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -53,7 +36,7 @@ function App() {
     return () => observer.disconnect();
   }, [])
 
-  return (<div id="main" ref={leftRef}>
+  return (<div id="main">
     <header>
       <section>
         <div>
@@ -69,20 +52,27 @@ function App() {
           </nav>
         </div>
 
-        <div>
+        <ClientToAgent />
+
+        <div style={{
+          display: "flex",
+          gap: "1em",
+          // justifyContent: "center",
+          alignItems: "baseline",
+        }}>
           <div>
             <a href="mailto:ilazarkov@gmail.com" style={{
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
               gap: "0.5em",
-              width:"fit-content",
+              width: "fit-content",
               border: "1px solid var(--secondary-text)",
               paddingBlock: "0.5em",
-              paddingInline:"1em",
-              borderRadius:"20px",
-              textDecoration:"none",
-              color:"inherit"
+              paddingInline: "1em",
+              borderRadius: "20px",
+              textDecoration: "none",
+              color: "inherit"
             }}>
               <span>Email me</span>
               <svg xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +118,7 @@ function App() {
 
       </section>
     </header>
-    <main ref={rightRef}>
+    <main>
       {/* About me section */}
       <section ref={aboutRef} id="about" className="article">
         <p>I am Full Stack Engineer and my focus is to build cost-effective, scalable, maintainable and high-performance systems.
