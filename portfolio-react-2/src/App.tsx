@@ -1,6 +1,6 @@
 import './App.css'
 import {
-  faFacebookF,
+  // faFacebookF,
   faGithub,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
@@ -39,9 +39,14 @@ function App() {
   return (<div id="main">
     <header>
       <section>
-        <div>
+        <div className="round-img-container">
+          <div className="img-container">
+            <img src='./title-photo.jpg' className="frame"></img>
+          </div>
           <h1>Ihor Lazarkov</h1>
           <h2>Software Engineer</h2>
+        </div>
+        <div>
           <p>I build cost effective software systems from ground-up for small and medium business.</p>
           <nav>
             <ul>
@@ -102,13 +107,13 @@ function App() {
               href="https://linkedin.com/in/ihorlazarkov">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
-            <a
+            {/* <a
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit my facebook page"
               href="https://www.facebook.com/igor.lazarkov">
               <FontAwesomeIcon icon={faFacebookF} />
-            </a>
+            </a> */}
             <svg xmlns="http://www.w3.org/2000/svg"
               height="24px" viewBox="0 -960 960 960"
               width="24px">

@@ -121,6 +121,12 @@ function ClientToAgent() {
           </div>
         </form>
       </div>
+        <div style={{
+          textAlign:"center",
+          fontSize:"0.5em",
+          paddingTop:"0.5em"
+          }}
+          >powered by Gemma3:4b</div>
     </section>
   )
 }
