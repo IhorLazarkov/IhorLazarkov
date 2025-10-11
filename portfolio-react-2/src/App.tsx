@@ -1,6 +1,6 @@
 import './App.css'
 import {
-  faFacebookF,
+  // faFacebookF,
   faGithub,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
@@ -39,9 +39,14 @@ function App() {
   return (<div id="main">
     <header>
       <section>
-        <div>
+        <div className="round-img-container">
+          <div className="img-container">
+            <img src='./title-photo.jpg' className="frame"></img>
+          </div>
           <h1>Ihor Lazarkov</h1>
           <h2>Software Engineer</h2>
+        </div>
+        <div>
           <p>I build cost effective software systems from ground-up for small and medium business.</p>
           <nav>
             <ul>
