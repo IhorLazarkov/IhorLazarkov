@@ -102,13 +102,13 @@ function App() {
               href="https://linkedin.com/in/ihorlazarkov">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
-            <a
+            {/* <a
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit my facebook page"
               href="https://www.facebook.com/igor.lazarkov">
               <FontAwesomeIcon icon={faFacebookF} />
-            </a>
+            </a> */}
             <svg xmlns="http://www.w3.org/2000/svg"
               height="24px" viewBox="0 -960 960 960"
               width="24px">
