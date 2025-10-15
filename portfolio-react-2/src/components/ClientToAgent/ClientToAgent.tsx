@@ -6,7 +6,8 @@ import './ClientToAgent.css'
 
 function ClientToAgent() {
 
-  const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  // const BASE_URL = 'https://agentic.ihorlazarkov-swe.in' //PROD
+  const BASE_URL = 'http://macmini.local:80' //QA
   const [wordCount, setCount] = useState(0)
 
   const controllerRef = useRef<AbortController | null>(null)
