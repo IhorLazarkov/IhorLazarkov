@@ -1,4 +1,10 @@
-import { useActionState, startTransition, useEffect, useRef, useState } from 'react'
+import {
+  useActionState,
+  startTransition,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import { parseGemmaResponseToHtml } from './AnswerProcessor';
 import { PulseLoader } from "react-spinners";
 
@@ -6,9 +12,8 @@ import './ClientToAgent.css'
 
 function ClientToAgent() {
 
-  // const BASE_URL = 'https://agentic.ihorlazarkov-swe.in' //PROD
-  const BASE_URL = 'http://macmini.local:80' //QA
-  const [wordCount, setCount] = useState(0)
+  const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  const [lettersCount, setCount] = useState(0)
 
   const controllerRef = useRef<AbortController | null>(null)
 
@@ -16,7 +21,12 @@ function ClientToAgent() {
     controllerRef.current?.abort()
   }
 
-  async function sendPrompt(_: React.ReactElement[], formData: FormData): Promise<React.ReactElement[]> {
+  type TResponse = {
+    response: React.ReactElement[],
+    topPrompts: { body: string }[]
+  }
+
+  async function sendPrompt(_: TResponse, formData: FormData): Promise<TResponse> {
     const controller = new AbortController()
     const signal = controller.signal
 
@@ -41,28 +51,39 @@ function ClientToAgent() {
       setCount(0)
 
       const data = await response.json();
-      return [
-        <span className='question-area'>Visitor: {value}</span>,
-        ...parseGemmaResponseToHtml(data.response)
-      ];
+      return {
+        response: [
+          <span className='question-area'>Visitor: {value}</span>,
+          ...parseGemmaResponseToHtml(data.response)
+        ],
+        topPrompts: [...data.queries]
+      };
 
     } catch (error) {
       controllerRef.current = null;
 
       if (error instanceof Error && error.name === 'AbortError') {
-        return [<span>Request Aborted by User.</span>];
+        return { response: [<span>Request Aborted by User.</span>], topPrompts: [] };
       } else if (error instanceof Error) {
-        return [<span>{error.message}</span>];
+        return { response: [<span>{error.message}</span>], topPrompts: [] };
       }
-      return [<span>An unknown error occurred.</span>];
+      return { response: [<span>An unknown error occurred.</span>], topPrompts: [] };
     }
+  }
+
+  function reAsk(prompt: string) {
+    const form = new FormData()
+    form.append('uri', `${BASE_URL}/api/generate`)
+    form.append('method', 'POST')
+    form.append('prompt', prompt)
+    startTransition(() => askQuestion(form))
   }
 
   useEffect(() => {
     const form = document.createElement('form')
     const textarea = document.createElement('textarea')
     textarea.name = 'prompt'
-    textarea.value = 'Hi. Who are you?'
+    textarea.value = 'Hi. Please introduce yourself.'
     form.appendChild(textarea)
 
     const formData = new FormData(form)
@@ -73,7 +94,7 @@ function ClientToAgent() {
     return () => abortRequest()
   }, [])
 
-  const [answers, askQuestion, isPending] = useActionState(sendPrompt, [] as React.ReactElement[])
+  const [answers, askQuestion, isPending] = useActionState(sendPrompt, { response: [], topPrompts: [] } as TResponse)
   const button = !isPending
     ? <button type="submit">
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -86,9 +107,21 @@ function ClientToAgent() {
         height="24px" viewBox="0 -960 960 960"
         width="24px" fill="#e3e3e3"><path d="M320-640v320-320Zm-80 400v-480h480v480H240Zm80-80h320v-320H320v320Z" /></svg>
     </button>
-
+  const prompts = <details id="prompts-container">
+    <summary style={{ color: "var(--border-color)" }}>Trading questions</summary>
+    <div >
+      {
+        !isPending
+        && answers.topPrompts.length > 0
+        && answers.topPrompts.map(({ body }, i) => (
+          <span key={i} onClick={() => reAsk(body)}>{body}</span>
+        ))}
+    </div>
+  </details>
   return (
     <section className='agent-container'>
+      {/* Top prompts */}
+      {prompts}
       <div id="agent-main">
         <div id="answer">
           {isPending
@@ -106,7 +139,7 @@ function ClientToAgent() {
                 aria-label="Loading Spinner"
                 data-testid="loader" />
             </div>
-            : <>{answers.map((answer, i) => <span key={i}>{answer}</span>)}</>
+            : <>{answers.response.map((answer, i) => <span key={i}>{answer}</span>)}</>
           }
         </div>
         <form action={askQuestion}>
@@ -114,20 +147,20 @@ function ClientToAgent() {
             name="prompt"
             rows={3}
             maxLength={100}
-            placeholder='Ask my agent ...'
+            placeholder="Ask my agent ..."
             onChange={(e) => setCount(e.target.value.length)}></textarea>
           <div className='action-toolbar'>
-            <span>{wordCount} / 100</span>
+            <span>{lettersCount} / 100</span>
             {button}
           </div>
         </form>
       </div>
-        <div style={{
-          textAlign:"center",
-          fontSize:"0.5em",
-          paddingTop:"0.5em"
-          }}
-          >powered by Gemma3:4b</div>
+      <div style={{
+        textAlign: "center",
+        fontSize: "0.5em",
+        paddingTop: "0.5em"
+      }}
+      >powered by Gemma3:4b</div>
     </section>
   )
 }
