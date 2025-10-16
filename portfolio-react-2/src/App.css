@@ -32,11 +32,9 @@ header {
   margin-top: var(--head-padding);
   padding-inline: 4em;
 
-  & section {
-    height: 85%;
+  & > section {
     display: flex;
     flex-direction: column;
-    /* justify-content: space-between; */
   }
   & .round-img-container {
     display: grid;
@@ -92,6 +90,12 @@ header {
   & nav a.active {
     color: var(--border-color);
     font-size: large;
+  }
+
+  & #agent-parent-container {
+    height: clamp(100px, 200px, 245px);
+    box-sizing: border-box;
+    overflow-y: scroll;
   }
 
   & .media-icons {

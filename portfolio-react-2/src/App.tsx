@@ -57,12 +57,13 @@ function App() {
           </nav>
         </div>
 
-        <ClientToAgent />
+        <div id="agent-parent-container">
+          <ClientToAgent />
+        </div>
 
         <div style={{
           display: "flex",
           gap: "1em",
-          // justifyContent: "center",
           alignItems: "baseline",
         }}>
           <div>
