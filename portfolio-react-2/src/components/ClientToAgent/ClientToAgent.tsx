@@ -108,7 +108,7 @@ function ClientToAgent() {
         width="24px" fill="#e3e3e3"><path d="M320-640v320-320Zm-80 400v-480h480v480H240Zm80-80h320v-320H320v320Z" /></svg>
     </button>
   const prompts = <details id="prompts-container">
-    <summary style={{ color: "var(--border-color)" }}>Trading questions</summary>
+    <summary style={{ color: "var(--border-color)" }}>Trending questions</summary>
     <div >
       {
         !isPending
