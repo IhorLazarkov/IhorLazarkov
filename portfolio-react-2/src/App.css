@@ -282,3 +282,30 @@ a:has(.experience-content, .project-content):hover {
     grid-row-gap: 2em;
   }
 }
+
+/* Warning */
+.warning {
+  background-color: #f1d70b;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.1rem 1rem;
+
+  svg {
+    fill: inherit;
+    height: 66px;
+    width: 66px;
+  }
+  span {
+    text-wrap: pretty;
+    font-size: 1.2rem;
+  }
+}
+
+section:has(div.warning) > div:has(div.warning) {
+  border: 1px solid #f1d70b;
+  padding: 0.2rem;
+  margin-block: 0.4rem;
+}
+/* end .warning */
