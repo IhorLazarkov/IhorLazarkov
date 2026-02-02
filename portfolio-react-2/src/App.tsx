@@ -17,6 +17,7 @@ function App() {
   const experienceRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    //Observer logic
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const { id } = entry.target;
@@ -27,16 +28,32 @@ function App() {
         }
       });
     }, { threshold: 0.3 })
+    //Mouse move effect
+    const onMouseOver = (e: MouseEvent) => {
+      const div = document.querySelector('.gradient-overlay') as HTMLDivElement;
+      requestAnimationFrame(() => {
+        div.style.setProperty('--gradientX', e.clientX -250+ 'px');
+        div.style.setProperty('--gradientY', e.clientY -250 + 'px');
+      })
+    }
+
     if (!projectsRef.current || !aboutRef.current || !experienceRef.current) {
       return;
     }
     observer.observe(aboutRef.current);
     observer.observe(experienceRef.current);
     observer.observe(projectsRef.current);
-    return () => observer.disconnect();
+    window.addEventListener('mouseover', onMouseOver);
+
+    // Cleanup on unmount
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('mouseover', onMouseOver);
+    }
   }, [])
 
   return (<div id="main">
+    <div className="gradient-overlay"></div>
     <header>
       <section>
         <div className="round-img-container">
@@ -141,7 +158,7 @@ function App() {
           I contribute to the creation and maintenance of front-end and back-end components. Ensuring our platforms have convenient user experience
           by implementing best practices and standards.
         </p>
-        <p>Also, I work as Software Developer in Test at Accenture where I contribute to building streamlined automation testing infrastructure
+        <p><b>Also,</b> I work as Software Developer in Test at Accenture where I contribute to building streamlined automation testing infrastructure
           and software, ensuring high-confidence in quality of shippable software.
         </p>
         <p><b>In the past</b> I had opportunity to work as Senior Software Engineer in Test to establish infrastructure and creation of software for testing

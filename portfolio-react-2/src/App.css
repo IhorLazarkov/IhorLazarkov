@@ -1,10 +1,6 @@
 #root {
-  background: radial-gradient(
-    600px at 100px 100px,
-    rgba(29, 78, 216, 0.15),
-    transparent 60%
-  );
-  background-attachment: fixed;
+  /* For a gradient that follows mouse current position */
+  position: relative;
 
   & * {
     box-sizing: border-box;
@@ -15,6 +11,22 @@
   }
   & p {
     font-size: 0.93em;
+  }
+  .gradient-overlay {
+    --gradientY: 100px;
+    --gradientX: 100px;
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    pointer-events: none;
+    background: radial-gradient(
+      500px,
+      rgba(29, 78, 216, 0.15),
+      transparent 60%
+    );
+    transform: translate(var(--gradientX), var(--gradientY));
+    filter: blur(20px);
+    will-change: transform;
   }
 }
 
@@ -62,8 +74,7 @@ header {
       object-fit: cover;
       width: auto;
       height: 100%;
-      background-clip: border-box;
-      -webkit-background-clip: border-box;
+      aspect-ratio: 1;
       border-radius: 50%;
     }
   }
