@@ -32,8 +32,8 @@ function App() {
     const onMouseOver = (e: MouseEvent) => {
       const div = document.querySelector('.gradient-overlay') as HTMLDivElement;
       requestAnimationFrame(() => {
-        div.style.setProperty('--gradientX', e.clientX -250+ 'px');
-        div.style.setProperty('--gradientY', e.clientY -250 + 'px');
+        div.style.setProperty('--gradientX', e.clientX - 250 + 'px');
+        div.style.setProperty('--gradientY', e.clientY - 250 + 'px');
       })
     }
 
