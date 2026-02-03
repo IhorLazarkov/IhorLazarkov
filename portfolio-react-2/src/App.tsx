@@ -36,7 +36,11 @@ function App() {
         div.style.setProperty('--gradientY', e.clientY - 250 + 'px');
       })
     }
-
+    //Wheel
+    const onWheel = (e: WheelEvent) => {
+      const container = document.querySelector('main') as HTMLDivElement;
+      container.scrollTop += e.deltaY *2;
+    }
     if (!projectsRef.current || !aboutRef.current || !experienceRef.current) {
       return;
     }
@@ -44,11 +48,13 @@ function App() {
     observer.observe(experienceRef.current);
     observer.observe(projectsRef.current);
     window.addEventListener('mouseover', onMouseOver);
+    window.addEventListener('wheel', onWheel);
 
     // Cleanup on unmount
     return () => {
       observer.disconnect();
       window.removeEventListener('mouseover', onMouseOver);
+      window.removeEventListener('wheel', onWheel);
     }
   }, [])
 
