@@ -164,7 +164,7 @@ function App() {
           I contribute to the creation and maintenance of front-end and back-end components. Ensuring our platforms have convenient user experience
           by implementing best practices and standards.
         </p>
-        <p><b>Also,</b> I work as Software Developer in Test at Accenture where I contribute to building streamlined automation testing infrastructure
+        <p><b>Also,</b> I work as Software Developer in Test at Edward Jones where I contribute to building streamlined automation testing infrastructure
           and software, ensuring high-confidence in quality of shippable software.
         </p>
         <p><b>In the past</b> I had opportunity to work as Senior Software Engineer in Test to establish infrastructure and creation of software for testing
