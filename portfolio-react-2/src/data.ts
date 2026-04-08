@@ -17,12 +17,12 @@ export const experiences: IExperience[] = [
     techStack: ["react", "next.js", "firebase"],
   },
   {
-    url: "https://www.accenture.com/us-en",
+    url: "https://www.edwardjones.com/us-en",
     timeframe: "2024 - Present",
     title: "Senior Software Engineer in Test",
     company: "Edward Jones",
     description: "Developed automation testing of a complex test scenarios of operations team in finance. Integrated automation into ci/cd with setup of testing on daily, weekly cadence. Close communication with operations team to gather and implement requirements.",
-    techStack: ["java", "selenium", "serenity"],
+    techStack: ["java", "selenium", "serenity bdd"],
   },
   {
     url: "https://meraki.cisco.com",
