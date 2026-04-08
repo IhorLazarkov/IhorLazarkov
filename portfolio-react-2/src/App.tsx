@@ -39,7 +39,7 @@ function App() {
     //Wheel
     const onWheel = (e: WheelEvent) => {
       const container = document.querySelector('main') as HTMLDivElement;
-      container.scrollTop += e.deltaY *2;
+      container.scrollTop += e.deltaY * 2;
     }
     if (!projectsRef.current || !aboutRef.current || !experienceRef.current) {
       return;
@@ -81,13 +81,13 @@ function App() {
         </div>
 
         <div id="agent-parent-container">
-          {/* Example of warning
+          {/* Example of warning */}
           <div className="warning">
             <svg xmlns="http://www.w3.org/2000/svg"
               viewBox="0 -960 960 960"
             ><path d="M330-120 120-330v-300l210-210h300l210 210v300L630-120H330Zm36-190 114-114 114 114 56-56-114-114 114-114-56-56-114 114-114-114-56 56 114 114-114 114 56 56Zm-2 110h232l164-164v-232L596-760H364L200-596v232l164 164Zm116-280Z" /></svg>
-            <span>Server temporarily is unavailable</span>
-          </div> */}
+            <span>Server temporarily is unavailable due to certificate expiration.</span>
+          </div>
           <ClientToAgent />
         </div>
 
@@ -181,7 +181,18 @@ function App() {
       </section>
 
       <section ref={projectsRef} id="projects" className="article">
-        {projects.map((proj, index) => (
+        {projects.filter(p => !!p.url.indexOf('ihor')).map((proj, index) => (
+          <div key={index}>
+            <div className="warning">
+              <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+              ><path d="M330-120 120-330v-300l210-210h300l210 210v300L630-120H330Zm36-190 114-114 114 114 56-56-114-114 114-114-56-56-114 114-114-114-56 56 114 114-114 114 56 56Zm-2 110h232l164-164v-232L596-760H364L200-596v232l164 164Zm116-280Z" /></svg>
+              <span>Server temporarily is unavailable due to certificate expiration.</span>
+            </div>
+            <ProjectCard key={index} project={proj} />
+          </div>
+        ))}
+        {projects.filter(p => !!!p.url.indexOf('ihor')).map((proj, index) => (
           <ProjectCard key={index} project={proj} />
         ))}
       </section>
