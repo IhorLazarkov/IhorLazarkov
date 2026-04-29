@@ -82,12 +82,12 @@ function App() {
 
         <div id="agent-parent-container">
           {/* Example of warning */}
-          <div className="warning">
+          {/* <div className="warning">
             <svg xmlns="http://www.w3.org/2000/svg"
               viewBox="0 -960 960 960"
             ><path d="M330-120 120-330v-300l210-210h300l210 210v300L630-120H330Zm36-190 114-114 114 114 56-56-114-114 114-114-56-56-114 114-114-114-56 56 114 114-114 114 56 56Zm-2 110h232l164-164v-232L596-760H364L200-596v232l164 164Zm116-280Z" /></svg>
             <span>Server temporarily is unavailable due to expired certificate.</span>
-          </div>
+          </div> */}
           <ClientToAgent />
         </div>
 
@@ -181,19 +181,8 @@ function App() {
       </section>
 
       <section ref={projectsRef} id="projects" className="article">
-        {projects.filter(p => p.url.indexOf('ihor') < 0).map((proj, _) => (
+        {projects.map((proj, _) => (
           <ProjectCard key={proj.url} project={proj} />
-        ))}
-        {projects.filter(p => p.url.indexOf('ihor')> -1).map((proj, index) => (
-          <div key={index}>
-            <div className="warning">
-              <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 -960 960 960"
-              ><path d="M330-120 120-330v-300l210-210h300l210 210v300L630-120H330Zm36-190 114-114 114 114 56-56-114-114 114-114-56-56-114 114-114-114-56 56 114 114-114 114 56 56Zm-2 110h232l164-164v-232L596-760H364L200-596v232l164 164Zm116-280Z" /></svg>
-              <span>Server temporarily is unavailable due to expired certificate.</span>
-            </div>
-            <ProjectCard key={proj.url} project={proj} />
-          </div>
         ))}
       </section>
 
