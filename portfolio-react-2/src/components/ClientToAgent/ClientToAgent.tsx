@@ -36,7 +36,7 @@ function ClientToAgent() {
     const uri = formData.get("uri") as string || `${BASE_URL}/api/generate`
     const method = formData.get("method") as string || 'POST'
     const body = method == 'POST'
-      ? JSON.stringify({ "model": "gemma3:4b", "prompt": value, "stream": false })
+      ? JSON.stringify({ "model": "mistralai/ministral-3-3b", "prompt": value })
       : {} as BodyInit
     const headers: HeadersInit = { "Content-Type": "application/json" }
     const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal } : { method, signal }
@@ -160,7 +160,7 @@ function ClientToAgent() {
         fontSize: "0.5em",
         paddingTop: "0.5em"
       }}
-      >powered by Gemma3:4b</div>
+      >powered by mistralai/ministral-3-3b</div>
     </section>
   )
 }
