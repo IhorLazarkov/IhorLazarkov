@@ -1,63 +1,126 @@
+# Ihor Lazarkov
+**Full Stack Software Engineer | Senior SDET | Automation Architect**  
+Hendersonville, TN | (615) 506-9411 | ilazarkov@gmail.com  
+[LinkedIn](https://linkedin.com/in/ihorlazarkov) | [GitHub](https://github.com/ihorLazarkov) | [Portfolio](https://ihorlazarkov-swe.in)
+
+## Professional Summary
+Strategic Automation Architect and Software Engineer with 15+ years of experience building scalable, high-performance testing ecosystems. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes financial environments.
+
+## Technical Skills
+- **Languages:** JavaScript (ES6+), TypeScript, Java, Python, SQL, HTML5, CSS3
+- **Front-End:** React, Next.js, Redux, Gatsby, Bootstrap, jQuery, Three.js
+- **Back-End:** Node.js, Express, Flask, Spring Boot, Hibernate, Sequelize, Prisma, SQLAlchemy
+- **Databases:** PostgreSQL, Oracle, SQLite, Firebase, MongoDB
+- **Testing/DevOps:** Playwright, Cypress, Selenium, Serenity BDD, Cucumber, k6, AWS, Docker, Kubernetes, Jenkins, GitLab CI
+- **AI & Tools:** Ollama, Gemma, FAISS, Git, VS Code, Postman, Grafana
+
 # Professional Experience
 
 ## Full Stack Software Engineer
-**LVC Solutions, USA | Remote**
-*July 2025 – Present*
-- Worked as a Software Engineer in an agile environment with 2+ engineers to design and implement SaaS for marketing.
-- **Tech stack:** JavaScript, React, HTML, CSS, ExpressJS, JSON, Git, GitHub
-- Improved team productivity by establishing open, inclusive, and creative development processes.
-- Developed reusable complex components (e.g., accordions, filterable lists, tabs) using JSX, parametrization via JSON/data, and React hooks (e.g., `useState`, `useRef`, `useContext`).
-- Debugged and fixed 10+ issues with root-cause analysis using DevTools.
-- Measured web application quality through testing with network throttling and profiling in DevTools/React DevTools.
-- Supervised release processes with the DevOps team, including rollbacks for failures.
+**LVC Solutions, USA | Remote part-time**
+*July 2025 – May 2026*
 
+### Key Responsibilities:
+- Designed and implemented a recruiting platform and SaaS for marketing using a full-stack approach.
+- Collaborated with a team of 5 engineers to deliver scalable and maintainable software solutions.
+
+### Technologies & Tools:
+- TypeScript, ReactJS, Next.js, AWS, Playwright, Grafana k6, Firebase, Prisma, PostgreSQL
+
+### Impactful Achievements:
+- Implemented shift-left testing practices to improve early defect detection.
+- Optimized architecture to reduce database read/write operations, network traffic, and infrastructure costs by **25%**.
+- Improved page load performance by **20%** through bottleneck analysis.
+
+---
+## Senior Software Engineer in Test
+**Edward Jones | May 2024 – Present**
+
+### Key Responsibilities:
+- Led the development of automation test frameworks for front-end and back-end applications.
+- Architected CI/CD pipelines with self-healing test data processes to streamline workflows.
+- Mentored junior test engineers in best practices and technical skills.
+
+### Technologies & Tools:
+- Java, Selenium, Serenity BDD, Cucumber, Applitools, Gradle, Jenkins, Git, Copilot
+
+### Impactful Achievements:
+- Developed highly reliable automation tests achieving a **95% stability rate** using health-check test suite, self-healing test suite, robust polling and synchronization mechanisms, OOP principles, design patterns.
+- Delivered test automation that offloaded operations team by **90%** of manual tasks.
+- Revitalized an outdated and staled for 3 years framework, reducing manual testing efforts by **80%** and execution time by **50%**.
+
+---
 ## Software Engineer (Open-Source Contributor)
 **Layer5, USA | Remote**
-*March 2025 – Present*
-- Worked on an open-source project with an international team of contributors.
-- **Tech stack:** JavaScript, TypeScript, React, CSS, Gatsby, Vite
-- Gained expertise in analyzing requirements, unit tests, and codebases to become a domain knowledge expert.
+*March 2025 – June 2025*
+
+### Key Responsibilities:
+- Worked on open-source projects with an international team of contributors.
+- Analyzed requirements, unit tests, and codebases to become a domain knowledge expert.
+
+### Technologies & Tools:
+- JavaScript, TypeScript, React, CSS, Gatsby, Vite
+
+### Impactful Achievements:
 - Implemented scalable solutions using well-fit data structures (e.g., `map`, `list`, `set`) and design patterns (e.g., Singleton, Builder, Factory).
 - Audited responsive web design and accessibility practices for adherence to standards.
 
+---
 ## Full Stack Engineer
 **App Academy, Remote**
 *December 2024 – May 2025*
-- Worked in a team of up to 4 engineers to create e-commerce web applications.
-- **Tech stack:** HTML, CSS, React, JavaScript, Flask, Redux, Sequelize, SQLAlchemy, SQLite, PostgreSQL, Docker, Geolocation API, Speech Recognition API, Google Maps API
-- Built and configured a host server using NGINX as a reverse proxy for HTTP/WebSocket services with HTTPS support.
+
+### Key Responsibilities:
+- Built front-end and back-end of various e-commerce web applications;
+- Configured server infrastructure using NGINX as a reverse proxy for HTTP/WebSocket services.
+
+### Technologies & Tools:
+- HTML, CSS, React, JavaScript, Flask, Redux, Sequelize, SQLAlchemy, SQLite, PostgreSQL, Docker, Geolocation API, Speech Recognition API, Google Maps API
+
+### Impactful Achievements:
 - Integrated ORM systems to establish state persistence via models, validators, migrations, and seed files.
-- Designed RESTful routes (GET/POST/PUT/DELETE) with error-handling middleware.
 - Implemented transactional data persistence using ORM transactions in critical operations.
-- Developed reusable React UI components with optimal use of hooks (`useState`, `useRef`, etc.).
-- Fixed bugs via root-cause analysis and debugging tools (e.g., Chrome DevTools, React DevTools).
-- Communicated effectively within teams by setting meeting agendas and responding to emails.
 
-## Senior Software Engineer in Test
-**Accenture | May 2024 – Present*
-- Worked as a Senior Software Engineer in Test in a team of 6 engineers.
-- Responsible for automation testing, CI/CD integration, and communication with product ownership.
-- **Tech stack:** Java, Selenium WebDriver, Serenity BDD, Cucumber, Applitools, Gradle, Jenkins, Git
-- Contributed to architectural solutions and best practices using OOP principles (e.g., polymorphism, inheritance) and design patterns (e.g., Builder, Singleton).
-- Developed reliable automation testing software for web pages, solving complex problems via DevTools analysis.
-- Designed test scenarios in Gherkin language with parametrizable instructions, DataTables, and Scenario Outline for reusability.
+---
+## Cisco Meraki
+**Cisco Meraki | February 2022 – April 2024**
 
+### Key Responsibilities:
+- Developed software for functional, end-to-end (E2E), and API testing.
+- Tested network switch and camera migrations to cloud infrastructure using custom frameworks.
+
+### Technologies & Tools:
+- TypeScript, Python, Cypress, Playwright, k6, Applitools, Kubernetes, GitLab, AWS
+
+### Impactful Achievements:
+- Executed a comprehensive test plan during pivotal business model changes across multiple phases.
+- Improved build stability and prevented critical defects from reaching production.
+
+---
 ## Senior Automation Test Engineer
-**Cisco Meraki | February 2022 – April 2024*
-- Worked as a Senior Software Engineer in Test in a team of 5 engineers.
-- Developed automation testing frameworks for functional, E2E, and API testing.
-- **Tech stack:** JavaScript, TypeScript, Cypress, WebDriverIO, Applitools, GitLab, Git
-- Successfully tested applications during pivotal business model changes using test plans with multiple phases to meet KPIs.
-- Defined quality gates for functional changes, improving build stability and preventing critical defects.
+**EPAM Systems LLC | October 2008 – February 2022**
 
-## Senior Automation Test Engineer
-**EPAM Systems LLC | October 2008 – February 2022*
-- Worked in a fast-paced agile environment on multiple complex projects with teams of up to 5.
-- Developed test standards, strategies, and frameworks for new releases.
-- **Tech stack:** Java, Selenium WebDriver, Cucumber, FitNesse, TestNG, Rest Assured, JMeter
-- Designed an automation framework to validate databases and messages across all projects, resulting in:
-  - 4x faster test execution
-  - Reduced support time
-  - Improved software quality visibility
-- Expanded testing coverage by introducing new automation tools (e.g., transitioning from legacy systems).
-- Led regression execution improvements and CI/CD integration for reliability.
+### Key Responsibilities:
+- **Architected Enterprise Frameworks:** Spearheaded the development of Java-based automation frameworks for complex distributed banking systems (Trading, Settlement) utilizing Spring Boot, Hibernate, and message-driven architectures (Tibco EMS, IBM MQ).
+- **Strategy & Governance:** Defined global test standards and release strategies across multiple business units.
+- **Tooling Innovation:** Developed internal web applications (Spring Boot MVC + JavaScript) to automate environment health monitoring and test data preparation, drastically reducing overhead.
+- **Impact:** Achieved a **4x reduction** in test execution time and eliminated 1,800+ lines of redundant code through aggressive refactoring and design pattern implementation (Factory, Singleton, Adapter).
+
+### Technologies & Tools:
+- JavaEE, Spring Boot MVC, Hibernate, Tibco EMS, IBM MQ, Oracle, PostgreSQL, Selenium, Rest Assured, FitNesse, Docker
+
+### Impactful Achievements:
+- **Optimized Test Execution:** Leveraged expertise to design a scalable framework that reduced test execution time by **4x**, decreased support time, and improved software quality visibility.
+- **Enhanced Testing Capabilities:** Introduced new automation technologies, transitioning from legacy systems for cleaner tests and optimized maintenance efficiency.
+- **Built Scalable Solutions:** Delivered reliable and scalable software using Cucumber, Selenium, REST Assured, and best practices like configurability, reusability, OOP concepts, Java design patterns, and functional programming.
+- **Streamlined QA Processes:** Decreased test preparation time by developing web applications (Spring Boot MVC + JavaScript) to streamline workflows.
+
+# Courses
+- **AI Engineer**, HTC Academy — 2024 – Present
+- **Java Engineer**, HTC Academy — 2024
+- **Software Engineer**, App Academy — 2024
+- **Performance Testing Specialist** — 2021
+
+## Education
+- **Master's in Computer Systems and Networks**, Odessa National University I.I. Mechnikov — 2005 — 2006
+- **Bachelor's in Computer Systems and Networks**, Odessa National University I.I. Mechnikov — 2001 — 2005
