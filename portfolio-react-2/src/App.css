@@ -42,7 +42,7 @@
 
 header {
   margin-top: var(--head-padding);
-  padding-inline: 4em;
+  padding-inline: 1em;
 
   & > section {
     display: flex;

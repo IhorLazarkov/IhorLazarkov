@@ -67,10 +67,10 @@ function App() {
             <img src='./title-photo.jpg' className="frame"></img>
           </div>
           <h1>Ihor Lazarkov</h1>
-          <h2>Software Engineer</h2>
+          <h2>Senior SDET & Automation Architect</h2>
         </div>
         <div>
-          <p>I build cost effective software systems from ground-up for small and medium business.</p>
+        <p>Architecting automation and testing strategies to accelerate quality delivery.</p>
           <nav>
             <ul>
               <li><a href="#about">About</a></li>
@@ -157,21 +157,10 @@ function App() {
     <main>
       {/* About me section */}
       <section ref={aboutRef} id="about" className="article">
-        <p>I am Full Stack Engineer and my focus is to build cost-effective, scalable, maintainable and high-performance systems.
-          I have build my expertise over the course of 16 years in software production business.
-        </p>
-        <p><b>Currently</b> I work as Full Stack Engineer at LVC Solutions and as open-source contributor at Layer 5.
-          I contribute to the creation and maintenance of front-end and back-end components. Ensuring our platforms have convenient user experience
-          by implementing best practices and standards.
-        </p>
-        <p><b>Also,</b> I work as Software Developer in Test at Edward Jones where I contribute to building streamlined automation testing infrastructure
-          and software, ensuring high-confidence in quality of shippable software.
-        </p>
-        <p><b>In the past</b> I had opportunity to work as Senior Software Engineer in Test to establish infrastructure and creation of software for testing
-          for complex, distributed systems in finance and networking business in large corporations.
-        </p>
-        <p>In my spare time, I am a runner, participating in virtual running events within adidas runners community,
-          spend time with my family: playing games, watching movies, outdoors activities.</p>
+        <p>I am a Senior SDET & Automation Architect focused on building cost-effective, scalable, and high-performance automation ecosystems. I have built my expertise over 8 years in the software production business.</p>
+        <p><b>Currently</b> I work as a Senior SDET at Edward Jones, developing complex automation infrastructure, and as a Full Stack Engineer at LVC Solutions, building critical components and high-performant web pages.</p>
+        <p><b>In the past</b> I architected testing software for distributed systems at Cisco Meraki and EPAM Systems, focusing on infrastructure integration, CI/CD, and advocating for quality engineering principles.</p>
+        <p>In my spare time, I am an active runner in the adidas runners community and enjoy spending time with my family: playing games, watching movies, and engaging in outdoor activities.</p>
       </section>
 
       <section ref={experienceRef} id="experience" className="article">
@@ -187,7 +176,6 @@ function App() {
       </section>
 
     </main>
-    {/* <footer></footer> */}
   </div>)
 }
 
