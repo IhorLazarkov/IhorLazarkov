@@ -11,10 +11,13 @@ This skill helps create a professional resume by:
 ## Key Guidelines
 
 ### **Source Data**
-- **Professional Experience & Achievements:** Source data from `/Users/ilazarkov/Development/VSCodeProjects/prototyping/my-github-profile/skills/resume-generate/Resume.md`. Extract job titles, companies, dates, responsibilities, and achievements.
+- **Professional Experience & Achievements:** Source data from `./references/Resume.md`. Extract job titles, companies, dates, responsibilities, and achievements.
 - **Projects:** Filter projects listed in `Resume.md` (e.g., under "Recent Projects" or a dedicated section). Only include those within the last 10 years.
 - **Summary & Key Skills:** Combine all relevant data from `Resume.md` into a cohesive summary. Highlight transferable skills and achievements using action verbs like:
-  - "Developed," "Led," "Optimized," "Improved," "Designed."
+  - "Developed," "Led," "Optimized," "Improved," "Architected."
+
+## Output Data**
+Put result into `./input/result.md`
 
 ---
 
@@ -37,6 +40,10 @@ This skill helps create a professional resume by:
 - Combine all experiences (past/present) into a summary.
 - Highlight transferable skills and key accomplishments using action verbs like:
   - "Developed," "Led," "Optimized," "Improved," "Designed."
+
+### **4. Education section**
+- Don't mention years of education
+- Keep the years for course using 10-year rule
 ---
 
 ## Example Workflow

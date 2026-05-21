@@ -1,10 +1,10 @@
 # Ihor Lazarkov
 **Full Stack Software Engineer | Senior SDET | Automation Architect**  
 Hendersonville, TN | (615) 506-9411 | ilazarkov@gmail.com  
-[LinkedIn](https://linkedin.com/in/ihorlazarkov) | [GitHub](https://github.com/ihorLazarkov) | [Portfolio](https://ihorlazarkov-swe.in)
+LinkedIn: https://linkedin.com/in/ihorlazarkov | GitHub: https://github.com/ihorLazarkov | Portfolio website: https://ihorlazarkov-swe.in
 
 ## Professional Summary
-Strategic Automation Architect and Software Engineer with 15+ years of experience building scalable, high-performance testing ecosystems. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes financial environments.
+Strategic Automation Architect and Software Engineer with 8+ years of experience building scalable, high-performance testing ecosystems. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes financial environments.
 
 ## Technical Skills
 - **Languages:** JavaScript (ES6+), TypeScript, Java, Python, SQL, HTML5, CSS3
@@ -17,8 +17,7 @@ Strategic Automation Architect and Software Engineer with 15+ years of experienc
 # Professional Experience
 
 ## Full Stack Software Engineer
-**LVC Solutions, USA | Remote part-time**
-*July 2025 – May 2026*
+**LVC Solutions, USA | Remote (Part-time) | July 2025 – May 2026**
 
 ### Key Responsibilities:
 - Designed and implemented a recruiting platform and SaaS for marketing using a full-stack approach.
@@ -51,8 +50,7 @@ Strategic Automation Architect and Software Engineer with 15+ years of experienc
 
 ---
 ## Software Engineer (Open-Source Contributor)
-**Layer5, USA | Remote**
-*March 2025 – June 2025*
+**Layer5, USA | Remote | March 2025 – June 2025**
 
 ### Key Responsibilities:
 - Worked on open-source projects with an international team of contributors.
@@ -67,12 +65,12 @@ Strategic Automation Architect and Software Engineer with 15+ years of experienc
 
 ---
 ## Full Stack Engineer
-**App Academy, Remote**
-*December 2024 – May 2025*
+**App Academy, Remote | December 2024 – May 2025**
 
 ### Key Responsibilities:
 - Built front-end and back-end of various e-commerce web applications;
-- Configured server infrastructure using NGINX as a reverse proxy for HTTP/WebSocket services.
+- Configured multi-tenant server infrastructure using NGINX as a reverse proxy for HTTP/WebSocket services.
+- Integrated LLM model into AI agent feature for a website
 
 ### Technologies & Tools:
 - HTML, CSS, React, JavaScript, Flask, Redux, Sequelize, SQLAlchemy, SQLite, PostgreSQL, Docker, Geolocation API, Speech Recognition API, Google Maps API
