@@ -12,7 +12,7 @@ Strategic Automation Architect and Software Engineer with 15+ years of experienc
 - **Back-End:** Node.js, Express, Flask, Spring Boot, Hibernate, Sequelize, Prisma, SQLAlchemy
 - **Databases:** PostgreSQL, Oracle, SQLite, Firebase, MongoDB
 - **Testing/DevOps:** Playwright, Cypress, Selenium, Serenity BDD, Cucumber, k6, AWS, Docker, Kubernetes, Jenkins, GitLab CI
-- **AI & Tools:** Ollama, Gemma, FAISS, Git, VS Code, Postman, Grafana
+- **AI & Tools:** Ollama, LM Studio, Gemma, FAISS, Git, VS Code, Postman, Grafana
 
 # Professional Experience
 
