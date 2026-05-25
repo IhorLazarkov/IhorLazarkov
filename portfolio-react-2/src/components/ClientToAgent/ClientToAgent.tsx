@@ -13,6 +13,7 @@ import './ClientToAgent.css'
 function ClientToAgent() {
 
   const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  const MODEL_NAME = "google/gemma-4-e2b"
   const [lettersCount, setCount] = useState(0)
 
   const controllerRef = useRef<AbortController | null>(null)
@@ -36,7 +37,7 @@ function ClientToAgent() {
     const uri = formData.get("uri") as string || `${BASE_URL}/api/generate`
     const method = formData.get("method") as string || 'POST'
     const body = method == 'POST'
-      ? JSON.stringify({ "model": "mistralai/ministral-3-3b", "prompt": value })
+      ? JSON.stringify({ "model": MODEL_NAME, "prompt": value })
       : {} as BodyInit
     const headers: HeadersInit = { "Content-Type": "application/json" }
     const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal } : { method, signal }
@@ -160,7 +161,7 @@ function ClientToAgent() {
         fontSize: "0.5em",
         paddingTop: "0.5em"
       }}
-      >powered by mistralai/ministral-3-3b</div>
+      >powered by {MODEL_NAME}</div>
     </section>
   )
 }

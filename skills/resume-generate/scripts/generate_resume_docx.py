@@ -10,8 +10,8 @@ from docx.opc.constants import RELATIONSHIP_TYPE
 def convert_md_to_docx():
     # Set paths relative to this script's location
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    input_path = os.path.join(script_dir, "../input/result.md")
-    output_path = os.path.join(script_dir, "../output/Ihor_Lazarkov_SDET_Resume.docx")
+    input_path = os.path.join(script_dir, "../input/swe-resume.md")
+    output_path = os.path.join(script_dir, "../output/Ihor_Lazarkov_SWE_Resume.docx")
     
     # Ensure output directory exists
     os.makedirs(os.path.dirname(output_path), exist_ok=True)

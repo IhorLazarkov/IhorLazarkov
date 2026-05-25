@@ -1,21 +1,34 @@
 # Ihor Lazarkov
 **Full Stack Software Engineer | Senior SDET | Automation Architect**  
-Hendersonville, TN | (615) 506-9411 | ilazarkov@gmail.com  
-LinkedIn: https://linkedin.com/in/ihorlazarkov | GitHub: https://github.com/ihorLazarkov | Portfolio website: https://ihorlazarkov-swe.in
+Hendersonville, TN | (615) 506-9411 | ilazarkov@gmail.com
+[LinkedIn](https://linkedin.com/in/ihorlazarkov) | [GitHub](https://github.com/ihorLazarkov) | [Portfolio](https://ihorlazarkov-swe.in)
 
 ## Professional Summary
-Strategic Automation Architect and Software Engineer with 8+ years of experience building scalable, high-performance testing ecosystems. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes financial environments.
+Strategic Automation Architect and Software Engineer with 15+ years of experience building scalable, high-performance testing ecosystems and full-stack applications. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes environments.
 
 ## Technical Skills
 - **Languages:** JavaScript (ES6+), TypeScript, Java, Python, SQL, HTML5, CSS3
 - **Front-End:** React, Next.js, Redux, Gatsby, Bootstrap, jQuery, Three.js
-- **Back-End:** Node.js, Express, Flask, Spring Boot, Hibernate, Sequelize, Prisma, SQLAlchemy
+- **Back-End:** Node.js, Express, Flask, Spring Boot, Hibernate, Sequelize, Prisma, SQLAlchemy, NGINX
 - **Databases:** PostgreSQL, Oracle, SQLite, Firebase, MongoDB
-- **Testing/DevOps:** Playwright, Cypress, Selenium, Serenity BDD, Cucumber, k6, AWS, Docker, Kubernetes, Jenkins, GitLab CI
-- **AI & Tools:** Ollama, LM Studio, Gemma, FAISS, Git, VS Code, Postman, Grafana
+- **Testing/DevOps:** Playwright, Cypress, Selenium, Serenity BDD, Cucumber, k6, AWS, Docker, Kubernetes, Jenkins, GitLab CI, SSL/TLS Orchestration, Network Security
+- **AI & Tools:** Ollama, LM Studio, Gemma, Mistral, FAISS, Git, VS Code, Postman, Grafana
 
 # Professional Experience
 
+## Infrastructure & Full Stack Engineer (Self-Managed Home Lab)
+
+### Key Responsibilities:
+- **Architected** and deployed a multi-tenant server ecosystem on Mac Mini hardware, managing the full lifecycle from DNS to database.
+- **Configured** complex networking including port forwarding, AWS Route 53 DNS records, and NGINX reverse proxying.
+- **Implemented** secure communication protocols using HTTPS and WSS (Secure Web Sockets) with custom certificate management.
+
+### Impactful Achievements:
+- **AI Integration:** Integrated local LLMs (Gemma, Ministral) using Ollama and pure Node.js to build private AI agent features.
+- **System Reliability:** Established QA and PROD environment parity for personal projects, ensuring deployment stability.
+- **Data Performance:** Optimized application speed by implementing a dual-layer database strategy using PostgreSQL for persistence and SQLite for high-speed caching.
+
+---
 ## Full Stack Software Engineer
 **LVC Solutions, USA | Remote (Part-time) | July 2025 – May 2026**
 
