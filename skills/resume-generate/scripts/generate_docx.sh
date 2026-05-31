@@ -3,8 +3,8 @@
 # Script to convert generated resume Markdown to Microsoft Word Document (.docx)
 # Requirement: pandoc (https://pandoc.org/)
 
-INPUT_FILE="../input/result.md"
-OUTPUT_FILE="../output/Resume_Senior_SDET.docx"
+INPUT_FILE="../input/CoverLetter.md"
+OUTPUT_FILE="../output/Spectrio_CL.docx"
 
 mkdir -p ../output
 
