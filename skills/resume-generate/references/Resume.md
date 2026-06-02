@@ -4,7 +4,7 @@ Hendersonville, TN | (615) 506-9411 | ilazarkov@gmail.com
 [LinkedIn](https://linkedin.com/in/ihorlazarkov) | [GitHub](https://github.com/ihorLazarkov) | [Portfolio](https://ihorlazarkov-swe.in)
 
 ## Professional Summary
-Strategic Automation Architect and Software Engineer with 15+ years of experience building scalable, high-performance testing ecosystems and full-stack applications. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes environments.
+Automation Architect and Software Engineer with 15+ years of experience building scalable, high-performance testing ecosystems and full-stack applications. Expert in bridging the gap between development and quality through "Shift-Left" strategies, CI/CD orchestration, and custom framework design. Proven track record of optimizing distributed architectures, reducing infrastructure costs by 25%, and leading cross-functional teams in high-stakes environments.
 
 ## Technical Skills
 - **Languages:** JavaScript (ES6+), TypeScript, Java, Python, SQL, HTML5, CSS3
