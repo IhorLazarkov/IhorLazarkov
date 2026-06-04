@@ -322,3 +322,16 @@ section:has(div.warning) > div:has(div.warning) {
   margin-block: 0.4rem;
 }
 /* end .warning */
+
+.maintenance-warning {
+  animation: fadeOut 1s ease-in-out forwards; /* Example animation to trigger fade out */
+  opacity: 1;
+  transform: translateY(0); /* Initial position (or whatever your default is) */
+}
+
+@keyframes fadeOut {
+  to {
+    /* opacity: 0; */
+    transform: translateY(-250px); /* Example: Move it up slightly while fading out */
+  }
+}
