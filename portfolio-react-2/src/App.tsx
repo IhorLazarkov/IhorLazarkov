@@ -68,7 +68,7 @@ function App() {
 
   return (<div id="main">
     {/* //add warning here */}
-    <div className="warning banner"
+    {/* <div className="warning banner"
       style={{ width: "100%", height: "fit-content", position: "fixed", left: "0", zIndex: 100 }}>
       <svg xmlns="http://www.w3.org/2000/svg"
         viewBox="0 -960 960 960"
@@ -81,7 +81,7 @@ function App() {
           <li>Agent migration to Qwen 3 model</li>
         </ul>
       </span>
-    </div>
+    </div> */}
     <div className="gradient-overlay"></div>
     <header>
       <section>

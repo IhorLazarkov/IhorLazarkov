@@ -13,7 +13,7 @@ import './ClientToAgent.css'
 function ClientToAgent() {
 
   const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
-  const MODEL_NAME = "google/gemma-4-e2b"
+  const MODEL_NAME = "qwen/qwen3-vl-4b"
   const [lettersCount, setCount] = useState(0)
 
   const controllerRef = useRef<AbortController | null>(null)
