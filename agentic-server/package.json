@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  },
+  "scripts": {
+    "start:prod": "DB_PATH=./db/queries_PROD.db PORT=3007 NODE_ENV=production node main.js",
+    "start:qa": "DB_PATH=./db/queries_QA.db PORT=3008 NODE_ENV=qa node main.js",
+    "start": "node main.js"
+  }
+}
