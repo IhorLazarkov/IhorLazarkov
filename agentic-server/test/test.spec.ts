@@ -4,7 +4,6 @@ import sqlite3 from 'sqlite3';
 
 const QA_DB = "./db/queries_QA.db"
 const CONNECTION_PATH = QA_DB
-// const conn = new sqlite3.Database(CONNECTION_PATH, sqlite3.OPEN_READWRITE);
 const conn = new sqlite3.Database(CONNECTION_PATH, sqlite3.OPEN_READONLY);
 
 type TQuery = {
@@ -21,10 +20,10 @@ const isRecord = (record: any): record is TQuery => {
 
 test('queries table is not empty', async () => {
   try {
-    const results: TQuery[] = await new Promise((res, rej) => {
-      conn.all("Select * from queries Order By 'times' asc limit 5;", (err, results) => {
+    const results: TQuery[] = await new Promise<TQuery[]>((res, rej) => {
+      conn.all("Select * from queries Order By 'times' asc limit 5;", (err, rows) => {
         if (err) return rej(err)
-        return res(results)
+        return res(rows as TQuery[])
       });
     });
 
