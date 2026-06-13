@@ -10,7 +10,7 @@
     "start:prod": "DB_PATH=./db/queries_PROD.db PORT=3007 NODE_ENV=production node main.js",
     "start:qa": "DB_PATH=./db/queries_QA.db PORT=3008 NODE_ENV=qa node main.js",
     "start": "node main.js",
-    "test": "npx tsx --test test/test.spec.ts "
+    "test": "NODE_ENV=test npx tsx --test test/test.spec.ts "
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
