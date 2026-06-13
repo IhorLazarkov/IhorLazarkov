@@ -1,8 +1,8 @@
-import QueryRepository from '../src/repository/query';
-import { type queriesModel as TQuery } from "../generated/prisma/models/queries";
-import { prisma } from "../lib/prisma";
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
+import QueryRepository from '../repository/QueryRepository';
+import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
+import { prisma } from "../../lib/prisma";
 
 describe('QueryRepository', () => {
     const backUp: TQuery[] = [];

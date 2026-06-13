@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert';
 
-import { prisma } from "../lib/prisma";
-import { type queriesModel as TQueries } from "../generated/prisma/models/queries"
+import { prisma } from "../../lib/prisma";
+import { type queriesModel as TQueries } from "../../generated/prisma/models/queries"
 
 test.describe('Test ORM configurability', () => {
   const backUp: TQueries[] = [];
