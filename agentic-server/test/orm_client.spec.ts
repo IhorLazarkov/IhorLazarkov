@@ -4,7 +4,7 @@ import assert from 'node:assert';
 import { prisma } from "../lib/prisma";
 import { type queriesModel as TQueries } from "../generated/prisma/models/queries"
 
-test.describe('Test DB', () => {
+test.describe('Test ORM configurability', () => {
   const backUp: TQueries[] = [];
   const queriesToDelete: TQueries[] = [];
 
@@ -30,6 +30,7 @@ test.describe('Test DB', () => {
     const queries = await prisma.queries.findMany();
     const query = queries[0];
     const updatedQuery = await prisma.queries.update({ where: { id: query!.id }, data: { body: 'updated' } });
+    assert.strictEqual(updatedQuery.id, query!.id);
     assert.strictEqual(updatedQuery.body, 'updated');
   })
 
