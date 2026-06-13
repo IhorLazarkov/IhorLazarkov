@@ -81,7 +81,7 @@ const server = http.createServer(async (req, res) => {
 		return;
 	}
 
-	let body = '' //store request body
+	let body = '' //store request body@
 	req.on('data', (chunk) => {
 		body += chunk;
 	})
