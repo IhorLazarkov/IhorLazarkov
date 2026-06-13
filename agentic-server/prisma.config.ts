@@ -3,7 +3,7 @@
 // import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
-const environment = process.env.NODE_ENV || 'qa';
+const environment = process.env.NODE_ENV || 'test';
 const envFile = environment === 'production' ? '.env' : `.env.${environment}`;
 
 import dotenv from  "dotenv"

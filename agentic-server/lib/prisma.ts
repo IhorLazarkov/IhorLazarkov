@@ -1,7 +1,7 @@
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient } from "../generated/prisma/client";
 
-const environment = process.env.NODE_ENV || 'qa';
+const environment = process.env.NODE_ENV || 'test';
 const envFile = environment === 'production' ? '.env' : `.env.${environment}`;
 
 import dotenv from  "dotenv"

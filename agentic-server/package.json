@@ -9,7 +9,7 @@
     "start:prod": "DB_PATH=./db/queries_PROD.db PORT=3007 NODE_ENV=production node main.js",
     "start:qa": "DB_PATH=./db/queries_QA.db PORT=3008 NODE_ENV=qa node main.js",
     "start": "node main.js",
-    "test": "NODE_ENV=test npx tsx --test test/**.spec.ts",
+    "test": "NODE_ENV=test rm -f ./db/queries_QA.db && npm run seed:qa && npx tsx --test test/**.spec.ts",
     "backup:qa": "NODE_ENV=test npx tsx ./scripts/mackBackupQA.ts",
     "seed:qa": "NODE_ENV=test npx prisma db push && npx prisma db seed"
   },
