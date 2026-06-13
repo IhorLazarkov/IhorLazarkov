@@ -11,7 +11,7 @@
     "start": "node main.js",
     "test": "NODE_ENV=test npx tsx --test test/**.spec.ts",
     "backup:qa": "NODE_ENV=test npx tsx ./scripts/mackBackupQA.ts",
-    "seed:qa": "NODE_ENV=test npx prisma db seed"
+    "seed:qa": "NODE_ENV=test npx prisma db push && npx prisma db seed"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

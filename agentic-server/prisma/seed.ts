@@ -5,7 +5,7 @@ import { stat } from 'node:fs/promises'
 
 const prefix = 'backup_qa_'
 
-fs.readdir('../scripts', { withFileTypes: true }, (err, files) => {
+fs.readdir('./scripts', { withFileTypes: true }, (err, files) => {
     //find latest file
     if (err) throw new Error("error reading directory", err);
     const latestFile = files
@@ -19,7 +19,7 @@ fs.readdir('../scripts', { withFileTypes: true }, (err, files) => {
     console.log("Found latest file:", { file: latestFile.name })
 
     //write data to database
-    fs.readFile(`../scripts/${latestFile.name}`, async (err, data) => {
+    fs.readFile(`./scripts/${latestFile.name}`, async (err, data) => {
         if (err) throw new Error("error reading file", err)
         const json : TQueries[] = JSON.parse(data.toString())
         try {
