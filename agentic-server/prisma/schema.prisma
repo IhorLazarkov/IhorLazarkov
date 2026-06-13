@@ -1,0 +1,14 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model queries {
+  id        Int       @id @default(autoincrement())
+  body      String
+  createdAt DateTime? @default(now())
+}
