@@ -3,7 +3,6 @@
   "dependencies": {
     "@prisma/adapter-better-sqlite3": "^7.8.0",
     "@prisma/client": "^7.8.0",
-    "dotenv": "^17.4.2",
     "sqlite3": "^5.1.7"
   },
   "scripts": {
@@ -11,11 +10,13 @@
     "start:qa": "DB_PATH=./db/queries_QA.db PORT=3008 NODE_ENV=qa node main.js",
     "start": "node main.js",
     "test": "NODE_ENV=test npx tsx --test test/**.spec.ts",
-    "backup:qa": "NODE_ENV=test npx tsx ./scripts/mackBackupQA.ts"
+    "backup:qa": "NODE_ENV=test npx tsx ./scripts/mackBackupQA.ts",
+    "seed:qa": "NODE_ENV=test npx prisma db seed"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.9.3",
+    "dotenv": "^17.4.2",
     "prisma": "^7.8.0",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
