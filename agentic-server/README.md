@@ -15,7 +15,9 @@ It serves as agentic server for https://ihorlazarkov.githun.io/ihorlazarkov
 - `src/`: Main application code
   - `orm/`: Prisma ORM setup
   - `repositories/`: Data access layer
+    - `RAGRepository.ts`: New repository for RAG data
   - `services/`: Business logic
+    - `RAGService.ts`: New service for RAG operations
   - `controllers/`: HTTP routes
   - `tests/`: Unit tests
 
@@ -28,14 +30,8 @@ npm run dev
 
 ### Testing
 ```bash
-npm run test
-```
-
-### Running Tests
-```bash
 npm test
 ```
-Test will configure qa env file and remove entire qa db file and the push the prisma schema to have it clean.
 
 ### Running Server
 ```bash
@@ -45,6 +41,3 @@ or
 ```bash
 npm run start:prod
 ```
-
-## License
-MIT
