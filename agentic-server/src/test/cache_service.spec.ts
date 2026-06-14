@@ -1,0 +1,58 @@
+import { test, describe } from "node:test";
+import assert from "node:assert";
+
+import CacheService from "../service/CacheService";
+import QueriesService from "../service/QueriesService";
+import { type CacheModel as TCache } from "../../generated/prisma/models/Cache";
+import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
+
+describe("CacheService", () => {
+  let cacheService: CacheService;
+  let queriesService: QueriesService;
+  let query: TQuery;
+  let cache: {
+    queries_id: number;
+    response: string;
+  };
+
+  test.before(async () => {
+    cacheService = new CacheService();
+    queriesService = new QueriesService();
+
+    query = (await queriesService.findAll())[0]!;
+    console.log({query})
+  });
+
+  test("should create a cache entry successfully", async () => {
+    cache = {
+      queries_id: query.id,
+      response: "test response",
+    };
+
+    const result = await cacheService.create(cache);
+    assert.notEqual(result, null);
+    assert.strictEqual(result.id > 0, true)
+  });
+
+  test("should read a cache entry by query_id", async () => {
+    const cache1 = {
+      queries_id: query.id,
+      response: "test response",
+    };
+
+    const result = await cacheService.create(cache1);
+    const query_id = result.queries_id;
+    const cache2 = await cacheService.read(query_id);
+    assert.notEqual(cache2, null);
+  });
+
+  test("should return null for non-existing cache entry", async () => {
+    const query_id = 999;
+    const cache = await cacheService.read(query_id);
+    assert.strictEqual(cache, null);
+  });
+
+  test("should throw error for invalid query_id", async () => {
+    assert.strictEqual(await cacheService.read(-1), null);
+  });
+});

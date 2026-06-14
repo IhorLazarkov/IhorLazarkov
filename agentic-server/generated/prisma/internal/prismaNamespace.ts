@@ -601,7 +601,6 @@ export type QueriesScalarFieldEnum = (typeof QueriesScalarFieldEnum)[keyof typeo
 export const CacheScalarFieldEnum = {
   id: 'id',
   queries_id: 'queries_id',
-  enquiry: 'enquiry',
   response: 'response',
   createdAt: 'createdAt'
 } as const

@@ -39,7 +39,6 @@ export type CacheSumAggregateOutputType = {
 export type CacheMinAggregateOutputType = {
   id: number | null
   queries_id: number | null
-  enquiry: string | null
   response: string | null
   createdAt: Date | null
 }
@@ -47,7 +46,6 @@ export type CacheMinAggregateOutputType = {
 export type CacheMaxAggregateOutputType = {
   id: number | null
   queries_id: number | null
-  enquiry: string | null
   response: string | null
   createdAt: Date | null
 }
@@ -55,7 +53,6 @@ export type CacheMaxAggregateOutputType = {
 export type CacheCountAggregateOutputType = {
   id: number
   queries_id: number
-  enquiry: number
   response: number
   createdAt: number
   _all: number
@@ -75,7 +72,6 @@ export type CacheSumAggregateInputType = {
 export type CacheMinAggregateInputType = {
   id?: true
   queries_id?: true
-  enquiry?: true
   response?: true
   createdAt?: true
 }
@@ -83,7 +79,6 @@ export type CacheMinAggregateInputType = {
 export type CacheMaxAggregateInputType = {
   id?: true
   queries_id?: true
-  enquiry?: true
   response?: true
   createdAt?: true
 }
@@ -91,7 +86,6 @@ export type CacheMaxAggregateInputType = {
 export type CacheCountAggregateInputType = {
   id?: true
   queries_id?: true
-  enquiry?: true
   response?: true
   createdAt?: true
   _all?: true
@@ -186,7 +180,6 @@ export type CacheGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type CacheGroupByOutputType = {
   id: number
   queries_id: number
-  enquiry: string
   response: string
   createdAt: Date | null
   _count: CacheCountAggregateOutputType | null
@@ -217,7 +210,6 @@ export type CacheWhereInput = {
   NOT?: Prisma.CacheWhereInput | Prisma.CacheWhereInput[]
   id?: Prisma.IntFilter<"Cache"> | number
   queries_id?: Prisma.IntFilter<"Cache"> | number
-  enquiry?: Prisma.StringFilter<"Cache"> | string
   response?: Prisma.StringFilter<"Cache"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"Cache"> | Date | string | null
   queries?: Prisma.XOR<Prisma.QueriesScalarRelationFilter, Prisma.queriesWhereInput>
@@ -226,7 +218,6 @@ export type CacheWhereInput = {
 export type CacheOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   queries_id?: Prisma.SortOrder
-  enquiry?: Prisma.SortOrder
   response?: Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
   queries?: Prisma.queriesOrderByWithRelationInput
@@ -238,7 +229,6 @@ export type CacheWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.CacheWhereInput[]
   NOT?: Prisma.CacheWhereInput | Prisma.CacheWhereInput[]
   queries_id?: Prisma.IntFilter<"Cache"> | number
-  enquiry?: Prisma.StringFilter<"Cache"> | string
   response?: Prisma.StringFilter<"Cache"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"Cache"> | Date | string | null
   queries?: Prisma.XOR<Prisma.QueriesScalarRelationFilter, Prisma.queriesWhereInput>
@@ -247,7 +237,6 @@ export type CacheWhereUniqueInput = Prisma.AtLeast<{
 export type CacheOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   queries_id?: Prisma.SortOrder
-  enquiry?: Prisma.SortOrder
   response?: Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.CacheCountOrderByAggregateInput
@@ -263,13 +252,11 @@ export type CacheScalarWhereWithAggregatesInput = {
   NOT?: Prisma.CacheScalarWhereWithAggregatesInput | Prisma.CacheScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Cache"> | number
   queries_id?: Prisma.IntWithAggregatesFilter<"Cache"> | number
-  enquiry?: Prisma.StringWithAggregatesFilter<"Cache"> | string
   response?: Prisma.StringWithAggregatesFilter<"Cache"> | string
   createdAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Cache"> | Date | string | null
 }
 
 export type CacheCreateInput = {
-  enquiry: string
   response: string
   createdAt?: Date | string | null
   queries: Prisma.queriesCreateNestedOneWithoutCachesInput
@@ -278,13 +265,11 @@ export type CacheCreateInput = {
 export type CacheUncheckedCreateInput = {
   id?: number
   queries_id: number
-  enquiry: string
   response: string
   createdAt?: Date | string | null
 }
 
 export type CacheUpdateInput = {
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   queries?: Prisma.queriesUpdateOneRequiredWithoutCachesNestedInput
@@ -293,7 +278,6 @@ export type CacheUpdateInput = {
 export type CacheUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   queries_id?: Prisma.IntFieldUpdateOperationsInput | number
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -301,13 +285,11 @@ export type CacheUncheckedUpdateInput = {
 export type CacheCreateManyInput = {
   id?: number
   queries_id: number
-  enquiry: string
   response: string
   createdAt?: Date | string | null
 }
 
 export type CacheUpdateManyMutationInput = {
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -315,7 +297,6 @@ export type CacheUpdateManyMutationInput = {
 export type CacheUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   queries_id?: Prisma.IntFieldUpdateOperationsInput | number
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -333,7 +314,6 @@ export type CacheOrderByRelationAggregateInput = {
 export type CacheCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   queries_id?: Prisma.SortOrder
-  enquiry?: Prisma.SortOrder
   response?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -346,7 +326,6 @@ export type CacheAvgOrderByAggregateInput = {
 export type CacheMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   queries_id?: Prisma.SortOrder
-  enquiry?: Prisma.SortOrder
   response?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -354,7 +333,6 @@ export type CacheMaxOrderByAggregateInput = {
 export type CacheMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   queries_id?: Prisma.SortOrder
-  enquiry?: Prisma.SortOrder
   response?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
@@ -407,14 +385,12 @@ export type CacheUncheckedUpdateManyWithoutQueriesNestedInput = {
 }
 
 export type CacheCreateWithoutQueriesInput = {
-  enquiry: string
   response: string
   createdAt?: Date | string | null
 }
 
 export type CacheUncheckedCreateWithoutQueriesInput = {
   id?: number
-  enquiry: string
   response: string
   createdAt?: Date | string | null
 }
@@ -450,34 +426,29 @@ export type CacheScalarWhereInput = {
   NOT?: Prisma.CacheScalarWhereInput | Prisma.CacheScalarWhereInput[]
   id?: Prisma.IntFilter<"Cache"> | number
   queries_id?: Prisma.IntFilter<"Cache"> | number
-  enquiry?: Prisma.StringFilter<"Cache"> | string
   response?: Prisma.StringFilter<"Cache"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"Cache"> | Date | string | null
 }
 
 export type CacheCreateManyQueriesInput = {
   id?: number
-  enquiry: string
   response: string
   createdAt?: Date | string | null
 }
 
 export type CacheUpdateWithoutQueriesInput = {
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CacheUncheckedUpdateWithoutQueriesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type CacheUncheckedUpdateManyWithoutQueriesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  enquiry?: Prisma.StringFieldUpdateOperationsInput | string
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
@@ -487,7 +458,6 @@ export type CacheUncheckedUpdateManyWithoutQueriesInput = {
 export type CacheSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   queries_id?: boolean
-  enquiry?: boolean
   response?: boolean
   createdAt?: boolean
   queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
@@ -496,7 +466,6 @@ export type CacheSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type CacheSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   queries_id?: boolean
-  enquiry?: boolean
   response?: boolean
   createdAt?: boolean
   queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
@@ -505,7 +474,6 @@ export type CacheSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type CacheSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   queries_id?: boolean
-  enquiry?: boolean
   response?: boolean
   createdAt?: boolean
   queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
@@ -514,12 +482,11 @@ export type CacheSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type CacheSelectScalar = {
   id?: boolean
   queries_id?: boolean
-  enquiry?: boolean
   response?: boolean
   createdAt?: boolean
 }
 
-export type CacheOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "queries_id" | "enquiry" | "response" | "createdAt", ExtArgs["result"]["cache"]>
+export type CacheOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "queries_id" | "response" | "createdAt", ExtArgs["result"]["cache"]>
 export type CacheInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }
@@ -538,7 +505,6 @@ export type $CachePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     queries_id: number
-    enquiry: string
     response: string
     createdAt: Date | null
   }, ExtArgs["result"]["cache"]>
@@ -967,7 +933,6 @@ export interface Prisma__CacheClient<T, Null = never, ExtArgs extends runtime.Ty
 export interface CacheFieldRefs {
   readonly id: Prisma.FieldRef<"Cache", 'Int'>
   readonly queries_id: Prisma.FieldRef<"Cache", 'Int'>
-  readonly enquiry: Prisma.FieldRef<"Cache", 'String'>
   readonly response: Prisma.FieldRef<"Cache", 'String'>
   readonly createdAt: Prisma.FieldRef<"Cache", 'DateTime'>
 }
