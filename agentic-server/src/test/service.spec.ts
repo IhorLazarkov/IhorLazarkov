@@ -4,13 +4,14 @@ import assert from 'node:assert'
 import Server from '../service/server'
 import TestController from './test_controller'
 
-const PORT = 6969;
-const HOST = 'localhost';
+import dotenv from "dotenv"
+dotenv.config({ path: ".env.qa" });
 
+const PORT = Number.parseInt(process.env["PORT"] as string);
+const HOST = process.env["HOST"] as string;
 
-test.describe("Test Server with Test Controller", async () => {
+describe("Test Server with Test Controller", async () => {
     const server = new Server(new TestController(), PORT, HOST)
-
     test.before(() => {
         server.start()
     })
