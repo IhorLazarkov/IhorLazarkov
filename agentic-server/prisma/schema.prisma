@@ -11,4 +11,15 @@ model queries {
   id        Int       @id @default(autoincrement())
   body      String
   createdAt DateTime? @default(now())
+  caches    Cache[]
+}
+
+model Cache {
+  id         Int       @id @default(autoincrement())
+  queries_id Int
+  enquiry    String
+  response   String
+  createdAt  DateTime? @default(now())
+
+  queries queries @relation(fields: [queries_id], references: [id], onDelete: Cascade)
 }

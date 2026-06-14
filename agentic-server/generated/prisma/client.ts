@@ -46,3 +46,8 @@ export { Prisma }
  * 
  */
 export type queries = Prisma.queriesModel
+/**
+ * Model Cache
+ * 
+ */
+export type Cache = Prisma.CacheModel

@@ -384,7 +384,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  queries: 'queries'
+  queries: 'queries',
+  Cache: 'Cache'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -400,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "queries"
+    modelProps: "queries" | "cache"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -478,6 +479,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Cache: {
+      payload: Prisma.$CachePayload<ExtArgs>
+      fields: Prisma.CacheFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CacheFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CacheFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>
+        }
+        findFirst: {
+          args: Prisma.CacheFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CacheFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>
+        }
+        findMany: {
+          args: Prisma.CacheFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>[]
+        }
+        create: {
+          args: Prisma.CacheCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>
+        }
+        createMany: {
+          args: Prisma.CacheCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CacheCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>[]
+        }
+        delete: {
+          args: Prisma.CacheDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>
+        }
+        update: {
+          args: Prisma.CacheUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>
+        }
+        deleteMany: {
+          args: Prisma.CacheDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CacheUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CacheUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>[]
+        }
+        upsert: {
+          args: Prisma.CacheUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CachePayload>
+        }
+        aggregate: {
+          args: Prisma.CacheAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCache>
+        }
+        groupBy: {
+          args: Prisma.CacheGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CacheGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CacheCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CacheCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -521,6 +596,17 @@ export const QueriesScalarFieldEnum = {
 } as const
 
 export type QueriesScalarFieldEnum = (typeof QueriesScalarFieldEnum)[keyof typeof QueriesScalarFieldEnum]
+
+
+export const CacheScalarFieldEnum = {
+  id: 'id',
+  queries_id: 'queries_id',
+  enquiry: 'enquiry',
+  response: 'response',
+  createdAt: 'createdAt'
+} as const
+
+export type CacheScalarFieldEnum = (typeof CacheScalarFieldEnum)[keyof typeof CacheScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -683,6 +769,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   queries?: Prisma.queriesOmit
+  cache?: Prisma.CacheOmit
 }
 
 /* Types for Logging */

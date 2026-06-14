@@ -200,12 +200,14 @@ export type queriesWhereInput = {
   id?: Prisma.IntFilter<"queries"> | number
   body?: Prisma.StringFilter<"queries"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"queries"> | Date | string | null
+  caches?: Prisma.CacheListRelationFilter
 }
 
 export type queriesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   body?: Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  caches?: Prisma.CacheOrderByRelationAggregateInput
 }
 
 export type queriesWhereUniqueInput = Prisma.AtLeast<{
@@ -215,6 +217,7 @@ export type queriesWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.queriesWhereInput | Prisma.queriesWhereInput[]
   body?: Prisma.StringFilter<"queries"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"queries"> | Date | string | null
+  caches?: Prisma.CacheListRelationFilter
 }, "id">
 
 export type queriesOrderByWithAggregationInput = {
@@ -240,23 +243,27 @@ export type queriesScalarWhereWithAggregatesInput = {
 export type queriesCreateInput = {
   body: string
   createdAt?: Date | string | null
+  caches?: Prisma.CacheCreateNestedManyWithoutQueriesInput
 }
 
 export type queriesUncheckedCreateInput = {
   id?: number
   body: string
   createdAt?: Date | string | null
+  caches?: Prisma.CacheUncheckedCreateNestedManyWithoutQueriesInput
 }
 
 export type queriesUpdateInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  caches?: Prisma.CacheUpdateManyWithoutQueriesNestedInput
 }
 
 export type queriesUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  caches?: Prisma.CacheUncheckedUpdateManyWithoutQueriesNestedInput
 }
 
 export type queriesCreateManyInput = {
@@ -302,6 +309,11 @@ export type queriesSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type QueriesScalarRelationFilter = {
+  is?: Prisma.queriesWhereInput
+  isNot?: Prisma.queriesWhereInput
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -318,12 +330,95 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type queriesCreateNestedOneWithoutCachesInput = {
+  create?: Prisma.XOR<Prisma.queriesCreateWithoutCachesInput, Prisma.queriesUncheckedCreateWithoutCachesInput>
+  connectOrCreate?: Prisma.queriesCreateOrConnectWithoutCachesInput
+  connect?: Prisma.queriesWhereUniqueInput
+}
+
+export type queriesUpdateOneRequiredWithoutCachesNestedInput = {
+  create?: Prisma.XOR<Prisma.queriesCreateWithoutCachesInput, Prisma.queriesUncheckedCreateWithoutCachesInput>
+  connectOrCreate?: Prisma.queriesCreateOrConnectWithoutCachesInput
+  upsert?: Prisma.queriesUpsertWithoutCachesInput
+  connect?: Prisma.queriesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.queriesUpdateToOneWithWhereWithoutCachesInput, Prisma.queriesUpdateWithoutCachesInput>, Prisma.queriesUncheckedUpdateWithoutCachesInput>
+}
+
+export type queriesCreateWithoutCachesInput = {
+  body: string
+  createdAt?: Date | string | null
+}
+
+export type queriesUncheckedCreateWithoutCachesInput = {
+  id?: number
+  body: string
+  createdAt?: Date | string | null
+}
+
+export type queriesCreateOrConnectWithoutCachesInput = {
+  where: Prisma.queriesWhereUniqueInput
+  create: Prisma.XOR<Prisma.queriesCreateWithoutCachesInput, Prisma.queriesUncheckedCreateWithoutCachesInput>
+}
+
+export type queriesUpsertWithoutCachesInput = {
+  update: Prisma.XOR<Prisma.queriesUpdateWithoutCachesInput, Prisma.queriesUncheckedUpdateWithoutCachesInput>
+  create: Prisma.XOR<Prisma.queriesCreateWithoutCachesInput, Prisma.queriesUncheckedCreateWithoutCachesInput>
+  where?: Prisma.queriesWhereInput
+}
+
+export type queriesUpdateToOneWithWhereWithoutCachesInput = {
+  where?: Prisma.queriesWhereInput
+  data: Prisma.XOR<Prisma.queriesUpdateWithoutCachesInput, Prisma.queriesUncheckedUpdateWithoutCachesInput>
+}
+
+export type queriesUpdateWithoutCachesInput = {
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type queriesUncheckedUpdateWithoutCachesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+
+/**
+ * Count Type QueriesCountOutputType
+ */
+
+export type QueriesCountOutputType = {
+  caches: number
+}
+
+export type QueriesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  caches?: boolean | QueriesCountOutputTypeCountCachesArgs
+}
+
+/**
+ * QueriesCountOutputType without action
+ */
+export type QueriesCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the QueriesCountOutputType
+   */
+  select?: Prisma.QueriesCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * QueriesCountOutputType without action
+ */
+export type QueriesCountOutputTypeCountCachesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CacheWhereInput
+}
 
 
 export type queriesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   body?: boolean
   createdAt?: boolean
+  caches?: boolean | Prisma.queries$cachesArgs<ExtArgs>
+  _count?: boolean | Prisma.QueriesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["queries"]>
 
 export type queriesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -345,10 +440,18 @@ export type queriesSelectScalar = {
 }
 
 export type queriesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "body" | "createdAt", ExtArgs["result"]["queries"]>
+export type queriesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  caches?: boolean | Prisma.queries$cachesArgs<ExtArgs>
+  _count?: boolean | Prisma.QueriesCountOutputTypeDefaultArgs<ExtArgs>
+}
+export type queriesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
+export type queriesIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
 
 export type $queriesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "queries"
-  objects: {}
+  objects: {
+    caches: Prisma.$CachePayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     body: string
@@ -747,6 +850,7 @@ readonly fields: queriesFieldRefs;
  */
 export interface Prisma__queriesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  caches<T extends Prisma.queries$cachesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.queries$cachesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -796,6 +900,10 @@ export type queriesFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Inter
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
+  /**
    * Filter, which queries to fetch.
    */
   where: Prisma.queriesWhereUniqueInput
@@ -814,6 +922,10 @@ export type queriesFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extension
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
+  /**
    * Filter, which queries to fetch.
    */
   where: Prisma.queriesWhereUniqueInput
@@ -831,6 +943,10 @@ export type queriesFindFirstArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Omit specific fields from the queries
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
   /**
    * Filter, which queries to fetch.
    */
@@ -880,6 +996,10 @@ export type queriesFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
+  /**
    * Filter, which queries to fetch.
    */
   where?: Prisma.queriesWhereInput
@@ -927,6 +1047,10 @@ export type queriesFindManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
    * Omit specific fields from the queries
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
   /**
    * Filter, which queries to fetch.
    */
@@ -976,6 +1100,10 @@ export type queriesCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
+  /**
    * The data needed to create a queries.
    */
   data: Prisma.XOR<Prisma.queriesCreateInput, Prisma.queriesUncheckedCreateInput>
@@ -1021,6 +1149,10 @@ export type queriesUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the queries
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
   /**
    * The data needed to update a queries.
    */
@@ -1088,6 +1220,10 @@ export type queriesUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
+  /**
    * The filter to search for the queries to update in case it exists.
    */
   where: Prisma.queriesWhereUniqueInput
@@ -1114,6 +1250,10 @@ export type queriesDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
+  /**
    * Filter which queries to delete.
    */
   where: Prisma.queriesWhereUniqueInput
@@ -1134,6 +1274,30 @@ export type queriesDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * queries.caches
+ */
+export type queries$cachesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Cache
+   */
+  select?: Prisma.CacheSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Cache
+   */
+  omit?: Prisma.CacheOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CacheInclude<ExtArgs> | null
+  where?: Prisma.CacheWhereInput
+  orderBy?: Prisma.CacheOrderByWithRelationInput | Prisma.CacheOrderByWithRelationInput[]
+  cursor?: Prisma.CacheWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CacheScalarFieldEnum | Prisma.CacheScalarFieldEnum[]
+}
+
+/**
  * queries without action
  */
 export type queriesDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1145,4 +1309,8 @@ export type queriesDefaultArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the queries
    */
   omit?: Prisma.queriesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.queriesInclude<ExtArgs> | null
 }

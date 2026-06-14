@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  queries: 'queries'
+  queries: 'queries',
+  Cache: 'Cache'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,6 +75,17 @@ export const QueriesScalarFieldEnum = {
 } as const
 
 export type QueriesScalarFieldEnum = (typeof QueriesScalarFieldEnum)[keyof typeof QueriesScalarFieldEnum]
+
+
+export const CacheScalarFieldEnum = {
+  id: 'id',
+  queries_id: 'queries_id',
+  enquiry: 'enquiry',
+  response: 'response',
+  createdAt: 'createdAt'
+} as const
+
+export type CacheScalarFieldEnum = (typeof CacheScalarFieldEnum)[keyof typeof CacheScalarFieldEnum]
 
 
 export const SortOrder = {
