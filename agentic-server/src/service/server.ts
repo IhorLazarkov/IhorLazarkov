@@ -20,7 +20,6 @@ export default class Server {
             const { method, url } = req;
             console.log(new Date().toLocaleString(), { method, url, origin: req.headers.origin });
             const origin = new Set(['http://localhost:5173', 'https://ihorlazarkov.github.io']).has(req.headers.origin)
-            // const origin = new Set(['https://ihorlazarkov.github.io']).has(req.headers.origin)
             origin && res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
             res.setHeader('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
             res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');

@@ -22,13 +22,13 @@ export default class Controller implements IController {
     };
 
     PUT(req: http.IncomingMessage, res: http.ServerResponse<http.IncomingMessage>) {
-        res.statusCode = 400;
+        res.statusCode = 405;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ message: 'PUT is not supported' }))
     };
 
     DELETE(req: http.IncomingMessage, res: http.ServerResponse<http.IncomingMessage>) {
-        res.statusCode = 400;
+        res.statusCode = 405;
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ message: 'DELETE is not supported' }))
     };
@@ -37,4 +37,5 @@ export default class Controller implements IController {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ response: 'Success' }));
     };
-}
+};
+

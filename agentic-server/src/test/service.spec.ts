@@ -34,7 +34,7 @@ describe("Test Server with Test Controller", async () => {
             },
             body: JSON.stringify(body)
         })
-        assert.strictEqual(response.status, 200)
+        assert.strictEqual(response.status, 201)
         assert.strictEqual((await response.json()).body, JSON.stringify(body))
     })
 
@@ -45,11 +45,11 @@ describe("Test Server with Test Controller", async () => {
 
     test('Check DELETE is not supported', async () => {
         const response = await fetch(`http://${HOST}:${PORT}`, { method: 'DELETE' })
-        assert.strictEqual(response.status, 400)
+        assert.strictEqual(response.status, 405)
     })
 
     test('Check PUT is not supported', async () => {
         const response = await fetch(`http://${HOST}:${PORT}`, { method: 'PUT' })
-        assert.strictEqual(response.status, 400)
+        assert.strictEqual(response.status, 405)
     })
 })
