@@ -1,4 +1,4 @@
-import { CacheRepository } from "../repository/CacheRepository"; // Assuming you have this imported
+import { CacheRepository } from "../repository/cacheRepository"; // Assuming you have this imported
 import { type CacheModel as TCache } from "../../generated/prisma/models/Cache";
 
 export default class CacheService {

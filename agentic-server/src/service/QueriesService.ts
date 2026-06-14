@@ -1,4 +1,4 @@
-import QueryRepository from "../repository/QueryRepository";
+import QueryRepository from "../repository/queryRepository";
 import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
 
 export default class QueriesService {

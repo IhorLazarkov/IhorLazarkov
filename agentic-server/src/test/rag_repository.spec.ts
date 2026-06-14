@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import RAGRepository from '../repository/RAGRepository';
+import RAGRepository from '../repository/ragRepository';
 
 describe('RAGRepository', () => {
     test('should return data from info.js file', async () => {

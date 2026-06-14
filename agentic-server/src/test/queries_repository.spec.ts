@@ -1,6 +1,6 @@
 import { test, describe } from 'node:test';
 import assert from 'node:assert';
-import QueryRepository from '../repository/QueryRepository';
+import QueryRepository from '../repository/queryRepository';
 import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
 import { prisma } from "../../lib/prisma";
 

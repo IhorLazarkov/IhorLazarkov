@@ -1,9 +1,8 @@
 import { test, describe } from "node:test";
 import assert from "node:assert";
 
-import CacheService from "../service/CacheService";
-import QueriesService from "../service/QueriesService";
-import { type CacheModel as TCache } from "../../generated/prisma/models/Cache";
+import CacheService from "../service/cacheService";
+import QueriesService from "../service/queriesService";
 import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
 
 describe("CacheService", () => {
