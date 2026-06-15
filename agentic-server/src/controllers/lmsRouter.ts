@@ -16,11 +16,16 @@ const BASE_URL = process.env["AGENT_BASE_URL"];
 const CHAT = process.env["AGENT_CHAT"];
 const MODEL = process.env["MODEL"];
 
-type TGetHandler = "/api/version" | "BAD_REQUEST";
+type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
 const getHandler: Record<
   TGetHandler,
   (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => void
 > = {
+  "/": async (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    return res.end(JSON.stringify({ message: "OK" }));
+  },
   /**
    * @description
    * Process when a visitor just open the webpage
@@ -72,6 +77,7 @@ const getHandler: Record<
         });
       }
 
+      res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
       return res.end({ response: cached.response });
     } catch (err) {
@@ -89,7 +95,7 @@ const getHandler: Record<
   BAD_REQUEST: (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
     res.statusCode = 405;
     const response = { response: "Bad Request" };
-    res.end(JSON.stringify(response));
+    return res.end(JSON.stringify(response));
   },
 };
 
@@ -97,7 +103,7 @@ export default class lmsRouter implements IController {
   GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
     const handler = getHandler[req.url as TGetHandler];
     if (!handler) return getHandler["BAD_REQUEST"](req, res);
-    handler(req, res);
+    return handler(req, res);
   }
   async POST(
     req: IncomingMessage,
