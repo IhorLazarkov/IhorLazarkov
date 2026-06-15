@@ -8,10 +8,13 @@ import IController from "./serverRouter";
 // Services
 import CacheService from "../service/cacheService";
 import QueriesService from "../service/queriesService";
+import RagService from "../service/ragService";
+import { AgentService } from "../service/agentService";
 import { type queriesModel as TQuery } from "../../generated/prisma/models";
 
 const BASE_URL = process.env["AGENT_BASE_URL"];
 const CHAT = process.env["AGENT_CHAT"];
+const MODEL = process.env["MODEL"];
 
 type TGetHandler = "/api/version" | "BAD_REQUEST";
 const getHandler: Record<
@@ -49,14 +52,16 @@ const getHandler: Record<
         (q) => q.body === greetingMessage,
       )[0] as TQuery;
       if (!queried) {
-        //1. Aks and agent
-
-        // 2. Store in queries
-
-        // 3. Store in Cache
-
-        // 4. Respond
-        return;
+        return new lmsRouter().POST(
+          req,
+          res,
+          JSON.stringify({
+            body: {
+              model: MODEL,
+              input: greetingMessage,
+            },
+          }),
+        );
       }
 
       let cached = await cache.read(queried.id);
@@ -90,8 +95,7 @@ const getHandler: Record<
 
 export default class lmsRouter implements IController {
   GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
-    const { url } = req;
-    const handler = getHandler[url as TGetHandler];
+    const handler = getHandler[req.url as TGetHandler];
     if (!handler) return getHandler["BAD_REQUEST"](req, res);
     handler(req, res);
   }
@@ -101,22 +105,55 @@ export default class lmsRouter implements IController {
     body: string,
   ): Promise<void> {
     try {
+      const queryService = new QueriesService();
+      const cacheService = new CacheService();
+      const queries: TQuery[] = (await queryService.findAll()).filter(
+        (q) => q.body === body,
+      );
+      if (queries.length > 0) {
+        const cached = await cacheService.read(queries[0]!.id);
+        if (cached) {
+          res.setHeader("Content-Type", "application/json");
+          res.statusCode = 200;
+          return res.end(JSON.stringify({ message: cached.response }));
+        }
+      }
+      // RAG
+      const context = RagService.get();
+      const prompt = AgentService.generate_prompt(body, context);
+      //1. Aks and agent
       const response = await fetch(`${BASE_URL}${CHAT}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.LMS_API_KEY}`,
         },
-        body,
+        body: JSON.stringify({
+          model: MODEL,
+          input: prompt,
+        }),
       });
+
       const data = await response.json();
       const message =
         data?.output[0].content ||
         "Sorry, I couldn't generate a response. Please try again later.";
       // console.log({ response: data.output[0].content });
-      res.end(message);
-    } catch (error) {
-      console.error({ error });
+
+      // 2. Store in queries
+      const newQuery = await queryService.create(body);
+      // 3. Store in Cache
+      cacheService.create({
+        queries_id: newQuery.id,
+        response: message,
+      });
+      // 4. Respond
+      return res.end(message);
+    } catch (err) {
+      console.error({ error: err });
+      res.setHeader("Content-Type", "application/json");
+      res.statusCode = 501;
+      return res.end(JSON.stringify({ message: "Server Internal Error" }));
     }
   }
   PUT(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
