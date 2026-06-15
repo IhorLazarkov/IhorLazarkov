@@ -3,7 +3,7 @@ const env_path = process.env.NODE_ENV !== "production" ? ".env.test" : ".env";
 dotenv.config({ path: env_path });
 
 import type { IncomingMessage, ServerResponse } from "node:http";
-import IController from "./serverRouter";
+import IController from "./defaultRouter";
 
 // Services
 import CacheService from "../service/cacheService";

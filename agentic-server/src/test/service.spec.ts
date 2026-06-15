@@ -2,16 +2,16 @@ import { test, describe } from 'node:test'
 import assert from 'node:assert'
 
 import Server from '../server'
-import TestController from './test_controller'
+import Router from '../controllers/defaultRouter'
 
 import dotenv from "dotenv"
-dotenv.config({ path: ".env.qa" });
+dotenv.config({ path: ".env.test" });
 
 const PORT = Number.parseInt(process.env["PORT"] as string);
 const HOST = process.env["HOST"] as string;
 
 describe("Test Server with Test Controller", async () => {
-    const server = new Server(new TestController(), PORT, HOST)
+    const server = new Server(new Router(), PORT, HOST)
     test.before(() => {
         server.start()
     })

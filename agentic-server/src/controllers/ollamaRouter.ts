@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import IController  from "./serverRouter";
+import IController  from "./defaultRouter";
 
 export default class OllamaRouter implements IController{
     GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {

@@ -1,4 +1,4 @@
-import { type IController } from "./controllers/serverRouter";
+import { type IController } from "./controllers/defaultRouter";
 import { createServer, Server as HttpServer } from "node:http";
 
 export default class Server {
@@ -68,14 +68,3 @@ export default class Server {
     this.server?.close();
   }
 }
-
-// import Router from "./controllers/serverRouter";
-import lmsRouter from "./controllers/lmsRouter";
-
-const server = new Server(new lmsRouter(), 3000, "localhost");
-
-server.start();
-
-process.on("SIGINT", () => {
-  server.stop();
-});
