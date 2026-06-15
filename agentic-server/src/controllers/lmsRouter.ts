@@ -16,11 +16,16 @@ const BASE_URL = process.env["AGENT_BASE_URL"];
 const CHAT = process.env["AGENT_CHAT"];
 const MODEL = process.env["MODEL"];
 
-type TGetHandler = "/api/version" | "BAD_REQUEST";
+type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
 const getHandler: Record<
   TGetHandler,
   (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => void
 > = {
+  "/": async (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    return res.end(JSON.stringify({ message: "OK" }));
+  },
   /**
    * @description
    * Process when a visitor just open the webpage
@@ -42,13 +47,12 @@ const getHandler: Record<
       const cache = new CacheService();
 
       const greeting_prompt = (query = "Hello") => {
-        return `Please greet the visitor the way you usually do. 
-        User query: ${query}`;
+        return `Please greet the visitor the way you usually do. User query: ${query}`;
       };
 
       const greetingMessage = greeting_prompt("Introduce yourself.");
 
-      const queried: TQuery = (await queries.findAll()).filter(
+      const queried = (await queries.findAll()).filter(
         (q) => q.body === greetingMessage,
       )[0] as TQuery;
       if (!queried) {
@@ -72,11 +76,12 @@ const getHandler: Record<
         });
       }
 
+      res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
-      return res.end({ response: cached.response });
+      return res.end(JSON.stringify({ message: cached.response }));
     } catch (err) {
-      res.setHeader("Content-Type", "application/json");
       res.statusCode = 501;
+      res.setHeader("Content-Type", "application/json");
       return res.end(JSON.stringify({ message: err }));
     }
   },
@@ -89,7 +94,7 @@ const getHandler: Record<
   BAD_REQUEST: (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
     res.statusCode = 405;
     const response = { response: "Bad Request" };
-    res.end(JSON.stringify(response));
+    return res.end(JSON.stringify(response));
   },
 };
 
@@ -97,7 +102,7 @@ export default class lmsRouter implements IController {
   GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
     const handler = getHandler[req.url as TGetHandler];
     if (!handler) return getHandler["BAD_REQUEST"](req, res);
-    handler(req, res);
+    return handler(req, res);
   }
   async POST(
     req: IncomingMessage,
@@ -108,8 +113,10 @@ export default class lmsRouter implements IController {
       const queryService = new QueriesService();
       const cacheService = new CacheService();
       const queries: TQuery[] = (await queryService.findAll()).filter(
-        (q) => q.body === body,
+        (q) => q.body === JSON.parse(body)!.body.input,
       );
+
+      //Response from cache
       if (queries.length > 0) {
         const cached = await cacheService.read(queries[0]!.id);
         if (cached) {
@@ -121,7 +128,7 @@ export default class lmsRouter implements IController {
       // RAG
       const context = RagService.get();
       const prompt = AgentService.generate_prompt(body, context);
-      //1. Aks and agent
+      //1. Ask agent
       const response = await fetch(`${BASE_URL}${CHAT}`, {
         method: "POST",
         headers: {
@@ -141,14 +148,16 @@ export default class lmsRouter implements IController {
       // console.log({ response: data.output[0].content });
 
       // 2. Store in queries
-      const newQuery = await queryService.create(body);
+      const newQuery = await queryService.create(JSON.parse(body)!.body.input);
       // 3. Store in Cache
       cacheService.create({
         queries_id: newQuery.id,
         response: message,
       });
       // 4. Respond
-      return res.end(message);
+      res.setHeader("Content-Type", "application/json");
+      res.statusCode = 200;
+      return res.end(JSON.stringify({ message }));
     } catch (err) {
       console.error({ error: err });
       res.setHeader("Content-Type", "application/json");
