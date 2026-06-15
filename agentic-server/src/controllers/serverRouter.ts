@@ -10,7 +10,7 @@ export interface IController {
     OPTIONS: (req: http.IncomingMessage, res: http.ServerResponse<http.IncomingMessage>) => void;
 }
 
-export default class Controller implements IController {
+export default class Router implements IController {
 
     GET(req: http.IncomingMessage, res: http.ServerResponse<http.IncomingMessage>) {
         res.setHeader('Content-Type', 'application/json');

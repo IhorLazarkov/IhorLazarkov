@@ -1,4 +1,4 @@
-import { type IController } from "./controller";
+import { type IController } from "./controllers/serverRouter";
 import { createServer, Server as HttpServer } from "node:http";
 
 

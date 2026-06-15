@@ -1,5 +1,5 @@
 import http from 'node:http'
-import { type IController } from '../service/controller';
+import { type IController } from '../controllers/serverRouter';
 
 
 export default class TestController implements IController {

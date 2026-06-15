@@ -1,7 +1,7 @@
 import { test, describe } from 'node:test'
 import assert from 'node:assert'
 
-import Server from '../service/server'
+import Server from '../server'
 import TestController from './test_controller'
 
 import dotenv from "dotenv"
