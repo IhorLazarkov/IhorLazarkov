@@ -32,11 +32,13 @@ graph TD
         RS[RagService]
         CS[CacheService]
         QS[QueriesService]
+        SS[StatesService]
     end
 
     subgraph Repository_Layer [Repository Layer]
         CR[CacheRepository]
         QR[QueriesRepository]
+        SR[StatesRepository]
     end
 
     subgraph Data_Layer [ORM/Data Layer]
@@ -52,11 +54,13 @@ graph TD
     IC --> RS
     IC --> CS
     IC --> QS
+    IC --> SS
     RS --> CR
     RS --> QR
     CS --> CR
     QS --> QR
-    CR & QR --> P
+    SS --> SR
+    CR & QR & SR --> P
     P --> DB
 
     LR -.-> LMS
