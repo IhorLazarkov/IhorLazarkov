@@ -21,10 +21,23 @@ fs.readdir('./scripts', { withFileTypes: true }, (err, files) => {
     //write data to database
     fs.readFile(`./scripts/${latestFile.name}`, async (err, data) => {
         if (err) throw new Error("error reading file", err)
-        const json : TQueries[] = JSON.parse(data.toString())
+        type TQueryExtended = TQueries & { caches: { response: string }[]}
+        const json : TQueryExtended[] = JSON.parse(data.toString())
         try {
-            const result = await prisma.queries.createMany({ data: json })
-            console.log("created records: ", result.count)
+            for(const query of json){
+                for(const cache of query.caches){
+                    await prisma.$transaction(async (tx) => {
+                        const newQuery = await tx.queries.create({ data: { body: query.body }})
+                        await tx.cache.create({
+                            data: {
+                                queries_id: newQuery.id,
+                                response: cache.response
+                            }
+                        })
+                    })
+                }
+            }
+            console.log("created records: ", json.length)
         } catch (err) {
             throw new Error("error creating records", err)
         }

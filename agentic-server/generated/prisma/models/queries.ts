@@ -201,6 +201,7 @@ export type queriesWhereInput = {
   body?: Prisma.StringFilter<"queries"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"queries"> | Date | string | null
   caches?: Prisma.CacheListRelationFilter
+  states?: Prisma.StateListRelationFilter
 }
 
 export type queriesOrderByWithRelationInput = {
@@ -208,6 +209,7 @@ export type queriesOrderByWithRelationInput = {
   body?: Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
   caches?: Prisma.CacheOrderByRelationAggregateInput
+  states?: Prisma.StateOrderByRelationAggregateInput
 }
 
 export type queriesWhereUniqueInput = Prisma.AtLeast<{
@@ -218,6 +220,7 @@ export type queriesWhereUniqueInput = Prisma.AtLeast<{
   body?: Prisma.StringFilter<"queries"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"queries"> | Date | string | null
   caches?: Prisma.CacheListRelationFilter
+  states?: Prisma.StateListRelationFilter
 }, "id">
 
 export type queriesOrderByWithAggregationInput = {
@@ -243,27 +246,31 @@ export type queriesScalarWhereWithAggregatesInput = {
 export type queriesCreateInput = {
   body: string
   createdAt?: Date | string | null
-  caches?: Prisma.CacheCreateNestedManyWithoutQueriesInput
+  caches?: Prisma.CacheCreateNestedManyWithoutQueryInput
+  states?: Prisma.StateCreateNestedManyWithoutQueryInput
 }
 
 export type queriesUncheckedCreateInput = {
   id?: number
   body: string
   createdAt?: Date | string | null
-  caches?: Prisma.CacheUncheckedCreateNestedManyWithoutQueriesInput
+  caches?: Prisma.CacheUncheckedCreateNestedManyWithoutQueryInput
+  states?: Prisma.StateUncheckedCreateNestedManyWithoutQueryInput
 }
 
 export type queriesUpdateInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  caches?: Prisma.CacheUpdateManyWithoutQueriesNestedInput
+  caches?: Prisma.CacheUpdateManyWithoutQueryNestedInput
+  states?: Prisma.StateUpdateManyWithoutQueryNestedInput
 }
 
 export type queriesUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  caches?: Prisma.CacheUncheckedUpdateManyWithoutQueriesNestedInput
+  caches?: Prisma.CacheUncheckedUpdateManyWithoutQueryNestedInput
+  states?: Prisma.StateUncheckedUpdateManyWithoutQueryNestedInput
 }
 
 export type queriesCreateManyInput = {
@@ -344,15 +351,31 @@ export type queriesUpdateOneRequiredWithoutCachesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.queriesUpdateToOneWithWhereWithoutCachesInput, Prisma.queriesUpdateWithoutCachesInput>, Prisma.queriesUncheckedUpdateWithoutCachesInput>
 }
 
+export type queriesCreateNestedOneWithoutStatesInput = {
+  create?: Prisma.XOR<Prisma.queriesCreateWithoutStatesInput, Prisma.queriesUncheckedCreateWithoutStatesInput>
+  connectOrCreate?: Prisma.queriesCreateOrConnectWithoutStatesInput
+  connect?: Prisma.queriesWhereUniqueInput
+}
+
+export type queriesUpdateOneRequiredWithoutStatesNestedInput = {
+  create?: Prisma.XOR<Prisma.queriesCreateWithoutStatesInput, Prisma.queriesUncheckedCreateWithoutStatesInput>
+  connectOrCreate?: Prisma.queriesCreateOrConnectWithoutStatesInput
+  upsert?: Prisma.queriesUpsertWithoutStatesInput
+  connect?: Prisma.queriesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.queriesUpdateToOneWithWhereWithoutStatesInput, Prisma.queriesUpdateWithoutStatesInput>, Prisma.queriesUncheckedUpdateWithoutStatesInput>
+}
+
 export type queriesCreateWithoutCachesInput = {
   body: string
   createdAt?: Date | string | null
+  states?: Prisma.StateCreateNestedManyWithoutQueryInput
 }
 
 export type queriesUncheckedCreateWithoutCachesInput = {
   id?: number
   body: string
   createdAt?: Date | string | null
+  states?: Prisma.StateUncheckedCreateNestedManyWithoutQueryInput
 }
 
 export type queriesCreateOrConnectWithoutCachesInput = {
@@ -374,12 +397,56 @@ export type queriesUpdateToOneWithWhereWithoutCachesInput = {
 export type queriesUpdateWithoutCachesInput = {
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  states?: Prisma.StateUpdateManyWithoutQueryNestedInput
 }
 
 export type queriesUncheckedUpdateWithoutCachesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   body?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  states?: Prisma.StateUncheckedUpdateManyWithoutQueryNestedInput
+}
+
+export type queriesCreateWithoutStatesInput = {
+  body: string
+  createdAt?: Date | string | null
+  caches?: Prisma.CacheCreateNestedManyWithoutQueryInput
+}
+
+export type queriesUncheckedCreateWithoutStatesInput = {
+  id?: number
+  body: string
+  createdAt?: Date | string | null
+  caches?: Prisma.CacheUncheckedCreateNestedManyWithoutQueryInput
+}
+
+export type queriesCreateOrConnectWithoutStatesInput = {
+  where: Prisma.queriesWhereUniqueInput
+  create: Prisma.XOR<Prisma.queriesCreateWithoutStatesInput, Prisma.queriesUncheckedCreateWithoutStatesInput>
+}
+
+export type queriesUpsertWithoutStatesInput = {
+  update: Prisma.XOR<Prisma.queriesUpdateWithoutStatesInput, Prisma.queriesUncheckedUpdateWithoutStatesInput>
+  create: Prisma.XOR<Prisma.queriesCreateWithoutStatesInput, Prisma.queriesUncheckedCreateWithoutStatesInput>
+  where?: Prisma.queriesWhereInput
+}
+
+export type queriesUpdateToOneWithWhereWithoutStatesInput = {
+  where?: Prisma.queriesWhereInput
+  data: Prisma.XOR<Prisma.queriesUpdateWithoutStatesInput, Prisma.queriesUncheckedUpdateWithoutStatesInput>
+}
+
+export type queriesUpdateWithoutStatesInput = {
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  caches?: Prisma.CacheUpdateManyWithoutQueryNestedInput
+}
+
+export type queriesUncheckedUpdateWithoutStatesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  body?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  caches?: Prisma.CacheUncheckedUpdateManyWithoutQueryNestedInput
 }
 
 
@@ -389,10 +456,12 @@ export type queriesUncheckedUpdateWithoutCachesInput = {
 
 export type QueriesCountOutputType = {
   caches: number
+  states: number
 }
 
 export type QueriesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   caches?: boolean | QueriesCountOutputTypeCountCachesArgs
+  states?: boolean | QueriesCountOutputTypeCountStatesArgs
 }
 
 /**
@@ -412,12 +481,20 @@ export type QueriesCountOutputTypeCountCachesArgs<ExtArgs extends runtime.Types.
   where?: Prisma.CacheWhereInput
 }
 
+/**
+ * QueriesCountOutputType without action
+ */
+export type QueriesCountOutputTypeCountStatesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StateWhereInput
+}
+
 
 export type queriesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   body?: boolean
   createdAt?: boolean
   caches?: boolean | Prisma.queries$cachesArgs<ExtArgs>
+  states?: boolean | Prisma.queries$statesArgs<ExtArgs>
   _count?: boolean | Prisma.QueriesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["queries"]>
 
@@ -442,6 +519,7 @@ export type queriesSelectScalar = {
 export type queriesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "body" | "createdAt", ExtArgs["result"]["queries"]>
 export type queriesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   caches?: boolean | Prisma.queries$cachesArgs<ExtArgs>
+  states?: boolean | Prisma.queries$statesArgs<ExtArgs>
   _count?: boolean | Prisma.QueriesCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type queriesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -451,6 +529,7 @@ export type $queriesPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   name: "queries"
   objects: {
     caches: Prisma.$CachePayload<ExtArgs>[]
+    states: Prisma.$StatePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -851,6 +930,7 @@ readonly fields: queriesFieldRefs;
 export interface Prisma__queriesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   caches<T extends Prisma.queries$cachesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.queries$cachesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CachePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  states<T extends Prisma.queries$statesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.queries$statesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1295,6 +1375,30 @@ export type queries$cachesArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.CacheScalarFieldEnum | Prisma.CacheScalarFieldEnum[]
+}
+
+/**
+ * queries.states
+ */
+export type queries$statesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the State
+   */
+  select?: Prisma.StateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the State
+   */
+  omit?: Prisma.StateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StateInclude<ExtArgs> | null
+  where?: Prisma.StateWhereInput
+  orderBy?: Prisma.StateOrderByWithRelationInput | Prisma.StateOrderByWithRelationInput[]
+  cursor?: Prisma.StateWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StateScalarFieldEnum | Prisma.StateScalarFieldEnum[]
 }
 
 /**

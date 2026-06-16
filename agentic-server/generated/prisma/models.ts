@@ -10,4 +10,5 @@
  */
 export type * from './models/queries.js'
 export type * from './models/Cache.js'
+export type * from './models/State.js'
 export type * from './commonInputTypes.js'

@@ -27,3 +27,8 @@ export type queries = Prisma.queriesModel
  * 
  */
 export type Cache = Prisma.CacheModel
+/**
+ * Model State
+ * 
+ */
+export type State = Prisma.StateModel
