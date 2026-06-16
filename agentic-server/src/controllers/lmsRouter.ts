@@ -10,7 +10,12 @@ import CacheService from "../service/cacheService";
 import QueriesService from "../service/queriesService";
 import RagService from "../service/ragService";
 import { AgentService } from "../service/agentService";
-import { type queriesModel as TQuery } from "../../generated/prisma/models";
+import {
+  type queriesModel as TQuery,
+  type CacheModel as TCache,
+  type StateModel as TState,
+} from "../../generated/prisma/models";
+import StateService from "../service/stateService";
 
 const BASE_URL = process.env["AGENT_BASE_URL"];
 const CHAT = process.env["AGENT_CHAT"];
@@ -45,6 +50,7 @@ const getHandler: Record<
     try {
       const queries = new QueriesService();
       const cache = new CacheService();
+      const state = new StateService();
 
       const greeting_prompt = (query = "Hello") => {
         return `Please greet the visitor the way you usually do. User query: ${query}`;
@@ -68,7 +74,7 @@ const getHandler: Record<
         );
       }
 
-      let cached = await cache.read(queried.id);
+      let cached: TCache | null = await cache.read(queried.id);
       if (!cached) {
         cached = await cache.create({
           queries_id: queried.id,
@@ -76,9 +82,13 @@ const getHandler: Record<
         });
       }
 
+      let stated: TState | null = await state.read(queried.id);
+
       res.statusCode = 200;
       res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify({ message: cached.response }));
+      return res.end(
+        JSON.stringify({ message: cached.response, states: stated }),
+      );
     } catch (err) {
       res.statusCode = 501;
       res.setHeader("Content-Type", "application/json");
@@ -112,6 +122,8 @@ export default class lmsRouter implements IController {
     try {
       const queryService = new QueriesService();
       const cacheService = new CacheService();
+      const stateService = new StateService();
+
       const queries: TQuery[] = (await queryService.findAll()).filter(
         (q) => q.body === JSON.parse(body)!.body.input,
       );
@@ -142,26 +154,53 @@ export default class lmsRouter implements IController {
       });
 
       const data = await response.json();
+
+      //Error
+      // data: {
+      //   error: {
+      //     message: 'The model has crashed without additional information. (Exit code: null)',
+      //     type: 'internal_error',
+      //     code: 'unknown',
+      //     param: null
+      //   }
+      // },
+
+      const { output, stats, error } = data;
+      console.log({ data, output, error });
+      if (error) {
+        res.statusCode = 501;
+        res.setHeader("Content-Type", "application/json");
+        return res.end(JSON.stringify({ error: { ...error } }));
+      }
       const message =
-        data?.output[0].content ||
+        output[0].content ||
         "Sorry, I couldn't generate a response. Please try again later.";
-      // console.log({ response: data.output[0].content });
 
       // 2. Store in queries
       const newQuery = await queryService.create(JSON.parse(body)!.body.input);
       // 3. Store in Cache
-      cacheService.create({
+      await cacheService.create({
         queries_id: newQuery.id,
         response: message,
       });
-      // 4. Respond
-      res.setHeader("Content-Type", "application/json");
+      // 4. Store States
+      await stateService.create({
+        response_id: data.response_id,
+        query_id: newQuery.id,
+        input_tokens: stats.input_tokens,
+        total_output_tokens: stats.total_output_tokens,
+        reasoning_output_tokens: stats.reasoning_output_tokens,
+        tokens_per_second: stats.tokens_per_second,
+        time_to_first_token_seconds: stats.time_to_first_token_seconds,
+      });
+      // 5. Respond
       res.statusCode = 200;
-      return res.end(JSON.stringify({ message }));
+      res.setHeader("Content-Type", "application/json");
+      return res.end(JSON.stringify({ message, states: data.states }));
     } catch (err) {
       console.error({ error: err });
-      res.setHeader("Content-Type", "application/json");
       res.statusCode = 501;
+      res.setHeader("Content-Type", "application/json");
       return res.end(JSON.stringify({ message: "Server Internal Error" }));
     }
   }

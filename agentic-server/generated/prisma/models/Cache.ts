@@ -212,7 +212,7 @@ export type CacheWhereInput = {
   queries_id?: Prisma.IntFilter<"Cache"> | number
   response?: Prisma.StringFilter<"Cache"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"Cache"> | Date | string | null
-  queries?: Prisma.XOR<Prisma.QueriesScalarRelationFilter, Prisma.queriesWhereInput>
+  query?: Prisma.XOR<Prisma.QueriesScalarRelationFilter, Prisma.queriesWhereInput>
 }
 
 export type CacheOrderByWithRelationInput = {
@@ -220,7 +220,7 @@ export type CacheOrderByWithRelationInput = {
   queries_id?: Prisma.SortOrder
   response?: Prisma.SortOrder
   createdAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  queries?: Prisma.queriesOrderByWithRelationInput
+  query?: Prisma.queriesOrderByWithRelationInput
 }
 
 export type CacheWhereUniqueInput = Prisma.AtLeast<{
@@ -231,7 +231,7 @@ export type CacheWhereUniqueInput = Prisma.AtLeast<{
   queries_id?: Prisma.IntFilter<"Cache"> | number
   response?: Prisma.StringFilter<"Cache"> | string
   createdAt?: Prisma.DateTimeNullableFilter<"Cache"> | Date | string | null
-  queries?: Prisma.XOR<Prisma.QueriesScalarRelationFilter, Prisma.queriesWhereInput>
+  query?: Prisma.XOR<Prisma.QueriesScalarRelationFilter, Prisma.queriesWhereInput>
 }, "id">
 
 export type CacheOrderByWithAggregationInput = {
@@ -259,7 +259,7 @@ export type CacheScalarWhereWithAggregatesInput = {
 export type CacheCreateInput = {
   response: string
   createdAt?: Date | string | null
-  queries: Prisma.queriesCreateNestedOneWithoutCachesInput
+  query: Prisma.queriesCreateNestedOneWithoutCachesInput
 }
 
 export type CacheUncheckedCreateInput = {
@@ -272,7 +272,7 @@ export type CacheUncheckedCreateInput = {
 export type CacheUpdateInput = {
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  queries?: Prisma.queriesUpdateOneRequiredWithoutCachesNestedInput
+  query?: Prisma.queriesUpdateOneRequiredWithoutCachesNestedInput
 }
 
 export type CacheUncheckedUpdateInput = {
@@ -342,82 +342,82 @@ export type CacheSumOrderByAggregateInput = {
   queries_id?: Prisma.SortOrder
 }
 
-export type CacheCreateNestedManyWithoutQueriesInput = {
-  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueriesInput, Prisma.CacheUncheckedCreateWithoutQueriesInput> | Prisma.CacheCreateWithoutQueriesInput[] | Prisma.CacheUncheckedCreateWithoutQueriesInput[]
-  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueriesInput | Prisma.CacheCreateOrConnectWithoutQueriesInput[]
-  createMany?: Prisma.CacheCreateManyQueriesInputEnvelope
+export type CacheCreateNestedManyWithoutQueryInput = {
+  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueryInput, Prisma.CacheUncheckedCreateWithoutQueryInput> | Prisma.CacheCreateWithoutQueryInput[] | Prisma.CacheUncheckedCreateWithoutQueryInput[]
+  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueryInput | Prisma.CacheCreateOrConnectWithoutQueryInput[]
+  createMany?: Prisma.CacheCreateManyQueryInputEnvelope
   connect?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
 }
 
-export type CacheUncheckedCreateNestedManyWithoutQueriesInput = {
-  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueriesInput, Prisma.CacheUncheckedCreateWithoutQueriesInput> | Prisma.CacheCreateWithoutQueriesInput[] | Prisma.CacheUncheckedCreateWithoutQueriesInput[]
-  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueriesInput | Prisma.CacheCreateOrConnectWithoutQueriesInput[]
-  createMany?: Prisma.CacheCreateManyQueriesInputEnvelope
+export type CacheUncheckedCreateNestedManyWithoutQueryInput = {
+  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueryInput, Prisma.CacheUncheckedCreateWithoutQueryInput> | Prisma.CacheCreateWithoutQueryInput[] | Prisma.CacheUncheckedCreateWithoutQueryInput[]
+  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueryInput | Prisma.CacheCreateOrConnectWithoutQueryInput[]
+  createMany?: Prisma.CacheCreateManyQueryInputEnvelope
   connect?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
 }
 
-export type CacheUpdateManyWithoutQueriesNestedInput = {
-  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueriesInput, Prisma.CacheUncheckedCreateWithoutQueriesInput> | Prisma.CacheCreateWithoutQueriesInput[] | Prisma.CacheUncheckedCreateWithoutQueriesInput[]
-  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueriesInput | Prisma.CacheCreateOrConnectWithoutQueriesInput[]
-  upsert?: Prisma.CacheUpsertWithWhereUniqueWithoutQueriesInput | Prisma.CacheUpsertWithWhereUniqueWithoutQueriesInput[]
-  createMany?: Prisma.CacheCreateManyQueriesInputEnvelope
+export type CacheUpdateManyWithoutQueryNestedInput = {
+  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueryInput, Prisma.CacheUncheckedCreateWithoutQueryInput> | Prisma.CacheCreateWithoutQueryInput[] | Prisma.CacheUncheckedCreateWithoutQueryInput[]
+  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueryInput | Prisma.CacheCreateOrConnectWithoutQueryInput[]
+  upsert?: Prisma.CacheUpsertWithWhereUniqueWithoutQueryInput | Prisma.CacheUpsertWithWhereUniqueWithoutQueryInput[]
+  createMany?: Prisma.CacheCreateManyQueryInputEnvelope
   set?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
   disconnect?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
   delete?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
   connect?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
-  update?: Prisma.CacheUpdateWithWhereUniqueWithoutQueriesInput | Prisma.CacheUpdateWithWhereUniqueWithoutQueriesInput[]
-  updateMany?: Prisma.CacheUpdateManyWithWhereWithoutQueriesInput | Prisma.CacheUpdateManyWithWhereWithoutQueriesInput[]
+  update?: Prisma.CacheUpdateWithWhereUniqueWithoutQueryInput | Prisma.CacheUpdateWithWhereUniqueWithoutQueryInput[]
+  updateMany?: Prisma.CacheUpdateManyWithWhereWithoutQueryInput | Prisma.CacheUpdateManyWithWhereWithoutQueryInput[]
   deleteMany?: Prisma.CacheScalarWhereInput | Prisma.CacheScalarWhereInput[]
 }
 
-export type CacheUncheckedUpdateManyWithoutQueriesNestedInput = {
-  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueriesInput, Prisma.CacheUncheckedCreateWithoutQueriesInput> | Prisma.CacheCreateWithoutQueriesInput[] | Prisma.CacheUncheckedCreateWithoutQueriesInput[]
-  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueriesInput | Prisma.CacheCreateOrConnectWithoutQueriesInput[]
-  upsert?: Prisma.CacheUpsertWithWhereUniqueWithoutQueriesInput | Prisma.CacheUpsertWithWhereUniqueWithoutQueriesInput[]
-  createMany?: Prisma.CacheCreateManyQueriesInputEnvelope
+export type CacheUncheckedUpdateManyWithoutQueryNestedInput = {
+  create?: Prisma.XOR<Prisma.CacheCreateWithoutQueryInput, Prisma.CacheUncheckedCreateWithoutQueryInput> | Prisma.CacheCreateWithoutQueryInput[] | Prisma.CacheUncheckedCreateWithoutQueryInput[]
+  connectOrCreate?: Prisma.CacheCreateOrConnectWithoutQueryInput | Prisma.CacheCreateOrConnectWithoutQueryInput[]
+  upsert?: Prisma.CacheUpsertWithWhereUniqueWithoutQueryInput | Prisma.CacheUpsertWithWhereUniqueWithoutQueryInput[]
+  createMany?: Prisma.CacheCreateManyQueryInputEnvelope
   set?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
   disconnect?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
   delete?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
   connect?: Prisma.CacheWhereUniqueInput | Prisma.CacheWhereUniqueInput[]
-  update?: Prisma.CacheUpdateWithWhereUniqueWithoutQueriesInput | Prisma.CacheUpdateWithWhereUniqueWithoutQueriesInput[]
-  updateMany?: Prisma.CacheUpdateManyWithWhereWithoutQueriesInput | Prisma.CacheUpdateManyWithWhereWithoutQueriesInput[]
+  update?: Prisma.CacheUpdateWithWhereUniqueWithoutQueryInput | Prisma.CacheUpdateWithWhereUniqueWithoutQueryInput[]
+  updateMany?: Prisma.CacheUpdateManyWithWhereWithoutQueryInput | Prisma.CacheUpdateManyWithWhereWithoutQueryInput[]
   deleteMany?: Prisma.CacheScalarWhereInput | Prisma.CacheScalarWhereInput[]
 }
 
-export type CacheCreateWithoutQueriesInput = {
+export type CacheCreateWithoutQueryInput = {
   response: string
   createdAt?: Date | string | null
 }
 
-export type CacheUncheckedCreateWithoutQueriesInput = {
+export type CacheUncheckedCreateWithoutQueryInput = {
   id?: number
   response: string
   createdAt?: Date | string | null
 }
 
-export type CacheCreateOrConnectWithoutQueriesInput = {
+export type CacheCreateOrConnectWithoutQueryInput = {
   where: Prisma.CacheWhereUniqueInput
-  create: Prisma.XOR<Prisma.CacheCreateWithoutQueriesInput, Prisma.CacheUncheckedCreateWithoutQueriesInput>
+  create: Prisma.XOR<Prisma.CacheCreateWithoutQueryInput, Prisma.CacheUncheckedCreateWithoutQueryInput>
 }
 
-export type CacheCreateManyQueriesInputEnvelope = {
-  data: Prisma.CacheCreateManyQueriesInput | Prisma.CacheCreateManyQueriesInput[]
+export type CacheCreateManyQueryInputEnvelope = {
+  data: Prisma.CacheCreateManyQueryInput | Prisma.CacheCreateManyQueryInput[]
 }
 
-export type CacheUpsertWithWhereUniqueWithoutQueriesInput = {
+export type CacheUpsertWithWhereUniqueWithoutQueryInput = {
   where: Prisma.CacheWhereUniqueInput
-  update: Prisma.XOR<Prisma.CacheUpdateWithoutQueriesInput, Prisma.CacheUncheckedUpdateWithoutQueriesInput>
-  create: Prisma.XOR<Prisma.CacheCreateWithoutQueriesInput, Prisma.CacheUncheckedCreateWithoutQueriesInput>
+  update: Prisma.XOR<Prisma.CacheUpdateWithoutQueryInput, Prisma.CacheUncheckedUpdateWithoutQueryInput>
+  create: Prisma.XOR<Prisma.CacheCreateWithoutQueryInput, Prisma.CacheUncheckedCreateWithoutQueryInput>
 }
 
-export type CacheUpdateWithWhereUniqueWithoutQueriesInput = {
+export type CacheUpdateWithWhereUniqueWithoutQueryInput = {
   where: Prisma.CacheWhereUniqueInput
-  data: Prisma.XOR<Prisma.CacheUpdateWithoutQueriesInput, Prisma.CacheUncheckedUpdateWithoutQueriesInput>
+  data: Prisma.XOR<Prisma.CacheUpdateWithoutQueryInput, Prisma.CacheUncheckedUpdateWithoutQueryInput>
 }
 
-export type CacheUpdateManyWithWhereWithoutQueriesInput = {
+export type CacheUpdateManyWithWhereWithoutQueryInput = {
   where: Prisma.CacheScalarWhereInput
-  data: Prisma.XOR<Prisma.CacheUpdateManyMutationInput, Prisma.CacheUncheckedUpdateManyWithoutQueriesInput>
+  data: Prisma.XOR<Prisma.CacheUpdateManyMutationInput, Prisma.CacheUncheckedUpdateManyWithoutQueryInput>
 }
 
 export type CacheScalarWhereInput = {
@@ -430,24 +430,24 @@ export type CacheScalarWhereInput = {
   createdAt?: Prisma.DateTimeNullableFilter<"Cache"> | Date | string | null
 }
 
-export type CacheCreateManyQueriesInput = {
+export type CacheCreateManyQueryInput = {
   id?: number
   response: string
   createdAt?: Date | string | null
 }
 
-export type CacheUpdateWithoutQueriesInput = {
+export type CacheUpdateWithoutQueryInput = {
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type CacheUncheckedUpdateWithoutQueriesInput = {
+export type CacheUncheckedUpdateWithoutQueryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type CacheUncheckedUpdateManyWithoutQueriesInput = {
+export type CacheUncheckedUpdateManyWithoutQueryInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   response?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -460,7 +460,7 @@ export type CacheSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   queries_id?: boolean
   response?: boolean
   createdAt?: boolean
-  queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
+  query?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cache"]>
 
 export type CacheSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -468,7 +468,7 @@ export type CacheSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   queries_id?: boolean
   response?: boolean
   createdAt?: boolean
-  queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
+  query?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cache"]>
 
 export type CacheSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -476,7 +476,7 @@ export type CacheSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   queries_id?: boolean
   response?: boolean
   createdAt?: boolean
-  queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
+  query?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["cache"]>
 
 export type CacheSelectScalar = {
@@ -488,19 +488,19 @@ export type CacheSelectScalar = {
 
 export type CacheOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "queries_id" | "response" | "createdAt", ExtArgs["result"]["cache"]>
 export type CacheInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
+  query?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }
 export type CacheIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
+  query?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }
 export type CacheIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  queries?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
+  query?: boolean | Prisma.queriesDefaultArgs<ExtArgs>
 }
 
 export type $CachePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Cache"
   objects: {
-    queries: Prisma.$queriesPayload<ExtArgs>
+    query: Prisma.$queriesPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -901,7 +901,7 @@ readonly fields: CacheFieldRefs;
  */
 export interface Prisma__CacheClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  queries<T extends Prisma.queriesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.queriesDefaultArgs<ExtArgs>>): Prisma.Prisma__queriesClient<runtime.Types.Result.GetResult<Prisma.$queriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  query<T extends Prisma.queriesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.queriesDefaultArgs<ExtArgs>>): Prisma.Prisma__queriesClient<runtime.Types.Result.GetResult<Prisma.$queriesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

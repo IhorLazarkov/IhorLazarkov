@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   queries: 'queries',
-  Cache: 'Cache'
+  Cache: 'Cache',
+  State: 'State'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -85,6 +86,21 @@ export const CacheScalarFieldEnum = {
 } as const
 
 export type CacheScalarFieldEnum = (typeof CacheScalarFieldEnum)[keyof typeof CacheScalarFieldEnum]
+
+
+export const StateScalarFieldEnum = {
+  id: 'id',
+  response_id: 'response_id',
+  query_id: 'query_id',
+  input_tokens: 'input_tokens',
+  total_output_tokens: 'total_output_tokens',
+  reasoning_output_tokens: 'reasoning_output_tokens',
+  tokens_per_second: 'tokens_per_second',
+  time_to_first_token_seconds: 'time_to_first_token_seconds',
+  createdAt: 'createdAt'
+} as const
+
+export type StateScalarFieldEnum = (typeof StateScalarFieldEnum)[keyof typeof StateScalarFieldEnum]
 
 
 export const SortOrder = {
