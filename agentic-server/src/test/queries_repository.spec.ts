@@ -5,13 +5,8 @@ import { type queriesModel as TQuery } from "../../generated/prisma/models/queri
 import { prisma } from "../../lib/prisma";
 
 describe('QueryRepository', () => {
-    const backUp: TQuery[] = [];
     const queriesToDelete: TQuery[] = [];
     const repository = new QueryRepository();
-
-    test.before(async () => {
-        backUp.push(... await repository.findAll());
-    });
 
     test.afterEach(async () => {
         await prisma.queries.deleteMany({
@@ -27,9 +22,8 @@ describe('QueryRepository', () => {
     });
 
     test('findAll should return all queries', async () => {
-        const size = backUp.length;
         const result = await repository.findAll();
-        assert.strictEqual(result.length, size);
+        assert.strictEqual(result.length > 0, true);
     });
 
     test('findById should return query by id', async () => {

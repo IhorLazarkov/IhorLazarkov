@@ -12,4 +12,9 @@ describe("Test Queries Service", () => {
     const records = await service.findAll();
     assert.strictEqual(records.length > 0, true);
   });
+  test('Check top 5 queries', async () => {
+    const queries = await service.findAll()
+    const topRecords = await service.findTopQueries();
+    assert.strictEqual(topRecords.length <= queries.length, true);
+  })
 });

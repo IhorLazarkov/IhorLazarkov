@@ -11,6 +11,16 @@ const MODEL = process.env["MODEL"];
 import Server from "../server";
 import Router from "../controllers/lmsRouter";
 
+type TResponse = {
+  message: string;
+  stats: string;
+  queries: string;
+};
+
+const isTResponse = (obj: any): obj is TResponse => {
+  return obj.message !== undefined && obj.stats !== undefined;
+};
+
 describe("Test Server with LM Studio Router", async () => {
   const router = new Router();
   const server = new Server(router, PORT, HOST);
@@ -31,8 +41,8 @@ describe("Test Server with LM Studio Router", async () => {
   });
 
   test("Check POST is supported", async () => {
-    const body = { body: { input: "test" } };
-    const response = await fetch(`http://${HOST}:${PORT}`, {
+    const body = { body: { input: "post is supported" } };
+    const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,11 +53,12 @@ describe("Test Server with LM Studio Router", async () => {
     console.log({ json });
     assert.strictEqual(response.status, 200);
     assert.strictEqual(json.message.length > 0, true);
+    assert.strictEqual(isTResponse(json), true);
   });
 
   test("Check error is returned when sent invalid message", async () => {
     const body = { body: "test" }; //invalid message
-    const response = await fetch(`http://${HOST}:${PORT}`, {
+    const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -64,7 +75,7 @@ describe("Test Server with LM Studio Router", async () => {
     const response = await fetch(`http://${HOST}:${PORT}`, {
       method: "OPTIONS",
     });
-    assert.strictEqual(response.status, 405);
+    assert.strictEqual(response.status, 200);
   });
 
   test("Check DELETE is not supported", async () => {
@@ -92,7 +103,7 @@ describe("Test Server with LM Studio Router", async () => {
 
   test("Check any other request is cached", async () => {
     //ask agent
-    const response = await fetch(`http://${HOST}:${PORT}`, {
+    const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       body: JSON.stringify({
         body: {

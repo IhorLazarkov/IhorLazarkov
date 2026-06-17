@@ -22,6 +22,125 @@ const CHAT = process.env["AGENT_CHAT"];
 const MODEL = process.env["MODEL"];
 
 type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
+type TPostHandler = "/api/generate";
+
+type TInboundMessage = {
+  input: string;
+};
+
+const isTInboundMessage = (obj: any): obj is TInboundMessage => {
+  return obj.input !== undefined;
+};
+
+async function processUserQuery(
+  req: IncomingMessage,
+  res: ServerResponse<IncomingMessage>,
+  body: string,
+) {
+  try {
+    //Validate body has input
+    const inboundMessage = JSON.parse(body).body as TInboundMessage;
+    if (!isTInboundMessage(inboundMessage)) {
+      res.statusCode = 400;
+      res.end(JSON.stringify({ error: "Bad Request" }));
+      return;
+    }
+
+    //Service declaration
+    const queryService = new QueriesService();
+    const cacheService = new CacheService();
+    const stateService = new StateService();
+
+    const queries: TQuery[] = (await queryService.findAll()).filter(
+      (q) => q.body === inboundMessage.input,
+    );
+
+    //Response from cache
+    if (queries.length > 0) {
+      const id = queries[queries.length - 1]!.id;
+      const cached = await cacheService.read(id);
+      if (cached) {
+        const stats = await stateService.read(id);
+        const topQueries = await queryService.findTopQueries();
+        res.statusCode = 200;
+        res.setHeader("Content-Type", "application/json");
+        return res.end(
+          JSON.stringify({
+            message: cached.response,
+            stats,
+            queries: topQueries,
+          }),
+        );
+      }
+    }
+
+    // RAG
+    const context = RagService.get();
+    const prompt = AgentService.generate_prompt(body, context);
+    //1. Ask agent
+    const response = await fetch(`${BASE_URL}${CHAT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.LMS_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        input: prompt,
+      }),
+    });
+
+    //Error handler
+    const data = await response.json();
+    const { output, stats, error } = data;
+    // console.log({ output, stats, error });
+    if (error) {
+      // type TError = {
+      //   message: string,
+      //   type: string,
+      //   code: string,
+      //   param: string | null
+      // }
+      res.statusCode = 501;
+      res.setHeader("Content-Type", "application/json");
+      return res.end(JSON.stringify(error));
+    }
+    //Retrieve response
+    const message = output[0].content;
+
+    // 2. Store in queries
+    const newQuery = await queryService.create(inboundMessage.input);
+    // 3. Store in Cache
+    await cacheService.create({
+      queries_id: newQuery.id,
+      response: message,
+    });
+    // 4. Store States
+    await stateService.create({
+      response_id: data.response_id,
+      query_id: newQuery.id,
+      input_tokens: stats.input_tokens,
+      total_output_tokens: stats.total_output_tokens,
+      reasoning_output_tokens: stats.reasoning_output_tokens,
+      tokens_per_second: stats.tokens_per_second,
+      time_to_first_token_seconds: stats.time_to_first_token_seconds,
+    });
+    // 5. Top queries
+    const topQueries = await queryService.findTopQueries();
+    // 6. Respond
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+    return res.end(JSON.stringify({ message, stats, queries: topQueries }));
+
+    //Internal Error Occurred
+  } catch (err) {
+    res.statusCode = 501;
+    res.setHeader("Content-Type", "application/json");
+    console.error(err);
+    return res.end(JSON.stringify({ error: err }));
+  }
+}
+
 const getHandler: Record<
   TGetHandler,
   (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => void
@@ -47,53 +166,13 @@ const getHandler: Record<
     req: IncomingMessage,
     res: ServerResponse<IncomingMessage>,
   ) => {
-    try {
-      const queries = new QueriesService();
-      const cache = new CacheService();
-      const state = new StateService();
+    const greeting_prompt = (query = "Hello") => {
+      return `Please greet the visitor the way you usually do. User query: ${query}`;
+    };
 
-      const greeting_prompt = (query = "Hello") => {
-        return `Please greet the visitor the way you usually do. User query: ${query}`;
-      };
-
-      const greetingMessage = greeting_prompt("Introduce yourself.");
-
-      const queried = (await queries.findAll()).filter(
-        (q) => q.body === greetingMessage,
-      )[0] as TQuery;
-      if (!queried) {
-        return new lmsRouter().POST(
-          req,
-          res,
-          JSON.stringify({
-            body: {
-              model: MODEL,
-              input: greetingMessage,
-            },
-          }),
-        );
-      }
-
-      let cached: TCache | null = await cache.read(queried.id);
-      if (!cached) {
-        cached = await cache.create({
-          queries_id: queried.id,
-          response: queried.body,
-        });
-      }
-
-      let stated: TState | null = await state.read(queried.id);
-
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      return res.end(
-        JSON.stringify({ message: cached.response, states: stated }),
-      );
-    } catch (err) {
-      res.statusCode = 501;
-      res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify({ message: err }));
-    }
+    const greetingMessage = greeting_prompt("Introduce yourself.");
+    const body: TInboundMessage = { input: greetingMessage };
+    return await processUserQuery(req, res, JSON.stringify({ body }));
   },
 
   /**
@@ -108,109 +187,31 @@ const getHandler: Record<
   },
 };
 
+const postHandler: Record<
+  TPostHandler,
+  (
+    req: IncomingMessage,
+    res: ServerResponse<IncomingMessage>,
+    body: string,
+  ) => void
+> = {
+  "/api/generate": processUserQuery,
+};
+
 export default class lmsRouter implements IController {
   GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
     const handler = getHandler[req.url as TGetHandler];
     if (!handler) return getHandler["BAD_REQUEST"](req, res);
     return handler(req, res);
   }
-  async POST(
+  POST(
     req: IncomingMessage,
     res: ServerResponse<IncomingMessage>,
     body: string,
-  ): Promise<void> {
-    try {
-      console.log(body);
-      if (!JSON.parse(body).body.input){
-        res.statusCode = 400;
-        res.setHeader("Content-Type", "application/json");
-        return res.end(JSON.stringify({ error: "Bad Request" }));
-      }
-
-      const queryService = new QueriesService();
-      const cacheService = new CacheService();
-      const stateService = new StateService();
-
-      const queries: TQuery[] = (await queryService.findAll()).filter(
-        (q) => q.body === JSON.parse(body)!.body.input,
-      );
-
-      //Response from cache
-      if (queries.length > 0) {
-        const cached = await cacheService.read(queries[0]!.id);
-        if (cached) {
-          const stats = await stateService.read(queries[0]!.id);
-          res.statusCode = 200;
-          res.setHeader("Content-Type", "application/json");
-          return res.end(JSON.stringify({ message: cached.response, stats }));
-        }
-      }
-      // RAG
-      const context = RagService.get();
-      const prompt = AgentService.generate_prompt(body, context);
-      //1. Ask agent
-      const response = await fetch(`${BASE_URL}${CHAT}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.LMS_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: MODEL,
-          input: prompt,
-        }),
-      });
-
-      const data = await response.json();
-
-      //Error
-      // data: {
-      //   error: {
-      //     message: 'The model has crashed without additional information. (Exit code: null)',
-      //     type: 'internal_error',
-      //     code: 'unknown',
-      //     param: null
-      //   }
-      // },
-
-      const { output, stats, error } = data;
-      // console.log({ data, output, error });
-      if (error) {
-        res.statusCode = 501;
-        res.setHeader("Content-Type", "application/json");
-        return res.end(JSON.stringify(error));
-      }
-      const message =
-        output[0].content ||
-        "Sorry, I couldn't generate a response. Please try again later.";
-
-      // 2. Store in queries
-      const newQuery = await queryService.create(JSON.parse(body)!.body.input);
-      // 3. Store in Cache
-      await cacheService.create({
-        queries_id: newQuery.id,
-        response: message,
-      });
-      // 4. Store States
-      await stateService.create({
-        response_id: data.response_id,
-        query_id: newQuery.id,
-        input_tokens: stats.input_tokens,
-        total_output_tokens: stats.total_output_tokens,
-        reasoning_output_tokens: stats.reasoning_output_tokens,
-        tokens_per_second: stats.tokens_per_second,
-        time_to_first_token_seconds: stats.time_to_first_token_seconds,
-      });
-      // 5. Respond
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify({ message, states: data.states }));
-    } catch (err) {
-      console.error({ error: err });
-      res.statusCode = 501;
-      res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify({ error: "Server Internal Error" }));
-    }
+  ): void {
+    const handler = postHandler[req.url as TPostHandler];
+    if (!handler) return getHandler["BAD_REQUEST"](req, res);
+    return handler(req, res, body);
   }
   PUT(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
     res.statusCode = 405;
@@ -223,8 +224,8 @@ export default class lmsRouter implements IController {
     res.end(JSON.stringify({ message: "DELETE is not supported" }));
   }
   OPTIONS(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
-    res.statusCode = 405;
+    res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    res.end(JSON.stringify({ message: "OPTION is not supported" }));
+    res.end(JSON.stringify({ message: "OK" }));
   }
 }

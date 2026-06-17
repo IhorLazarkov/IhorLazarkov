@@ -18,6 +18,24 @@ export default class QueryRepository {
     });
   }
 
+  async findTopQueries(): Promise<
+    { body: string; _count: { body: number } }[]
+  > {
+    // "Select body, count(body) as times from queries group by body Order by 'times' asc limit 5;"
+    return await prisma.queries.groupBy({
+      by: ["body"],
+      _count: {
+        body: true,
+      },
+      orderBy: {
+        _count: {
+          body: "desc",
+        },
+      },
+      take: 5,
+    });
+  }
+
   async update(id: number, body: string): Promise<TQuery> {
     return await prisma.queries.update({
       where: { id },
