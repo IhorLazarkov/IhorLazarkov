@@ -5,10 +5,10 @@ dotenv.config({path: envpath})
 const PORT = process.env.PORT || 3007
 const HOST = process.env.HOST || '127.0.0.1'
 import Server from "./src/server"
-import lmrRouter from "./src/controllers/lmsRouter"
+import lmsRouter from "./src/controllers/lmsRouter"
 
 function main(){
-    const server = new Server(new lmrRouter(), PORT, HOST)
+    const server = new Server(new lmsRouter(), PORT, HOST)
     server.start()
     
     process.on('SIGINT', () => {
