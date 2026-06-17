@@ -166,7 +166,7 @@ export default class lmsRouter implements IController {
       // },
 
       const { output, stats, error } = data;
-      console.log({ data, output, error });
+      // console.log({ data, output, error });
       if (error) {
         res.statusCode = 501;
         res.setHeader("Content-Type", "application/json");

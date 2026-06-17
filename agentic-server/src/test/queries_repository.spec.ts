@@ -13,7 +13,7 @@ describe('QueryRepository', () => {
         backUp.push(... await repository.findAll());
     });
 
-    test.after(async () => {
+    test.afterEach(async () => {
         await prisma.queries.deleteMany({
             where: { id: { in: queriesToDelete.map((query) => query.id) } }
         });
@@ -21,25 +21,21 @@ describe('QueryRepository', () => {
 
     test('create should create a new query', async () => {
         const record = await repository.create('test body');
+        assert.notEqual(record!.id, undefined);
+        assert.strictEqual(record!.body, 'test body');
         queriesToDelete.push(record);
-        const last = queriesToDelete[queriesToDelete.length - 1];
-        assert.notEqual(last!.id, undefined);
-        assert.strictEqual(last!.body, 'test body');
     });
 
     test('findAll should return all queries', async () => {
-        const size = backUp.length + queriesToDelete.length;
-        const last = size - 1;
+        const size = backUp.length;
         const result = await repository.findAll();
         assert.strictEqual(result.length, size);
-        assert.strictEqual(result[last]!.body, queriesToDelete[queriesToDelete.length - 1]!.body);
     });
 
     test('findById should return query by id', async () => {
-        const size = queriesToDelete.length;
-        const last = queriesToDelete[size - 1];
-        const result = await repository.findById(last!.id);
-        assert.strictEqual(result!.body, last!.body)
+        const record = await repository.create('test body');
+        const result = await repository.findById(record!.id);
+        assert.strictEqual(result!.body, record!.body)
     });
 
     test('findById should return null if query not found', async () => {
@@ -48,18 +44,16 @@ describe('QueryRepository', () => {
     });
 
     test('update should update query by id', async () => {
-        const size = queriesToDelete.length;
-        const last = queriesToDelete[size - 1];
-        const result = await repository.update(last!.id, 'updated body');
+        const record = await repository.create('test body');
+        const result = await repository.update(record!.id, 'updated body');
         assert.strictEqual(result.body, 'updated body');
     });
 
     test('delete should delete query by id', async () => {
-        const size = queriesToDelete.length;
-        const last = queriesToDelete[size - 1];
-        let result: TQuery | null = await repository.delete(last!.id);
-        assert.strictEqual(result.body, 'updated body');
-        result = await repository.findById(last!.id);
+        const record = await repository.create('test body');
+        let result: TQuery | null = await repository.delete(record!.id);
+        assert.strictEqual(result.body, 'test body');
+        result = await repository.findById(record!.id);
         assert.strictEqual(result, null);
     });
 });

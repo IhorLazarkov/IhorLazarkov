@@ -17,12 +17,14 @@ describe("CacheService", () => {
   test.before(async () => {
     cacheService = new CacheService();
     queriesService = new QueriesService();
-
-    query = (await queriesService.findAll())[0]!;
-    console.log({query})
   });
 
   test("should create a cache entry successfully", async () => {
+    query = (await queriesService.findAll())[0]!;
+    if(!query){
+      console.log({query})
+      assert.fail("query is null");
+    }
     cache = {
       queries_id: query.id,
       response: "test response",
@@ -34,12 +36,18 @@ describe("CacheService", () => {
   });
 
   test("should read a cache entry by query_id", async () => {
+    query = (await queriesService.findAll())[0]!;
     const cache1 = {
       queries_id: query.id,
       response: "test response",
     };
+    if(!query){
+      console.log({query})
+      assert.fail("query is null");
+    }
 
     const result = await cacheService.create(cache1);
+    assert.notEqual(result, null);
     const query_id = result.queries_id;
     const cache2 = await cacheService.read(query_id);
     assert.notEqual(cache2, null);
@@ -51,7 +59,7 @@ describe("CacheService", () => {
     assert.strictEqual(cache, null);
   });
 
-  test("should throw error for invalid query_id", async () => {
+  test("should return null for invalid query_id", async () => {
     assert.strictEqual(await cacheService.read(-1), null);
   });
 });

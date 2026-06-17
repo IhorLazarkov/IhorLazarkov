@@ -7,7 +7,8 @@ console.log({targetPath})
 
 prisma.queries.findMany({
     include:{
-        caches: true
+        caches: true,
+        states: true
     }
 })
     .then(data => {

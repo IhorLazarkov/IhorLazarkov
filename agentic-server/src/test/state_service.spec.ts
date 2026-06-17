@@ -25,7 +25,6 @@ describe("StateService", () => {
     queriesService = new QueriesService();
 
     query = (await queriesService.findAll())[0]!;
-    console.log({ query });
   });
 
   test("should create a state entry successfully", async () => {
