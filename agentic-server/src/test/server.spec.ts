@@ -30,8 +30,8 @@ describe("Test Server with LM Studio Router", async () => {
     assert.strictEqual(data!.message, "OK");
   });
 
-  test.skip("Check POST is supported", async () => {
-    const body = { body: "test" };
+  test("Check POST is supported", async () => {
+    const body = { body: { input: "test" } };
     const response = await fetch(`http://${HOST}:${PORT}`, {
       method: "POST",
       headers: {
@@ -39,8 +39,25 @@ describe("Test Server with LM Studio Router", async () => {
       },
       body: JSON.stringify(body),
     });
-    assert.strictEqual(response.status, 201);
-    assert.strictEqual((await response.json()).body, JSON.stringify(body));
+    const json = await response.json();
+    console.log({ json });
+    assert.strictEqual(response.status, 200);
+    assert.strictEqual(json.message.length > 0, true);
+  });
+
+  test("Check error is returned when sent invalid message", async () => {
+    const body = { body: "test" }; //invalid message
+    const response = await fetch(`http://${HOST}:${PORT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const json = await response.json();
+    console.log({ json });
+    assert.strictEqual(response.status, 400);
+    assert.strictEqual(json.error, "Bad Request");
   });
 
   test("Check OPTIONS is supported", async () => {

@@ -120,6 +120,13 @@ export default class lmsRouter implements IController {
     body: string,
   ): Promise<void> {
     try {
+      console.log(body);
+      if (!JSON.parse(body).body.input){
+        res.statusCode = 400;
+        res.setHeader("Content-Type", "application/json");
+        return res.end(JSON.stringify({ error: "Bad Request" }));
+      }
+
       const queryService = new QueriesService();
       const cacheService = new CacheService();
       const stateService = new StateService();
@@ -132,9 +139,10 @@ export default class lmsRouter implements IController {
       if (queries.length > 0) {
         const cached = await cacheService.read(queries[0]!.id);
         if (cached) {
-          res.setHeader("Content-Type", "application/json");
+          const stats = await stateService.read(queries[0]!.id);
           res.statusCode = 200;
-          return res.end(JSON.stringify({ message: cached.response }));
+          res.setHeader("Content-Type", "application/json");
+          return res.end(JSON.stringify({ message: cached.response, stats }));
         }
       }
       // RAG
@@ -170,7 +178,7 @@ export default class lmsRouter implements IController {
       if (error) {
         res.statusCode = 501;
         res.setHeader("Content-Type", "application/json");
-        return res.end(JSON.stringify({ error: { ...error } }));
+        return res.end(JSON.stringify(error));
       }
       const message =
         output[0].content ||
@@ -201,7 +209,7 @@ export default class lmsRouter implements IController {
       console.error({ error: err });
       res.statusCode = 501;
       res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify({ message: "Server Internal Error" }));
+      return res.end(JSON.stringify({ error: "Server Internal Error" }));
     }
   }
   PUT(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
