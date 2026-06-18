@@ -3,7 +3,7 @@ import assert from "node:assert";
 
 import QueriesService from "../service/queriesService";
 
-describe("Test Queries Service", () => {
+describe("Test Queries Service", async () => {
   let service: QueriesService;
 
   test.before(() => (service = new QueriesService()));

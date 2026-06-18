@@ -50,7 +50,6 @@ describe("Test Server with LM Studio Router", async () => {
       body: JSON.stringify(body),
     });
     const json = await response.json();
-    console.log({ json });
     assert.strictEqual(response.status, 200);
     assert.strictEqual(json.message.length > 0, true);
     assert.strictEqual(isTResponse(json), true);
@@ -66,7 +65,6 @@ describe("Test Server with LM Studio Router", async () => {
       body: JSON.stringify(body),
     });
     const json = await response.json();
-    console.log({ json });
     assert.strictEqual(response.status, 400);
     assert.strictEqual(json.error, "Bad Request");
   });
