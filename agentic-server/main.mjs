@@ -21,6 +21,7 @@ async function main() { // Mark main as async to use await
         });
     } catch (error) {
         console.error('Failed to start server:', error);
+        await server.stop(); // Await the stop operation
         process.exit(1); // Exit with error code
     }
 }
