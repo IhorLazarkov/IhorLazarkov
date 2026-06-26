@@ -2,7 +2,6 @@ import { prisma } from "../lib/prisma";
 import { type queriesModel as TQueries } from "../generated/prisma/models";
 import fs from "node:fs";
 import path from "node:path";
-import { stat } from "node:fs/promises";
 
 const prefix = "backup_qa_";
 type TQueryExtended = TQueries & {

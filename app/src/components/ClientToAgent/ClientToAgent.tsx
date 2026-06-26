@@ -12,8 +12,8 @@ import './ClientToAgent.css'
 
 function ClientToAgent() {
 
-  // const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
-  const BASE_URL = 'http://localhost:3008'
+  const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  // const BASE_URL = 'http://localhost:3008'
   const MODEL_NAME = "qwen/qwen3-vl-4b"
   const [lettersCount, setCount] = useState(0)
 
@@ -26,7 +26,19 @@ function ClientToAgent() {
   type TResponse = {
     response: React.ReactElement[],
     topPrompts: { body: string }[],
-    stats: {}
+    stats: {
+      input_tokens: string,
+      tokens_per_second: string,
+      total_output_tokens: string,
+      time_to_first_token_seconds: string,
+    }
+  }
+
+  const INIT_STATS = {
+    input_tokens: '',
+    tokens_per_second: '',
+    total_output_tokens: '',
+    time_to_first_token_seconds: ''
   }
 
   async function sendPrompt(_: TResponse, formData: FormData): Promise<TResponse> {
@@ -67,11 +79,17 @@ function ClientToAgent() {
       controllerRef.current = null;
 
       if (error instanceof Error && error.name === 'AbortError') {
-        return { response: [<span>Request Aborted by User.</span>], topPrompts: [], stats: {} };
+        return {
+          response: [<span>Request Aborted by User.</span>], topPrompts: [], stats: INIT_STATS
+        };
       } else if (error instanceof Error) {
-        return { response: [<span>{error.message}</span>], topPrompts: [], stats: [] };
+        return {
+          response: [<span>{error.message}</span>], topPrompts: [], stats: INIT_STATS
+        };
       }
-      return { response: [<span>An unknown error occurred.</span>], topPrompts: [], stats: {} };
+      return {
+        response: [<span>An unknown error occurred.</span>], topPrompts: [], stats: INIT_STATS
+      };
     }
   }
 
@@ -97,8 +115,11 @@ function ClientToAgent() {
 
     return () => abortRequest()
   }, [])
-
-  const [answers, askQuestion, isPending] = useActionState(sendPrompt, { response: [], topPrompts: [], stats: {} } as TResponse)
+  const [answers, askQuestion, isPending] = useActionState(sendPrompt, {
+    response: [],
+    topPrompts: [],
+    stats: INIT_STATS
+  } as TResponse)
   const button = !isPending
     ? <button type="submit">
       <svg xmlns="http://www.w3.org/2000/svg"
