@@ -11,7 +11,7 @@ async function main() { // Mark main as async to use await
     const server = new Server(new lmsRouter(), PORT, HOST);
     try {
         await server.start(); // Await server start if it's async
-        console.log(`Server running at http://${HOST}:${PORT}/`);
+        // console.log(`Server running at http://${HOST}:${PORT}/`);
 
         process.on('SIGINT', async () => { // Mark callback as async
             console.log('SIGINT received. Initiating graceful shutdown...');
