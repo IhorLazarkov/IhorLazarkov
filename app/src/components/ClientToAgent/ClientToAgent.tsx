@@ -13,6 +13,7 @@ import './ClientToAgent.css'
 function ClientToAgent() {
 
   const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  // const BASE_URL = 'http://localhost:3008'
   const MODEL_NAME = "qwen/qwen3-vl-4b"
   const [lettersCount, setCount] = useState(0)
 
@@ -24,7 +25,20 @@ function ClientToAgent() {
 
   type TResponse = {
     response: React.ReactElement[],
-    topPrompts: { body: string }[]
+    topPrompts: { body: string }[],
+    stats: {
+      input_tokens: string,
+      tokens_per_second: string,
+      total_output_tokens: string,
+      time_to_first_token_seconds: string,
+    }
+  }
+
+  const INIT_STATS = {
+    input_tokens: '',
+    tokens_per_second: '',
+    total_output_tokens: '',
+    time_to_first_token_seconds: ''
   }
 
   async function sendPrompt(_: TResponse, formData: FormData): Promise<TResponse> {
@@ -37,7 +51,7 @@ function ClientToAgent() {
     const uri = formData.get("uri") as string || `${BASE_URL}/api/generate`
     const method = formData.get("method") as string || 'POST'
     const body = method == 'POST'
-      ? JSON.stringify({ "model": MODEL_NAME, "prompt": value })
+      ? JSON.stringify({ body: { "model": MODEL_NAME, "input": value } })
       : {} as BodyInit
     const headers: HeadersInit = { "Content-Type": "application/json" }
     const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal } : { method, signal }
@@ -55,20 +69,27 @@ function ClientToAgent() {
       return {
         response: [
           <span className='question-area'>Visitor: {value}</span>,
-          ...parseGemmaResponseToHtml(data.response)
+          ...parseGemmaResponseToHtml(data.message)
         ],
-        topPrompts: [...data.queries]
+        topPrompts: [...data.queries],
+        stats: { ...data.stats }
       };
 
     } catch (error) {
       controllerRef.current = null;
 
       if (error instanceof Error && error.name === 'AbortError') {
-        return { response: [<span>Request Aborted by User.</span>], topPrompts: [] };
+        return {
+          response: [<span>Request Aborted by User.</span>], topPrompts: [], stats: INIT_STATS
+        };
       } else if (error instanceof Error) {
-        return { response: [<span>{error.message}</span>], topPrompts: [] };
+        return {
+          response: [<span>{error.message}</span>], topPrompts: [], stats: INIT_STATS
+        };
       }
-      return { response: [<span>An unknown error occurred.</span>], topPrompts: [] };
+      return {
+        response: [<span>An unknown error occurred.</span>], topPrompts: [], stats: INIT_STATS
+      };
     }
   }
 
@@ -94,8 +115,11 @@ function ClientToAgent() {
 
     return () => abortRequest()
   }, [])
-
-  const [answers, askQuestion, isPending] = useActionState(sendPrompt, { response: [], topPrompts: [] } as TResponse)
+  const [answers, askQuestion, isPending] = useActionState(sendPrompt, {
+    response: [],
+    topPrompts: [],
+    stats: INIT_STATS
+  } as TResponse)
   const button = !isPending
     ? <button type="submit">
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +164,22 @@ function ClientToAgent() {
                 aria-label="Loading Spinner"
                 data-testid="loader" />
             </div>
-            : <>{answers.response.map((answer, i) => <span key={i}>{answer}</span>)}</>
+            : <>
+              {answers.response.map((answer, i) => <span key={i}>{answer}</span>)}
+              {answers.stats && <div style={{
+                backgroundColor: "lightgreen",
+                borderRadius: "10px",
+                width: "fit-content",
+                padding: "0.3em",
+                display: "flex"
+              }}>
+                <span>input tokens: {answers.stats.input_tokens}</span>
+                <span>tokens per sec: {answers.stats.tokens_per_second}</span>
+                <span>total tokens: {answers.stats.total_output_tokens}</span>
+                <span>time to first token: {answers.stats.time_to_first_token_seconds}</span>
+              </div>
+              }
+            </>
           }
         </div>
         <form action={askQuestion}>

@@ -5,7 +5,12 @@ import path from 'node:path'
 const targetPath = path.join(__dirname, `backup_qa_${Date.now()}.json`)
 console.log({targetPath})
 
-prisma.queries.findMany()
+prisma.queries.findMany({
+    include:{
+        caches: true,
+        states: true
+    }
+})
     .then(data => {
         fs.writeFile(
             `./scripts/backup_qa_${Date.now()}.json`,

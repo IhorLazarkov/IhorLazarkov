@@ -11,4 +11,30 @@ model queries {
   id        Int       @id @default(autoincrement())
   body      String
   createdAt DateTime? @default(now())
+  caches    Cache[]
+  states    State[]
+}
+
+model Cache {
+  id         Int       @id @default(autoincrement())
+  queries_id Int
+  response   String
+  createdAt  DateTime? @default(now())
+
+  query queries @relation(fields: [queries_id], references: [id], onDelete: Cascade)
+}
+
+model State {
+  id  Int @id @default(autoincrement())
+  response_id String
+  query_id  Int
+  input_tokens  Int
+  total_output_tokens Int
+  reasoning_output_tokens Int
+  tokens_per_second Float
+  time_to_first_token_seconds Float
+
+  createdAt DateTime? @default(now())
+
+  query queries @relation(fields: [query_id], references: [id], onDelete: Cascade)
 }
