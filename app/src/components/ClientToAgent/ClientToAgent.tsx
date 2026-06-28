@@ -12,8 +12,8 @@ import './ClientToAgent.css'
 
 function ClientToAgent() {
 
-  const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
-  // const BASE_URL = 'http://localhost:3008'
+  // const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  const BASE_URL = 'http://localhost:3008'
   const MODEL_NAME = "qwen/qwen3-vl-4b"
   const [lettersCount, setCount] = useState(0)
 
@@ -26,6 +26,7 @@ function ClientToAgent() {
   type TResponse = {
     response: React.ReactElement[],
     topPrompts: { body: string }[],
+    error: string,
     stats: {
       input_tokens: string,
       tokens_per_second: string,
@@ -39,6 +40,10 @@ function ClientToAgent() {
     tokens_per_second: '',
     total_output_tokens: '',
     time_to_first_token_seconds: ''
+  }
+
+  function round(num: string): number {
+    return Number.parseFloat(Number.parseFloat(num).toFixed(2))
   }
 
   async function sendPrompt(_: TResponse, formData: FormData): Promise<TResponse> {
@@ -72,7 +77,8 @@ function ClientToAgent() {
           ...parseGemmaResponseToHtml(data.message)
         ],
         topPrompts: [...data.queries],
-        stats: { ...data.stats }
+        stats: { ...data.stats },
+        error: { ...data.error }
       };
 
     } catch (error) {
@@ -80,15 +86,15 @@ function ClientToAgent() {
 
       if (error instanceof Error && error.name === 'AbortError') {
         return {
-          response: [<span>Request Aborted by User.</span>], topPrompts: [], stats: INIT_STATS
+          response: [], topPrompts: [], stats: INIT_STATS, error: "User Aborted."
         };
       } else if (error instanceof Error) {
         return {
-          response: [<span>{error.message}</span>], topPrompts: [], stats: INIT_STATS
+          response: [], topPrompts: [], stats: INIT_STATS, error: error.message
         };
       }
       return {
-        response: [<span>An unknown error occurred.</span>], topPrompts: [], stats: INIT_STATS
+        response: [<span>An unknown error occurred.</span>], topPrompts: [], stats: INIT_STATS, error: JSON.stringify(error)
       };
     }
   }
@@ -118,7 +124,8 @@ function ClientToAgent() {
   const [answers, askQuestion, isPending] = useActionState(sendPrompt, {
     response: [],
     topPrompts: [],
-    stats: INIT_STATS
+    stats: INIT_STATS,
+    error: ""
   } as TResponse)
   const button = !isPending
     ? <button type="submit">
@@ -165,19 +172,33 @@ function ClientToAgent() {
                 data-testid="loader" />
             </div>
             : <>
-              {answers.response.map((answer, i) => <span key={i}>{answer}</span>)}
-              {answers.stats && <div style={{
-                backgroundColor: "lightgreen",
+              {/* Error */}
+              {Object.keys(answers.error).length > 1 && <span style={{
                 borderRadius: "10px",
                 width: "fit-content",
-                padding: "0.3em",
-                display: "flex"
-              }}>
-                <span>input tokens: {answers.stats.input_tokens}</span>
-                <span>tokens per sec: {answers.stats.tokens_per_second}</span>
-                <span>total tokens: {answers.stats.total_output_tokens}</span>
-                <span>time to first token: {answers.stats.time_to_first_token_seconds}</span>
-              </div>
+                padding: "0.3em 0.5em",
+                color: "red",
+                backgroundColor: "#edcfce"
+              }}>{answers.error}</span>}
+
+              {/* Response */}
+              {answers.response.map((answer, i) => <span key={i}>{answer}</span>)}
+
+              {/* Stats */}
+              {Object.keys(answers.error).length ===0 &&
+                answers.stats && <div style={{
+                  backgroundColor: "#cfedce",
+                  borderRadius: "10px",
+                  width: "fit-content",
+                  padding: "0.3em 0.5em",
+                  display: "flex",
+                  flexDirection: "column"
+                }}>
+                  <span>input tokens: {round(answers.stats.input_tokens)}</span>
+                  <span>tokens per sec: {round(answers.stats.tokens_per_second)}</span>
+                  <span>total tokens: {round(answers.stats.total_output_tokens)}</span>
+                  <span>time to first token sec: {round(answers.stats.time_to_first_token_seconds)}</span>
+                </div>
               }
             </>
           }
