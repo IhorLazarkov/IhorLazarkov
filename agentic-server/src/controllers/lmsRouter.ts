@@ -6,8 +6,8 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import IController from "./defaultRouter";
 
 // Services
-import CacheService from "../service/cacheService";
-import QueriesService from "../service/queriesService";
+import CacheService from "../service/CacheService";
+import QueriesService from "../service/QueriesService";
 import RagService from "../service/ragService";
 import { AgentService } from "../service/agentService";
 import {
