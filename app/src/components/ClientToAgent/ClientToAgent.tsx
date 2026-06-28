@@ -12,8 +12,8 @@ import './ClientToAgent.css'
 
 function ClientToAgent() {
 
-  // const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
-  const BASE_URL = 'http://localhost:3008'
+  const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
+  // const BASE_URL = 'http://localhost:3008'
   const MODEL_NAME = "qwen/qwen3-vl-4b"
   const [lettersCount, setCount] = useState(0)
 
