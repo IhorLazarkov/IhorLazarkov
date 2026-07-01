@@ -193,7 +193,7 @@ function App() {
       </section>
 
       <section ref={projectsRef} id="projects" className="article">
-        {projects.map((proj, _) => (
+        {projects.map((proj) => (
           <ProjectCard key={proj.url} project={proj} />
         ))}
       </section>

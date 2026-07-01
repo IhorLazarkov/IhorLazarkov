@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "publish": "cp -r ./dist/ ../"
+    "publish": "rm -r ../assets && cp -r ./dist/assets ../ && cp ./dist/index.html ../"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.0.0",

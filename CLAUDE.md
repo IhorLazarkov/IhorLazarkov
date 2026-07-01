@@ -20,7 +20,7 @@ Run from inside `app/`:
 - `npm run build` — typecheck (`tsc -b`) then build (`vite build`) into `app/dist`.
 - `npm run lint` — ESLint over the whole project.
 - `npm run preview` — preview the production build.
-- `npm run publish` — `cp -r ./dist/ ../`, copying the build output into the repo root for GitHub Pages. Run `build` first.
+- `npm run publish` — `publish": "cp -r ./dist/assets ../ && cp ./dist/input.html ../`, copying the build output into the repo root for GitHub Pages. Run `build` first.
 
 ### Backend (`agentic-server/`)
 Run from inside `agentic-server/`:
