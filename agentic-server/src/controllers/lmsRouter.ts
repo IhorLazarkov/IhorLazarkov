@@ -3,7 +3,7 @@ const env_path = process.env.NODE_ENV !== "production" ? ".env.test" : ".env";
 dotenv.config({ path: env_path });
 
 import type { IncomingMessage, ServerResponse } from "node:http";
-import IController from "./defaultRouter";
+import { type IController } from "./defaultRouter";
 
 // Services
 import CacheService from "../service/CacheService";
@@ -11,7 +11,6 @@ import QueriesService from "../service/QueriesService";
 import RagService from "../service/ragService";
 import { AgentService } from "../service/agentService";
 import {
-  type queriesModel as TQuery,
   type CacheModel as TCache,
   type StateModel as TState,
 } from "../../generated/prisma/models";
@@ -29,7 +28,7 @@ type TInboundMessage = {
 };
 
 const isTInboundMessage = (obj: any): obj is TInboundMessage => {
-  return obj.input !== undefined;
+  return typeof obj?.input === 'string';
 };
 
 async function processUserQuery(
@@ -51,13 +50,11 @@ async function processUserQuery(
     const cacheService = new CacheService();
     const stateService = new StateService();
 
-    const queries: TQuery[] = (await queryService.findAll()).filter(
-      (q) => q.body === inboundMessage.input,
-    );
+    const matchedQuery = await queryService.findByBody(inboundMessage.input);
 
     //Response from cache
-    if (queries.length > 0) {
-      const id = queries[queries.length - 1]!.id;
+    if (matchedQuery) {
+      const id = matchedQuery.id;
       const cached = await cacheService.read(id);
       if (cached) {
         const stats = await stateService.read(id);
@@ -76,7 +73,7 @@ async function processUserQuery(
 
     // RAG
     const context = RagService.get();
-    const prompt = AgentService.generate_prompt(body, context);
+    const prompt = AgentService.generate_prompt(inboundMessage.input, context);
     //1. Ask agent
     const response = await fetch(`${BASE_URL}${CHAT}`, {
       method: "POST",
@@ -101,7 +98,7 @@ async function processUserQuery(
       //   code: string,
       //   param: string | null
       // }
-      res.statusCode = 501;
+      res.statusCode = 500;
       res.setHeader("Content-Type", "application/json");
       return res.end(JSON.stringify(error));
     }
@@ -134,10 +131,10 @@ async function processUserQuery(
 
     //Internal Error Occurred
   } catch (err) {
-    res.statusCode = 501;
+    res.statusCode = 500;
     res.setHeader("Content-Type", "application/json");
     console.error(err);
-    return res.end(JSON.stringify({ error: err }));
+    return res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }));
   }
 }
 

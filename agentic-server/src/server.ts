@@ -6,7 +6,6 @@ export default class Server {
   server: HttpServer | undefined;
   port: number;
   host: string;
-  body: string | undefined;
 
   constructor(controller: IController, port: number, host: string) {
     this.controller = controller;
@@ -16,6 +15,7 @@ export default class Server {
 
   start() {
     this.server = createServer(async (req, res) => {
+      const buffer: Buffer[] = []
       const { method, url } = req;
       console.log(new Date().toLocaleString(), {
         method,
@@ -36,23 +36,25 @@ export default class Server {
       res.setHeader("Content-Type", "application/json");
       res.statusCode = 200;
 
-      this.body = "";
-      req.on("data", (chunk) => {
-        this.body += chunk.toString();
+      req.on("data", (chunk) => buffer.push(chunk));
+
+      const body: string = await new Promise<string>((resolve) => {
+        req.on("end", () => {
+          resolve(Buffer.concat(buffer).toString('utf-8'));
+        });
       });
 
-      const onDataEnd: () => Promise<string> = () => {
-        return new Promise((resolve) => {
-          req.on("end", () => {
-            resolve(this.body as string);
-          });
-        });
-      };
-
-      const handler = this.controller[method as keyof IController];
-      if (!handler) throw new TypeError("Method is not supported");
-      if (method === "POST") this.controller.POST(req, res, await onDataEnd());
-      else handler(req, res, this.body as string);
+      try {
+        const handler = method && method in this.controller && this.controller[method as keyof IController];
+        if (!handler) throw new TypeError("Method is not supported");
+        if (method === "POST") this.controller.POST(req, res, body);
+        else handler(req, res, body);
+      } catch (error) {
+        res.statusCode = 405;
+        res.end(JSON.stringify({
+          error: `Server Internal Error: ${error}`
+        }))
+      }
     });
 
     this.server.listen(this.port, this.host, () => {

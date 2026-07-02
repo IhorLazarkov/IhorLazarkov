@@ -1,6 +1,5 @@
-import QueryRepository from "../repository/queryRepository";
+import QueryRepository from "../repository/QueryRepository";
 import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
-import type { group } from "node:console";
 
 export default class QueriesService {
   private readonly repository: QueryRepository;
@@ -19,6 +18,10 @@ export default class QueriesService {
 
   async findById(id: number): Promise<TQuery | null> {
     return await this.repository.findById(id);
+  }
+
+  async findByBody(body: string): Promise<TQuery | null> {
+    return await this.repository.findByBody(body);
   }
 
   async findTopQueries(): Promise<TQuery[]> {

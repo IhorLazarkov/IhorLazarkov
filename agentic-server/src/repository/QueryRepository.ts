@@ -18,6 +18,13 @@ export default class QueryRepository {
     });
   }
 
+  async findByBody(body: string): Promise<TQuery | null> {
+    return await prisma.queries.findFirst({
+      where: { body },
+      orderBy: { id: "desc" },
+    });
+  }
+
   async findTopQueries(): Promise<
     { body: string; _count: { body: number } }[]
   > {
