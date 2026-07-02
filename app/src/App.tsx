@@ -16,8 +16,8 @@ function App() {
   const projectsRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
 
+  // Scroll-spy: highlight the nav link for whichever section is in view
   useEffect(() => {
-    //Observer logic
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         const { id } = entry.target;
@@ -28,42 +28,57 @@ function App() {
         }
       });
     }, { threshold: 0.3 })
-    //Mouse move effect
-    const onMouseOver = (e: MouseEvent) => {
-      const div = document.querySelector('.gradient-overlay') as HTMLDivElement;
-      requestAnimationFrame(() => {
+
+    if (projectsRef.current && aboutRef.current && experienceRef.current) {
+      observer.observe(aboutRef.current);
+      observer.observe(experienceRef.current);
+      observer.observe(projectsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [])
+
+  // Mouse-follow gradient effect
+  useEffect(() => {
+    const div = document.querySelector('.gradient-overlay') as HTMLDivElement | null;
+    if (!div) return;
+
+    let rafId: number | null = null;
+    const onMouseMove = (e: MouseEvent) => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
         div.style.setProperty('--gradientX', e.clientX - 250 + 'px');
         div.style.setProperty('--gradientY', e.clientY - 250 + 'px');
+        rafId = null;
       })
     }
-    //Wheel
+    window.addEventListener('mousemove', onMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    }
+  }, [])
+
+  // Custom wheel-scroll speed for <main>
+  useEffect(() => {
     const onWheel = (e: WheelEvent) => {
       const container = document.querySelector('main') as HTMLDivElement;
       container.scrollTop += e.deltaY * 2;
     }
-    if (!projectsRef.current || !aboutRef.current || !experienceRef.current) {
-      return;
-    }
-    observer.observe(aboutRef.current);
-    observer.observe(experienceRef.current);
-    observer.observe(projectsRef.current);
-    window.addEventListener('mouseover', onMouseOver);
     window.addEventListener('wheel', onWheel);
 
+    return () => window.removeEventListener('wheel', onWheel);
+  }, [])
+
+  // Maintenance banner warning
+  useEffect(() => {
     //remove it when maintenance is over
     const warningTimeout = setTimeout(() => {
       document.querySelector('.banner')?.classList.add('maintenance-warning');
     }, 3000);
 
-    // Cleanup on unmount
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('mouseover', onMouseOver);
-      window.removeEventListener('wheel', onWheel);
-
-      //remove it when maintenance is over
-      clearTimeout(warningTimeout);
-    }
+    return () => clearTimeout(warningTimeout);
   }, [])
 
   return (<div id="main">
