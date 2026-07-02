@@ -11,7 +11,6 @@ import QueriesService from "../service/QueriesService";
 import RagService from "../service/ragService";
 import { AgentService } from "../service/agentService";
 import {
-  type queriesModel as TQuery,
   type CacheModel as TCache,
   type StateModel as TState,
 } from "../../generated/prisma/models";
@@ -51,13 +50,11 @@ async function processUserQuery(
     const cacheService = new CacheService();
     const stateService = new StateService();
 
-    const queries: TQuery[] = (await queryService.findAll()).filter(
-      (q) => q.body === inboundMessage.input,
-    );
+    const matchedQuery = await queryService.findByBody(inboundMessage.input);
 
     //Response from cache
-    if (queries.length > 0) {
-      const id = queries[queries.length - 1]!.id;
+    if (matchedQuery) {
+      const id = matchedQuery.id;
       const cached = await cacheService.read(id);
       if (cached) {
         const stats = await stateService.read(id);

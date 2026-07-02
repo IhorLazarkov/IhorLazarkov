@@ -26,6 +26,22 @@ describe('QueryRepository', () => {
         assert.strictEqual(result.length > 0, true);
     });
 
+    test('findByBody should return the most recent query matching the body', async () => {
+        const first = await repository.create('duplicate body');
+        queriesToDelete.push(first);
+        const second = await repository.create('duplicate body');
+        queriesToDelete.push(second);
+
+        const result = await repository.findByBody('duplicate body');
+        assert.notEqual(result, null);
+        assert.strictEqual(result!.id, second.id);
+    });
+
+    test('findByBody should return null if no query matches', async () => {
+        const result = await repository.findByBody('does not exist in db');
+        assert.strictEqual(result, null);
+    });
+
     test('findById should return query by id', async () => {
         const record = await repository.create('test body');
         const result = await repository.findById(record!.id);

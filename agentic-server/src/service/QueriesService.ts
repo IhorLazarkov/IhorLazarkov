@@ -20,6 +20,10 @@ export default class QueriesService {
     return await this.repository.findById(id);
   }
 
+  async findByBody(body: string): Promise<TQuery | null> {
+    return await this.repository.findByBody(body);
+  }
+
   async findTopQueries(): Promise<TQuery[]> {
     return await this.repository.findTopQueries();
   }
