@@ -76,7 +76,7 @@ async function processUserQuery(
 
     // RAG
     const context = RagService.get();
-    const prompt = AgentService.generate_prompt(body, context);
+    const prompt = AgentService.generate_prompt(inboundMessage.input, context);
     //1. Ask agent
     const response = await fetch(`${BASE_URL}${CHAT}`, {
       method: "POST",
