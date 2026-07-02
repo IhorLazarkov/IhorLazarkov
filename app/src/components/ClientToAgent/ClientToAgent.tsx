@@ -78,7 +78,7 @@ function ClientToAgent() {
         ],
         topPrompts: [...data.queries],
         stats: { ...data.stats },
-        error: { ...data.error }
+        error: data.error || ""
       };
 
     } catch (error) {
@@ -173,7 +173,7 @@ function ClientToAgent() {
             </div>
             : <>
               {/* Error */}
-              {Object.keys(answers.error).length > 1 && <span style={{
+              {answers.error.length > 0 && <span style={{
                 borderRadius: "10px",
                 width: "fit-content",
                 padding: "0.3em 0.5em",
@@ -185,7 +185,7 @@ function ClientToAgent() {
               {answers.response.map((answer, i) => <span key={i}>{answer}</span>)}
 
               {/* Stats */}
-              {Object.keys(answers.error).length === 0 &&
+              {answers.error.length === 0 &&
                 answers.stats && <div style={{
                   backgroundColor: "#cfedce",
                   borderRadius: "10px",

@@ -7,6 +7,7 @@
     "dev": "dotenv -e .env.test vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test": "npx playwright test --project=chromium",
     "preview": "dotenv -e .env.test vite preview",
     "publish": "rm -r ../assets && cp -r ./dist/assets ../ && cp ./dist/index.html ../"
   },
