@@ -98,7 +98,7 @@ async function processUserQuery(
       //   code: string,
       //   param: string | null
       // }
-      res.statusCode = 501;
+      res.statusCode = 500;
       res.setHeader("Content-Type", "application/json");
       return res.end(JSON.stringify(error));
     }
@@ -131,10 +131,10 @@ async function processUserQuery(
 
     //Internal Error Occurred
   } catch (err) {
-    res.statusCode = 501;
+    res.statusCode = 500;
     res.setHeader("Content-Type", "application/json");
     console.error(err);
-    return res.end(JSON.stringify({ error: err }));
+    return res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }));
   }
 }
 
