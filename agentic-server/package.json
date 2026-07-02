@@ -8,7 +8,7 @@
   "scripts": {
     "start:prod": "NODE_ENV=production npx tsx main.mjs",
     "start:qa": "NODE_ENV=test npx tsx main.mjs",
-    "test": "NODE_ENV=test rm -f ./db/queries_QA.db && npx prisma db push && npm run seed:qa && npx tsx --experimental-test-coverage --test src/test/**.spec.ts",
+    "test": "NODE_ENV=test rm -f ./db/queries_QA.db && npx prisma db push && npm run seed:qa && npx tsx --experimental-test-coverage --test --test-concurrency=1 src/test/**.spec.ts",
     "backup:qa": "NODE_ENV=test npx tsx ./scripts/mackBackupQA.ts",
     "seed:qa": "NODE_ENV=test npx prisma db push && npx prisma db seed",
     "release:06262026:deploy" : "./release_06262026/deploy.sh",
