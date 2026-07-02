@@ -3,7 +3,7 @@ const env_path = process.env.NODE_ENV !== "production" ? ".env.test" : ".env";
 dotenv.config({ path: env_path });
 
 import type { IncomingMessage, ServerResponse } from "node:http";
-import IController from "./defaultRouter";
+import { type IController } from "./defaultRouter";
 
 // Services
 import CacheService from "../service/CacheService";
@@ -28,7 +28,7 @@ type TInboundMessage = {
 };
 
 const isTInboundMessage = (obj: any): obj is TInboundMessage => {
-  return obj.input !== undefined;
+  return typeof obj?.input === 'string';
 };
 
 async function processUserQuery(

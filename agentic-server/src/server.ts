@@ -45,12 +45,12 @@ export default class Server {
       });
 
       try {
-        const handler = this.controller[method as keyof IController];
+        const handler = method && method in this.controller && this.controller[method as keyof IController];
         if (!handler) throw new TypeError("Method is not supported");
         if (method === "POST") this.controller.POST(req, res, body);
         else handler(req, res, body);
       } catch (error) {
-        res.statusCode = 500;
+        res.statusCode = 405;
         res.end(JSON.stringify({
           error: `Server Internal Error: ${error}`
         }))
