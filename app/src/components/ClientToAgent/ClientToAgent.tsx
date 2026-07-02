@@ -10,11 +10,11 @@ import { PulseLoader } from "react-spinners";
 
 import './ClientToAgent.css'
 
-function ClientToAgent() {
+const BASE_URL = import.meta.env.VITE_AGENTIC_CLIENT_BASE_URL || "https://agentic.ihorlazarkov-swe.in"
+const MODEL_NAME = import.meta.env.VITE_AGENTIC_MODEL || "qwen/qwen3-vl-4b"
 
-  const BASE_URL = 'https://agentic.ihorlazarkov-swe.in'
-  // const BASE_URL = 'http://localhost:3008'
-  const MODEL_NAME = "qwen/qwen3-vl-4b"
+function ClientToAgent() {
+  
   const [lettersCount, setCount] = useState(0)
 
   const controllerRef = useRef<AbortController | null>(null)
@@ -185,7 +185,7 @@ function ClientToAgent() {
               {answers.response.map((answer, i) => <span key={i}>{answer}</span>)}
 
               {/* Stats */}
-              {Object.keys(answers.error).length ===0 &&
+              {Object.keys(answers.error).length === 0 &&
                 answers.stats && <div style={{
                   backgroundColor: "#cfedce",
                   borderRadius: "10px",
