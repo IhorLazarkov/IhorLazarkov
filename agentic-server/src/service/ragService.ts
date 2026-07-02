@@ -1,4 +1,4 @@
-import RAGRepository from "../repository/ragRepository"
+import RAGRepository from "../repository/RAGRepository"
 
 export default class RagService {
     static get() {

@@ -1,0 +1,177 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - img [ref=e8]
+        - heading "Ihor Lazarkov" [level=1] [ref=e9]
+        - heading "Senior SDET & Automation Architect" [level=2] [ref=e10]
+      - generic [ref=e11]:
+        - paragraph [ref=e12]: Architecting automation and testing strategies to accelerate quality delivery.
+        - navigation [ref=e13]:
+          - list [ref=e14]:
+            - listitem [ref=e15]:
+              - link "About" [ref=e16] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e17]:
+              - link "Experience" [ref=e18] [cursor=pointer]:
+                - /url: "#experience"
+            - listitem [ref=e19]:
+              - link "Projects" [ref=e20] [cursor=pointer]:
+                - /url: "#projects"
+      - generic [ref=e22]:
+        - group [ref=e23]:
+          - generic "Trending questions" [ref=e24] [cursor=pointer]
+        - generic [ref=e25]:
+          - generic [ref=e27]: Failed to fetch
+          - generic [ref=e28]:
+            - textbox "Ask my agent ..." [ref=e29]
+            - generic [ref=e30]:
+              - generic [ref=e31]: 0 / 100
+              - button [ref=e32] [cursor=pointer]:
+                - img [ref=e33]
+        - generic [ref=e35]: powered by qwen/qwen3-vl-4b
+      - generic [ref=e36]:
+        - link "Email me" [ref=e38] [cursor=pointer]:
+          - /url: mailto:ilazarkov@gmail.com
+          - generic [ref=e39]: Email me
+          - img [ref=e40]
+        - generic [ref=e42]:
+          - link "Visit my github profile" [ref=e43] [cursor=pointer]:
+            - /url: https://github.com/ihorLazarkov
+            - img [ref=e44]
+          - link "Visit my linkedin page" [ref=e46] [cursor=pointer]:
+            - /url: https://linkedin.com/in/ihorlazarkov
+            - img [ref=e47]
+          - img [ref=e49]
+  - main [ref=e51]:
+    - generic [ref=e52]:
+      - paragraph [ref=e53]: I am a Senior SDET & Automation Architect focused on building cost-effective, scalable, and high-performance automation ecosystems. I have built my expertise over 8 years in the software production business.
+      - paragraph [ref=e54]: Currently I work as a Senior SDET at Edward Jones, developing complex automation infrastructure, and as a Full Stack Engineer at LVC Solutions, building critical components and high-performant web pages.
+      - paragraph [ref=e55]: In the past I architected testing software for distributed systems at Cisco Meraki and EPAM Systems, focusing on infrastructure integration, CI/CD, and advocating for quality engineering principles.
+      - paragraph [ref=e56]: "In my spare time, I am an active runner in the adidas runners community and enjoy spending time with my family: playing games, watching movies, and engaging in outdoor activities."
+    - generic [ref=e57]:
+      - link "2025 - Present Full Stack Engineer @ LVC Solutions Build critical components, responsive, high-performant pages with state management on front-end. Also, on the back-end I build routs to server CRUD request. Work closely with the founder to accept requirements and provide professional feedback as well as with with engineers to implement and advocate best practices in software engineering. react next.js firebase" [ref=e59] [cursor=pointer]:
+        - /url: https://www.lvc-solutions.com
+        - generic [ref=e60]: 2025 - Present
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "Full Stack Engineer @ LVC Solutions" [level=4] [ref=e63]
+            - img [ref=e64]
+          - paragraph [ref=e66]: Build critical components, responsive, high-performant pages with state management on front-end. Also, on the back-end I build routs to server CRUD request. Work closely with the founder to accept requirements and provide professional feedback as well as with with engineers to implement and advocate best practices in software engineering.
+          - generic [ref=e67]:
+            - generic [ref=e68]: react
+            - generic [ref=e69]: next.js
+            - generic [ref=e70]: firebase
+      - link "2024 - Present Senior Software Engineer in Test @ Edward Jones Developed automation testing of a complex test scenarios of operations team in finance. Integrated automation into ci/cd with setup of testing on daily, weekly cadence. Close communication with operations team to gather and implement requirements. java selenium serenity bdd" [ref=e72] [cursor=pointer]:
+        - /url: https://www.edwardjones.com/us-en
+        - generic [ref=e73]: 2024 - Present
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - heading "Senior Software Engineer in Test @ Edward Jones" [level=4] [ref=e76]
+            - img [ref=e77]
+          - paragraph [ref=e79]: Developed automation testing of a complex test scenarios of operations team in finance. Integrated automation into ci/cd with setup of testing on daily, weekly cadence. Close communication with operations team to gather and implement requirements.
+          - generic [ref=e80]:
+            - generic [ref=e81]: java
+            - generic [ref=e82]: selenium
+            - generic [ref=e83]: serenity bdd
+      - link "2022 - 2024 Senior Software Engineer in Test @ Cisco Meraki Architect and integrate software for testing into ci/cd of web app with distributed systems. Created convenient tasks in build file for seamless quality check before and after merge of code changes. Communicate with development team to advocate testing principles and created education materials. webdriver.io cypress.io python kuberneties" [ref=e85] [cursor=pointer]:
+        - /url: https://meraki.cisco.com
+        - generic [ref=e86]: 2022 - 2024
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - heading "Senior Software Engineer in Test @ Cisco Meraki" [level=4] [ref=e89]
+            - img [ref=e90]
+          - paragraph [ref=e92]: Architect and integrate software for testing into ci/cd of web app with distributed systems. Created convenient tasks in build file for seamless quality check before and after merge of code changes. Communicate with development team to advocate testing principles and created education materials.
+          - generic [ref=e93]:
+            - generic [ref=e94]: webdriver.io
+            - generic [ref=e95]: cypress.io
+            - generic [ref=e96]: python
+            - generic [ref=e97]: kuberneties
+      - link "2008 - 2022 Senior Software Engineer in Test @ EPAM Systems Worked in a team of 5 engineers to create software for testing of desktop and application with distributed architecture. Developed services to connect to various messaging management systems, databases. Implemented automation testing of complex scenarios involved validation of state in database and messages in topic and queue. java fitnesse imb mq tibco ems sql docker" [ref=e99] [cursor=pointer]:
+        - /url: https://www.epam.com
+        - generic [ref=e100]: 2008 - 2022
+        - generic [ref=e101]:
+          - generic [ref=e102]:
+            - heading "Senior Software Engineer in Test @ EPAM Systems" [level=4] [ref=e103]
+            - img [ref=e104]
+          - paragraph [ref=e106]: Worked in a team of 5 engineers to create software for testing of desktop and application with distributed architecture. Developed services to connect to various messaging management systems, databases. Implemented automation testing of complex scenarios involved validation of state in database and messages in topic and queue.
+          - generic [ref=e107]:
+            - generic [ref=e108]: java
+            - generic [ref=e109]: fitnesse
+            - generic [ref=e110]: imb mq
+            - generic [ref=e111]: tibco ems
+            - generic [ref=e112]: sql
+            - generic [ref=e113]: docker
+    - generic [ref=e114]:
+      - link "Fair Job Portal Fair Job Portal Platform for job seekers and employers with mature identity verification of both sides to eliminate fake profiles and jobs. react next.js firebase" [ref=e116] [cursor=pointer]:
+        - /url: https://lvcfairjob.com/
+        - img "Fair Job Portal" [ref=e118]
+        - generic [ref=e119]:
+          - generic [ref=e120]:
+            - heading "Fair Job Portal" [level=4] [ref=e121]
+            - img [ref=e122]
+          - paragraph [ref=e124]: Platform for job seekers and employers with mature identity verification of both sides to eliminate fake profiles and jobs.
+          - generic [ref=e125]:
+            - generic [ref=e126]: react
+            - generic [ref=e127]: next.js
+            - generic [ref=e128]: firebase
+      - link "LVC SpotlIght Media LVC SpotlIght Media Platform for marketing team to advertise their publishing services. react express.js" [ref=e130] [cursor=pointer]:
+        - /url: http://lvcspotlightmedia.com/
+        - img "LVC SpotlIght Media" [ref=e132]
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - heading "LVC SpotlIght Media" [level=4] [ref=e135]
+            - img [ref=e136]
+          - paragraph [ref=e138]: Platform for marketing team to advertise their publishing services.
+          - generic [ref=e139]:
+            - generic [ref=e140]: react
+            - generic [ref=e141]: express.js
+      - link "Forno Roma Forno Roma On-line pizza shop with voice assistant and live tracker of orders. react redux sequelize express.js wss postgres sqlight nginx" [ref=e143] [cursor=pointer]:
+        - /url: https://fornoroma.ihorlazarkov-swe.in
+        - img "Forno Roma" [ref=e145]
+        - generic [ref=e146]:
+          - generic [ref=e147]:
+            - heading "Forno Roma" [level=4] [ref=e148]
+            - img [ref=e149]
+          - paragraph [ref=e151]: On-line pizza shop with voice assistant and live tracker of orders.
+          - generic [ref=e152]:
+            - generic [ref=e153]: react
+            - generic [ref=e154]: redux
+            - generic [ref=e155]: sequelize
+            - generic [ref=e156]: express.js
+            - generic [ref=e157]: wss
+            - generic [ref=e158]: postgres
+            - generic [ref=e159]: sqlight
+            - generic [ref=e160]: nginx
+      - link "Rental Residence Hub Rental Residence Hub Platform to advertise and rent apartments with geo location. Clients can provide feedback, rate and mark favorites. react redux sequelize express.js postgres sqlight nginx" [ref=e162] [cursor=pointer]:
+        - /url: https://rrh.ihorlazarkov-swe.in
+        - img "Rental Residence Hub" [ref=e164]
+        - generic [ref=e165]:
+          - generic [ref=e166]:
+            - heading "Rental Residence Hub" [level=4] [ref=e167]
+            - img [ref=e168]
+          - paragraph [ref=e170]: Platform to advertise and rent apartments with geo location. Clients can provide feedback, rate and mark favorites.
+          - generic [ref=e171]:
+            - generic [ref=e172]: react
+            - generic [ref=e173]: redux
+            - generic [ref=e174]: sequelize
+            - generic [ref=e175]: express.js
+            - generic [ref=e176]: postgres
+            - generic [ref=e177]: sqlight
+            - generic [ref=e178]: nginx
+      - link "Wood Working Tools Wood Working Tools E-commerce project of online shop. react python alembic sqlalchemy postgres sqlight nginx" [ref=e180] [cursor=pointer]:
+        - /url: https://wwt.ihorlazarkov-swe.in
+        - img "Wood Working Tools" [ref=e182]
+        - generic [ref=e183]:
+          - generic [ref=e184]:
+            - heading "Wood Working Tools" [level=4] [ref=e185]
+            - img [ref=e186]
+          - paragraph [ref=e188]: E-commerce project of online shop.
+          - generic [ref=e189]:
+            - generic [ref=e190]: react
+            - generic [ref=e191]: python
+            - generic [ref=e192]: alembic
+            - generic [ref=e193]: sqlalchemy
+            - generic [ref=e194]: postgres
+            - generic [ref=e195]: sqlight
+            - generic [ref=e196]: nginx

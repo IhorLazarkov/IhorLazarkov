@@ -3,7 +3,7 @@ import { test, describe } from "node:test";
 import assert from "node:assert";
 
 import StateService from "../service/stateService";
-import QueriesService from "../service/queriesService";
+import QueriesService from "../service/QueriesService";
 import { type queriesModel as TQuery } from "../../generated/prisma/models/queries";
 
 describe("StateService", () => {

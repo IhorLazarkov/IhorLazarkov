@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
-import IController  from "./defaultRouter";
+import { type IController } from "./defaultRouter";
 
-export default class OllamaRouter implements IController{
+export default class OllamaRouter implements IController {
     GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
         throw new Error("Method not implemented.");
     }

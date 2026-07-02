@@ -1,7 +1,7 @@
 import { test, describe } from "node:test";
 import assert from "node:assert";
 
-import QueriesService from "../service/queriesService";
+import QueriesService from "../service/QueriesService";
 
 describe("Test Queries Service", async () => {
   let service: QueriesService;
