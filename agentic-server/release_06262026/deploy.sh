@@ -3,6 +3,9 @@ export NODE_ENV=production
 # Read Queries from and store them in a file
 npx tsx ./release_06262026/read_db.ts
 
+# Back up the DB file itself so rollback.sh has something to restore
+cp ./db/queries_PROD.db ./db/queries_PROD_backup.db
+
 # Run Prisma migration
 npx prisma migrate reset
 
