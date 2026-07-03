@@ -7,7 +7,7 @@ import { type IController } from "./defaultRouter";
 
 // Services
 import ChatService, { type TInboundMessage } from "../service/ChatService";
-import { AppError } from "./errors";
+import { AppError, RateLimitError } from "./errors";
 
 type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
@@ -19,12 +19,18 @@ async function processUserQuery(
 ) {
   try {
     const chatService = new ChatService();
-    const result = await chatService.processUserQuery(body);
+    const clientId = req.socket.remoteAddress ?? "unknown";
+    const result = await chatService.processUserQuery(body, clientId);
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     return res.end(JSON.stringify(result));
   } catch (err) {
     res.setHeader("Content-Type", "application/json");
+    if (err instanceof RateLimitError) {
+      res.statusCode = err.statusCode;
+      res.setHeader("Retry-After", Math.ceil(err.retryAfterMs / 1000).toString());
+      return res.end(JSON.stringify({ error: err.message }));
+    }
     if (err instanceof AppError) {
       res.statusCode = err.statusCode;
       return res.end(JSON.stringify({ error: err.message }));

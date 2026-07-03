@@ -19,3 +19,12 @@ export class UpstreamLlmError extends AppError {
     super(message, 502);
   }
 }
+
+export class RateLimitError extends AppError {
+  retryAfterMs: number;
+
+  constructor(retryAfterMs: number) {
+    super("Too Many Requests", 429);
+    this.retryAfterMs = retryAfterMs;
+  }
+}
