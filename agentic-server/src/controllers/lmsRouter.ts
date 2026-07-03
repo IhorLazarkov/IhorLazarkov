@@ -6,30 +6,13 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { type IController } from "./defaultRouter";
 
 // Services
-import CacheService from "../service/CacheService";
-import QueriesService from "../service/QueriesService";
-import RagService from "../service/ragService";
-import { AgentService } from "../service/agentService";
-import {
-  type CacheModel as TCache,
-  type StateModel as TState,
-} from "../../generated/prisma/models";
-import StateService from "../service/stateService";
-
-const BASE_URL = process.env["AGENT_BASE_URL"];
-const CHAT = process.env["AGENT_CHAT"];
-const MODEL = process.env["MODEL"];
+import ChatService, {
+  type TInboundMessage,
+  isHttpError,
+} from "../service/ChatService";
 
 type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
-
-type TInboundMessage = {
-  input: string;
-};
-
-const isTInboundMessage = (obj: any): obj is TInboundMessage => {
-  return typeof obj?.input === 'string';
-};
 
 async function processUserQuery(
   req: IncomingMessage,
@@ -37,102 +20,18 @@ async function processUserQuery(
   body: string,
 ) {
   try {
-    //Validate body has input
-    const inboundMessage = JSON.parse(body).body as TInboundMessage;
-    if (!isTInboundMessage(inboundMessage)) {
-      res.statusCode = 400;
-      res.end(JSON.stringify({ error: "Bad Request" }));
-      return;
-    }
-
-    //Service declaration
-    const queryService = new QueriesService();
-    const cacheService = new CacheService();
-    const stateService = new StateService();
-
-    const matchedQuery = await queryService.findByBody(inboundMessage.input);
-
-    //Response from cache
-    if (matchedQuery) {
-      const id = matchedQuery.id;
-      const cached = await cacheService.read(id);
-      if (cached) {
-        const stats = await stateService.read(id);
-        const topQueries = await queryService.findTopQueries();
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "application/json");
-        return res.end(
-          JSON.stringify({
-            message: cached.response,
-            stats,
-            queries: topQueries,
-          }),
-        );
-      }
-    }
-
-    // RAG
-    const context = RagService.get();
-    const prompt = AgentService.generate_prompt(inboundMessage.input, context);
-    //1. Ask agent
-    const response = await fetch(`${BASE_URL}${CHAT}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.LMS_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        input: prompt,
-      }),
-    });
-
-    //Error handler
-    const data = await response.json();
-    const { output, stats, error } = data;
-    // console.log({ output, stats, error });
-    if (error) {
-      // type TError = {
-      //   message: string,
-      //   type: string,
-      //   code: string,
-      //   param: string | null
-      // }
-      res.statusCode = 500;
-      res.setHeader("Content-Type", "application/json");
-      return res.end(JSON.stringify(error));
-    }
-    //Retrieve response
-    const message = output[0].content;
-
-    // 2. Store in queries
-    const newQuery = await queryService.create(inboundMessage.input);
-    // 3. Store in Cache
-    await cacheService.create({
-      queries_id: newQuery.id,
-      response: message,
-    });
-    // 4. Store States
-    await stateService.create({
-      response_id: data.response_id,
-      query_id: newQuery.id,
-      input_tokens: stats.input_tokens,
-      total_output_tokens: stats.total_output_tokens,
-      reasoning_output_tokens: stats.reasoning_output_tokens,
-      tokens_per_second: stats.tokens_per_second,
-      time_to_first_token_seconds: stats.time_to_first_token_seconds,
-    });
-    // 5. Top queries
-    const topQueries = await queryService.findTopQueries();
-    // 6. Respond
+    const chatService = new ChatService();
+    const result = await chatService.processUserQuery(body);
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    return res.end(JSON.stringify({ message, stats, queries: topQueries }));
-
-    //Internal Error Occurred
+    return res.end(JSON.stringify(result));
   } catch (err) {
-    res.statusCode = 500;
     res.setHeader("Content-Type", "application/json");
+    if (isHttpError(err)) {
+      res.statusCode = err.statusCode;
+      return res.end(JSON.stringify({ error: err.message }));
+    }
+    res.statusCode = 500;
     console.error(err);
     return res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }));
   }
