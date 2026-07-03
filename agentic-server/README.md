@@ -6,10 +6,8 @@ It serves as agentic server for https://ihorlazarkov.githun.io/ihorlazarkov
 ## Tech Stack
 - **Language**: TypeScript
 - **ORM**: Prisma
-- **Testing**: Node:Test, Node:Assert
-- **Formatter**: Prettier
-- **Testing**: Jest
-- **CI/CD**: GitHub Actions
+- **Testing**: `node:test`, `node:assert` (not Jest)
+- **CI/CD**: none — there is no GitHub Actions workflow in this repo. `npm run release:06262026:*` are one-off scripts for a specific past release, not general pipeline tooling.
 
 ## Structure
 The server follows a **Layered Architecture** (refer to `architecture_decision.md` for details). Dependencies flow from the outer layers (Controllers) to the inner layers (ORM).
@@ -85,26 +83,27 @@ Our testing approach mirrors the layered architecture to ensure each component b
 | :--- | :--- | :--- | :--- |
 | **Unit** | Repositories | Database CRUD operations and Prisma query logic. | Node:Test, Assert |
 | **Unit** | Services | Core business logic, prompt orchestration, and RAG processing. | Node:Test, Assert |
-| **Integration** | Controllers | API routing, Valibot schema validation, and status code verification. | Node:Test |
+| **Integration** | Controllers | API routing, request-shape validation (`ValidationError` from a plain `instanceof` type guard, not a schema library), and status code verification. | Node:Test |
 | **System** | Full Application | End-to-end flow from Client HTTP request to Local LLM (LM Studio) response. | Node:Test |
 
 ## Running the Server
 
-### Development
+There is no `npm run dev` script. Use one of:
+
+### QA
 ```bash
-npm run dev
+npm run start:qa
 ```
+Runs with `NODE_ENV=test` on the QA port (3008), against `.env.test` / `db/queries_QA.db`.
+
+### Production
+```bash
+npm run start:prod
+```
+Runs with `NODE_ENV=production` on the prod port (3007), against `.env` / the prod DB.
 
 ### Testing
 ```bash
 npm test
 ```
-
-### Running Server
-```bash
-npm run start:qa
-```
-or 
-```bash
-npm run start:prod
-```
+Resets and reseeds the QA SQLite DB (`prisma db push` + `seed:qa`), then runs all `src/test/*.spec.ts`.
