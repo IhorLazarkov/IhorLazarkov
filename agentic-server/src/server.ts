@@ -44,15 +44,23 @@ export default class Server {
         });
       });
 
-      try {
-        const handler = method && method in this.controller && this.controller[method as keyof IController];
-        if (!handler) throw new TypeError("Method is not supported");
-        if (method === "POST") this.controller.POST(req, res, body);
-        else handler(req, res, body);
-      } catch (error) {
+      const handler = method && method in this.controller
+        ? this.controller[method as keyof IController]
+        : undefined;
+
+      if (!handler) {
         res.statusCode = 405;
+        res.end(JSON.stringify({ error: `Method ${method} is not supported` }));
+        return;
+      }
+
+      try {
+        await handler(req, res, body);
+      } catch (error) {
+        res.statusCode = 500;
+        console.error(error);
         res.end(JSON.stringify({
-          error: `Server Internal Error: ${error}`
+          error: `Internal Server Error: ${error instanceof Error ? error.message : String(error)}`
         }))
       }
     });
