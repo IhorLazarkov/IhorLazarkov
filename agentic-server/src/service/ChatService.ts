@@ -2,9 +2,17 @@ import CacheService from "./CacheService";
 import QueriesService from "./QueriesService";
 import RagService from "./ragService";
 import StateService from "./stateService";
+import RateLimiter from "./RateLimiter";
 import { AgentService } from "./agentService";
-import { ValidationError, UpstreamLlmError } from "../controllers/errors";
-import { AGENT_BASE_URL, AGENT_CHAT, MODEL, LMS_API_KEY } from "../config";
+import { ValidationError, UpstreamLlmError, RateLimitError } from "../controllers/errors";
+import {
+  AGENT_BASE_URL,
+  AGENT_CHAT,
+  MODEL,
+  LMS_API_KEY,
+  RATE_LIMIT_MAX,
+  RATE_LIMIT_WINDOW_MS,
+} from "../config";
 
 export type TInboundMessage = {
   input: string;
@@ -13,6 +21,11 @@ export type TInboundMessage = {
 const isTInboundMessage = (obj: any): obj is TInboundMessage => {
   return typeof obj?.input === "string";
 };
+
+const rateLimiter = new RateLimiter({
+  limit: RATE_LIMIT_MAX,
+  windowMs: RATE_LIMIT_WINDOW_MS,
+});
 
 export default class ChatService {
   private readonly queryService: QueriesService;
@@ -25,7 +38,12 @@ export default class ChatService {
     this.stateService = new StateService();
   }
 
-  async processUserQuery(body: string) {
+  async processUserQuery(body: string, clientId: string) {
+    const { allowed, retryAfterMs } = rateLimiter.check(clientId);
+    if (!allowed) {
+      throw new RateLimitError(retryAfterMs);
+    }
+
     const inboundMessage = JSON.parse(body).body as TInboundMessage;
     if (!isTInboundMessage(inboundMessage)) {
       throw new ValidationError("Bad Request");
