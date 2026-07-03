@@ -77,4 +77,29 @@ This structure follows Clean Architecture principles.
 
 ---
 
+## ADR-002: Extract Chat Orchestration into a Service, Errors via `statusCode`-Tagged Errors
+
+### 1. Motivation
+
+`lmsRouter.ts`'s `processUserQuery` (the handler behind `GET /api/version` and `POST /api/generate`) contained the full orchestration inline at the controller level: request validation, cache lookup, RAG prompt construction, the LLM `fetch` call, and persistence across `QueriesService`/`CacheService`/`StateService`. The controller also wrote HTTP status codes and response bodies directly inside that logic, so the controller layer was not "minimal" as intended by ADR-001.
+
+### 2. Decision
+
+- Added `src/service/ChatService.ts`, a use-case/orchestrator service (distinct from the existing thin repository-wrapper services) that owns the entire flow above and returns `{ message, stats, queries }` or throws on failure. The controller now only calls `ChatService.processUserQuery(body)` and translates the outcome into an HTTP response.
+- Error signaling uses typed `Error` subclasses defined in `src/controllers/errors.ts`: a base `AppError` (carries a `statusCode`), with `ValidationError` (400) and `UpstreamLlmError` (502) extending it. `ChatService` throws these; the controller catches and checks `err instanceof AppError` to pick the status code, falling back to 500 for anything else.
+- This module was placed under `src/controllers/`, not the project root, since these error types exist specifically to carry HTTP semantics (status codes) that the controller layer consumes — keeping them next to the controllers that interpret them, rather than treating them as a repo-wide concern.
+- Two lighter-weight alternatives were tried in between and rejected: (a) an `errors.ts` at the project root with the same classes, and (b) a plain `Error` tagged with a `statusCode` property (`httpError(message, statusCode)` + an `isHttpError` type guard) with no dedicated file at all. Both were abandoned in favor of the class-based approach in `src/controllers/errors.ts` once its placement made sense.
+- Bad request input now throws a `ValidationError` → 400; an LLM/upstream error now throws an `UpstreamLlmError` → 502 (instead of the previous blanket 500).
+
+### 3. Rationale
+
+- Keeps the controller layer HTTP-only (status codes, headers, response shape) per ADR-001's intent, while all business/orchestration logic and knowledge of downstream services lives in `ChatService`.
+- Typed error classes make the controller's `instanceof` dispatch self-documenting and easy to extend with new error variants without touching the type-guard logic.
+
+### 4. Follow-ups / Open Questions
+
+- If more distinct failure modes are added later (e.g. rate limiting, timeout), add new `AppError` subclasses in `src/controllers/errors.ts`.
+
+---
+
 > **Note**: This ADR will be updated as the project evolves.

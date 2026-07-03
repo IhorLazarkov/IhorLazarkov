@@ -6,10 +6,8 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { type IController } from "./defaultRouter";
 
 // Services
-import ChatService, {
-  type TInboundMessage,
-  isHttpError,
-} from "../service/ChatService";
+import ChatService, { type TInboundMessage } from "../service/ChatService";
+import { AppError } from "./errors";
 
 type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
@@ -27,7 +25,7 @@ async function processUserQuery(
     return res.end(JSON.stringify(result));
   } catch (err) {
     res.setHeader("Content-Type", "application/json");
-    if (isHttpError(err)) {
+    if (err instanceof AppError) {
       res.statusCode = err.statusCode;
       return res.end(JSON.stringify({ error: err.message }));
     }

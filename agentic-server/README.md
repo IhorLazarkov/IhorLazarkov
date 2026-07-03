@@ -29,6 +29,7 @@ graph TD
     end
 
     subgraph Service_Layer [Service Layer]
+        ChS[ChatService]
         RS[RagService]
         CS[CacheService]
         QS[QueriesService]
@@ -51,10 +52,11 @@ graph TD
         OLL["Ollama Server"]
     end
 
-    IC --> RS
-    IC --> CS
-    IC --> QS
-    IC --> SS
+    LR --> ChS
+    ChS --> RS
+    ChS --> CS
+    ChS --> QS
+    ChS --> SS
     RS --> CR
     RS --> QR
     CS --> CR
@@ -63,16 +65,18 @@ graph TD
     CR & QR & SR --> P
     P --> DB
 
-    LR -.-> LMS
+    ChS -.-> LMS
     OR -.-> OLL
 ```
 
+`lmsRouter`'s `POST /api/generate` / `GET /api/version` handler delegates entirely to `ChatService.processUserQuery`, which owns cache lookup, RAG prompt construction, the LM Studio call, and persistence. Expected failures are signaled via the `AppError` class hierarchy in `src/controllers/errors.ts` (`ValidationError` → 400, `UpstreamLlmError` → 502); the controller catches these (`instanceof AppError`) to set the response status code and falls back to 500 for anything else. See `architecture_decision.md` (ADR-002) for the rationale.
+
 ### Folder Map
-- `src/controllers/`: Handles HTTP requests and input validation (using Valibot).
-- `src/services/`: Contains core business logic and orchestrates data flow.
-- `src/repositories/`: Abstracts database operations and provides a clean interface for data access.
-- `src/orm/`: Prisma client configuration and database schema.
-- `src/tests/`: Automated unit and integration tests.
+- `src/controllers/`: Handles HTTP request/response only (status codes, headers); delegates business logic to services.
+- `src/service/`: Core business logic. `ChatService` orchestrates the chat flow (cache, RAG, LLM call, persistence, error signaling); the rest are thin repository-backed services.
+- `src/repository/`: Abstracts database operations and provides a clean interface for data access.
+- `generated/prisma/`: Prisma client output (non-default output path — import types from here, not `@prisma/client`).
+- `src/test/`: Automated unit and integration tests (`node:test`, not Jest).
 
 ## Testing Strategy
 Our testing approach mirrors the layered architecture to ensure each component behaves correctly in isolation and when integrated.

@@ -3,18 +3,11 @@ import QueriesService from "./QueriesService";
 import RagService from "./ragService";
 import StateService from "./stateService";
 import { AgentService } from "./agentService";
+import { ValidationError, UpstreamLlmError } from "../controllers/errors";
 
 const BASE_URL = process.env["AGENT_BASE_URL"];
 const CHAT = process.env["AGENT_CHAT"];
 const MODEL = process.env["MODEL"];
-
-export type THttpError = Error & { statusCode: number };
-
-const httpError = (message: string, statusCode: number): THttpError =>
-  Object.assign(new Error(message), { statusCode });
-
-export const isHttpError = (err: unknown): err is THttpError =>
-  err instanceof Error && typeof (err as THttpError).statusCode === "number";
 
 export type TInboundMessage = {
   input: string;
@@ -38,7 +31,7 @@ export default class ChatService {
   async processUserQuery(body: string) {
     const inboundMessage = JSON.parse(body).body as TInboundMessage;
     if (!isTInboundMessage(inboundMessage)) {
-      throw httpError("Bad Request", 400);
+      throw new ValidationError("Bad Request");
     }
 
     const matchedQuery = await this.queryService.findByBody(inboundMessage.input);
@@ -78,9 +71,8 @@ export default class ChatService {
     const data = await response.json();
     const { output, stats, error } = data;
     if (error) {
-      throw httpError(
+      throw new UpstreamLlmError(
         typeof error === "string" ? error : JSON.stringify(error),
-        502,
       );
     }
 
