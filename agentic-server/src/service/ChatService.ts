@@ -4,10 +4,7 @@ import RagService from "./ragService";
 import StateService from "./stateService";
 import { AgentService } from "./agentService";
 import { ValidationError, UpstreamLlmError } from "../controllers/errors";
-
-const BASE_URL = process.env["AGENT_BASE_URL"];
-const CHAT = process.env["AGENT_CHAT"];
-const MODEL = process.env["MODEL"];
+import { AGENT_BASE_URL, AGENT_CHAT, MODEL, LMS_API_KEY } from "../config";
 
 export type TInboundMessage = {
   input: string;
@@ -56,11 +53,11 @@ export default class ChatService {
     const prompt = AgentService.generate_prompt(inboundMessage.input, context);
 
     // 1. Ask agent
-    const response = await fetch(`${BASE_URL}${CHAT}`, {
+    const response = await fetch(`${AGENT_BASE_URL}${AGENT_CHAT}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.LMS_API_KEY}`,
+        Authorization: `Bearer ${LMS_API_KEY}`,
       },
       body: JSON.stringify({
         model: MODEL,
