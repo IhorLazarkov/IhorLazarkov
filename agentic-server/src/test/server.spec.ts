@@ -69,6 +69,20 @@ describe("Test Server with LM Studio Router", async () => {
     assert.strictEqual(json.error, "Bad Request");
   });
 
+  test("Check error is returned when input exceeds 100 characters", async () => {
+    const body = { body: { input: "a".repeat(101) } };
+    const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const json = await response.json();
+    assert.strictEqual(response.status, 400);
+    assert.strictEqual(json.error, "Input exceeds 100 characters");
+  });
+
   test("Check OPTIONS is supported", async () => {
     const response = await fetch(`http://${HOST}:${PORT}`, {
       method: "OPTIONS",

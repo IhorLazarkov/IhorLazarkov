@@ -30,6 +30,9 @@ export default class ChatService {
     if (!isTInboundMessage(inboundMessage)) {
       throw new ValidationError("Bad Request");
     }
+    if (inboundMessage.input.length > 100) {
+      throw new ValidationError("Input exceeds 100 characters");
+    }
 
     const matchedQuery = await this.queryService.findByBody(inboundMessage.input);
 
