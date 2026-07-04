@@ -63,6 +63,9 @@ function App() {
   // Custom wheel-scroll speed for <main>
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.closest('#answer')) return;
+
       const container = document.querySelector('main') as HTMLDivElement;
       container.scrollTop += e.deltaY * 2;
     }
