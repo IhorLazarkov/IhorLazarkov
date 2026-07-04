@@ -1,5 +1,6 @@
 import { test, expect } from './fixtures';
 import { test as rawTest } from '@playwright/test';
+import { projects } from '../src/data';
 
 test('About section is visible', async ({ page }) => {
   await expect(page.locator('#about')).toBeVisible();
@@ -12,6 +13,21 @@ test('Experience section is visible', async ({ page }) => {
 test('Projects section is visible', async ({ page }) => {
   await expect(page.locator('#projects')).toBeVisible();
 });
+
+for (const project of projects) {
+  test(`Project card "${project.title}" is visible with correct details`, async ({ page }) => {
+    const projectsSection = page.locator('#projects');
+    const card = projectsSection.locator('a', { hasText: project.title });
+
+    await expect(card).toBeVisible();
+    await expect(card).toHaveAttribute('href', project.url);
+    await expect(card.getByText(project.description)).toBeVisible();
+
+    for (const tech of project.techStack) {
+      await expect(card.getByText(tech, { exact: true })).toBeVisible();
+    }
+  });
+}
 
 test('Agent chat textarea is visible', async ({ page }) => {
   await expect(page.getByPlaceholder('Ask my agent ...')).toBeVisible();
