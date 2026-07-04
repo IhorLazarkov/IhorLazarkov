@@ -109,6 +109,46 @@ rawTest('Agent chat keeps prior exchanges visible after a new prompt', async ({ 
   await expect(page.getByText('Hello this is test message')).toBeVisible();
 });
 
+rawTest('Agent chat submits on Ctrl+Enter / Meta+Enter without inserting a newline', async ({ page }) => {
+  await page.route('http://localhost:3008/api/version', async route => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        message: 'Hello this is test message',
+        queries: [{ body: 'test query 1' }],
+        stats: { input_tokens: 10, tokens_per_second: 5.5, total_output_tokens: 20, time_to_first_token_seconds: 0.5 },
+        error: ''
+      })
+    });
+  });
+  await page.route('http://localhost:3008/api/generate', async route => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        message: 'Shortcut answer',
+        queries: [{ body: 'test query 1' }],
+        stats: { input_tokens: 1, tokens_per_second: 1, total_output_tokens: 1, time_to_first_token_seconds: 0.1 },
+        error: ''
+      })
+    });
+  });
+
+  await page.goto('');
+  await expect(page.getByText('Hello this is test message')).toBeVisible();
+
+  const textarea = page.getByPlaceholder('Ask my agent ...');
+  await textarea.fill('Shortcut question');
+
+  const modifier = process.platform === 'darwin' ? 'Meta' : 'Control';
+  await textarea.press(`${modifier}+Enter`);
+
+  await expect(page.getByText('Shortcut answer')).toBeVisible();
+  // The shortcut must submit rather than insert a newline into the textarea.
+  await expect(textarea).toHaveValue('');
+});
+
 rawTest('Agent chat shows a thinking indicator while waiting on a slow response', async ({ page }) => {
   await page.route('http://localhost:3008/api/version', async route => {
     await route.fulfill({

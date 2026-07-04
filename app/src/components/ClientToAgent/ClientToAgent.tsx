@@ -195,7 +195,13 @@ function ClientToAgent() {
             rows={3}
             maxLength={100}
             placeholder="Ask my agent ..."
-            onChange={(e) => setCount(e.target.value.length)}></textarea>
+            onChange={(e) => setCount(e.target.value.length)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                e.preventDefault()
+                e.currentTarget.form?.requestSubmit()
+              }
+            }}></textarea>
           <div className='action-toolbar'>
             <span>{lettersCount} / 100</span>
             {button}
