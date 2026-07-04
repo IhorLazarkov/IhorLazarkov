@@ -106,9 +106,10 @@ header {
   }
 
   & #agent-parent-container {
-    height: clamp(100px, 200px, 245px);
+    max-height: clamp(220px, 40vh, 420px);
     box-sizing: border-box;
-    overflow-y: scroll;
+    display: flex;
+    overflow: hidden;
   }
 
   & .media-icons {

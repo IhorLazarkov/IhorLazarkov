@@ -203,6 +203,7 @@ function ClientToAgent() {
         </form>
       </div>
       <div style={{
+        flex: "0 0 auto",
         textAlign: "center",
         fontSize: "0.5em",
         paddingTop: "0.5em"
