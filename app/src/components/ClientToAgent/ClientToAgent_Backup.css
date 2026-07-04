@@ -1,111 +1,32 @@
-#agent-main {
+
+/* Top prompts */
+details#prompts-container {
+  font-size: 0.7em;
+  padding: 0.3em;
+  margin-bottom: 0.5em;
+  
+  display: flex;
+  gap: 0.3em;
+  flex-direction: column;
+
+  width: 100%;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  border: 1px solid var(--secondary-text);
-  display: flex;
-  flex-direction: column;
-
-  background-color: var(--border-color);
-  color: var(--accent);
-}
-
-#answer {
-  overflow-y: auto;
-  min-height: 50px;
-  height: fit-content;
-  max-height: min(50vh, 320px);
-
-  font-size: 0.8em;
-  padding: 0.5em;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6em;
-
-  & p {
-    margin: 0;
-  }
-}
-
-/* Chat bubbles */
-.message {
-  display: flex;
-  flex-direction: column;
-  max-width: 80%;
-}
-
-.message-user {
-  align-self: flex-end;
-  align-items: flex-end;
-
-  & .bubble {
-    background-color: var(--secondary-text);
-    color: var(--border-color);
-  }
-}
-
-.message-assistant {
-  align-self: flex-start;
-  align-items: flex-start;
-
-  & .bubble {
-    background-color: inherit;
-    color: var(--accent);
-  }
-}
-
-.message-system-error {
-  align-self: flex-start;
-  align-items: flex-start;
-
-  & .bubble {
-    background-color: #edcfce;
-    color: red;
-  }
-}
-
-.bubble {
-  width: fit-content;
-  padding: 0.4em 0.6em;
-  border-radius: 10px;
-}
-
-.message-pending .bubble {
-  background-color: grey;
-  padding: 0.3em 0.6em;
-}
-
-.message-stats {
-  margin-top: 0.2em;
-  font-size: 0.8em;
-  color: var(--secondary-text);
-  cursor: pointer;
 
   & summary {
     cursor: pointer;
-    width: fit-content;
+    width: 100%;
   }
-
-  & span {
-    display: block;
-    padding-left: 0.5em;
+  & div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
   }
-}
-
-/* Top prompts */
-#prompts-container {
-  font-size: 0.7em;
-  padding: 0.3em;
-  margin: 0.3em 0.5em;
-
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3em;
-
   & span {
     cursor: pointer;
 
     display: -webkit-box;
     -webkit-line-clamp: 1;
-    line-clamp: 1;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -118,6 +39,52 @@
   }
 }
 
+#agent-main {
+  border-radius: 10px;
+  border: 1px solid var(--secondary-text);
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--border-color);
+  color: var(--accent);
+}
+
+#answer {
+  overflow-y: scroll;
+  min-height: 50px;
+  height: fit-content;
+  max-height: 130px;
+
+  border: 0px solid green;
+  font-size: 0.8em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  & p {
+    margin: 0;
+  }
+
+  & :has(.question-area) {
+    background-color: var(--secondary-text);
+    color: var(--border-color);
+    text-align: right;
+    width: 100%;
+    padding: 0.2em;
+    border-radius: 10px;
+  }
+
+  /* & .answer-area {
+    background-color: inherit;
+    color: var(--accent);
+    text-align: left;
+    width: 100%;
+    padding: 0.2em;
+    border-radius: 10px;
+  } */
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -126,10 +93,12 @@ form {
   position: relative;
 
   & textarea {
+    /* margin-top: 1em; */
     resize: none;
     border-radius: 10px;
     padding: 1em;
     border-color: var(--secondary-text);
+    /* background-color: inherit; */
   }
   & .action-toolbar {
     width: fit-content;

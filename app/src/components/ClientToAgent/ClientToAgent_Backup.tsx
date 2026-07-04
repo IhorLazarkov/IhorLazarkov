@@ -13,42 +13,40 @@ import './ClientToAgent.css'
 const BASE_URL = import.meta.env.VITE_AGENTIC_CLIENT_BASE_URL || "https://agentic.ihorlazarkov-swe.in"
 const MODEL_NAME = import.meta.env.VITE_AGENTIC_MODEL || "qwen/qwen3-vl-4b"
 
-type TStats = {
-  input_tokens: string,
-  tokens_per_second: string,
-  total_output_tokens: string,
-  time_to_first_token_seconds: string,
-}
-
-type ChatMessage = {
-  role: 'user' | 'assistant' | 'system-error',
-  content: React.ReactElement[] | string,
-  stats?: TStats,
-}
-
-type TState = {
-  messages: ChatMessage[],
-  topPrompts: { body: string }[],
-}
-
-const INIT_STATE: TState = { messages: [], topPrompts: [] }
-
-function round(num: string): number {
-  return Number.parseFloat(Number.parseFloat(num).toFixed(2))
-}
-
 function ClientToAgent() {
-
+  
   const [lettersCount, setCount] = useState(0)
 
   const controllerRef = useRef<AbortController | null>(null)
-  const threadRef = useRef<HTMLDivElement | null>(null)
 
   function abortRequest() {
     controllerRef.current?.abort()
   }
 
-  async function sendPrompt(prevState: TState, formData: FormData): Promise<TState> {
+  type TResponse = {
+    response: React.ReactElement[],
+    topPrompts: { body: string }[],
+    error: string,
+    stats: {
+      input_tokens: string,
+      tokens_per_second: string,
+      total_output_tokens: string,
+      time_to_first_token_seconds: string,
+    }
+  }
+
+  const INIT_STATS = {
+    input_tokens: '',
+    tokens_per_second: '',
+    total_output_tokens: '',
+    time_to_first_token_seconds: ''
+  }
+
+  function round(num: string): number {
+    return Number.parseFloat(Number.parseFloat(num).toFixed(2))
+  }
+
+  async function sendPrompt(_: TResponse, formData: FormData): Promise<TResponse> {
     const controller = new AbortController()
     const signal = controller.signal
 
@@ -63,8 +61,6 @@ function ClientToAgent() {
     const headers: HeadersInit = { "Content-Type": "application/json" }
     const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal } : { method, signal }
 
-    const userMessage: ChatMessage = { role: 'user', content: value }
-
     try {
       const response = await fetch(uri, reqBody)
 
@@ -75,33 +71,30 @@ function ClientToAgent() {
       setCount(0)
 
       const data = await response.json();
-      const replyMessage: ChatMessage = data.error
-        ? { role: 'system-error', content: data.error }
-        : {
-          role: 'assistant',
-          content: parseGemmaResponseToHtml(data.message),
-          stats: { ...data.stats },
-        }
-
       return {
-        messages: [...prevState.messages, userMessage, replyMessage],
+        response: [
+          <span className='question-area'>Visitor: {value}</span>,
+          ...parseGemmaResponseToHtml(data.message)
+        ],
         topPrompts: [...data.queries],
+        stats: { ...data.stats },
+        error: data.error || ""
       };
 
     } catch (error) {
       controllerRef.current = null;
 
-      const errorText = error instanceof Error && error.name === 'AbortError'
-        ? "User Aborted."
-        : error instanceof Error
-          ? error.message
-          : "An unknown error occurred."
-
-      const errorMessage: ChatMessage = { role: 'system-error', content: errorText }
-
+      if (error instanceof Error && error.name === 'AbortError') {
+        return {
+          response: [], topPrompts: [], stats: INIT_STATS, error: "User Aborted."
+        };
+      } else if (error instanceof Error) {
+        return {
+          response: [], topPrompts: [], stats: INIT_STATS, error: error.message
+        };
+      }
       return {
-        messages: [...prevState.messages, userMessage, errorMessage],
-        topPrompts: prevState.topPrompts,
+        response: [<span>An unknown error occurred.</span>], topPrompts: [], stats: INIT_STATS, error: JSON.stringify(error)
       };
     }
   }
@@ -128,14 +121,12 @@ function ClientToAgent() {
 
     return () => abortRequest()
   }, [])
-
-  const [state, askQuestion, isPending] = useActionState(sendPrompt, INIT_STATE)
-
-  useEffect(() => {
-    const thread = threadRef.current
-    if (thread) thread.scrollTop = thread.scrollHeight
-  }, [state.messages.length, isPending])
-
+  const [answers, askQuestion, isPending] = useActionState(sendPrompt, {
+    response: [],
+    topPrompts: [],
+    stats: INIT_STATS,
+    error: ""
+  } as TResponse)
   const button = !isPending
     ? <button type="submit">
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -148,47 +139,70 @@ function ClientToAgent() {
         height="24px" viewBox="0 -960 960 960"
         width="24px" fill="#e3e3e3"><path d="M320-640v320-320Zm-80 400v-480h480v480H240Zm80-80h320v-320H320v320Z" /></svg>
     </button>
-
-  const prompts = !isPending && state.topPrompts.length > 0 &&
-    <div id="prompts-container">
-      {state.topPrompts.map(({ body }, i) => (
-        <span key={i} onClick={() => reAsk(body)}>{body}</span>
-      ))}
+  const prompts = <details id="prompts-container">
+    <summary style={{ color: "var(--border-color)" }}>Trending questions</summary>
+    <div >
+      {
+        !isPending
+        && answers.topPrompts.length > 0
+        && answers.topPrompts.map(({ body }, i) => (
+          <span key={i} onClick={() => reAsk(body)}>{body}</span>
+        ))}
     </div>
-
+  </details>
   return (
     <section className='agent-container'>
+      {/* Top prompts */}
+      {prompts}
       <div id="agent-main">
-        <div id="answer" ref={threadRef}>
-          {state.messages.map((message, i) => (
-            <div key={i} className={`message message-${message.role}`}>
-              <div className="bubble">{message.content}</div>
-              {message.role === 'assistant' && message.stats && (
-                <details className="message-stats">
-                  <summary>stats</summary>
-                  <span>input tokens: {round(message.stats.input_tokens)}</span>
-                  <span>tokens per sec: {round(message.stats.tokens_per_second)}</span>
-                  <span>total tokens: {round(message.stats.total_output_tokens)}</span>
-                  <span>time to first token sec: {round(message.stats.time_to_first_token_seconds)}</span>
-                </details>
-              )}
+        <div id="answer">
+          {isPending
+            ? <div style={{
+              backgroundColor: "grey",
+              borderRadius: "10px",
+              width: "fit-content",
+              padding: "0.1em"
+            }}>
+              <PulseLoader
+                color="black"
+                loading={isPending}
+                cssOverride={{ marginInline: "0.4em" }}
+                size={5}
+                aria-label="Loading Spinner"
+                data-testid="loader" />
             </div>
-          ))}
-          {isPending && (
-            <div className="message message-assistant message-pending">
-              <div className="bubble">
-                <PulseLoader
-                  color="black"
-                  loading={isPending}
-                  cssOverride={{ marginInline: "0.4em" }}
-                  size={5}
-                  aria-label="Loading Spinner"
-                  data-testid="loader" />
-              </div>
-            </div>
-          )}
+            : <>
+              {/* Error */}
+              {answers.error.length > 0 && <span style={{
+                borderRadius: "10px",
+                width: "fit-content",
+                padding: "0.3em 0.5em",
+                color: "red",
+                backgroundColor: "#edcfce"
+              }}>{answers.error}</span>}
+
+              {/* Response */}
+              {answers.response.map((answer, i) => <span key={i}>{answer}</span>)}
+
+              {/* Stats */}
+              {answers.error.length === 0 &&
+                answers.stats && <div style={{
+                  backgroundColor: "#cfedce",
+                  borderRadius: "10px",
+                  width: "fit-content",
+                  padding: "0.3em 0.5em",
+                  display: "flex",
+                  flexDirection: "column"
+                }}>
+                  <span>input tokens: {round(answers.stats.input_tokens)}</span>
+                  <span>tokens per sec: {round(answers.stats.tokens_per_second)}</span>
+                  <span>total tokens: {round(answers.stats.total_output_tokens)}</span>
+                  <span>time to first token sec: {round(answers.stats.time_to_first_token_seconds)}</span>
+                </div>
+              }
+            </>
+          }
         </div>
-        {prompts}
         <form action={askQuestion}>
           <textarea
             name="prompt"

@@ -58,14 +58,55 @@ rawTest('Agent greeting shows message, trending queries and stats', async ({ pag
 
   await expect(page.getByText('Hello this is test message')).toBeVisible();
 
-  await page.getByText('Trending questions').click();
+  // Trending prompts are visible by default now, no disclosure needed.
   await expect(page.getByText('test query 1')).toBeVisible();
   await expect(page.getByText('test query 2')).toBeVisible();
 
+  // Stats sit behind a per-message <details> disclosure.
+  await page.getByText('stats').click();
   await expect(page.getByText('input tokens: 10')).toBeVisible();
   await expect(page.getByText('tokens per sec: 5.5')).toBeVisible();
   await expect(page.getByText('total tokens: 20')).toBeVisible();
   await expect(page.getByText('time to first token sec: 0.5')).toBeVisible();
+});
+
+rawTest('Agent chat keeps prior exchanges visible after a new prompt', async ({ page }) => {
+  let callCount = 0
+  await page.route('http://localhost:3008/api/version', async route => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        message: 'Hello this is test message',
+        queries: [{ body: 'test query 1' }],
+        stats: { input_tokens: 10, tokens_per_second: 5.5, total_output_tokens: 20, time_to_first_token_seconds: 0.5 },
+        error: ''
+      })
+    });
+  });
+  await page.route('http://localhost:3008/api/generate', async route => {
+    callCount++
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        message: `Second answer ${callCount}`,
+        queries: [{ body: 'test query 1' }],
+        stats: { input_tokens: 1, tokens_per_second: 1, total_output_tokens: 1, time_to_first_token_seconds: 0.1 },
+        error: ''
+      })
+    });
+  });
+
+  await page.goto('');
+  await expect(page.getByText('Hello this is test message')).toBeVisible();
+
+  await page.getByPlaceholder('Ask my agent ...').fill('Second question');
+  await page.locator('.action-toolbar button[type="submit"]').click();
+
+  await expect(page.getByText('Second answer 1')).toBeVisible();
+  // The greeting exchange should still be present, not replaced.
+  await expect(page.getByText('Hello this is test message')).toBeVisible();
 });
 
 rawTest('Agent greeting shows error when /api/version returns error', async ({ page }) => {
