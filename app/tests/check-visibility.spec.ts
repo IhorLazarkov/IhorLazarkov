@@ -70,6 +70,27 @@ rawTest('Agent greeting shows message, trending queries and stats', async ({ pag
   await expect(page.getByText('time to first token sec: 0.5')).toBeVisible();
 });
 
+rawTest('Agent chat textarea placeholder shows average response time after a reply', async ({ page }) => {
+  await page.route('http://localhost:3008/api/version', async route => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({
+        message: 'Hello this is test message',
+        queries: [{ body: 'test query 1' }],
+        // generation time = 20 / 5.5 = 3.636..., + 0.5 ttft = 4.136... -> "4.1"
+        stats: { input_tokens: 10, tokens_per_second: 5.5, total_output_tokens: 20, time_to_first_token_seconds: 0.5 },
+        error: ''
+      })
+    });
+  });
+
+  await page.goto('');
+  await expect(page.getByText('Hello this is test message')).toBeVisible();
+
+  await expect(page.getByPlaceholder('avg response ~4.1s')).toBeVisible();
+});
+
 rawTest('Agent chat keeps prior exchanges visible after a new prompt', async ({ page }) => {
   let callCount = 0
   await page.route('http://localhost:3008/api/version', async route => {

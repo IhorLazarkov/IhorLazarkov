@@ -37,6 +37,14 @@ function round(num: string): number {
   return Number.parseFloat(Number.parseFloat(num).toFixed(2))
 }
 
+function responseSeconds(stats: TStats): number {
+  const timeToFirstToken = Number.parseFloat(stats.time_to_first_token_seconds) || 0
+  const tokensPerSecond = Number.parseFloat(stats.tokens_per_second) || 0
+  const totalOutputTokens = Number.parseFloat(stats.total_output_tokens) || 0
+  const generationTime = tokensPerSecond > 0 ? totalOutputTokens / tokensPerSecond : 0
+  return timeToFirstToken + generationTime
+}
+
 function ClientToAgent() {
 
   const [lettersCount, setCount] = useState(0)
@@ -149,6 +157,18 @@ function ClientToAgent() {
         width="24px" fill="#e3e3e3"><path d="M320-640v320-320Zm-80 400v-480h480v480H240Zm80-80h320v-320H320v320Z" /></svg>
     </button>
 
+  const assistantResponseSeconds = state.messages
+    .filter((message): message is ChatMessage & { stats: TStats } => message.role === 'assistant' && !!message.stats)
+    .map((message) => responseSeconds(message.stats))
+
+  const avgResponseSeconds = assistantResponseSeconds.length > 0
+    ? assistantResponseSeconds.reduce((sum, seconds) => sum + seconds, 0) / assistantResponseSeconds.length
+    : null
+
+  const placeholder = avgResponseSeconds !== null
+    ? `Ask my agent ... (avg response ~${avgResponseSeconds.toFixed(1)}s)`
+    : "Ask my agent ..."
+
   const prompts = !isPending && state.topPrompts.length > 0 &&
     <div id="prompts-container">
       {state.topPrompts.map(({ body }, i) => (
@@ -194,7 +214,7 @@ function ClientToAgent() {
             name="prompt"
             rows={3}
             maxLength={100}
-            placeholder="Ask my agent ..."
+            placeholder={placeholder}
             onChange={(e) => setCount(e.target.value.length)}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
