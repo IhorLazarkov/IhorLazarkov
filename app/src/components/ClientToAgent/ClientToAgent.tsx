@@ -93,7 +93,7 @@ function ClientToAgent() {
 
       return {
         messages: [...prevState.messages, userMessage, replyMessage],
-        topPrompts: [...data.queries],
+        topPrompts: [...data.queries || []],
       };
 
     } catch (error) {
