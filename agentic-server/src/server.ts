@@ -26,8 +26,10 @@ export default class Server {
         "http://localhost:5173",
         "https://ihorlazarkov.github.io",
       ]).has(req.headers.origin);
-      origin &&
-        res.setHeader("Access-Control-Allow-Origin", req.headers.origin);
+      if (origin) {
+        res.setHeader("Access-Control-Allow-Origin", req.headers.origin!);
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+      }
       res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
       res.setHeader(
         "Access-Control-Allow-Headers",

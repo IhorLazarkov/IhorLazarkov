@@ -21,6 +21,16 @@ const isTResponse = (obj: any): obj is TResponse => {
   return obj.message !== undefined && obj.stats !== undefined;
 };
 
+async function createSessionCookie(): Promise<string> {
+  const response = await fetch(`http://${HOST}:${PORT}/api/version`, {
+    method: "GET",
+    headers: { Origin: "http://localhost:5173" },
+  });
+  const setCookie = response.headers.get("set-cookie");
+  if (!setCookie) throw new Error("Expected a session cookie to be issued");
+  return setCookie.split(";")[0] as string;
+}
+
 describe("Test Server with LM Studio Router", async () => {
   const router = new Router();
   const server = new Server(router, PORT, HOST);
@@ -40,12 +50,28 @@ describe("Test Server with LM Studio Router", async () => {
     assert.strictEqual(data!.message, "OK");
   });
 
+  test("Check POST without a session cookie is rejected", async () => {
+    const body = { body: { input: "no session" } };
+    const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const json = await response.json();
+    assert.strictEqual(response.status, 401);
+    assert.strictEqual(json.error, "Missing or expired session");
+  });
+
   test("Check POST is supported", async () => {
+    const cookie = await createSessionCookie();
     const body = { body: { input: "post is supported" } };
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Cookie: cookie,
       },
       body: JSON.stringify(body),
     });
@@ -56,11 +82,13 @@ describe("Test Server with LM Studio Router", async () => {
   });
 
   test("Check error is returned when sent invalid message", async () => {
+    const cookie = await createSessionCookie();
     const body = { body: "test" }; //invalid message
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Cookie: cookie,
       },
       body: JSON.stringify(body),
     });
@@ -70,11 +98,13 @@ describe("Test Server with LM Studio Router", async () => {
   });
 
   test("Check error is returned when input exceeds 100 characters", async () => {
+    const cookie = await createSessionCookie();
     const body = { body: { input: "a".repeat(101) } };
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Cookie: cookie,
       },
       body: JSON.stringify(body),
     });
@@ -115,8 +145,10 @@ describe("Test Server with LM Studio Router", async () => {
 
   test("Check any other request is cached", async () => {
     //ask agent
+    const cookie = await createSessionCookie();
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
+      headers: { Cookie: cookie },
       body: JSON.stringify({
         body: {
           model: MODEL,
