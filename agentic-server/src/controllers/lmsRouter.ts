@@ -7,37 +7,42 @@ import { type IController } from "./defaultRouter";
 
 // Services
 import ChatService, { type TInboundMessage } from "../service/ChatService";
-import { AppError, RateLimitError } from "./errors";
+import { AppError, RateLimitError, SessionError } from "./errors";
+import { issueSessionId, readSessionId } from "../service/session";
 
 type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
+
+function sendError(res: ServerResponse<IncomingMessage>, err: unknown) {
+  res.setHeader("Content-Type", "application/json");
+  if (err instanceof RateLimitError) {
+    res.statusCode = err.statusCode;
+    res.setHeader("Retry-After", Math.ceil(err.retryAfterMs / 1000).toString());
+    return res.end(JSON.stringify({ error: err.message }));
+  }
+  if (err instanceof AppError) {
+    res.statusCode = err.statusCode;
+    return res.end(JSON.stringify({ error: err.message }));
+  }
+  res.statusCode = 500;
+  console.error(err);
+  return res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }));
+}
 
 async function processUserQuery(
   req: IncomingMessage,
   res: ServerResponse<IncomingMessage>,
   body: string,
+  clientId: string,
 ) {
   try {
     const chatService = new ChatService();
-    const clientId = req.socket.remoteAddress ?? "unknown";
     const result = await chatService.processUserQuery(body, clientId);
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     return res.end(JSON.stringify(result));
   } catch (err) {
-    res.setHeader("Content-Type", "application/json");
-    if (err instanceof RateLimitError) {
-      res.statusCode = err.statusCode;
-      res.setHeader("Retry-After", Math.ceil(err.retryAfterMs / 1000).toString());
-      return res.end(JSON.stringify({ error: err.message }));
-    }
-    if (err instanceof AppError) {
-      res.statusCode = err.statusCode;
-      return res.end(JSON.stringify({ error: err.message }));
-    }
-    res.statusCode = 500;
-    console.error(err);
-    return res.end(JSON.stringify({ error: err instanceof Error ? err.message : String(err) }));
+    return sendError(res, err);
   }
 }
 
@@ -72,7 +77,15 @@ const getHandler: Record<
 
     const greetingMessage = greeting_prompt("Introduce yourself.");
     const body: TInboundMessage = { input: greetingMessage };
-    return await processUserQuery(req, res, JSON.stringify({ body }));
+
+    const origin = req.headers.origin;
+    let clientId = readSessionId(req);
+    if (origin && !clientId) {
+      clientId = issueSessionId(res);
+    }
+    clientId ??= req.socket.remoteAddress ?? "unknown";
+
+    return await processUserQuery(req, res, JSON.stringify({ body }), clientId);
   },
 
   /**
@@ -95,7 +108,17 @@ const postHandler: Record<
     body: string,
   ) => void
 > = {
-  "/api/generate": processUserQuery,
+  "/api/generate": async (
+    req: IncomingMessage,
+    res: ServerResponse<IncomingMessage>,
+    body: string,
+  ) => {
+    const clientId = readSessionId(req);
+    if (!clientId) {
+      return sendError(res, new SessionError());
+    }
+    return processUserQuery(req, res, body, clientId);
+  },
 };
 
 export default class lmsRouter implements IController {

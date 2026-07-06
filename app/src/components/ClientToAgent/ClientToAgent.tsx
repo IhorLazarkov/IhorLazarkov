@@ -69,7 +69,8 @@ function ClientToAgent() {
       ? JSON.stringify({ body: { "model": MODEL_NAME, "input": value } })
       : {} as BodyInit
     const headers: HeadersInit = { "Content-Type": "application/json" }
-    const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal } : { method, signal }
+    const credentials: RequestCredentials = "include"
+    const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal, credentials } : { method, signal, credentials }
 
     const userMessage: ChatMessage = { role: 'user', content: value }
 

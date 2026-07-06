@@ -28,3 +28,9 @@ export class RateLimitError extends AppError {
     this.retryAfterMs = retryAfterMs;
   }
 }
+
+export class SessionError extends AppError {
+  constructor(message = "Missing or expired session") {
+    super(message, 401);
+  }
+}
