@@ -1,5 +1,6 @@
 import { test, describe } from "node:test";
 import assert from "node:assert";
+import { randomUUID } from "node:crypto";
 
 import dotenv from "dotenv";
 dotenv.config({ path: ".env.test" });
@@ -7,6 +8,7 @@ dotenv.config({ path: ".env.test" });
 const PORT = Number.parseInt(process.env["PORT"] as string);
 const HOST = process.env["HOST"] as string;
 const MODEL = process.env["MODEL"];
+const RATE_LIMIT_MAX = Number(process.env["RATE_LIMIT_MAX"] ?? 5);
 
 import Server from "../server";
 import Router from "../controllers/lmsRouter";
@@ -160,5 +162,65 @@ describe("Test Server with LM Studio Router", async () => {
     //check status
     assert.strictEqual(response.status, 200);
     assert.strictEqual(message.length > 0, true);
+  });
+
+  describe("GET /api/countdown", () => {
+    async function readFirstChunk(response: Response): Promise<string> {
+      const reader = response.body!.getReader();
+      const { value } = await reader.read();
+      await reader.cancel();
+      return new TextDecoder().decode(value);
+    }
+
+    test("rejects without a session cookie", async () => {
+      const response = await fetch(`http://${HOST}:${PORT}/api/countdown`, {
+        method: "GET",
+      });
+      const json = await response.json();
+      assert.strictEqual(response.status, 401);
+      assert.strictEqual(json.error, "Missing or expired session");
+    });
+
+    test("reports 0 for a session that hasn't hit the rate limiter yet", async () => {
+      // The cookie is an unvalidated UUID (see session.ts) - unlike
+      // createSessionCookie(), this never goes through /api/version, which
+      // itself calls processUserQuery() and would consume a rate-limit slot.
+      const cookie = `agentic_session=${randomUUID()}`;
+      const response = await fetch(`http://${HOST}:${PORT}/api/countdown`, {
+        method: "GET",
+        headers: { Cookie: cookie },
+      });
+      assert.strictEqual(response.status, 200);
+      assert.strictEqual(
+        response.headers.get("content-type"),
+        "text/event-stream",
+      );
+      const chunk = await readFirstChunk(response);
+      assert.strictEqual(chunk, "data:0\n\n");
+    });
+
+    test("streams a positive countdown once the session is rate-limited", async () => {
+      const cookie = await createSessionCookie();
+      const body = { body: { input: "post is supported" } };
+      for (let i = 0; i < RATE_LIMIT_MAX; i++) {
+        await fetch(`http://${HOST}:${PORT}/api/generate`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Cookie: cookie },
+          body: JSON.stringify(body),
+        });
+      }
+
+      const response = await fetch(`http://${HOST}:${PORT}/api/countdown`, {
+        method: "GET",
+        headers: { Cookie: cookie },
+      });
+      const chunk = await readFirstChunk(response);
+      const match = chunk.match(/^data:(\d+)\n\n$/);
+      assert.ok(
+        match,
+        `expected an SSE countdown frame, got ${JSON.stringify(chunk)}`,
+      );
+      assert.strictEqual(Number(match![1]) > 0, true);
+    });
   });
 });

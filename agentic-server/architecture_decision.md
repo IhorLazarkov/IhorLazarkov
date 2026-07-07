@@ -102,4 +102,41 @@ This structure follows Clean Architecture principles.
 
 ---
 
+---
+
+## ADR-003: Session-Cookie-Based Rate Limiting (replacing IP-based limiting)
+
+### 1. Motivation
+
+Rate limiting (see follow-up in ADR-002) was first implemented keyed by client IP (`req.socket.remoteAddress`). This collapsed all visitors behind a shared IP (proxy, NAT, corporate network) into one bucket, capping requests for every visitor behind that IP instead of per-user.
+
+### 2. Decision
+
+- Added `src/service/session.ts`: `issueSessionId(res)` mints a random UUID and sets it via the standard `Set-Cookie` HTTP header (`agentic_session=<uuid>; Max-Age=3600; Path=/; HttpOnly; Secure; SameSite=None` in production, `SameSite=Lax` without `Secure` in non-production so plain-HTTP local/QA backends don't have the cookie silently dropped by the browser). `readSessionId(req)` parses it back out of the incoming `Cookie` header.
+- `GET /api/version` (`lmsRouter.ts`) issues the cookie — but only when the request carries an `Origin` header, and only if the caller doesn't already have one — then falls back to `req.socket.remoteAddress` if neither is available.
+- `POST /api/generate` **requires** the session cookie: if `readSessionId(req)` returns nothing, it rejects immediately with a new `SessionError` (401) — there is no IP fallback on this path. Reject-over-fallback was chosen deliberately, prioritizing correctness (never mis-attributing rate-limit usage across visitors) over leniency.
+- The rate-limit key (consumed by the `RateLimiter` from ADR-002's follow-up) is the raw session token alone, not `token:ip` — kept simple since the limiter is already just an in-memory `Map`.
+- Both `lmsRouter.ts` handlers now take an explicit `clientId` parameter rather than deriving it internally, so `ChatService`/`RateLimiter` stay agnostic to how the identity was determined.
+
+### 3. Cross-origin cookie requirements
+
+The frontend (`ihorlazarkov.github.io`) and backend (`agentic.ihorlazarkov-swe.in`) are different origins, so **three** coordinated pieces are required together — missing any one silently breaks the session:
+
+1. Cookie attributes: `SameSite=None; Secure; HttpOnly` (production).
+2. Server CORS: `Access-Control-Allow-Credentials: true`, with `Access-Control-Allow-Origin` pinned to the specific origin (never `*`, which is rejected by browsers whenever credentials are involved) — see `src/server.ts`.
+3. Client: `fetch(..., { credentials: "include" })` on both the `/api/version` and `/api/generate` calls in `app/src/components/ClientToAgent/ClientToAgent.tsx`.
+
+### 4. Rationale
+
+- Per-session keying gives each browser its own rate-limit bucket regardless of shared/proxied IPs.
+- Restricting cookie issuance to `GET /api/version` (the mount-time greeting call) keeps `POST /api/generate` simple: it only ever validates, never mints.
+- Rejecting un-sessioned `POST /api/generate` calls with 401 avoids ambiguity about whose bucket a request should count against.
+
+### 5. Open Questions / Follow-ups
+
+- No fallback path exists for clients that block cookies entirely — such clients get a hard 401 from `/api/generate`.
+- Rate limiting itself remains in-memory (`RateLimiter` singleton, ADR-002 follow-up); the session mechanism only changed the key, not the storage.
+
+---
+
 > **Note**: This ADR will be updated as the project evolves.
