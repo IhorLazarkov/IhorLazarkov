@@ -10,7 +10,7 @@ import ChatService, { type TInboundMessage } from "../service/ChatService";
 import { AppError, RateLimitError, SessionError } from "./errors";
 import { issueSessionId, readSessionId } from "../service/session";
 
-type TGetHandler = "/" | "/api/version" | "BAD_REQUEST";
+type TGetHandler = "/" | "/api/version" | "/api/countdown" | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
 
 function sendError(res: ServerResponse<IncomingMessage>, err: unknown) {
@@ -87,7 +87,27 @@ const getHandler: Record<
 
     return await processUserQuery(req, res, JSON.stringify({ body }), clientId);
   },
+  "/api/countdown": (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
+    const sessionId = readSessionId(req)
+    if (!sessionId) return sendError(res, new SessionError())
+    const headers = new Headers({
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Connection": "keep-alive"
+    })
+    res.setHeaders(headers);
+    const chatService = new ChatService()
+    const intervalId = setInterval(() => {
+      const remainingTime = chatService.remainAwait(sessionId)
+      if (remainingTime < 1) {
+        clearInterval(intervalId);
+        return res.end("data:0\n\n")
+      }
+      res.write(`data:${remainingTime}\n\n`)
+    }, 1000)
 
+    req.once('close', () => clearInterval(intervalId))
+  },
   /**
    * @description Reject because something unknown
    * @param req

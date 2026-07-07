@@ -48,6 +48,13 @@ export default class RateLimiter {
     return this.entries.size;
   }
 
+  remainAwait(session: string): number {
+    const entry = this.entries.get(session)
+    if (!entry) return -1;
+    const now = this.clock();
+    return entry.resetAt - now;
+  }
+
   private evictExpired(now: number): void {
     for (const [key, entry] of this.entries) {
       if (entry.resetAt <= now) {

@@ -24,6 +24,7 @@ type ChatMessage = {
   role: 'user' | 'assistant' | 'system-error',
   content: React.ReactElement[] | string,
   stats?: TStats,
+  rateLimited?: boolean,
 }
 
 type TState = {
@@ -48,6 +49,7 @@ function responseSeconds(stats: TStats): number {
 function ClientToAgent() {
 
   const [lettersCount, setCount] = useState(0)
+  const [isRateLimited, setIsRateLimited] = useState(false)
 
   const controllerRef = useRef<AbortController | null>(null)
   const threadRef = useRef<HTMLDivElement | null>(null)
@@ -84,17 +86,20 @@ function ClientToAgent() {
       setCount(0)
 
       const data = await response.json();
+      const rateLimited = response.status === 429
       const replyMessage: ChatMessage = data.error
-        ? { role: 'system-error', content: data.error }
+        ? { role: 'system-error', content: data.error, rateLimited }
         : {
           role: 'assistant',
           content: parseGemmaResponseToHtml(data.message),
           stats: { ...data.stats },
         }
 
+      if (rateLimited) setIsRateLimited(true)
+
       return {
         messages: [...prevState.messages, userMessage, replyMessage],
-        topPrompts: [...data.queries || []],
+        topPrompts: [...data.queries || prevState.topPrompts],
       };
 
     } catch (error) {
@@ -145,6 +150,23 @@ function ClientToAgent() {
     if (thread) thread.scrollTop = thread.scrollHeight
   }, [state.messages.length, isPending])
 
+  const [remainAwaitMs, setRemainAwaitMs] = useState<number | null>(null);
+  useEffect(() => {
+    if (!isRateLimited) return
+
+    setRemainAwaitMs(-1)
+    const liveEvents = new EventSource(`${BASE_URL}/api/countdown`, { withCredentials: true });
+    liveEvents.onmessage = ({ data }) => {
+      const msLeft = Number(data)
+      setRemainAwaitMs(msLeft)
+      if (msLeft === 0) {
+        liveEvents.close()
+        setIsRateLimited(false)
+      }
+    };
+    return () => liveEvents.close()
+  }, [isRateLimited])
+
   const button = !isPending
     ? <button type="submit">
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -167,7 +189,7 @@ function ClientToAgent() {
     : null
 
   const placeholder = avgResponseSeconds !== null
-    ? `Ask my agent ... (avg response ~${avgResponseSeconds.toFixed(1)}s)`
+    ? `Ask my agent ... (average response time ~${avgResponseSeconds.toFixed(1)}s)`
     : "Ask my agent ..."
 
   const prompts = !isPending && state.topPrompts.length > 0 &&
@@ -181,20 +203,29 @@ function ClientToAgent() {
     <section className='agent-container'>
       <div id="agent-main">
         <div id="answer" ref={threadRef}>
-          {state.messages.map((message, i) => (
-            <div key={i} className={`message message-${message.role}`}>
-              <div className="bubble">{message.content}</div>
-              {message.role === 'assistant' && message.stats && (
-                <details className="message-stats">
-                  <summary>stats</summary>
-                  <span>input tokens: {round(message.stats.input_tokens)}</span>
-                  <span>tokens per sec: {round(message.stats.tokens_per_second)}</span>
-                  <span>total tokens: {round(message.stats.total_output_tokens)}</span>
-                  <span>time to first token sec: {round(message.stats.time_to_first_token_seconds)}</span>
-                </details>
-              )}
-            </div>
-          ))}
+          {state.messages.map((message, i) => {
+            const rateLimitCleared = message.rateLimited && remainAwaitMs === 0
+            return (
+              <div key={i} className={`message message-${message.role}${rateLimitCleared ? ' rate-limit-cleared' : ''}`}>
+                <div className="bubble">
+                  {rateLimitCleared
+                    ? "You're free to ask now!"
+                    : message.content}
+                  {message.rateLimited && remainAwaitMs !== null && remainAwaitMs > 0 &&
+                    ` ${Math.ceil(remainAwaitMs / 1000)} seconds remain until reset.`}
+                </div>
+                {message.role === 'assistant' && message.stats && (
+                  <details className="message-stats">
+                    <summary>stats</summary>
+                    <span>input tokens: {round(message.stats.input_tokens)}</span>
+                    <span>tokens per sec: {round(message.stats.tokens_per_second)}</span>
+                    <span>total tokens: {round(message.stats.total_output_tokens)}</span>
+                    <span>time to first token sec: {round(message.stats.time_to_first_token_seconds)}</span>
+                  </details>
+                )}
+              </div>
+            )
+          })}
           {isPending && (
             <div className="message message-assistant message-pending">
               <div className="bubble">

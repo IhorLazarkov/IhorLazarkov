@@ -120,4 +120,9 @@ export default class ChatService {
     // 6. Respond
     return { message, stats, queries: topQueries };
   }
+
+  remainAwait(session: string): number {
+    const result = rateLimiter.remainAwait(session)
+    return result;
+  }
 }
