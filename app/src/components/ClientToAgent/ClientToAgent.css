@@ -72,6 +72,11 @@
     background-color: #edcfce;
     color: red;
   }
+
+  &.rate-limit-cleared .bubble {
+    background-color: #d6f0d6;
+    color: green;
+  }
 }
 
 .bubble {

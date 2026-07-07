@@ -19,5 +19,5 @@ export const LMS_API_KEY = requireEnv("LMS_API_KEY");
 // Optional: fall back to sane defaults so existing .env/.env.test files don't need updating.
 export const RATE_LIMIT_MAX = Number(process.env["RATE_LIMIT_MAX"] ?? 5);
 export const RATE_LIMIT_WINDOW_MS = Number(
-  process.env["RATE_LIMIT_WINDOW_MS"] ?? 60_000,
+  process.env["RATE_LIMIT_WINDOW_MS"] ?? 10_000,
 );
