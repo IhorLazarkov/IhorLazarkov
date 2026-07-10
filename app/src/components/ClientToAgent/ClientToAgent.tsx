@@ -147,7 +147,12 @@ function ClientToAgent() {
 
   useEffect(() => {
     const thread = threadRef.current
-    if (thread) thread.scrollTop = thread.scrollHeight
+    if (!thread) return
+    const arrLastUserRole = thread?.querySelectorAll('div.bubble[role="user"]')
+    const lastUserDiv = arrLastUserRole[arrLastUserRole.length - 1] as HTMLElement | null;
+    if (lastUserDiv && threadRef.current) {
+      threadRef.current.scrollTop = lastUserDiv.offsetTop - thread.offsetTop;
+    }
   }, [state.messages.length, isPending])
 
   const [remainAwaitMs, setRemainAwaitMs] = useState<number | null>(null);
@@ -207,7 +212,7 @@ function ClientToAgent() {
             const rateLimitCleared = message.rateLimited && remainAwaitMs === 0
             return (
               <div key={i} className={`message message-${message.role}${rateLimitCleared ? ' rate-limit-cleared' : ''}`}>
-                <div className="bubble">
+                <div className="bubble" role={message.role}>
                   {rateLimitCleared
                     ? "You're free to ask now!"
                     : message.content}
