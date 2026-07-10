@@ -189,7 +189,6 @@ function ClientToAgent() {
     const sessionId = readStoredSessionId()
     const liveEvents = new EventSource(`${BASE_URL}/api/countdown?session=${encodeURIComponent(sessionId ?? "")}`);
     liveEvents.onmessage = ({ data }) => {
-      console.log({data});
       const msLeft = Number(data)
       setRemainAwaitMs(msLeft)
       if (msLeft === 0) {

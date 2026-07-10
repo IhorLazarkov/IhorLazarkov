@@ -89,7 +89,8 @@ const getHandler: Record<
     const headers = new Headers({
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
-      "Connection": "keep-alive"
+      "Connection": "keep-alive",
+      "X-Accel-Buffering": "no"
     })
     res.setHeaders(headers);
     const chatService = new ChatService()
