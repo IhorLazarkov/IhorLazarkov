@@ -1,31 +1,26 @@
 import { randomUUID } from "node:crypto";
-import type { IncomingMessage, ServerResponse } from "node:http";
+import type { IncomingMessage } from "node:http";
+import { URL } from "node:url";
 
-const SESSION_COOKIE_NAME = "agentic_session";
-const SESSION_MAX_AGE_S = 60 * 60; // 1 hour
+const SESSION_HEADER_NAME = "x-session-id";
+const SESSION_QUERY_PARAM = "session";
 
+// Cookies can't be used here: the frontend (ihorlazarkov.github.io) and this
+// server (agentic.ihorlazarkov-swe.in) are different sites, so a session
+// cookie is a third-party cookie and gets blocked/partitioned by Safari ITP,
+// Firefox ETP, and Chrome's third-party cookie policies regardless of
+// SameSite=None/Secure. Instead the session id travels as plain data: issued
+// in the /api/version response body, echoed back by the client as the
+// X-Session-Id header (POST /api/generate) or a ?session= query param
+// (GET /api/countdown, since EventSource can't set custom headers).
 export function readSessionId(req: IncomingMessage): string | undefined {
-  const header = req.headers.cookie;
-  if (!header) return undefined;
-  const entry = header
-    .split(";")
-    .map((part) => part.trim())
-    .find((part) => part.startsWith(`${SESSION_COOKIE_NAME}=`));
-  return entry?.slice(SESSION_COOKIE_NAME.length + 1) || undefined;
+  const header = req.headers[SESSION_HEADER_NAME];
+  if (typeof header === "string" && header) return header;
+
+  const url = new URL(req.url ?? "", "http://placeholder");
+  return url.searchParams.get(SESSION_QUERY_PARAM) ?? undefined;
 }
 
-export function issueSessionId(res: ServerResponse): string {
-  const sessionId = randomUUID();
-  // Secure+SameSite=None is required for the real cross-site HTTPS deployment
-  // (github.io -> agentic.ihorlazarkov-swe.in), but browsers drop Secure cookies
-  // entirely over plain HTTP, which local/QA backends use.
-  const isProduction = process.env.NODE_ENV === "production";
-  const attributes = isProduction
-    ? "Secure; SameSite=None"
-    : "SameSite=Lax";
-  res.setHeader(
-    "Set-Cookie",
-    `${SESSION_COOKIE_NAME}=${sessionId}; Max-Age=${SESSION_MAX_AGE_S}; Path=/; HttpOnly; ${attributes}`,
-  );
-  return sessionId;
+export function issueSessionId(): string {
+  return randomUUID();
 }

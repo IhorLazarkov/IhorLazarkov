@@ -28,12 +28,11 @@ export default class Server {
       ]).has(req.headers.origin);
       if (origin) {
         res.setHeader("Access-Control-Allow-Origin", req.headers.origin!);
-        res.setHeader("Access-Control-Allow-Credentials", "true");
       }
       res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
       res.setHeader(
         "Access-Control-Allow-Headers",
-        "Content-Type, Authorization",
+        "Content-Type, Authorization, X-Session-Id",
       );
       res.setHeader("Content-Type", "application/json");
       res.statusCode = 200;
