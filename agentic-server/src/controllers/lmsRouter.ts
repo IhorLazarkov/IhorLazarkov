@@ -34,13 +34,14 @@ async function processUserQuery(
   res: ServerResponse<IncomingMessage>,
   body: string,
   clientId: string,
+  extra?: Record<string, unknown>,
 ) {
   try {
     const chatService = new ChatService();
     const result = await chatService.processUserQuery(body, clientId);
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
-    return res.end(JSON.stringify(result));
+    return res.end(JSON.stringify({ ...result, ...extra }));
   } catch (err) {
     return sendError(res, err);
   }
@@ -78,14 +79,9 @@ const getHandler: Record<
     const greetingMessage = greeting_prompt("Introduce yourself.");
     const body: TInboundMessage = { input: greetingMessage };
 
-    const origin = req.headers.origin;
-    let clientId = readSessionId(req);
-    if (origin && !clientId) {
-      clientId = issueSessionId(res);
-    }
-    clientId ??= req.socket.remoteAddress ?? "unknown";
+    const sessionId = readSessionId(req) ?? issueSessionId();
 
-    return await processUserQuery(req, res, JSON.stringify({ body }), clientId);
+    return await processUserQuery(req, res, JSON.stringify({ body }), sessionId, { sessionId });
   },
   "/api/countdown": (req: IncomingMessage, res: ServerResponse<IncomingMessage>) => {
     const sessionId = readSessionId(req)
@@ -143,7 +139,8 @@ const postHandler: Record<
 
 export default class lmsRouter implements IController {
   GET(req: IncomingMessage, res: ServerResponse<IncomingMessage>): void {
-    const handler = getHandler[req.url as TGetHandler];
+    const path = req.url?.split("?")[0];
+    const handler = getHandler[path as TGetHandler];
     if (!handler) return getHandler["BAD_REQUEST"](req, res);
     return handler(req, res);
   }

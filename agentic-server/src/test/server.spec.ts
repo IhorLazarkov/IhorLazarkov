@@ -23,14 +23,14 @@ const isTResponse = (obj: any): obj is TResponse => {
   return obj.message !== undefined && obj.stats !== undefined;
 };
 
-async function createSessionCookie(): Promise<string> {
+async function createSessionToken(): Promise<string> {
   const response = await fetch(`http://${HOST}:${PORT}/api/version`, {
     method: "GET",
     headers: { Origin: "http://localhost:5173" },
   });
-  const setCookie = response.headers.get("set-cookie");
-  if (!setCookie) throw new Error("Expected a session cookie to be issued");
-  return setCookie.split(";")[0] as string;
+  const { sessionId } = await response.json();
+  if (!sessionId) throw new Error("Expected a session id to be issued");
+  return sessionId as string;
 }
 
 describe("Test Server with LM Studio Router", async () => {
@@ -52,7 +52,7 @@ describe("Test Server with LM Studio Router", async () => {
     assert.strictEqual(data!.message, "OK");
   });
 
-  test("Check POST without a session cookie is rejected", async () => {
+  test("Check POST without a session id is rejected", async () => {
     const body = { body: { input: "no session" } };
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
@@ -67,13 +67,13 @@ describe("Test Server with LM Studio Router", async () => {
   });
 
   test("Check POST is supported", async () => {
-    const cookie = await createSessionCookie();
+    const sessionId = await createSessionToken();
     const body = { body: { input: "post is supported" } };
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Cookie: cookie,
+        "X-Session-Id": sessionId,
       },
       body: JSON.stringify(body),
     });
@@ -84,13 +84,13 @@ describe("Test Server with LM Studio Router", async () => {
   });
 
   test("Check error is returned when sent invalid message", async () => {
-    const cookie = await createSessionCookie();
+    const sessionId = await createSessionToken();
     const body = { body: "test" }; //invalid message
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Cookie: cookie,
+        "X-Session-Id": sessionId,
       },
       body: JSON.stringify(body),
     });
@@ -100,13 +100,13 @@ describe("Test Server with LM Studio Router", async () => {
   });
 
   test("Check error is returned when input exceeds 100 characters", async () => {
-    const cookie = await createSessionCookie();
+    const sessionId = await createSessionToken();
     const body = { body: { input: "a".repeat(101) } };
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Cookie: cookie,
+        "X-Session-Id": sessionId,
       },
       body: JSON.stringify(body),
     });
@@ -147,10 +147,10 @@ describe("Test Server with LM Studio Router", async () => {
 
   test("Check any other request is cached", async () => {
     //ask agent
-    const cookie = await createSessionCookie();
+    const sessionId = await createSessionToken();
     const response = await fetch(`http://${HOST}:${PORT}/api/generate`, {
       method: "POST",
-      headers: { Cookie: cookie },
+      headers: { "X-Session-Id": sessionId },
       body: JSON.stringify({
         body: {
           model: MODEL,
@@ -172,7 +172,7 @@ describe("Test Server with LM Studio Router", async () => {
       return new TextDecoder().decode(value);
     }
 
-    test("rejects without a session cookie", async () => {
+    test("rejects without a session id", async () => {
       const response = await fetch(`http://${HOST}:${PORT}/api/countdown`, {
         method: "GET",
       });
@@ -182,14 +182,14 @@ describe("Test Server with LM Studio Router", async () => {
     });
 
     test("reports 0 for a session that hasn't hit the rate limiter yet", async () => {
-      // The cookie is an unvalidated UUID (see session.ts) - unlike
-      // createSessionCookie(), this never goes through /api/version, which
+      // The token is an unvalidated UUID (see session.ts) - unlike
+      // createSessionToken(), this never goes through /api/version, which
       // itself calls processUserQuery() and would consume a rate-limit slot.
-      const cookie = `agentic_session=${randomUUID()}`;
-      const response = await fetch(`http://${HOST}:${PORT}/api/countdown`, {
-        method: "GET",
-        headers: { Cookie: cookie },
-      });
+      const sessionId = randomUUID();
+      const response = await fetch(
+        `http://${HOST}:${PORT}/api/countdown?session=${sessionId}`,
+        { method: "GET" },
+      );
       assert.strictEqual(response.status, 200);
       assert.strictEqual(
         response.headers.get("content-type"),
@@ -200,20 +200,20 @@ describe("Test Server with LM Studio Router", async () => {
     });
 
     test("streams a positive countdown once the session is rate-limited", async () => {
-      const cookie = await createSessionCookie();
+      const sessionId = await createSessionToken();
       const body = { body: { input: "post is supported" } };
       for (let i = 0; i < RATE_LIMIT_MAX; i++) {
         await fetch(`http://${HOST}:${PORT}/api/generate`, {
           method: "POST",
-          headers: { "Content-Type": "application/json", Cookie: cookie },
+          headers: { "Content-Type": "application/json", "X-Session-Id": sessionId },
           body: JSON.stringify(body),
         });
       }
 
-      const response = await fetch(`http://${HOST}:${PORT}/api/countdown`, {
-        method: "GET",
-        headers: { Cookie: cookie },
-      });
+      const response = await fetch(
+        `http://${HOST}:${PORT}/api/countdown?session=${sessionId}`,
+        { method: "GET" },
+      );
       const chunk = await readFirstChunk(response);
       const match = chunk.match(/^data:(\d+)\n\n$/);
       assert.ok(

@@ -12,6 +12,28 @@ import './ClientToAgent.css'
 
 const BASE_URL = import.meta.env.VITE_AGENTIC_CLIENT_BASE_URL || "https://agentic.ihorlazarkov-swe.in"
 const MODEL_NAME = import.meta.env.VITE_AGENTIC_MODEL || "qwen/qwen3-vl-4b"
+const SESSION_STORAGE_KEY = "agentic_session_id"
+const SESSION_MAX_AGE_MS = 60 * 60 * 1000 // 1 hour, matches the previous cookie's Max-Age
+
+function readStoredSessionId(): string | null {
+  const raw = localStorage.getItem(SESSION_STORAGE_KEY)
+  if (!raw) return null
+  try {
+    const { id, expiresAt } = JSON.parse(raw)
+    if (typeof id !== 'string' || typeof expiresAt !== 'number' || Date.now() >= expiresAt) {
+      localStorage.removeItem(SESSION_STORAGE_KEY)
+      return null
+    }
+    return id
+  } catch {
+    localStorage.removeItem(SESSION_STORAGE_KEY)
+    return null
+  }
+}
+
+function storeSessionId(id: string): void {
+  localStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify({ id, expiresAt: Date.now() + SESSION_MAX_AGE_MS }))
+}
 
 type TStats = {
   input_tokens: string,
@@ -70,9 +92,12 @@ function ClientToAgent() {
     const body = method == 'POST'
       ? JSON.stringify({ body: { "model": MODEL_NAME, "input": value } })
       : {} as BodyInit
-    const headers: HeadersInit = { "Content-Type": "application/json" }
-    const credentials: RequestCredentials = "include"
-    const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal, credentials } : { method, signal, credentials }
+    const sessionId = readStoredSessionId()
+    const headers: HeadersInit = {
+      "Content-Type": "application/json",
+      ...(sessionId ? { "X-Session-Id": sessionId } : {}),
+    }
+    const reqBody: RequestInit = method == 'POST' ? { method, headers, body, signal } : { method, headers, signal }
 
     const userMessage: ChatMessage = { role: 'user', content: value }
 
@@ -86,6 +111,7 @@ function ClientToAgent() {
       setCount(0)
 
       const data = await response.json();
+      if (data.sessionId) storeSessionId(data.sessionId)
       const rateLimited = response.status === 429
       const replyMessage: ChatMessage = data.error
         ? { role: 'system-error', content: data.error, rateLimited }
@@ -160,7 +186,8 @@ function ClientToAgent() {
     if (!isRateLimited) return
 
     setRemainAwaitMs(-1)
-    const liveEvents = new EventSource(`${BASE_URL}/api/countdown`, { withCredentials: true });
+    const sessionId = readStoredSessionId()
+    const liveEvents = new EventSource(`${BASE_URL}/api/countdown?session=${encodeURIComponent(sessionId ?? "")}`);
     liveEvents.onmessage = ({ data }) => {
       const msLeft = Number(data)
       setRemainAwaitMs(msLeft)
@@ -194,7 +221,7 @@ function ClientToAgent() {
     : null
 
   const placeholder = avgResponseSeconds !== null
-    ? `Ask my agent ... (average response time ~${avgResponseSeconds.toFixed(1)}s)`
+    ? `Ask my agent ... (avg response ~${avgResponseSeconds.toFixed(1)}s)`
     : "Ask my agent ..."
 
   const prompts = !isPending && state.topPrompts.length > 0 &&
