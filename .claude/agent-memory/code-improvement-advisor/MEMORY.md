@@ -1,2 +1,3 @@
 - [Backend repository filename casing bugs](project_agentic_server_casing_bugs.md) — imports use lowercase paths (e.g. `queryRepository`) but files are PascalCase (`QueryRepository.ts`); silently works on macOS/Windows, breaks on Linux.
 - [lmsRouter prompt-injection bug](project_lmsrouter_prompt_bug.md) — generate_prompt was called with the raw request body string instead of parsed `inboundMessage.input`.
+- [2026-07-07 review findings](project_2026_07_07_review_findings.md) — server.ts body-stream error handling gap, SSE countdown uncaught-exception risk, ChatService output[0] indexing, BASE_URL now env-driven (CLAUDE.md stale).

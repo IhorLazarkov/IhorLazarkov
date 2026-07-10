@@ -1,9 +1,9 @@
 ---
 name: e2e-executor
 description: Execute end-to-end tests and provide test report.
-allowed-tools: Bash(npx:*) Bash(npm:*)
+allowed-tools: Bash(npx:*) Bash(npm:*) Bash(sh:*)
 context: fork
-model: Haiku
+model: sonnet
 ---
 
 ## Tasks:
