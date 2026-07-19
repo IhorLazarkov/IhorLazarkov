@@ -4,7 +4,7 @@ dotenv.config({ path: envpath })
 
 const PORT = process.env.PORT || 3007
 const HOST = process.env.HOST || '127.0.0.1'
-import Server from "./src/server"
+import Server from "./src/server-h2"
 import lmsRouter from "./src/controllers/lmsRouter"
 
 async function main() { // Mark main as async to use await
