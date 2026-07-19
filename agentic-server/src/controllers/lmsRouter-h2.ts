@@ -130,8 +130,12 @@ const getHandler: Record<
     stream.once("close", () => clearInterval(intervalId));
   },
   BAD_REQUEST: (stream, _headers, corsHeaders) => {
-    stream.respond({ ...corsHeaders, [constants.HTTP2_HEADER_STATUS]: 405 });
-    return stream.end(JSON.stringify({ response: "Bad Request" }));
+    stream.respond({
+      ...corsHeaders,
+      "content-type": "application/json",
+      [constants.HTTP2_HEADER_STATUS]: 405,
+    });
+    return stream.end(JSON.stringify({ error: "Bad Request" }));
   },
 };
 

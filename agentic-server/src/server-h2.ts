@@ -57,9 +57,11 @@ export default class Server {
       stream.on('data', (chunk) => buffer.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)));
 
       const body: string = await new Promise<string>((resolve) => {
-        stream.on('end', () => {
-          resolve(Buffer.concat(buffer).toString('utf-8'));
-        });
+        const finish = () => resolve(Buffer.concat(buffer).toString('utf-8'));
+        // 'close' is the fallback for aborted/cancelled requests (e.g. client AbortController),
+        // which never emit 'end' — without it this await hangs forever.
+        stream.on('end', finish);
+        stream.once('close', finish);
       });
 
       const handler = method && method in this.controller
