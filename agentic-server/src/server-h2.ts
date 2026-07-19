@@ -49,6 +49,10 @@ export default class Server {
         corsHeaders['access-control-allow-origin'] = origin;
       }
 
+      stream.on('error', (err) => {
+        console.error('Stream error:', err);
+      });
+
       const buffer: Buffer[] = [];
       stream.on('data', (chunk) => buffer.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk)));
 
@@ -63,8 +67,14 @@ export default class Server {
         : undefined;
 
       if (!handler) {
-        stream.respond({ ...corsHeaders, [constants.HTTP2_HEADER_STATUS]: 405 });
-        stream.end(JSON.stringify({ error: `Method ${method} is not supported` }));
+        stream.respond({ ...corsHeaders, [constants.HTTP2_HEADER_STATUS]: 405 }, { endStream: method === 'HEAD' });
+
+        // Node's http2 auto-ends the writable side of a stream once respond() 
+        // is called on a HEAD-originated stream (HEAD responses can't carry a body), 
+        // so the follow-up stream.end(body) throws ERR_STREAM_WRITE_AFTER_END
+        if (method !== 'HEAD') {
+          stream.end(JSON.stringify({ error: `Method ${method} is not supported` }));
+        }
         return;
       }
 
