@@ -1,6 +1,10 @@
 import { type IController } from "./controllers/defaultRouter";
-import { createSecureServer, type Http2Server } from "node:http2";
+import { constants, createSecureServer, type Http2Server, type OutgoingHttpHeaders } from "node:http2";
 import fs from 'node:fs'
+
+import dotenv from 'dotenv'
+const envpath = process.env["NODE_ENV"] === 'test' ? '.env.test' : '.env'
+dotenv.config({ path: envpath })
 
 export default class Server {
   controller: IController;
@@ -16,15 +20,38 @@ export default class Server {
 
   start() {
     this.server = createSecureServer({
-      key: fs.readFileSync("/etc/letsencrypt/live/agentic.ihorlazarkov-swe.in/privkey.pem"),
-      cert: fs.readFileSync("/etc/letsencrypt/live/agentic.ihorlazarkov-swe.in/fullchain.pem")
+      key: fs.readFileSync(process.env["H2_KEY"]),
+      cert: fs.readFileSync(process.env["H2_CERT"])
     });
 
     this.server.on('stream', (stream, headers) => {
-      stream.respond({
+      const method = headers[constants.HTTP2_HEADER_METHOD];
+      const url = headers[constants.HTTP2_HEADER_PATH];
+      const origin = headers.origin;
+
+      console.log(new Date().toLocaleString(), {
+        method,
+        url,
+        origin,
+      });
+
+      const allowedOrigin = origin !== undefined && new Set([
+        "http://localhost:5173",
+        "https://ihorlazarkov.github.io",
+      ]).has(origin);
+
+      const responseHeaders: OutgoingHttpHeaders = {
         'content-type': "text/html; charset=utf8",
+        'access-control-allow-methods': "POST, GET, OPTIONS",
+        'access-control-allow-headers': "Content-Type, Authorization, X-Session-Id",
         ':status': 200
-      })
+      };
+
+      if (allowedOrigin) {
+        responseHeaders['access-control-allow-origin'] = origin;
+      }
+
+      stream.respond(responseHeaders)
       stream.end("operational")
     })
 
