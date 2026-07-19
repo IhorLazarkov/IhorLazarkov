@@ -14,11 +14,18 @@ const SESSION_QUERY_PARAM = "session";
 // X-Session-Id header (POST /api/generate) or a ?session= query param
 // (GET /api/countdown, since EventSource can't set custom headers).
 export function readSessionId(req: IncomingMessage): string | undefined {
-  const header = req.headers[SESSION_HEADER_NAME];
+  return readSessionIdFromParts(req.headers, req.url);
+}
+
+export function readSessionIdFromParts(
+  headers: Record<string, string | string[] | undefined>,
+  url: string | undefined,
+): string | undefined {
+  const header = headers[SESSION_HEADER_NAME];
   if (typeof header === "string" && header) return header;
 
-  const url = new URL(req.url ?? "", "http://placeholder");
-  return url.searchParams.get(SESSION_QUERY_PARAM) ?? undefined;
+  const parsedUrl = new URL(url ?? "", "http://placeholder");
+  return parsedUrl.searchParams.get(SESSION_QUERY_PARAM) ?? undefined;
 }
 
 export function issueSessionId(): string {
