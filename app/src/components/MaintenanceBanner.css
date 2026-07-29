@@ -1,0 +1,44 @@
+.warning {
+  background-color: #f1d70b;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.1rem 1rem;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+
+  &.banner-hiding {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  svg {
+    fill: inherit;
+    height: 66px;
+    width: 66px;
+    flex-shrink: 0;
+  }
+  .warning-content {
+    text-wrap: pretty;
+    font-size: 1.2rem;
+  }
+  .warning-dismiss {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    flex-shrink: 0;
+  }
+}
+
+section:has(div.warning) > div:has(div.warning) {
+  border: 1px solid #f1d70b;
+  padding: 0.2rem;
+  margin-block: 0.4rem;
+}
