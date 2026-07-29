@@ -10,6 +10,7 @@ import { experiences, projects } from './data';
 import ExperienceCard from './components/ExperienceCard';
 import ProjectCard from './components/ProjectCard';
 import ClientToAgent from './components/ClientToAgent/ClientToAgent';
+import MaintenanceBanner from './components/MaintenanceBanner';
 
 function App() {
   const aboutRef = useRef<HTMLElement>(null);
@@ -74,32 +75,8 @@ function App() {
     return () => window.removeEventListener('wheel', onWheel);
   }, [])
 
-  // Maintenance banner warning
-  useEffect(() => {
-    //remove it when maintenance is over
-    const warningTimeout = setTimeout(() => {
-      document.querySelector('.banner')?.classList.add('maintenance-warning');
-    }, 3000);
-
-    return () => clearTimeout(warningTimeout);
-  }, [])
-
   return (<div id="main">
-    {/* //add warning here */}
-    {/* <div className="warning banner"
-      style={{ width: "100%", height: "fit-content", position: "fixed", left: "0", zIndex: 100 }}>
-      <svg xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 -960 960 960"
-      ><path d="M330-120 120-330v-300l210-210h300l210 210v300L630-120H330Zm36-190 114-114 114 114 56-56-114-114 114-114-56-56-114 114-114-114-56 56 114 114-114 114 56 56Zm-2 110h232l164-164v-232L596-760H364L200-596v232l164 164Zm116-280Z" /></svg>
-      <span>
-        <div>Maintenance scheduled for this weekend (06/06 - 06/07): </div>
-        <ul>
-          <li>Upgrade of libraries</li>
-          <li>OS update</li>
-          <li>Agent migration to Qwen 3 model</li>
-        </ul>
-      </span>
-    </div> */}
+    <MaintenanceBanner />
     <div className="gradient-overlay"></div>
     <header>
       <section>

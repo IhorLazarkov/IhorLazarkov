@@ -35,6 +35,8 @@
   --main-margin: 5em;
   height: 100vh;
   padding-left: var(--main-margin);
+  padding-top: var(--banner-height, 0px);
+  transition: padding-top 0.3s ease;
   display: grid;
   grid-template-columns: clamp(100px, 35%, 50%) 1fr;
   grid-column-gap: 8em;
@@ -265,6 +267,7 @@ a:has(.experience-content, .project-content):hover {
   #main {
     margin-left: 0.5em;
     padding: 0;
+    padding-top: var(--banner-height, 0px);
     display: grid;
     grid-template-columns: 100%;
     grid-column-gap: 2em;
@@ -297,42 +300,3 @@ a:has(.experience-content, .project-content):hover {
   }
 }
 
-/* Warning */
-.warning {
-  background-color: #f1d70b;
-  color: black;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.1rem 1rem;
-
-  svg {
-    fill: inherit;
-    height: 66px;
-    width: 66px;
-  }
-  span {
-    text-wrap: pretty;
-    font-size: 1.2rem;
-  }
-}
-
-section:has(div.warning) > div:has(div.warning) {
-  border: 1px solid #f1d70b;
-  padding: 0.2rem;
-  margin-block: 0.4rem;
-}
-/* end .warning */
-
-.maintenance-warning {
-  animation: fadeOut 1s ease-in-out forwards; /* Example animation to trigger fade out */
-  opacity: 1;
-  transform: translateY(0); /* Initial position (or whatever your default is) */
-}
-
-@keyframes fadeOut {
-  to {
-    /* opacity: 0; */
-    transform: translateY(-250px); /* Example: Move it up slightly while fading out */
-  }
-}
