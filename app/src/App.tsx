@@ -10,7 +10,7 @@ import { experiences, projects } from './data';
 import ExperienceCard from './components/ExperienceCard';
 import ProjectCard from './components/ProjectCard';
 import ClientToAgent from './components/ClientToAgent/ClientToAgent';
-import MaintenanceBanner from './components/MaintenanceBanner';
+// import MaintenanceBanner from './components/MaintenanceBanner';
 
 function App() {
   const aboutRef = useRef<HTMLElement>(null);
@@ -76,7 +76,7 @@ function App() {
   }, [])
 
   return (<div id="main">
-    <MaintenanceBanner />
+    {/* <MaintenanceBanner /> */}
     <div className="gradient-overlay"></div>
     <header>
       <section>
