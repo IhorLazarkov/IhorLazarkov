@@ -9,8 +9,16 @@ export interface IExperience {
 
 export const experiences: IExperience[] = [
   {
+    url: "https://corporate.comcast.com",
+    timeframe: "2026 - Present",
+    title: "Senior Software Engineer in Test",
+    company: "Comcast",
+    description: "Consult, architect and implement robust, streamlined test automation solutions in AI-area during pivotal moment for the firm. As a result 60% faster test execution.",
+    techStack: ["Java", "Selenium", "TestNG", "Github Actions"],
+  },
+  {
     url: "https://www.lvc-solutions.com",
-    timeframe: "2025 - Present",
+    timeframe: "2025 - 2026",
     title: "Full Stack Engineer",
     company: "LVC Solutions",
     description: "Build critical components, responsive, high-performant pages with state management on front-end. Also, on the back-end I build routs to server CRUD request. Work closely with the founder to accept requirements and provide professional feedback as well as with with engineers to implement and advocate best practices in software engineering.",
@@ -18,7 +26,7 @@ export const experiences: IExperience[] = [
   },
   {
     url: "https://www.edwardjones.com/us-en",
-    timeframe: "2024 - Present",
+    timeframe: "2024 - 2026",
     title: "Senior Software Engineer in Test",
     company: "Edward Jones",
     description: "Developed automation testing of a complex test scenarios of operations team in finance. Integrated automation into ci/cd with setup of testing on daily, weekly cadence. Close communication with operations team to gather and implement requirements.",
