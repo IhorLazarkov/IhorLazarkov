@@ -176,8 +176,8 @@ function App() {
       {/* About me section */}
       <section ref={aboutRef} id="about" className="article">
         <p>I am a Senior SDET & Automation Architect focused on building cost-effective, scalable, and high-performance automation ecosystems. I have built my expertise over 8 years in the software production business.</p>
-        <p><b>Currently</b> I work as a Senior SDET at Edward Jones, developing complex automation infrastructure, and as a Full Stack Engineer at LVC Solutions, building critical components and high-performant web pages.</p>
-        <p><b>In the past</b> I architected testing software for distributed systems at Cisco Meraki and EPAM Systems, focusing on infrastructure integration, CI/CD, and advocating for quality engineering principles.</p>
+        <p><b>Currently</b> I work as a Senior SDET at Comcast, architecting and implementing automation test solutions, and as a Full Stack Engineer at Sonex Audio, building audio platform to facilitate music creators.</p>
+        <p><b>In the past</b> I architected testing software for distributed systems at Edward Jones, Cisco Meraki and EPAM Systems, focusing on infrastructure integration, CI/CD, and advocating for quality engineering principles.</p>
         <p>In my spare time, I am an active runner in the adidas runners community and enjoy spending time with my family: playing games, watching movies, and engaging in outdoor activities.</p>
       </section>
 
