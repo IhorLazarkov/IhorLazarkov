@@ -5,3 +5,6 @@ node_modules
 
 # Local self-signed cert used to run the h2 server against QA
 certs/qa
+
+# Cached GitHub API responses used as a fallback by scripts/github.sh
+scripts/.cache

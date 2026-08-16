@@ -1,3 +1,6 @@
+import path from 'node:path';
+import { spawn } from 'node:child_process';
+
 import dotenv from "dotenv";
 const env_path = process.env.NODE_ENV !== "production" ? ".env.test" : ".env";
 dotenv.config({ path: env_path });
@@ -15,7 +18,7 @@ import ChatService, { type TInboundMessage } from "../service/ChatService";
 import { AppError, RateLimitError, SessionError } from "./errors";
 import { issueSessionId, readSessionIdFromParts } from "../service/session";
 
-type TGetHandler = "/" | "/api/version" | "/api/countdown" | "BAD_REQUEST";
+type TGetHandler = "/" | "/api/version" | "/api/countdown" | "/api/terminal" | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
 
 function pathOf(headers: IncomingHttpHeaders): string {
@@ -128,6 +131,34 @@ const getHandler: Record<
     }, 1000);
 
     stream.once("close", () => clearInterval(intervalId));
+  },
+  "/api/terminal": (stream, _headers, corsHeaders) => {
+    stream.respond({
+      ...corsHeaders,
+      "content-type": "text/plain; charset=utf-8",
+      [constants.HTTP2_HEADER_STATUS]: 200,
+    });
+    const child = spawn('bash', [path.join(__dirname, '../../scripts/github.sh')]);
+    child.stdout.pipe(stream, { end: false });
+
+    let stderr = "";
+    child.stderr.on("data", (chunk) => {
+      stderr += chunk;
+    });
+
+    child.on("error", (err) => {
+      console.error("[/api/terminal] failed to spawn github.sh:", err);
+      stream.end(`\nfailed to run terminal script: ${err.message}\n`);
+    });
+
+    child.on("exit", (code) => {
+      if (code !== 0) {
+        console.error(`[/api/terminal] github.sh exited with code ${code}:`, stderr);
+        stream.end(`\ngithub.sh exited with code ${code}\n${stderr}`);
+        return;
+      }
+      stream.end();
+    });
   },
   BAD_REQUEST: (stream, _headers, corsHeaders) => {
     stream.respond({
