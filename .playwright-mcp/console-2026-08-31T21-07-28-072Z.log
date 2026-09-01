@@ -1,0 +1,2 @@
+[      92ms] [ERROR] Failed to load resource: net::ERR_CERT_AUTHORITY_INVALID @ https://127.0.0.1:3008/api/cdn/il-agent:0
+[     116ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=ab425a79:17994

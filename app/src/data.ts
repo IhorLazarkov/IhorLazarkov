@@ -13,7 +13,7 @@ export const experiences: IExperience[] = [
     timeframe: "2026 - Present",
     title: "Senior Software Engineer in Test",
     company: "Comcast",
-    description: "Consult, architect and implement robust, streamlined test automation solutions in AI-area during pivotal moment for the firm. As a result 60% faster test execution.",
+    description: "Consult, architect and implement robust, streamlined test automation solutions that brought 60% faster test execution.",
     techStack: ["Java", "Selenium", "TestNG", "Github Actions"],
   },
   {

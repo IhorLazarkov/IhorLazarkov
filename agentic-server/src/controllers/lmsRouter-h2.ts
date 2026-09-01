@@ -18,7 +18,12 @@ import ChatService, { type TInboundMessage } from "../service/ChatService";
 import { AppError, RateLimitError, SessionError } from "./errors";
 import { issueSessionId, readSessionIdFromParts } from "../service/session";
 
-type TGetHandler = "/" | "/api/version" | "/api/countdown" | "/api/terminal" | "BAD_REQUEST";
+type TGetHandler = "/"
+  | "/api/version"
+  | "/api/countdown"
+  | "/api/terminal"
+  | "/api/cdn/il-agent"
+  | "BAD_REQUEST";
 type TPostHandler = "/api/generate";
 
 function pathOf(headers: IncomingHttpHeaders): string {
@@ -158,6 +163,14 @@ const getHandler: Record<
         return;
       }
       stream.end();
+    });
+  },
+  "/api/cdn/il-agent": (stream, _headers, corsHeaders) => {
+    const filePath = path.join(process.cwd(), 'cdn/il-widget.js');
+    stream.respondWithFile(filePath, {
+      ...corsHeaders,
+      'content-type': 'text/javascript; charset=utf-8',
+      [constants.HTTP2_HEADER_STATUS]: 200,
     });
   },
   BAD_REQUEST: (stream, _headers, corsHeaders) => {

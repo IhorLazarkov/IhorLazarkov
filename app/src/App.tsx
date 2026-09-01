@@ -9,35 +9,11 @@ import { useEffect, useRef } from 'react';
 import { experiences, projects } from './data';
 import ExperienceCard from './components/ExperienceCard';
 import ProjectCard from './components/ProjectCard';
-import ClientToAgent from './components/ClientToAgent/ClientToAgent';
-// import MaintenanceBanner from './components/MaintenanceBanner';
 
 function App() {
   const aboutRef = useRef<HTMLElement>(null);
   const projectsRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
-
-  // Scroll-spy: highlight the nav link for whichever section is in view
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const { id } = entry.target;
-        if (entry.isIntersecting) {
-          document.querySelector(`nav a[href='#${id}']`)!.classList.add('active');
-        } else {
-          document.querySelector(`nav a[href='#${id}']`)!.classList.remove('active');
-        }
-      });
-    }, { threshold: 0.3 })
-
-    if (projectsRef.current && aboutRef.current && experienceRef.current) {
-      observer.observe(aboutRef.current);
-      observer.observe(experienceRef.current);
-      observer.observe(projectsRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [])
 
   // Mouse-follow gradient effect
   useEffect(() => {
@@ -61,20 +37,6 @@ function App() {
     }
   }, [])
 
-  // Custom wheel-scroll speed for <main>
-  useEffect(() => {
-    const onWheel = (e: WheelEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.closest('#answer')) return;
-
-      const container = document.querySelector('main') as HTMLDivElement;
-      container.scrollTop += e.deltaY * 2;
-    }
-    window.addEventListener('wheel', onWheel);
-
-    return () => window.removeEventListener('wheel', onWheel);
-  }, [])
-
   return (<div id="main">
     {/* <MaintenanceBanner /> */}
     <div className="gradient-overlay"></div>
@@ -87,29 +49,30 @@ function App() {
           <h1>Ihor Lazarkov</h1>
           <h2>Senior SDET & Automation Architect</h2>
         </div>
-        <div>
-          <p>Architecting automation and testing strategies to accelerate quality delivery.</p>
-          <nav>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#experience">Experience</a></li>
-              <li><a href="#projects">Projects</a></li>
-            </ul>
-          </nav>
-        </div>
 
-        <div id="agent-parent-container">
-          {/* Example of warning */}
-          {/* <div className="warning">
+        {/* <div id="agent-parent-container"> */}
+        {/* Example of warning */}
+        {/* <div className="warning">
             <svg xmlns="http://www.w3.org/2000/svg"
               viewBox="0 -960 960 960"
             ><path d="M330-120 120-330v-300l210-210h300l210 210v300L630-120H330Zm36-190 114-114 114 114 56-56-114-114 114-114-56-56-114 114-114-114-56 56 114 114-114 114 56 56Zm-2 110h232l164-164v-232L596-760H364L200-596v232l164 164Zm116-280Z" /></svg>
             <span>Server temporarily is unavailable due to expired certificate.</span>
           </div> */}
-          <ClientToAgent />
-        </div>
+        {/* <ClientToAgent /> */}
+        {/* </div> */}
 
-        <div style={{
+      </section>
+
+      {/* About me section */}
+      
+      <section ref={aboutRef} id="about" className="article">
+        <span>About Me</span>
+        <p>I am a Senior SDET & Automation Architect focused on building cost-effective, scalable, and high-performance automation ecosystems. I have built my expertise over 8 years in the software production business.</p>
+        <p><b>Currently</b> I work as a Senior SDET at Comcast, architecting and implementing automation test solutions, and as a Full Stack Engineer at Sonex Audio, building audio platform to facilitate music creators.</p>
+        <p><b>In the past</b> I architected testing software for distributed systems at Edward Jones, Cisco Meraki and EPAM Systems, focusing on infrastructure integration, CI/CD, and advocating for quality engineering principles.</p>
+        <p>In my spare time, I am an active runner in the adidas runners community and enjoy spending time with my family: playing games, watching movies, and engaging in outdoor activities.</p>
+      </section>
+              <div style={{
           display: "flex",
           gap: "1em",
           alignItems: "baseline",
@@ -156,38 +119,24 @@ function App() {
               href="https://linkedin.com/in/ihorlazarkov">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </a>
-            {/* <a
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Visit my facebook page"
-              href="https://www.facebook.com/igor.lazarkov">
-              <FontAwesomeIcon icon={faFacebookF} />
-            </a> */}
             <svg xmlns="http://www.w3.org/2000/svg"
               height="24px" viewBox="0 -960 960 960"
               width="24px">
               <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z" /></svg>
           </div>
         </div>
-
-      </section>
     </header>
     <main>
-      {/* About me section */}
-      <section ref={aboutRef} id="about" className="article">
-        <p>I am a Senior SDET & Automation Architect focused on building cost-effective, scalable, and high-performance automation ecosystems. I have built my expertise over 8 years in the software production business.</p>
-        <p><b>Currently</b> I work as a Senior SDET at Comcast, architecting and implementing automation test solutions, and as a Full Stack Engineer at Sonex Audio, building audio platform to facilitate music creators.</p>
-        <p><b>In the past</b> I architected testing software for distributed systems at Edward Jones, Cisco Meraki and EPAM Systems, focusing on infrastructure integration, CI/CD, and advocating for quality engineering principles.</p>
-        <p>In my spare time, I am an active runner in the adidas runners community and enjoy spending time with my family: playing games, watching movies, and engaging in outdoor activities.</p>
-      </section>
 
       <section ref={experienceRef} id="experience" className="article">
+        <span>Experience</span>
         {experiences.map((exp, index) => (
           <ExperienceCard key={index} experience={exp} />
         ))}
       </section>
 
       <section ref={projectsRef} id="projects" className="article">
+        <span>Projects</span>
         {projects.map((proj) => (
           <ProjectCard key={proj.url} project={proj} />
         ))}

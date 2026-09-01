@@ -1,0 +1,4 @@
+[     111ms] [LOG] widget.mjs executing, ilw-root exists? false @ http://localhost:8901/widget.mjs:0
+[     118ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8901/favicon.ico:0
+[     513ms] [LOG] main.mjs executing, val= 42 @ http://localhost:8901/main.mjs:1
+[     515ms] [LOG] ilw-root created @ http://localhost:8901/main.mjs:3
