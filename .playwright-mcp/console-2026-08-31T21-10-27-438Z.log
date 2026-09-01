@@ -1,0 +1,3 @@
+[      22ms] [LOG] widget.mjs executing, ilw-root exists? true @ http://localhost:8901/widget.mjs:0
+[     424ms] [LOG] main.mjs executing, val= 42 @ http://localhost:8901/main.mjs:1
+[     425ms] [LOG] ilw-root created @ http://localhost:8901/main.mjs:3
