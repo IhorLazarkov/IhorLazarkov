@@ -21,3 +21,8 @@ export const RATE_LIMIT_MAX = Number(process.env["RATE_LIMIT_MAX"] ?? 5);
 export const RATE_LIMIT_WINDOW_MS = Number(
   process.env["RATE_LIMIT_WINDOW_MS"] ?? 60_000,
 );
+
+// Caps LLM generation length so a runaway/unbounded response can't grow LM Studio's
+// KV cache indefinitely on memory-constrained hosts.
+export const AGENT_MAX_TOKENS = Number(process.env["AGENT_MAX_TOKENS"] ?? 512);
+export const AGENT_TEMPERATURE = Number(process.env["AGENT_TEMPERATURE"] ?? 0.7);
