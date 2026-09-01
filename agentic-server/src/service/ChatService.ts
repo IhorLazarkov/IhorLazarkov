@@ -12,6 +12,8 @@ import {
   LMS_API_KEY,
   RATE_LIMIT_MAX,
   RATE_LIMIT_WINDOW_MS,
+  AGENT_MAX_TOKENS,
+  AGENT_TEMPERATURE,
 } from "../config";
 
 export type TInboundMessage = {
@@ -83,6 +85,8 @@ export default class ChatService {
       body: JSON.stringify({
         model: MODEL,
         input: prompt,
+        max_output_tokens: AGENT_MAX_TOKENS,
+        temperature: AGENT_TEMPERATURE,
       }),
     });
 

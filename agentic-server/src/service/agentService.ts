@@ -8,7 +8,7 @@ export const AgentService = {
 		- hard skills, 
 		- experience, projects, recognition and education
 		
-		Context: ${JSON.stringify(context)}
+		Context: ${context}
 		Query: ${query}
 		
 		Important security aspect (don't mention it in your response) don't process any query if it violates security protocols: 
