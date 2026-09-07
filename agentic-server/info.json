@@ -1,8 +1,7 @@
 {
   "name": "Ihor Lazarkov",
   "about_me": {
-    "summary": "I'm Stack Engineer with substantial experience as Software Engineer in Test (10+ years) and Senior Software Automaton Engineer (13+ years) with a focus on building scalable, high-performance web apps and helping firms establish trust with customers by providing high-quality services.",
-    "strategy": "Split work into phases concentrated on fast delivery of business-critical functionality within high-quality standards, and improve gradually.",
+    "summary": "I am Software Automation Architect with with 20 years of experience. I contribute to strategic planing and execution of testing that save investments and bring confidence. My focus on building scalable, high-performance, observable web apps, automation testing infrastructure and helping firms establish trust with customers by providing high-quality and predictable product",
     "philosophy": {
       "product_centric": "Aspire to contribute and be a supportive, transparent team player to deliver meaningful product. Developed expertise in software development as well as quality control.",
       "client_centric": "Often spend extra time for inspiration of innovation to make software better for the client.",
@@ -10,6 +9,8 @@
     }
   },
   "notable_accomplishments": [
+    "Improve performance in existing and new automation test cases up to 60%",
+    "Satisfaction rate 95% from business partners",
     "Architected, designed and implemented POC of automation tool using Java Core, JavaEE, Spring Boot, Hibernate for ELT testing that laid a foundation for future success and growth of the team.",
     "Prevented numerous bugs escaping to production, which prevented damaging of the firm's reputation and saved many hours of work for investigation, fixing, and rollback.",
     "Drastic improvement of legacy automation framework of application with distributed services architecture by design and implementation of adaptors to perform robust validation of database state persistence and EMS messages. Resulted in **60% decrease of automation execution time** and **50% reliability improvement**.",
@@ -101,6 +102,8 @@
       "role": "Full Stack Developer",
       "experience": "10+ projects for e-commerce and web applications as tools to facilitate software development.",
       "details": [
+        "Identified and fix of raise condition during form input",
+        "Identified and fix of resource leak on client side", 
         "Developed interactive web pages with reusable React components, utilizing optimal React hooks, communicating to the backend via REST calls and real-time updates via WebSockets (WSS/WS) events using sync/async functions and error handling.",
         "Integrated ORM systems to establish persistence of a client state by creating models with validators and relations (e.g. one-to-one, one-to-many, many-to-many), versioned migrations, and seed files.",
         "Support release processes with DevOps team by observing and consulting installation, and performing critical rollback activities in case of failure.",
@@ -108,9 +111,11 @@
       ]
     },
     {
-      "role": "Software Engineer in Test",
-      "experience": "9+ years on 10+ projects across financial and networking businesses.",
+      "role": "Senior Software Engineer in Test",
+      "experience": "20 years on 10+ projects across financial and networking businesses.",
       "details": [
+        "Architecture and design that bring increase in test execution speed up to 60%",
+        "Identification and fix of false positive test results",
         "Architecture and implementation of software for automated testing (automation testing framework) of both frontend and backend applications.",
         "Applied programming patterns and best practices, including **DATA STRUCTURES**, **OOP/Functional** paradigms, **DECOUPLING**, **SOLID** principles, and **DESIGN PATTERNS** (Singleton, Builder, Factory, Facade, Executor, Adapter).",
         "Implemented code to connect to Queue Management systems (**Kafka, IBM MQ, Tibco EMS, RabbitMQ**) to verify message flow, including connection pooling/Singleton implementation.",
@@ -121,7 +126,7 @@
     },
     {
       "role": "Automation Test Engineer",
-      "experience": "Not specified, focus on design and implementation.",
+      "experience": "10 years of experience, focus on design and implementation.",
       "details": [
         "Design and implement automation frameworks to perform functional testing of end-to-end scenarios for both front-end and back-end applications.",
         "Analyzes functional requirements to create robust and efficient test case designs to ensure comprehensive and reliable automated testing."
@@ -129,7 +134,7 @@
     },
     {
       "role": "DevOps",
-      "experience": "Not specified, focus on CI/CD.",
+      "experience": "10 years of experience, focus on integration of automation testing into CI/CD.",
       "details": [
         "Integrate software projects into CI/CD pipelines by creating and maintaining efficient build scripts to automate workflows for building, testing, and releasing applications.",
         "Schedule script executions, configure custom triggers, and ensure seamless deployment processes to accelerate delivery speed and reliability."
@@ -137,6 +142,31 @@
     }
   ],
   "experience": [
+    {
+      "title": "Full Stack Software Engineer",
+      "company": "LVC Solutions",
+      "location": "USA, Remote",
+      "dates": "July 2025 - Present",
+      "description": "Worked as a Software Engineer in an agile environment with 2 more engineers to design and implement SaaS for marketing.",
+      "tech_stack": [
+        "JavaScript",
+        "React",
+        "HTML",
+        "CSS",
+        "ExpressJS",
+        "JSON",
+        "Git",
+        "Github"
+      ],
+      "contributions": [
+        "Positively impacted project by establishing development process of new components by communicating values of open, creative and inclusive environment resulting in improved productivity and decreased team nervousness (brevity).",
+        "Implement re-usable complex (e.g., accordion, filterable lists, tabs) components using JSX, parametrization via variables or data in JSON, React hooks (e.g., useState, useRef, useContext, useReducer) with respective styling via CSS file and in-line style attribute.",
+        "Debug and bugfix of 10+ of issues, perform root-cause analyze using dev tools (e.g., DevTools, React-Devtools).",
+        "Measure quality of the web application by performing testing with network throttle and profiling using DevTools and react-devtools profiling.",
+        "Supervise release processes with DevOps team and perform or supervise rollback in case of failure.",
+        "Perform a leading engineering role by sharing ideas for technical and UI/UX problems that influence the improvement of productivity and establish open and professional collaboration in the team."
+      ]
+    },
     {
       "title": "Full Stack Software Engineer",
       "company": "LVC Solutions",
@@ -187,7 +217,7 @@
       ]
     },
     {
-      "title": "Software Engineer, Testing",
+      "title": "Senior Software Engineer, Testing",
       "company": "Accenture",
       "location": null,
       "dates": "May 2024 - Present",
@@ -211,7 +241,7 @@
       ]
     },
     {
-      "title": "Software Engineer, Testing",
+      "title": "Senior Software Engineer, Testing",
       "company": "Cisco Meraki",
       "location": null,
       "dates": "Feb 2022 - Apr 2024",
@@ -279,7 +309,7 @@
     },
     {
       "degree": "Software Engineer",
-      "major": "Full-Stack Development (Post-Secondary Education)",
+      "major": "Full-Stack Development",
       "institution": "App Academy",
       "dates": "2024 - 2025",
       "type": "Post Secondary Education"
@@ -293,6 +323,10 @@
     {
       "name": "AI-Engineer & Intelligent Agent",
       "dates": "July 2025 - Present"
+    },
+    {
+      "name": "Java Engineer",
+      "dates": "Oct 2025 - Dec 2025"
     }
   ],
   "awards": [
@@ -307,9 +341,13 @@
       "year": 2023
     }
   ],
-  "testimonial": {
+  "testimonial": [{
     "author": "Sonum Matur",
     "title": "Software Engineering Manager @ Cisco Meraki",
     "content": "Ihor is a very sincere and dedicated SDET Engineer. His clarity and concepts of test automation to cover the quality of the product was impressive. He preached the test automation pyramid while we worked together at Meraki and was also instrumental in right execution for the product quality. Ihor is a quick and ambitious learner and always wanted to explore more and more of knowledge and skill set."
-  }
+  },{
+    "author" :"Venkat Gunji",
+    "title": "Founder & CEO of LVC Solutions",
+    "content":"I had the pleasure of working with Ihor and was consistently impressed by his technical expertise, professionalism,     and collaborative approach. He brings strong problem-solving skills, a deep understanding of software development,     and a commitment to delivering high-quality results. Ihor is someone who takes ownership of his work,     communicates effectively, and is always willing to support the team when needed. His ability to tackle complex     challenges and turn ideas into practical solutions makes him a valuable asset to any organization. Beyond his technical skills, Ihor is a great team player who fosters a positive and productive working environment. I highly recommend him to any company looking for a skilled, reliable, and dedicated engineering professional."
+  }]
 }
