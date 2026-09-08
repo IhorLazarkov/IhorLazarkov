@@ -182,7 +182,8 @@
         "Delivered features with near-zero defect return rates by applying software design best practices.",
         "Developed test harnesses across unit, integration, and system levels, ensuring high confidence in software reliability.",
         "Implemented reusable, complex UI components (e.g., accordions, filterable lists, tabs) using JSX, JSON parameterization, React hooks (useState, useRef, useContext, useReducer), and modular CSS.",
-        "Debugged and fixed 10+ complex issues, performing root-cause analysis using browser DevTools and React DevTools."
+        "Debugged and fixed 10+ complex issues, performing root-cause analysis using browser DevTools and React DevTools.",
+        "Identified and fixed a client-side resource leak causing video and audio streams to remain open after use, eliminating a source of degraded performance and memory growth."
       ]
     },
     {
@@ -230,6 +231,7 @@
       "contributions": [
         "Successfully executed a multi-phase test plan during a major business model transformation, ensuring all quality KPIs were met.",
         "Developed front-end and back-end functional and integration test frameworks from scratch.",
+        "Designed and implemented a desktop automation framework from scratch.",
         "Integrated automated test suites into CI/CD pipelines with real-time Slack reporting.",
         "Established automated quality gates for CI/CD pipelines, preventing multiple critical defects from reaching production and eliminating unnecessary context switching for development teams.",
         "Fostered effective team communication by establishing structured meeting agendas and clear action items."
