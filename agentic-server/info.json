@@ -4,12 +4,13 @@
     "summary": "Senior SDET with 18 years designing and scaling test automation across financial, telecom, and SaaS organizations — from frameworks adopted across entire client engagements to test architectures rolled out team-wide. Pursuing the next step into a dedicated Test/Automation Architect role, backed by hands-on full-stack and AI-tooling experience."
   },
   "notable_accomplishments": [
-    "Improve performance in existing and new automation test cases up to 60%",
-    "Satisfaction rate 95% from business partners",
-    "Architected, designed and implemented POC of automation tool using Java Core, JavaEE, Spring Boot, Hibernate for ELT testing that laid a foundation for future success and growth of the team.",
-    "Prevented numerous bugs escaping to production, which prevented damaging of the firm's reputation and saved many hours of work for investigation, fixing, and rollback.",
-    "Drastic improvement of legacy automation framework of application with distributed services architecture by design and implementation of adaptors to perform robust validation of database state persistence and EMS messages. Resulted in **60% decrease of automation execution time** and **50% reliability improvement**.",
-    "Meticulous code analysis of a transitioned project by debugging, gaining ownership, and refactoring resulted in stability improvements, decrease of duplicated code by **~1800 lines**, and tests execution time **up by 40%**."
+    "Served as client-facing technical lead at Edward Jones, achieving a 95% satisfaction rate from business partners.",
+    "Architected a POC automation tool at Edward Jones (Java, JavaEE, Spring Boot, Hibernate) that became the foundation of the team's automation framework.",
+    "Redesigned Edward Jones' legacy automation framework with custom adapters for DB/EMS message validation — **60% faster execution**, **50% more reliable**.",
+    "Designed and rolled out a new test automation architecture at Comcast within the first two weeks — **60% faster execution**, adopted by a team of 20 engineers.",
+    "Diagnosed an inverted test pyramid at Comcast that was inflating defects and slowing delivery; findings were adopted into the engineering roadmap.",
+    "Designed a cross-project automation framework at EPAM used to validate databases and messages across all client projects — **4x faster test execution**.",
+    "Prevented several critical defects from reaching production at Cisco Meraki by establishing quality gates, protecting the company's reputation."
   ],
   "skills": {
     "soft_skills": [
@@ -122,16 +123,26 @@
       "description": "Worked as Senior Software Engineer in Test in a team of 6 engineers. Responsible for delivering software for automation testing of functional and integration tests with following integration into CI/CD. Communication with product ownership to learn functionality, demo of completed work, gather feedback and deliver improvements.",
       "tech_stack": [
         "Java",
+        "JavaEE",
+        "Spring Boot",
+        "Hibernate",
         "Selenium WB",
         "Serenity BDD",
         "Cucumber",
         "Applitools",
+        "Kafka",
+        "IBM MQ",
+        "Tibco EMS",
+        "RabbitMQ",
         "Gradle",
         "Jenkins",
         "Git"
       ],
       "contributions": [
-        "Served as client-facing technical lead for the automation framework: negotiated testing requirements directly with stakeholders, and presented test coverage and release-readiness reports to leadership — driving framework design decisions without formal direct reports.",
+        "Served as client-facing technical lead for the automation framework: negotiated testing requirements directly with stakeholders, and presented test coverage and release-readiness reports to leadership — driving framework design decisions without formal direct reports, and achieving a 95% satisfaction rate from business partners.",
+        "Architected, designed and implemented a POC automation tool using Java Core, JavaEE, Spring Boot, and Hibernate for ELT testing, laying the foundation for the team's future automation framework.",
+        "Drastically improved a legacy automation framework for a distributed-services application by designing and implementing adapters to validate database state persistence and EMS messages, resulting in a 60% decrease in automation execution time and a 50% reliability improvement.",
+        "Improved performance in existing and new automation test cases by up to 60%.",
         "Supported engineers in troubleshooting technical issues and coached the team on best practices for handling failed assertions and fallbacks to keep test data idempotent.",
         "Implemented POC that served as base for other team to build project with reusable API as library",
         "Identified and fixed false positive tests",
