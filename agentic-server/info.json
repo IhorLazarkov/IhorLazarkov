@@ -33,10 +33,11 @@
         "Python"
       ],
       "front_end_development": [
+        "ReactJS",
         "HTML5",
         "CSS3",
-        "ReactJS",
         "Bootstrap",
+        "Tailwind",
         "jQuery",
         "Redux",
         "Spring Boot MVC",
@@ -172,6 +173,7 @@
         "ReactJS",
         "NextJS",
         "ExpressJS",
+        "Tailwind CSS",
         "Firebase",
         "AWS",
         "Google Cloud"
