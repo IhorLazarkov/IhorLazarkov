@@ -1,5 +1,10 @@
 {
   "name": "Ihor Lazarkov",
+  "links": {
+    "github": "https://github.com/IhorLazarkov",
+    "linkedin": "https://linkedin.com/in/ihorlazarkov",
+    "portfolio": "https://ihorlazarkov.github.io/IhorLazarkov/"
+  },
   "about_me": {
     "summary": "Senior SDET with 18 years designing and scaling test automation across financial, telecom, and SaaS organizations — from frameworks adopted across entire client engagements to test architectures rolled out team-wide. Pursuing the next step into a dedicated Test/Automation Architect role, backed by hands-on full-stack and AI-tooling experience."
   },
@@ -106,6 +111,8 @@
         "Java",
         "Selenium Web Driver",
         "TestNG",
+        "JUnit",
+        "Rest Assured",
         "Github Actions"
       ],
       "contributions": [
@@ -135,7 +142,8 @@
         "RabbitMQ",
         "Gradle",
         "Jenkins",
-        "Git"
+        "Git",
+        "Playwright"
       ],
       "contributions": [
         "Served as client-facing technical lead for the automation framework: negotiated testing requirements directly with stakeholders, and presented test coverage and release-readiness reports to leadership — driving framework design decisions without formal direct reports, and achieving a 95% satisfaction rate from business partners.",
@@ -161,7 +169,8 @@
       "tech_stack": [
         "JavaScript",
         "TypeScript",
-        "React",
+        "ReactJS",
+        "NextJS",
         "ExpressJS",
         "Firebase",
         "AWS",
@@ -210,7 +219,10 @@
         "Cypress",
         "WebDriverIO",
         "Applitools",
+        "Playwright",
         "GitLab",
+        "GitLab CI",
+        "Elasticsearch",
         "Git"
       ],
       "contributions": [
@@ -239,7 +251,11 @@
         "JavaScript",
         "HTML",
         "CSS",
-        "Gradle"
+        "Gradle",
+        "JUnit",
+        "Docker",
+        "Kubernetes",
+        "Oracle"
       ],
       "contributions": [
         "Leveraged technical expertise to design an automation test framework to validate databases and messages across all projects and tests for a client, resulting in 4-times faster test execution, decreased support time, and improved visibility of software quality using proficient programming skills, expertise in Java, programming design patterns.",
@@ -247,6 +263,87 @@
         "Led a decrease in regression execution time and enabled monitoring of software stability by implementing a necessary code base and new Gradle tasks to enhance reliability and integration of automation test frameworks into CI/CD processes.",
         "Delivered reliable and scalable software by designing and integrating a new software project from scratch, including web applications, automation test frameworks, libraries, and plugins, to test front-end, back-end, and RESTful APIs. Utilized Cucumber, Selenium, REST Assured, and numerous best practices, including configurability, reusability of components, object-oriented programming (OOP) concepts, Java design patterns, and functional programming.",
         "Decreased the time required for test preparation, test investigation, and QA environment health monitoring by developing web applications to facilitate testing using Spring Boot MVC, JavaScript, HTML, and CSS."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Kelfora",
+      "type": "Personal project",
+      "description": "AI agents for e-commerce businesses, built with LM Studio LLM, prompt engineering, and MCP servers. Built two demo agents — for an online pizzeria and a rental property website — each covering minimal website browsing, order/booking management, and outsourced analytical work (product/service insights) to provide real value to visitors, not just a chatbot demo.",
+      "tech_stack": [
+        "reactJS",
+        "HTTP2",
+        "LM Studio",
+        "Ollama",
+        "FAISS",
+        "SentenceTransformers",
+        "Prompt Engineering",
+        "MCP Servers"
+      ]
+    },
+    {
+      "name": "Customer Feedback Processing System",
+      "type": "Course project (AI-Engineer & Intelligent Agent)",
+      "description": "Built collaboratively during the AI-Engineer & Intelligent Agent course: a system using vector storage and semantic search to process and surface insights from customer feedback.",
+      "tech_stack": [
+        "FAISS",
+        "SentenceTransformers",
+        "Ollama"
+      ]
+    },
+    {
+      "name": "Forno Roma",
+      "type": "App Academy project",
+      "url": "https://fornoroma.ihorlazarkov-swe.in/",
+      "description": "Online pizzeria with a voice assistant and live order-progress tracking: place orders, leave reviews, and mark favorite pizzas and add-ons.",
+      "tech_stack": [
+        "JavaScript",
+        "TypeScript",
+        "React.JS",
+        "Redux",
+        "Express.JS",
+        "Sequelize",
+        "PostgreSQL",
+        "SQLite",
+        "WebSockets",
+        "HTTP(S)",
+        "WS(S)",
+        "Postman",
+        "Grafana"
+      ]
+    },
+    {
+      "name": "Rental Residence Hub",
+      "type": "App Academy project",
+      "url": "https://rrh.ihorlazarkov-swe.in",
+      "description": "Site to find vacant residences for vacation, list your own property, and leave reviews. Uses browser geolocation and GCP for visitor convenience.",
+      "tech_stack": [
+        "JavaScript",
+        "TypeScript",
+        "React.JS",
+        "Redux",
+        "Express.JS",
+        "Sequelize",
+        "PostgreSQL",
+        "SQLite",
+        "WebSockets",
+        "HTTP(S)",
+        "WS(S)",
+        "Postman",
+        "Grafana"
+      ]
+    },
+    {
+      "name": "Woodworking Tools Shop",
+      "type": "App Academy project",
+      "description": "Online shop for woodworking tools.",
+      "tech_stack": [
+        "Python",
+        "Flask",
+        "SQLAlchemy",
+        "Alembic",
+        "Postman"
       ]
     }
   ],
