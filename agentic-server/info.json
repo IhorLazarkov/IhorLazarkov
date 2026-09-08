@@ -111,8 +111,7 @@
       "contributions": [
         "Designed and implemented a new test automation architecture within the first two weeks, reducing test execution time by up to 60%, then trained a team of 20 engineers to adopt it across their projects",
         "Developed and maintained an AI engineering harness (skills, context management, sub-agents), enabling AI to generate up to 90% of code while I retained review and architectural oversight.",
-        "Conducted an architecture and design review of the existing automation framework, identifying an inverted test pyramid with excessive E2E coverage that was driving unnecessary complexity, higher defect rates, and slower bugfix and delivery cycles; the findings quantified the cost to the business and were adopted into the team's roadmap, with remediation scheduled following the current release.",
-        "Read and analyzed the web application codebase to evaluate unit and component test coverage, root-causing multiple defects — including a race condition surfaced during automated test entry — improving defect diagnosis speed and automation reliability."
+        "Assessed the existing automation framework and application codebase — architecture, design, and unit/component test coverage — identifying an inverted test pyramid with excessive E2E coverage and root-causing multiple defects, including a race condition surfaced during automated test entry; findings quantified the cost to the business and were adopted into the team's roadmap, with remediation scheduled following the current release."
       ]
     },
     {
