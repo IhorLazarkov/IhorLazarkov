@@ -1,12 +1,7 @@
 {
   "name": "Ihor Lazarkov",
   "about_me": {
-    "summary": "I am Software Automation Architect with with 20 years of experience. I contribute to strategic planing and execution of testing that save investments and bring confidence. My focus on building scalable, high-performance, observable web apps, automation testing infrastructure and helping firms establish trust with customers by providing high-quality and predictable product",
-    "philosophy": {
-      "product_centric": "Aspire to contribute and be a supportive, transparent team player to deliver meaningful product. Developed expertise in software development as well as quality control.",
-      "client_centric": "Often spend extra time for inspiration of innovation to make software better for the client.",
-      "simplicity": "Believe in software should be simple."
-    }
+    "summary": "Lead SDET with 18 years designing and scaling test automation across financial, telecom, and SaaS organizations — from frameworks adopted across entire client engagements to test architectures rolled out team-wide. Pursuing the next step into a dedicated Test/Automation Architect role, backed by hands-on full-stack and AI-tooling experience."
   },
   "notable_accomplishments": [
     "Improve performance in existing and new automation test cases up to 60%",
@@ -60,6 +55,7 @@
         "REST"
       ],
       "testing_automation": [
+        "Applitools",
         "Playwright",
         "Cypress",
         "WebDriverIO",
@@ -71,7 +67,8 @@
         "RestAssured",
         "Cucumber",
         "Serenity BDD",
-        "Gherkin"
+        "Gherkin",
+        "JMeter"
       ],
       "message_notification_technologies": [
         "Kafka",
@@ -97,106 +94,81 @@
       ]
     }
   },
-  "roles_summary": [
-    {
-      "role": "Full Stack Developer",
-      "experience": "10+ projects for e-commerce and web applications as tools to facilitate software development.",
-      "details": [
-        "Identified and fix of raise condition during form input",
-        "Identified and fix of resource leak on client side", 
-        "Developed interactive web pages with reusable React components, utilizing optimal React hooks, communicating to the backend via REST calls and real-time updates via WebSockets (WSS/WS) events using sync/async functions and error handling.",
-        "Integrated ORM systems to establish persistence of a client state by creating models with validators and relations (e.g. one-to-one, one-to-many, many-to-many), versioned migrations, and seed files.",
-        "Support release processes with DevOps team by observing and consulting installation, and performing critical rollback activities in case of failure.",
-        "Goal is to deliver efficient, user-friendly, and scalable applications tailored to meet client needs."
-      ]
-    },
-    {
-      "role": "Senior Software Engineer in Test",
-      "experience": "20 years on 10+ projects across financial and networking businesses.",
-      "details": [
-        "Architecture and design that bring increase in test execution speed up to 60%",
-        "Identification and fix of false positive test results",
-        "Architecture and implementation of software for automated testing (automation testing framework) of both frontend and backend applications.",
-        "Applied programming patterns and best practices, including **DATA STRUCTURES**, **OOP/Functional** paradigms, **DECOUPLING**, **SOLID** principles, and **DESIGN PATTERNS** (Singleton, Builder, Factory, Facade, Executor, Adapter).",
-        "Implemented code to connect to Queue Management systems (**Kafka, IBM MQ, Tibco EMS, RabbitMQ**) to verify message flow, including connection pooling/Singleton implementation.",
-        "Developed a progressive database wrapper (poller) for **Oracle** and **PostgreSQL** that executed SQL queries in a loop, significantly reducing test execution time and dramatically improving test reliability.",
-        "Utilized **Page Object Model (POM)** for frontend testing to isolate user actions and simplify maintenance.",
-        "Ensured ATF (Automation Test Framework) configurability for different environments and secure secrets management using a vault."
-      ]
-    },
-    {
-      "role": "Automation Test Engineer",
-      "experience": "10 years of experience, focus on design and implementation.",
-      "details": [
-        "Design and implement automation frameworks to perform functional testing of end-to-end scenarios for both front-end and back-end applications.",
-        "Analyzes functional requirements to create robust and efficient test case designs to ensure comprehensive and reliable automated testing."
-      ]
-    },
-    {
-      "role": "DevOps",
-      "experience": "10 years of experience, focus on integration of automation testing into CI/CD.",
-      "details": [
-        "Integrate software projects into CI/CD pipelines by creating and maintaining efficient build scripts to automate workflows for building, testing, and releasing applications.",
-        "Schedule script executions, configure custom triggers, and ensure seamless deployment processes to accelerate delivery speed and reliability."
-      ]
-    }
-  ],
   "experience": [
     {
-      "title": "Full Stack Software Engineer",
-      "company": "LVC Solutions",
+      "title": "Senior Software Engineer, Testing",
+      "company": "Comcast",
       "location": "USA, Remote",
-      "dates": "July 2025 - Present",
-      "description": "Worked as a Software Engineer in an agile environment with 2 more engineers to design and implement SaaS for marketing.",
+      "dates": "July 2026 - Present",
+      "description": "Contribute in automation testing with high-quality code and testing insides to project management during crucial for company time of migration of current CRM to future proprietary one.",
       "tech_stack": [
-        "JavaScript",
-        "React",
-        "HTML",
-        "CSS",
-        "ExpressJS",
-        "JSON",
-        "Git",
-        "Github"
+        "Java",
+        "Selenium Web Driver",
+        "TestNG",
+        "Github Actions"
       ],
       "contributions": [
-        "Positively impacted project by establishing development process of new components by communicating values of open, creative and inclusive environment resulting in improved productivity and decreased team nervousness (brevity).",
-        "Implement re-usable complex (e.g., accordion, filterable lists, tabs) components using JSX, parametrization via variables or data in JSON, React hooks (e.g., useState, useRef, useContext, useReducer) with respective styling via CSS file and in-line style attribute.",
-        "Debug and bugfix of 10+ of issues, perform root-cause analyze using dev tools (e.g., DevTools, React-Devtools).",
-        "Measure quality of the web application by performing testing with network throttle and profiling using DevTools and react-devtools profiling.",
-        "Supervise release processes with DevOps team and perform or supervise rollback in case of failure.",
-        "Perform a leading engineering role by sharing ideas for technical and UI/UX problems that influence the improvement of productivity and establish open and professional collaboration in the team."
+        "Designed and implemented a new test automation architecture within the first two weeks, reducing test execution time by up to 60%, then trained a team of 20 engineers to adopt it across their projects",
+        "Developed and maintained an AI engineering harness (skills, context management, sub-agents), enabling AI to generate up to 90% of code while I retained review and architectural oversight.",
+        "Conducted an architecture and design review of the existing automation framework, identifying an inverted test pyramid with excessive E2E coverage that was driving unnecessary complexity, higher defect rates, and slower bugfix and delivery cycles; the findings quantified the cost to the business and were adopted into the team's roadmap, with remediation scheduled following the current release.",
+        "Read and analyzed the web application codebase to evaluate unit and component test coverage, root-causing multiple defects — including a race condition surfaced during automated test entry — improving defect diagnosis speed and automation reliability."
       ]
     },
     {
-      "title": "Full Stack Software Engineer",
-      "company": "LVC Solutions",
-      "location": "USA, Remote",
-      "dates": "July 2025 - Present",
-      "description": "Worked as a Software Engineer in an agile environment with 2 more engineers to design and implement SaaS for marketing.",
+      "title": "Lead SDET",
+      "company": "Edward Jones",
+      "location": null,
+      "dates": "May 2024 - June 2026",
+      "description": "Worked as Senior Software Engineer in Test in a team of 6 engineers. Responsible for delivering software for automation testing of functional and integration tests with following integration into CI/CD. Communication with product ownership to learn functionality, demo of completed work, gather feedback and deliver improvements.",
       "tech_stack": [
-        "JavaScript",
-        "React",
-        "HTML",
-        "CSS",
-        "ExpressJS",
-        "JSON",
-        "Git",
-        "Github"
+        "Java",
+        "Selenium WB",
+        "Serenity BDD",
+        "Cucumber",
+        "Applitools",
+        "Gradle",
+        "Jenkins",
+        "Git"
       ],
       "contributions": [
-        "Positively impacted project by establishing development process of new components by communicating values of open, creative and inclusive environment resulting in improved productivity and decreased team nervousness (brevity).",
+        "Served as client-facing technical lead for the automation framework: negotiated testing requirements directly with stakeholders, and presented test coverage and release-readiness reports to leadership — driving framework design decisions without formal direct reports.",
+        "Supported engineers in troubleshooting technical issues and coached the team on best practices for handling failed assertions and fallbacks to keep test data idempotent.",
+        "Implemented POC that served as base for other team to build project with reusable API as library",
+        "Identified and fixed false positive tests",
+        "Contributed to software for automation testing with development of architectural solutions and best practices by utilization of OOP principles (e.g., polymorphism, inheritance, encapsulation) programming design patterns (e.g., Builder, Singleton, Factory, Commander or Strategy, Facade) and decoupling implementation and encapsulation via abstract methods, interfaces and functional interfaces.",
+        "Meticulous code analysis of transitioned project by debugging, executing of tests, gaining ownership of a code-base, refactoring and as a result stability improvements, decrease of duplicated code by ~1800 lines and tests execution time by up to 40%.",
+        "Developed reliable software for automation testing of Web-pages and solved high-complex problems by thorough analysis of HTML, CSS and JavaScript via effective use of Dev-tools to identify mechanism of functioning of components of the page.",
+        "Design test scenarios in Gherkin language using parametrizable instructions, DataTables, Scenario Outline for reusability with maximum level of readability for non-technical people as well as with exhaustive level of details to make test valuable assets and source of truth.",
+        "Development of glue code (executable code associated with each command in feature file) and organizing it in clear per web page and/or per functionality manner to establish clear ownership and responsibilities to avoid code duplication and improve maintenance."
+      ]
+    },
+    {
+      "title": "Full Stack Software Engineer (Part-Time)",
+      "company": "LVC Solutions",
+      "location": "USA, Remote",
+      "dates": "July 2025 - June 2026",
+      "description": "Worked part-time as a Software Engineer, concurrent with full-time role at Edward Jones, in an agile environment with 2 more engineers to design and implement SaaS for marketing.",
+      "tech_stack": [
+        "JavaScript",
+        "TypeScript",
+        "React",
+        "ExpressJS",
+        "Firebase",
+        "AWS",
+        "Google Cloud"
+      ],
+      "contributions": [
+        "Provide functionality with close to 0 (zero) return rate by applying best practices in software design",
+        "Develop convenient tests harness on unit, integration and systems levels that brings high level of confidence in software",
         "Implement re-usable complex (e.g., accordion, filterable lists, tabs) components using JSX, parametrization via variables or data in JSON, React hooks (e.g., useState, useRef, useContext, useReducer) with respective styling via CSS file and in-line style attribute.",
-        "Debug and bugfix of 10+ of issues, perform root-cause analyze using dev tools (e.g., DevTools, React-Devtools).",
-        "Measure quality of the web application by performing testing with network throttle and profiling using DevTools and react-devtools profiling.",
-        "Supervise release processes with DevOps team and perform or supervise rollback in case of failure.",
-        "Perform a leading engineering role by sharing ideas for technical and UI/UX problems that influence the improvement of productivity and establish open and professional collaboration in the team."
+        "Debug and bugfix of 10+ of issues, perform root-cause analyze using dev tools (e.g., DevTools, React-Devtools)."
       ]
     },
     {
       "title": "Software Engineer (open-source contributor), Front End",
       "company": "Layer5",
       "location": "USA, Remote",
-      "dates": "March 2025 - Present",
+      "dates": "March 2025 - June 2025",
       "description": "Worked as a Software Engineer in an open-source project with an international team of contributors. The project provides standardized components for Layer5 projects.",
       "tech_stack": [
         "JavaScript",
@@ -214,30 +186,6 @@
         "Bug fix by implementing clean and documented code utilizing declared types, interfaces, enums.",
         "Managed code contributions via Git, regularly merging updates and submitting well-documented pull requests.",
         "Participate in community meetings, attentively listen to changes being introduced by others and present completed work."
-      ]
-    },
-    {
-      "title": "Senior Software Engineer, Testing",
-      "company": "Accenture",
-      "location": null,
-      "dates": "May 2024 - Present",
-      "description": "Worked as Senior Software Engineer in Test in a team of 6 engineers. Responsible for delivering software for automation testing of functional and integration tests with following integration into CI/CD. Communication with product ownership to learn functionality, demo of completed work, gather feedback and deliver improvements.",
-      "tech_stack": [
-        "Java",
-        "Selenium WB",
-        "Serenity BDD",
-        "Cucumber",
-        "Applitools",
-        "Gradle",
-        "Jenkins",
-        "Git"
-      ],
-      "contributions": [
-        "Contributed to software for automation testing with development of architectural solutions and best practices by utilization of OOP principles (e.g., polymorphism, inheritance, encapsulation) programming design patterns (e.g., Builder, Singletone, Factory, Commander or Strategy, Facade) and decoupling implementation and encapsulation via abstract methods, interfaces and functional interfaces.",
-        "Developed reliable software for automation testing of Web-pages and solved high-complex problems by thorough analysis of HTML, CSS and JavaScript via effective use of Dev-tools to identify mechanism of functioning of components of the page.",
-        "Design test scenarios in Gherkin language using parametrizable instructions, DataTables, Scenario Outline for reusability with maximum level of readability for non-technical people as well as with exhaustive level of details to make test valuable assets and source of truth.",
-        "Development of glue code (executable code associated with each command in feature file) and organizing it in clear per web page and/or per functionality manner to establish clear ownership and responsibilities to avoid code duplication and improve maintenance.",
-        "Meticulous code analysis of transitioned project by debugging, executing of tests, gaining ownership of a code-base, refactoring and as a result stability improvements, decrease of duplicated code by ~1800 lines and tests execution time by up to 40%."
       ]
     },
     {
@@ -341,13 +289,16 @@
       "year": 2023
     }
   ],
-  "testimonial": [{
-    "author": "Sonum Matur",
-    "title": "Software Engineering Manager @ Cisco Meraki",
-    "content": "Ihor is a very sincere and dedicated SDET Engineer. His clarity and concepts of test automation to cover the quality of the product was impressive. He preached the test automation pyramid while we worked together at Meraki and was also instrumental in right execution for the product quality. Ihor is a quick and ambitious learner and always wanted to explore more and more of knowledge and skill set."
-  },{
-    "author" :"Venkat Gunji",
-    "title": "Founder & CEO of LVC Solutions",
-    "content":"I had the pleasure of working with Ihor and was consistently impressed by his technical expertise, professionalism,     and collaborative approach. He brings strong problem-solving skills, a deep understanding of software development,     and a commitment to delivering high-quality results. Ihor is someone who takes ownership of his work,     communicates effectively, and is always willing to support the team when needed. His ability to tackle complex     challenges and turn ideas into practical solutions makes him a valuable asset to any organization. Beyond his technical skills, Ihor is a great team player who fosters a positive and productive working environment. I highly recommend him to any company looking for a skilled, reliable, and dedicated engineering professional."
-  }]
+  "testimonial": [
+    {
+      "author": "Sonum Matur",
+      "title": "Software Engineering Manager @ Cisco Meraki",
+      "content": "Ihor is a very sincere and dedicated SDET Engineer. His clarity and concepts of test automation to cover the quality of the product was impressive. He preached the test automation pyramid while we worked together at Meraki and was also instrumental in right execution for the product quality. Ihor is a quick and ambitious learner and always wanted to explore more and more of knowledge and skill set."
+    },
+    {
+      "author": "Venkat Gunji",
+      "title": "Founder & CEO of LVC Solutions",
+      "content": "I had the pleasure of working with Ihor and was consistently impressed by his technical expertise, professionalism, and collaborative approach. He brings strong problem-solving skills, a deep understanding of software development, and a commitment to delivering high-quality results. Ihor is someone who takes ownership of his work, communicates effectively, and is always willing to support the team when needed. His ability to tackle complex challenges and turn ideas into practical solutions makes him a valuable asset to any organization. Beyond his technical skills, Ihor is a great team player who fosters a positive and productive working environment. I highly recommend him to any company looking for a skilled, reliable, and dedicated engineering professional."
+    }
+  ]
 }
