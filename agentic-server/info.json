@@ -1,7 +1,7 @@
 {
   "name": "Ihor Lazarkov",
   "about_me": {
-    "summary": "Lead SDET with 18 years designing and scaling test automation across financial, telecom, and SaaS organizations — from frameworks adopted across entire client engagements to test architectures rolled out team-wide. Pursuing the next step into a dedicated Test/Automation Architect role, backed by hands-on full-stack and AI-tooling experience."
+    "summary": "Senior SDET with 18 years designing and scaling test automation across financial, telecom, and SaaS organizations — from frameworks adopted across entire client engagements to test architectures rolled out team-wide. Pursuing the next step into a dedicated Test/Automation Architect role, backed by hands-on full-stack and AI-tooling experience."
   },
   "notable_accomplishments": [
     "Improve performance in existing and new automation test cases up to 60%",
@@ -96,7 +96,7 @@
   },
   "experience": [
     {
-      "title": "Senior Software Engineer, Testing",
+      "title": "SDET IV",
       "company": "Comcast",
       "location": "USA, Remote",
       "dates": "July 2026 - Present",
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "title": "Lead SDET",
+      "title": "Senior Software Engineer, Testing",
       "company": "Edward Jones",
       "location": null,
       "dates": "May 2024 - June 2026",
