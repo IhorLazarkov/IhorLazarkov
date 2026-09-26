@@ -118,6 +118,7 @@
       ],
       "contributions": [
         "Designed and implemented a new test automation architecture within the first two weeks, reducing test execution time by up to 60%, then trained a team of 20 engineers to adopt it across their projects.",
+        "Delivered parameterized E2E automation for two core CRM workflows (618 executions across 43 categories, 15 defects surfaced), then used the resulting runtime and maintenance data to propose a test-level redistribution plan projected to cut E2E scope by ~86%.",
         "Architected and maintained an AI engineering harness (skills, context management, sub-agents), accelerating automated code generation while retaining strict review and architectural oversight.",
         "Assessed the existing automation framework and application codebase — architecture, design, and unit/component test coverage — identifying an inverted test pyramid with excessive E2E coverage and root-causing multiple defects, including a race condition surfaced during automated test entry; findings quantified the cost to the business and were adopted into the team's roadmap, with remediation scheduled following the current release."
       ]
@@ -274,16 +275,30 @@
     {
       "name": "Kelfora",
       "type": "Personal project",
-      "description": "AI agents for e-commerce businesses, built with LM Studio LLM, prompt engineering, and MCP servers. Built two demo agents — for an online pizzeria and a rental property website — each covering minimal website browsing, order/booking management, and outsourced analytical work (product/service insights) to provide real value to visitors, not just a chatbot demo.",
+      "description": "AI agentic commerce platform: verified, conversational AI agents that take real backend action (not just chat) for independent e-commerce merchants — built as a reusable core engine plus thin per-client MCP adapters. Includes two demo agents — an online pizzeria and a rental property website — covering site browsing, order/booking management, and product/service insights for visitors.",
       "tech_stack": [
+        "Node.js",
+        "HTTP/2",
+        "Server-Sent Events (SSE)",
+        "Model Context Protocol (MCP)",
         "ReactJS",
-        "HTTP2",
         "LM Studio",
         "Ollama",
-        "FAISS",
-        "SentenceTransformers",
+        "Express",
+        "Sequelize",
         "Prompt Engineering",
-        "MCP Servers"
+        "Agent Orchestration",
+        "Correctness/Evals Testing",
+        "FAISS",
+        "SentenceTransformers"
+      ],
+      "contributions": [
+        "Designed and built a reusable agentic core engine (core-engine) from scratch on Node's node:http2 (HTTP/2 + SSE), bridging any OpenAI-compatible LLM to a dynamically-discovered MCP tool interface — no hand-duplicated tool schemas, no framework dependency.",
+        "Built two MCP server adapters (Forno Roma: 9 tools; Rental Residence Hub: read-only, 2 tools) translating natural-language agent intent into real backend actions against live Express/Sequelize APIs.",
+        "Authored a correctness test suite (no mocks, run against live backends) covering structural negative-path cases — e.g. a 'no discount/price-override tool exists at all' test — confirm-gating on financial actions, and rejection of invalid/unknown IDs.",
+        "Found and fixed two production-relevant agent defects via real end-to-end browser/LLM dogfooding that per-tool unit tests had missed: brittle literal-substring search failing on plural/generic LLM-generated queries, and an unbounded tool-result payload causing effective hangs against a small local model — root-caused both and shipped general fixes.",
+        "Enforced a hard architectural boundary that the agent never handles payment/card data directly, always handing off to the client's existing payment processor.",
+        "Built a companion embeddable React chat widget (SSE-consuming, not iframe-based) and a live, publicly deployed demo site for real prospect outreach."
       ]
     },
     {
@@ -410,6 +425,11 @@
       "author": "Venkat Gunji",
       "title": "Founder & CEO of LVC Solutions",
       "content": "I had the pleasure of working with Ihor and was consistently impressed by his technical expertise, professionalism, and collaborative approach. He brings strong problem-solving skills, a deep understanding of software development, and a commitment to delivering high-quality results. Ihor is someone who takes ownership of his work, communicates effectively, and is always willing to support the team when needed. His ability to tackle complex challenges and turn ideas into practical solutions makes him a valuable asset to any organization. Beyond his technical skills, Ihor is a great team player who fosters a positive and productive working environment. I highly recommend him to any company looking for a skilled, reliable, and dedicated engineering professional."
+    },
+    {
+      "author": "Ashley Hendricks",
+      "title": "Product Owner @ Edward Jones",
+      "content": "I had the opportunity to work with Ihor as his Product Owner at Edward Jones. Ihor is a skilled automation engineer who consistently demonstrated ownership, strong technical expertise, and the ability to work independently while collaborating effectively with the team. He played a key role in advancing our automation testing and integrating it into our CI/CD pipeline. I especially appreciated his willingness to share findings, explain technical concepts, and mentor team members on quality engineering and automation practices. Ihor is dependable, collaborative, and genuinely invested in improving both the work and the team around him. I would gladly recommend him to any organization looking for a strong automation engineer."
     }
   ]
 }

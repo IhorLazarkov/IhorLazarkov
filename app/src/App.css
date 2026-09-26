@@ -141,7 +141,7 @@ section.article {
   margin-top: var(--head-padding);
 }
 
-section.article > span {
+section.article>span {
   position: absolute;
   top: -90px;
   left: 20px;
@@ -169,12 +169,12 @@ main {
   }
 }
 
-:is(.experience-card, .project-card) a {
+:is(.experience-card) a {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
   display: grid;
-  grid-template-columns: clamp(50px, 100px, 150px) 1fr;
+  grid-template-columns: clamp(150px, 150px, 250px) 1fr;
   grid-column-gap: 2em;
   padding: 1em;
 
@@ -197,7 +197,7 @@ main {
     padding: 0;
   }
 
-  & :is(.experience-content, .project-content) {
+  & :is(.experience-content) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -229,6 +229,69 @@ main {
   }
 }
 
+.project-card a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2em;
+  padding: 1em;
+
+  & div:has(img) {
+    display: grid;
+    place-items: center;
+
+    & img {
+      width: 100%;
+      border-radius: 0.2em;
+    }
+  }
+
+  & h4 {
+    margin: 0;
+    padding: 0;
+  }
+
+  & .timeframe {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    color: var(--secondary-text);
+  }
+
+  & .tech-stack {
+    padding-block: 0.7em;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+
+    &>* {
+      width: fit-content;
+      color: var(--accent);
+      padding: 0.3em 0.5em;
+      text-transform: uppercase;
+      font-size: 0.65em;
+      font-weight: 800;
+
+      background-color: var(--secondary-text);
+      /* border-radius: 20px; */
+    }
+  }
+
+  & .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    /* title of the card */
+    & :first-child {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+  }
+}
+
 :is(#experience, #projects):hover a:has(.experience-content, .project-content):not(:hover) {
   opacity: 0.5;
 }
@@ -250,7 +313,7 @@ a:has(.experience-content, .project-content):hover {
   }
 
   main {
-        padding-right: var(--main-margin);
+    padding-right: var(--main-margin);
   }
 }
 
@@ -280,7 +343,7 @@ a:has(.experience-content, .project-content):hover {
     padding: 0;
   }
 
-  section.article > span{
+  section.article>span {
     margin-top: 0.2em;
   }
 

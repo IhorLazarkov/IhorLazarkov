@@ -74,6 +74,17 @@ export const projects: IProject[] = [
     techStack: ["react", "express.js"],
   },
   {
+    url: "https://kelfora.ihorlazarkov-swe.in",
+    imageUrl: "./kelfora.png",
+    title: "Kelfora (Agentic commerce platform)",
+    description: `
+      Make conversational AI agents that take real backend actions for 
+      independent merchants, built as a reusable core engine with per-client MCP adapters. 
+      Demo agents for an online pizzeria and a rental property site.
+    `,
+    techStack: ["node.js", "http/2", "sse", "mcp", "react", "lm studio", "open weight models"],
+  },
+  {
     url: "https://fornoroma.ihorlazarkov-swe.in",
     imageUrl: "./fornoroma.png",
     title: "Forno Roma",
